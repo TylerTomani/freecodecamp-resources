@@ -1,0 +1,50 @@
+<div class="steps-container">
+    <h2>02-05 ALTER TABLE</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                We can add columns after creating the table, add a column for <strong>gpa</strong> with a type <code>DECIMAL</code>
+                value, 3 digits before the decimal and 2 after the decimal
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student(
+    student_id INT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    PRIMARY KEY(student_id)
+);
+DESCRIBE student;
+ALTER TABLE student ADD gpa DECIMAL(3,2);</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+ALTER TABLE student ADD gpa DECIMAL(3,2);</pre>
+            </div>
+            
+        </div>
+        <div class="step-vid">
+            <video src="sections/02-popSql/05-alterTable/images/01-01.mov">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                To remove a column use
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+ALTER TABLE student DROP COLUMN gpa;</pre>
+            </div>
+            
+        </div>
+        <div class="step-vid">
+            <video src="sections/02-popSql/05-alterTable/images/01-02.mov">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

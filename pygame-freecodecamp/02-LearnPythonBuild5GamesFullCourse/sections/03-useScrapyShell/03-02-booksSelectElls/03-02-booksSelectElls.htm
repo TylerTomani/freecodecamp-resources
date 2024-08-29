@@ -1,0 +1,189 @@
+<h1>03-02-  <code>books</code> select elements</h1>
+<div class="steps-container show">
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Find the following elements from the page to add to the script from the following page,
+                <br>
+                <a target="_blank" href="https://books.toscrape.com/">https://books.toscrape.com/</a>
+            </p>
+            <ul>
+                <li>title</li>
+                <li>price</li>
+                <li>link - to more info on book</li>
+            </ul>
+            <p>
+                Quick way to get any attribute
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+books = response.css('article.product_pod')
+books[0].css('div.image_container a <span class="y">img::attr(alt)')</span>.get()
+                </pre>
+            </div>
+            <p>
+                This will return
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+'A Light in the Attic'
+                </pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img">
+            <img class="sm-enlarge" src="/scrapy/01-scrapy-freeCodeCamp/sections/03-useScrapyShell/03-02-booksSelectElls/images/01-02.png">
+        </div>
+    </div>    
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Get the following elements
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+fetch('https://books.toscrape.com/')</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+books = response.css('article.product_pod')</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+book = books[0]</pre>
+            </div>
+                                    
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+book.css('h3 a::text').get()</pre>
+            </div>
+            <p class="r">
+                We can get the title also with the <code class="o">attrib</code> method(
+                    is it called a method??)
+                
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code r">
+book.css('h3 a').attrib['title']</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+book.css('.product_price .product_color::text').get() </pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+book.css('h3 a').attrib['href']</pre>
+            </div>            
+        </div>
+        <div class="step-img">
+            <img class=""
+                src="/scrapy/01-scrapy-freeCodeCamp/sections/03-useScrapyShell/03-02-booksSelectElls/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Add in the above selectors to the <code class="gr">parse()</code>  method inside the <code>BooksSpider</code> class 
+            </p>
+            <h4><span class="r">(**You must yield an object</span> you can not a single book)</h4>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import scrapy
+class BookspiderSpider(scrapy.Spider):
+    name = "bookspider"
+    allowed_domains = ["books.toscrape.com"]
+    start_urls = ["https://books.toscrape.com/"]
+
+    def <span class="gr">parse</span>(self, response):
+        books = response.css('article.product_pod')
+        for book in books:
+            yield{
+                'name':  book.css('h3 a::text').get(),
+                'price': book.css('.product_price .product_color::text').get(),
+                'url':   book.css('h3 a').attrib['href']
+            }</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img class="" src="/scrapy/01-scrapy-freeCodeCamp/sections/03-useScrapyShell/03-02-booksSelectElls/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>04</h4>
+            <p>
+                <code>exit</code> the scrapy shell, change directory into the <code>bookscaper</code> folder
+                and run 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+scrapy crawl bookspider</pre>
+            </div>
+            <p class="r">
+                You must be in the same directory that contains the <code class="m"><i>scrapy.cfg</i></code>
+                file
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+cd /bookscraper
+                </pre>
+            </div>
+            
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+.
+├── <span class="m">bookscraper</span>
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-310.pyc
+│   │   └── settings.cpython-310.pyc
+│   ├── items.py
+│   ├── middlewares.py
+│   ├── pipelines.py
+│   ├── settings.py
+│   └── spiders
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-310.pyc
+│       │   └── bookspider.cpython-310.pyc
+│       └── bookspider.py
+└── <span class="m">scrapy.cfg</span>
+
+
+                </pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-vid">
+            <video src="/scrapy/01-scrapy-freeCodeCamp/sections/03-useScrapyShell/03-02-booksSelectElls/images/01-04.mov">
+        </div>
+
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>05</h4>
+            <p>
+                You can see the last elements returned from the page in the console
+            </p>
+        </div>
+        <div class="step-vid">
+            <video
+                src="/scrapy/01-scrapy-freeCodeCamp/sections/03-useScrapyShell/03-02-booksSelectElls/images/01-05.mov">
+        </div>
+    </div>
+    <footer>
+        <button tabindex="1" id="nxtLesson">next</button>
+    </footer>
+</div>
+

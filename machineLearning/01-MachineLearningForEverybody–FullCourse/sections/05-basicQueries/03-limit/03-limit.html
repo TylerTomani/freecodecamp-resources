@@ -1,0 +1,47 @@
+<div class="steps-container">
+    <h2>05-03 <code class="lsg">LIMIT</code></h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Using the table from this section, We can 'limit' the results shown with <code class="lsg">LIMIT</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT student_id, name
+FROM student
+<span class="lsg">LIMIT</span> 2;</pre>
+            </div>
+            <p>
+                This will only show the first 2 rows
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/05-basicQueries/03-limit/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+    <div tabindex="1" class="step-txt">
+        <h4>02</h4>
+        <p>
+            This will order the students by name with the student_id's in decending order, displaying
+            only the first 3 results                
+        </p>
+        <div class="code-container">
+            <pre tabindex="1" class="copy-code">
+SELECT *
+FROM student
+ORDER BY name, student_id DESC
+LIMIT 3;</pre>
+        </div>
+        
+    </div>
+    <div class="step-img">
+        <img src="sections/05-basicQueries/03-limit/images/01-02.png">
+    </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,28 @@
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<div class="steps-container">
+    <h1>03-02 INSERT no Value</h1>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                We can specify what <span class="m">columns</span> we want values inserted into.
+            </p>
+            <p>
+                Any column not specified will be <code class="r">NULL</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO student(student_id,name) VALUES(3,'Claire');</pre>
+            </div>
+            <p>
+                Here we only specifiy <code class="m">student_id</code> and <code class="m">name</code>
+                so <code class="r">major</code> is <code class="r">NULL</code>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/02-insertNolValue/images/01-01.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

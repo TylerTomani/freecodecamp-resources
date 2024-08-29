@@ -1,0 +1,187 @@
+<h1>05-02-items() (part 6 1:21:15)  </h1>
+<div class="steps-container show">
+    <!-- 01-01 --> 
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                &emsp; Instead of puting the data in <code>yeild</code>, we can place the data in the default 
+                <code class="m">items.py</code> script as and item, import a <code class="dc">BookItem</code> and <code>yield</code>
+                the <code class="gr">bookItem</code>
+            </p>
+            <p>
+                This is safe to do so we check for typos, in case we type something wrong it will tell us where
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img 
+            src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-01-items/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>02</h4>
+            <p>
+                Copy the yield values from <code>bookspider.py</code> and place them into the <code class="dc">BookItem</code> scrapy class in
+                <code>items.py</code> and assign the keys to a value of <code class="dc">scrapy.Field()</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import scrapy
+class BookItem(scrapy.Item):
+    url = <span class="c" >scrapy.Field</span>()
+    title = <span class="c" >scrapy.Field</span>()
+    product_type = <span class="c" >scrapy.Field</span>()
+    price_excl_tax= <span class="c" >scrapy.Field</span>()
+    price_incl_tax = <span class="c" >scrapy.Field</span>()
+    tax = <span class="c" >scrapy.Field</span>()
+    availabiity = <span class="c" >scrapy.Field</span>()
+    num_reviews = <span class="c" >scrapy.Field</span>()
+    stars = <span class="c" >scrapy.Field</span>()
+    category = <span class="c" >scrapy.Field</span>()
+    description = <span class="c" >scrapy.Field</span>()
+    price = <span class="c" >scrapy.Field</span>()
+                </pre>
+            </div>
+            
+        </div>
+        <div class="step-vid">
+            <video
+                src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-01-items/images/01-02.mov">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt ">
+            <h4>03</h4>
+            <p>
+                <span class="r">This isn't explained well</span> but we can add methods to the <code class="gr">serializer</code>
+                attribute of <code class="dc">scarpy.Field()</code>, the
+                method <code class="m">serialize_price</code>  will add a € sign
+            </p>
+            <p class="lgtxt r">
+                We can also do this in the pipelines.py file when files are larger
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import scrapy
+def <span class="m">serialize_price</span>(val):
+    return f'€{str(val)}'
+class BookItem(scrapy.Item):
+
+    url = scrapy.Field()
+    title = scrapy.Field()
+    product_type = scrapy.Field()
+    price_excl_tax= <span class="c">scrapy.Field</span>(<span class="gr">serializer</span>= <span class="m">serialize_price</span>)
+    price_incl_tax = scrapy.Field()
+    tax = scrapy.Field()
+    availabiity = scrapy.Field()
+    num_rerrviews = scrapy.Field()
+    stars = scrapy.Field()
+    category = scrapy.Field()
+    price = scrapy.Field()
+                </pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-01-items/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>04</h4>
+            <p>
+                Import the <code class="dc">BookItem</code> class from <code>items.py</code>
+                into the spider and convert the <code class="m">yield</code> values to a <code class="dc">bookItem</code>
+                instance and <code class="m">yield that instead</code>
+            </p>
+            <p><span class="r">**Remember</span>when using crawl, be in the parent directory</p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+                    cd bookscraper
+                </pre>
+            </div>
+            <div class="code-container">
+                
+                <pre tabindex="1" class="copy-code">
+                    scrapy crawl bookspider -O ex.json
+                </pre>
+            </div>
+            <p>
+                <span class="r">When using command</span>, <code>runspider</code>, be in the spider direcotry
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+                    cd bookscraper/spiders/
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+                    scrapy runspider bookspider -O ex.json
+                </pre>
+            </div>
+        </div>
+        <div class="step-vid">
+            <video src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-01-items/images/01-04.mov">
+        </div>
+    </div>
+    <div class="step-col-wide step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import scrapy
+from bookscraper.items import BookscraperItem
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allowed_domains = ['books.toscrape.com']
+    start_urls = ['http://books.toscrape.com/']
+
+    def parse(self, response):
+        books = response.css('article.product_pod')
+        for index, book in enumerate(books ):
+            relative_url = book.css('h3 a::attr(href)').get()
+            if 'catalogue/' in relative_url:
+                next_book_url = 'http://books.toscrape.com/' + relative_url
+            else:
+                next_book_url = 'http://books.toscrape.com/catalogue/' + relative_url
+            yield response.follow(next_book_url, callback=self.parse_book_page, meta={'index': index})
+
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            if 'catalogue/' in next_page:
+                next_page_url = 'http://books.toscrape.com/' + next_page
+            else:
+                next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
+            yield response.follow(next_page_url, callback=self.parse)
+
+    def parse_book_page(self, response):
+        index = response.meta['index']
+        table_rows = response.css('table tr')
+        book_item = BookscraperItem()
+        book_item['title'] =  response.css('.product_main h1::text').get()
+        book_item['index'] =  index
+        book_item['url'] =  response.url
+        book_item['product_type'] =  table_rows[1].css('td::text').get()
+        book_item['price_excl_tax'] =  table_rows[2].css('td::text').get()
+        book_item['price_incl_tax'] =  table_rows[3].css('td::text').get()
+        book_item['tax'] =  table_rows[4].css('td::text').get()
+        book_item['availability'] =  table_rows[5].css('td::text').get()
+        book_item['stars'] =  response.css('p.star-rating').attrib['class']
+        book_item['category'] = response.xpath("//ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()").get()
+        book_item['price'] =response.css('p.price_color ::text').get()
+        yield book_item</pre>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
+<footer>
+    <button tabindex="1" id="nxtLesson">next</button>    
+</footer>

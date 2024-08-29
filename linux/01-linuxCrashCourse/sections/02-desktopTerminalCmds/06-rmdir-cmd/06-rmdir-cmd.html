@@ -1,0 +1,107 @@
+
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<h1>02-06 <code>rmdir </code> command</h1>
+
+<div class="steps-container">
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>01</h3>
+            <div class="code-container">
+                <pre class="copy-code">
+man rmdir </pre>
+            </div>
+            <p>
+                The options are in <i>Description</i>      
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="/freecodecamp/linux/01-linuxCrashCourse/sections/02-desktopTerminalCmds/06-rmdir-cmd/images/01-01.mov">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>02</h3>
+            <p>
+                <code>rmdir</code> will only remove an empty directory such as the <code>Test</code> we created with <code>mkdir</code>
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+cd ~/Documents/
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+ls -l
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+rmdir Text
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+ls -l
+                </pre>
+            </div>
+
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/02-desktopTerminalCmds/06-rmdir-cmd/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>03</h3>
+            <p>
+                This will not work with <code>ParentFolder</code>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/02-desktopTerminalCmds/06-rmdir-cmd/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>04</h3>
+            <p>
+                Use
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+rmdir -p ParentFolder/SubFolder01/SubFolder0101
+                </pre>
+            </div>
+            <p>
+                <span class="r">you must include sub directories in path</span> to delete ParentFolder directory
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/02-desktopTerminalCmds/06-rmdir-cmd/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>05</h3>
+            <p>
+                A shorter way around removing direcories is using, <strong class="r">** Be Careful</strong>
+                will overwirte and delete anything
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+rm -rf (DirectoryName)
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/02-desktopTerminalCmds/06-rmdir-cmd/images/01-05.png">
+        </div>
+    </div>
+</div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

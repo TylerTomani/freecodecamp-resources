@@ -1,0 +1,79 @@
+<h1>03-04-scrapeInBookUrl (part 5 56:55)</h1>
+<div class="steps-container show">
+    <!-- 01-01 -->
+    <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                We want to scrape inside the <code>book['url']</code> link, from this page,
+                <br>
+                <a target="_blank" href="https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html">https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html</a>
+                which is the <code>['url']</code> of the first book
+            </p>
+        </div>
+        <div class="img-2-container">
+            <div class="step-img">
+                <img class="lg-enlarge"
+                    src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-04-scrapeInBookUrl/images/01-01.png">
+            </div>
+            <div class="step-img">
+                <img class="lg-enlarge"
+                    src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-04-scrapeInBookUrl/images/01-01b.png">
+            </div>
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Apply the same <code class="gr">next_page</code> technique to the <span class="gr">book_url</span>. Add pass in the
+                the method <code class="m">parse_book_page</code> to the callback
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+'url': book.css('h3 a::attr(href)').get()</pre>
+            </div>
+            
+            <div class="code-container ">
+                <pre tabindex="1" class="copy-code smtxt">
+import scrapy
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allow_domains = ['books.toscrape.com']
+    start_urls = ['http://books.toscrape.com/']
+    
+    def parse(self,response):
+        books = response.css('article.product_pod')
+        for book in books:
+            relative_url = book.css('h3 a::attr(href)').get()
+            if 'catalogue' in relative_url:
+                <span class="gr">next_book_url</span> = 'http://books.toscrape.com/' + relative_url
+            else:
+                <span class="gr">next_book_url</span> = 'http://books.toscrape.com/catalogue/' + relative_url
+            yield response.follow(<span class="gr">next_book_url</span>,callback=self.<span class="m">parse_book_page</span>)
+
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            if 'catalogue' in next_page:
+                next_page_url = 'http://books.toscrape.com/' + next_page
+            else:
+                next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
+            yield response.follow(next_page_url, callback=self.parse)
+    def parse_book_page(self,response):
+        print(response.url)
+        </pre>
+            </div>
+        </div>
+
+    
+        <div class="step-img">
+            <img class="xlg-enlarge"
+src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-04-scrapeInBookUrl/images/01-02.png">
+        </div>
+    </div>
+    
+</div>
+<footer>
+    <button tabindex="1" id="nxtLesson">next</button>    
+</footer>

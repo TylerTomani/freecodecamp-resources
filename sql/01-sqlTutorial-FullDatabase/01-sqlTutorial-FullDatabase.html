@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-SQL Tutorial-FullDatabaseCourse</title>
+    <link rel="stylesheet" href="css/tutorial-temp.css">
+    <link rel="stylesheet" href="css/lesson-temp.css">
+    <link rel="stylesheet" href="css/colorsFonts.css">
+    <link rel="stylesheet" href="../../../../css/copy-code.css">
+    <script type="module" src="js/sections-sql.js" defer></script>
+    <script type="module" src="js/copy-code-sql.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav id="mainLinksContainer">
+            <div id="mainLinks">
+                <a tabindex="1" id="backlink" href="../sql.html">&larr;back</a>
+                <a tabindex="1" id="homelink" href="../../../../index.html">Home (main)</a>
+                <a tabindex="1" id="regexCmds" target="_blank" href="../../../../Shortcuts/regex-cmds/regex-cmds.html">regex
+                </a>
+                <a tabindex="1" id="programShorcuts" target="_blank"
+                href="../../../../Shortcuts/programShorcuts.html">program Shorcuts</a>
+            </div>
+            <div class="img-container">
+                <a tabindex="1" id="tutorialLink" target="_blank" href="https://www.youtube.com/watch?v=HXV3zeQKqGY">
+                    
+                    <img src="data:image/jpeg;base64,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">
+                </a>
+            </div>
+        </nav>
+        <h1>01- SQL Tutorial - Full Database Course for Begginners</h1>
+    </header>
+    <nav tabindex="1" class="section-lesson-title">
+        <span id="section-lesson-titles"><span id="section-title">Section</span><span id="lesson-title">&rarr;
+                lesson</span></span>
+    </nav>
+    <main>
+        <aside tabindex="1">
+            <ul class="sections-container">
+                <!-- s1 - Intro / Install -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/01-introInstall/00-introInstall.html">Section 1
+                    - Intro / Install</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/01-introInstall/01-installWindows/01-installWindows.html">1. install Windows
+                             </span>
+                        </a></li>
+                        <li><a tabindex="1" href="sections/01-introInstall/02-installMac-pt1/02-installMac-pt1.html">2. install MAC part1</a></li>
+                        <li><a tabindex="1" href="sections/01-introInstall/03-installMac-pt2/03-installMac-pt2.html">3. install MAC part2 <br>
+                            <span class="bl">(create database)</span>
+                        </a></li>
+                        <li><a tabindex="1" href="sections/01-introInstall/04-installPopSq-pt1/04-installPopSq-pt1.html">4. install popSql part1</a></li>
+                        <li><a  tabindex="1" href="sections/01-introInstall/05-installPopSql-pt2/05-installPopSql-pt2.html">5. install popSql part2</a></li>
+                        <li><a  tabindex="1" href="sections/01-introInstall/06-sqlIntro/06-sqlIntro.html">6. SQL Intro</a></li>
+                    </ul>
+                </li>
+                <!-- s2 - popSQL-->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/02-popSql/00-popSql.html">Section 2
+                        - popSQL
+                    CREATE / ALTER TABLE</span></a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/02-popSql/01-variables/01-variables.html">1. variable SQL</a></li>
+                        <li><a tabindex="1" href="sections/02-popSql/02-checkServerCreateTable/02-checkServerCreateTable.html">2. check server, 
+                            <br>create table</a></li>
+                            <li><a tabindex="1" href="sections/02-popSql/03-createTable/03-createTable.html">3. Create Table</a>
+                                <ul>
+                                    <li><code>CREATE TABLE</code></li>
+                                    <li><code>DESCRIBE student</code></li>
+                                    <li><code>DROP TABLE student</code></li>
+                                </ul>
+                            </li>
+                        <li><a tabindex="1" href="sections/02-popSql/04-primaryKey/04-primaryKey.html">4. Primary Key</a></li>
+                        <li><a tabindex="1" href="sections/02-popSql/05-alterTable/05-alterTable.html">5. Alter Table</a>
+                            <ul>
+                                <li>ALTER TABLE students ADD</li>
+                                <li>ALTER TABLE students DROP COLUMN</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s3 - INSERT INTO-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/03-popSql-insert/00-popSql-insert.html">Section 3
+                        INSERT INTO</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/03-popSql-insert/01-insertInto/01-insertInto.html">1. Insert Into</a>
+                            <ul>
+                                <li><code>INSERT INTO student VALUES()</code></li>
+                                <li><code>SELECT * student</code></li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="1" href="sections/03-popSql-insert/02-insertNolValue/02-insertNolValue.html">2. Insert NULL Value</a>
+                        </li>
+                        <li><a tabindex="1" href="sections/03-popSql-insert/03-tableColumnConstrains/03-tableColumnConstrains.html">3. Table Column Constrains</a>
+                            <ul>
+                                <li><code class="r">NOT NULL</code></li>
+                                <li><code class="m">UNIQUE</code></li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="1" href="sections/03-popSql-insert/04-columnDefaultVal/04-columnDefaultVal.html">4. Column Default Value</a>
+                            <ul>
+                                <li><code>major VARCHAR(20) <span class="gr">DEFAULT 'undecided'</span></code></li>
+                            </ul>
+                        </li>
+                        <li><a  tabindex="1" href="sections/03-popSql-insert/05-incrementPrimaryKey/05-incrementPrimaryKey.html">5. Increment Primary Key</a>
+                            <ul>
+                                <li><code class="lsg">AUTO_INCREMENT</code></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <!-- s4 - UPDATE / DELETE row-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/04-updateDeleteRows/00-updateDeleteRows.html">Section 4
+                        UPDATE / DELETE rows</a>
+                    <ul class="sub-section ">
+                        <li><a  tabindex="1" href="sections/04-updateDeleteRows/01-update/01-update.html">1. Insert Into</a>
+                            <ul>
+                                <li><code class="lsg" >UPDATE</code></li>
+                                <li><code class="m" >SET</code></li>
+                                <li><code class="lsg" >WHERE</code></li>
+                            </ul>
+                        </li>
+                        <li><a id="section0402" tabindex="1" href="sections/04-updateDeleteRows/02-comparisonOps/02-comparisonOps.html">2. Comparison Operators</a>
+                                <ul class="xsize1">
+                                <li><code class="gr">=</code>,<code class="gr">></code>,<code class="gr">&lt;></code>,
+                                    <code class="gr">&lt;</code>,<code class="gr">&lt;=</code>,<code class="gr">>=</code></li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="1" href="sections/04-updateDeleteRows/03-set/03-set.html">3. <code class="m">SET</code></a></li>
+                        <li><a   tabindex="1" href="sections/04-updateDeleteRows/04-delete/04-delete.html">4. <code class="r">DELETE FROM</code></a></li>
+                    </ul>
+                </li>
+                <!-- s5 - Basic Queries-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/05-basicQueries/00-basicQueries.html">Section 5
+                        Basic Queries</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/05-basicQueries/01-select/01-select.html">1. <code class="m">SELECT</code></a>
+                        <li><a tabindex="1" href="sections/05-basicQueries/02-orderBy/02-orderBy.html">2. <code class="o">ORDER BY</code></a>
+                            <ul>
+                                <li><code>DESC</code> decending</li>
+                                <li><code>ASC</code> acending
+                                <br>default</li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="1" href="sections/05-basicQueries/03-limit/03-limit.html">3. <code class="lsg">LIMIT</code></a>
+                        <li><a tabindex="1" href="sections/05-basicQueries/04-filterWithWhere/04-filterWithWhere.html">4. filter with 
+                            <br><code class="lsg">WHERE</code></a>
+                        <li><a  tabindex="1" href="sections/05-basicQueries/05-in/05-in.html">5. <code class="gr">IN</code></a>
+                    </ul>
+                </li>
+                <!-- s6 - Database Intro-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/06-databaseIntro/00-databaseIntro.html">Section 6
+                        Database Intro <span class="mdlgtxt"><span class="r">Primary</span> & <span class="g">Foriegn keys</span></span></a>
+                    <ul class="sub-section ">
+                        <li><a  tabindex="1" href="sections/06-databaseIntro/01-createDataBase/01-createDataBase.html">1. 
+                            Create the database</a>
+                        </li>
+                        <li><a tabindex="1" href="sections/06-databaseIntro/02-insertIntoTables/02-insertIntoTables.html">2. 
+                            Insert into tables</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s7 - Basic Queries-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/07-basicQueries/00-basicQueries.html">Section 7
+                        Basic Queries</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/07-basicQueries/01-select/01-select.html">1. 
+                            SELECT</a>
+                        </li>
+                        <li><a tabindex="1" href="sections/07-basicQueries/02-selectChangeColname/02-selectChangeColname.html">2. 
+                            SELECT change col name <br> AS</a>
+                        </li>
+                        <li><a   tabindex="1" href="sections/07-basicQueries/03-distinct/03-distinct.html">2. 
+                            DISTINCT</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s8 - Functions-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/08-functions/00-functions.html">Section 8
+                        Functions</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/08-functions/01-count/01-count.html">1. 
+                            COUNT</a>
+                        </li>
+                        <li><a  tabindex="1" href="sections/08-functions/02-avg/02-avg.html">2.
+                            AVG</a>
+                        </li>
+                        <li><a tabindex="1" href="sections/08-functions/03-sum/03-sum.html">3.
+                                SUM</a>
+                        </li>
+                        <li><a  tabindex="1" href="sections/08-functions/04-aggregation/04-aggregation.html">4.
+                                aggregation 
+                                <br>(# of values), colname</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s9 - wild cards and like-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/9/00.html">Section 9
+                        Wild cards and LIKE</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/9/09-01/09-01.html">1. 
+                            Wildcards LIKE</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <!-- s10 - UNIION & JOIN-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/10/00.html">Section 10
+                        Union & Join</a>
+                    <ul class="sub-section  ">
+                        <li><a tabindex="1" href="sections/10/10-01/10-01.html">1. 
+                            UNION</a>
+                        </li>
+                        <li><a   tabindex="1" href="sections/10/10-02/10-02.html">2.
+                            JOIN</a>
+                            <ul>
+                                <li><code>LEFT JOIN</code></li>
+                                <li><code>RIGHT JOIN</code></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <!-- s11 - Nested Queries-->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/11//11.html">Section 11
+                        Nested Quieries, ON DELETE, Triggers</a>
+                    <ul class="sub-section show ">
+                        <li><a  tabindex="1" href="sections/11/11-01/11-01.html">1. 
+                            Nested Quieries</a>
+                        </li>
+                        <li><a  tabindex="1" href="sections/11/11-01/11-01.html">1. 
+                            ON DELETE SET NULL</a>
+                        </li>
+                        <li><a  tabindex="1" href="sections/11/11-01/11-01.html">1. 
+                            ON DELETE SET CASCADE</a>
+                        </li>
+                    </ul>
+                </li>
+
+                
+            </ul>
+        </aside>
+        <div tabindex="1" id="targetDiv">
+            <h3>Welcome to this page,</h3>
+            <p>
+                This contains the code and examples from the freecodecamp tutorial
+            </p>
+            <h4>01- SQL Tutorial - Full Database Course for Begginners</h4>
+            <p>
+                After this tutorial start 
+            </p>
+            <h4>Data Anaylyst Bootcamp for Begginers tutorial</h4>
+            <p>
+                found here ,
+                <a target="_blank"
+                    href="https://www.youtube.com/watch?v=PSNXoAs2FtQ">https://www.youtube.com/watch?v=PSNXoAs2FtQ</a>
+            </p>
+            <div class="steps-container">
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>Shorcuts:</h3>
+                        <p>
+                            press 'S' to cycles through sections,
+                        </p>
+                        <ul style="list-style: none;">
+                            <li>'M' for this block containing this text called 'main'</li>
+                            <li>'N' for the navigation bar containing Section &rarr; lesson
+                                <p>
+                                    Clicking the navigation bar will toggle the aside bar containing
+                                    the sections and lessons
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="step-txt">
+                        <p>
+                            Use the number keys to cycle through the sections when sections are focused,
+                            lessons, when lessons are focused, and steps within the lesson
+                            when the lesson are focused
+                        </p>
+                        <p>
+                            This site was designed to quickly access information from the tutorials i have completeted
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    
+</body>
+</html>

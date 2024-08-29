@@ -1,0 +1,100 @@
+<div class="steps-container">
+    <h2>04-02 comparison operators</h2>
+    <!-- 01-01 & 01-02-->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4 class="ass">01</h4>
+            <p class="asc">
+                Use these <span class="gr">Comparison operators</span>
+                in <code class="lsg">WHERE</code>
+            </p>
+        </div>
+        <!-- 01-02 -->
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                <span class="gr">Comparison operators</span>:
+            </p>
+            <ul>
+                <li><code>OR</code></li>
+                <li><code>=</code> equals</li>
+                <li><code>&lt;&gt;</code> not equal</li>
+                <li><code>></code> greater than</li>
+                <li><code>&lt;</code> less than</li>
+                <li><code>&lt;=</code> greater or equal to</li>
+                <li><code>>=</code> less than or equal to</li>
+            </ul>
+        </div>
+        
+    </div>         
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Example table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+DROP TABLE student;
+CREATE TABLE student(
+    student_id INT AUTO_INCREMENT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    PRIMARY KEY(student_id)
+);
+INSERT INTO student(name,major) VALUES('John','Biology');
+INSERT INTO student(name,major) VALUES('Kate','Sociology');
+INSERT INTO student(name,major) VALUES('Claire','Chemistry');
+INSERT INTO student(name,major) VALUES('Jack','Biology');
+INSERT INTO student(name,major) VALUES('Mike','Computer Science');
+SELECT * FROM student;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/04-updateDeleteRows/02-comparisonOps/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <h5><code class="gr">OR</code></h5>
+            <p>
+                Change 'Biology' and 'Chemistry' majors to 'Bio-Chemistry'
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+UPDATE student
+SET major = 'Bio-Chemistry'
+<span class="lsg">WHERE</span> major = 'Biology' <span class="o">OR</span> major = 'Chemistry';</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/04-updateDeleteRows/02-comparisonOps/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <h5><code class="gr">&lt;></code></h5>
+            <p>
+                Use <code class="gr">&lt;></code> for <strong class="b"><q>Not Equal To</q></strong>,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+UPDATE student
+SET major = 'undecided'
+WHERE name <span class="lsg">&lt;></span> 'John';</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/04-updateDeleteRows/02-comparisonOps/images/01-05.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

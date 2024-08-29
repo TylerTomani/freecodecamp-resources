@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-scrapyCoursePythonWebScrapBegin</title>    
+    <link rel="stylesheet" href="../../../../../../css/colors.css">
+    <link rel="stylesheet" href="../../../css/sections-temp-fcc.css">
+    <link rel="stylesheet" href="../../../css/lesson-temp-fcc.css">
+    <link rel="stylesheet" href="../../../css/copy-code-fcc.css">
+
+    <script type="module" src="../../../js/sections-fcc.js" defer></script>
+    <script type="module" src="../../../js/lessons-temp-fcc.js" defer></script>
+    <script type="module" src="../../../js/copy-code-fcc.js" defer></script>
+    
+</head>
+<body>
+    <header>
+        <nav id="mainLinksContainer">
+            <div id="mainLinks">
+                <a tabindex="0" id="backlink" href="../pygame-freecodecamp.html">&larr;back</a>
+                <a tabindex="0" id="homelink" href="../../../../index.html">Home (main)</a>
+                <a tabindex="0" id="regexCmds" target="_blank"
+                    href="../../../../Shortcuts/regex-cmds/regex-cmds.html">regex</a>
+                <a tabindex="0" id="programShortcuts" target="_blank"
+                    href="../../../../Shortcuts/programShorcuts.html">program Shorcuts</a>
+            </div>
+            <div class="img-container">
+                <a tabindex="0" id="tutorialLink" target="_blank" href="https://www.youtube.com/watch?v=XGf2GcyHPhc">
+                    <img class="right-img"
+                        src="data:image/jpeg;base64,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">
+                </a>
+            </div>
+        </nav>
+        <h1>1. Scrapy Course - Python Web Scraping for Beginners</h1>
+        <p class="r">Maybe Have the letter "C" key go to the most important peice of code on each lesson/section</p>
+    </header>
+    <nav tabindex="0" class="section-lesson-title">
+        <span id="section-lesson-titles"><span id="section-title">Section</span><span
+                id="lesson-title">&rarr;lesson</span></span>
+    </nav>
+    <main>
+        <aside tabindex="0">
+            <ul class="sections-container">
+                <!-- s1 -  -->
+                <li class="section-container">
+                    <a  tabindex="0" class="section" href="sections/01-installSetupScrapy/01-installSetupScrapy.htm">
+                        Section 1 - Install &amp; Setup/Start scrapy
+                    </a>
+                    <ul class="sub-section  ">
+                        <li><a tabindex="0" href="sections/01-installSetupScrapy/01-01-installPythonPip/01-01-installPythonPip.htm">1. install python and pip</a></li>
+                        <li><a tabindex="0" href="sections/01-installSetupScrapy/01-02-installVenvScrapy/01-02-installVenvScrapy.htm">2. install venv and scrapy</a></li>
+                        <li><a tabindex="0" class="r" href="sections/01-installSetupScrapy/01-03-startScrapyProject/01-03-startScrapyProject.htm">3. start
+                            scrapy project</a>
+                            <ul>
+                                <li>Go back and explain each
+                                    <br> default script and settings
+                                    <br> in default folder
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s2 -->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/02-buildScrapy/02-buildScrapy.htm">
+                        Section 2 Create spider & Scrapy Shell
+                    </a>
+                    <ul class="sub-section ">
+                        <li><a   tabindex="0" href="sections/02-buildScrapy/02-01-startScrapyBookspiderPy/02-01-startScrapyBookspiderPy.htm
+                            ">1. Create spider</a>
+                        </li>
+                        <li><a  tabindex="0" href="sections/02-buildScrapy/02-02-startShellFetch/02-02-startShellFetch.htm">
+                            2. Scrapy Shell</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/03-useScrapyShell/03-useScrapyShell.htm">
+                        Section 3 Css Selectors
+                    </a>
+                    <ul class="sub-section show">
+                        <li><a autofocus tabindex="0" href="sections/01-installSetupScrapy/01-01-installPythonPip/01-01-installPythonPip.htm">1. install
+                                1. Css Selectors</a></li>
+                        <li><a tabindex="0" href="sections/01-installSetupScrapy/01-02-installVenvScrapy/01-02-installVenvScrapy.htm">2.
+                                Tbd</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </aside>
+        <div tabindex="0" id="mainTargetDiv">
+    
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<div class="steps-container">
+    <h2>05-05 <code class="gr">IN</code></h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                We can find multiple values using <code class="gr">IN</code>
+                and placing the values we want inside () parenthesis seperated by , commas
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+SELECT * 
+FROM student
+WHERE name <code class="gr">IN</code> ('Claire','Jack','Mike');</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/05-basicQueries/05-in//images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                <span class="r">**Remember</span>
+                you can combine all the techniques seen in this section and the previous
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+SELECT *
+FROM student
+WHERE major <span class="gr">IN</span>('Biology','Sociology') AND name &lt;> 'Jack'</pre>
+            </div>
+            
+            <p>
+                This example finds any name not 'John' and the student id is greate than 3
+                (just confusing for practice)
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/05-basicQueries/05-in/images/01-02.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

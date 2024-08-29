@@ -1,0 +1,40 @@
+<div class="steps-container">
+    <h2>02- popSql-insert</h2>
+    <h3>insert into tables</h3>
+    <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h3>01</h3>
+            <p>
+                KEYWORDS:
+            </p>
+            <ul>
+                <li><code>INSERT INTO &lt;tablename> VALUES</code></li>
+                <li><code>INSERT INTO student(student_id,name) VALUES(1,'Jack')</code></li>
+                <li><code>CREATE TABLE student(
+                <br>&emsp;&emsp;student_id INT, 
+                <br>&emsp;&emsp;name VARCHAR(20) <span class="r">NOT NULL</span>,
+                <br>&emsp;&emsp;major VARCHAR(20) <span class="m">UNIQUE</span>,
+                <br>&emsp;&emsp;PRIMARY KEY(student_id)
+                <br>
+                );</code></li>
+                <li><code>CREATE TABLE student(
+                <br>&emsp;&emsp;student_id INT, 
+                <br>&emsp;&emsp;name VARCHAR(20),
+                <br>&emsp;&emsp;major VARCHAR(20) <span class="gr">DEFAULT 'undecided'</span>,
+                <br>&emsp;&emsp;PRIMARY KEY(student_id)
+                <br>
+                );</code></li>
+                <li><code>CREATE TABLE student(
+                <br>&emsp;&emsp;student_id INT <span class="lsg">AUTO_INCREMENT</span> , 
+                <br>&emsp;&emsp;name VARCHAR(20),
+                <br>&emsp;&emsp;major VARCHAR(20) ,
+                <br>&emsp;&emsp;PRIMARY KEY(student_id)
+                <br>
+                );</code></li>
+            </ul>        
+        </div>
+        
+    </div>
+    
+    
+</div>

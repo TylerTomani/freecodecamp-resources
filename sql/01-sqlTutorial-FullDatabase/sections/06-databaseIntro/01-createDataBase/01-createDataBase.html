@@ -1,0 +1,213 @@
+<div class="steps-container">
+    <h2>06-01 Create database</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                First create the <code>Employee</code> table
+                <a target="_blank" href="https://www.giraffeacademy.com/databases/sql/creating-company-database/">
+                    https://www.giraffeacademy.com/databases/sql/creating-company-database/
+                </a>
+            </p>
+            <p>
+                The <span class="r">Primary Keys</span> are in red and the <span class="g">Foreign keys</span>
+                are green
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Create the <strong><code>Employee</code></strong> table first, 
+            </p>
+            <p class="r">Make sure to drop the previous student table</p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+DROP TABLE student;</pre>
+            </div>
+            <p>
+                The <code class="r">emp_id</code> is the <span class="r">primary key</span> for this table
+            </p>        
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+CREATE TABLE employee (
+    emp_id INT <span class="r">PRIMARY KEY</span>,
+    first_name VARCHAR(40),
+    last_name VARCHAR(40),
+    birth_date DATE,
+    sex VARCHAR(1),
+    salary INT,
+    <span class="g">super_id</span> INT,
+    <span class="g">branch_id</span> INT
+);</pre>
+            </div>
+            <p>
+                Initially <code class="g">super_id</code> and <code class="g">branch_id</code>
+                my be given an int value, they are <span class="g">Foriegn keys</span> but the tables 
+                have not been created yet
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Create the <code>Branch table</code>
+            </p>
+            <p>
+                The <code class="r">branch_id</code> is the primary key for this table, BUT,
+                the <code class="g">mgr_id</code> is a foreign key from the <code>employee</code>
+                table.
+            </p>
+            <p>
+                Just like in the <code>employee</code> table we must give it a <code>INT</code> value, then 
+                in the last line, assign it as a foreign key.
+            </p>
+            <sup class="r">Do not worry about <code>ON DELETE SET NULL</code></sup> for now, it will be discussed later
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+create table branch (
+    <span class="r">branch_id</span> INT <span class="r">PRIMARY KEY</span>,
+    branch_name VARCHAR(40),
+    <span class="g">mgr_id</span> INT,
+    mgr_start_date DATE,
+    <span class="g">FOREIGN KEY(</span>mgr_id<span class="g">)</span> REFERENCES employee(emp_id) <span class="m">ON DELETE SET NULL</span>
+);</pre>
+            </div>
+            <p>
+                When assigining a foreign key, we must reference the table already created with 
+                <code class="g">FOREIGH KEY()</code> and at the end 
+                <code class="m">ON DELETE SET NULL</code>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <p>
+                We can now <code class="m">ALTER</code> the <code>employee</code> table with the 
+                <code class="g">mrg_id</code> and <code class="gr">branch_id</code> from the branch table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+ALTER TABLE employee
+ADD FOREIGN KEY(<span class="g">branch_id</span>)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL;
+</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-05.png">
+        </div>
+    </div>
+    <!-- 01-06 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>06</h4>
+            <p>
+                Create <code>client</code> table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE client (
+    client_id INT PRIMARY KEY,
+    client_name VARCHAR(20),
+    branch_id INT,
+    FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE SET NULL
+);</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-06.png">
+        </div>
+    </div>
+    <!-- 01-07 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>07</h4>
+            <p>
+                Create the <code>works_with</code> table, this one has two <span class="r">Primary keys</span>
+                which are also <span class="g">Foreign keys</span> from other tables
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code xsmtxt">
+CREATE TABLE works_with(
+    emp_id INT,
+    client_id INT,
+    total_sales INT,
+    PRIMARY KEY(<span class="r">emp_id</span>,<span class="r">client_id</span>),
+    FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE <span class="m">CASCADE</span>,
+    FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE <span class="m">CASCADE</span>
+);</pre>
+            </div>
+            <p>
+                On the branch_id foreign key <code>ON DELETE</code> is  set to <code class="m">CASCADE</code>
+                which will be explained later
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-07.png">
+        </div>
+    </div>
+    <!-- 01-08 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>08</h4>
+            <p>
+                Create the <code>branch_supplier</code> table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code xsmtxt">
+CREATE TABLE branch_supplier (
+    branch_id INT,
+    supplier_name VARCHAR(20),
+    supply_type VARCHAR(20),
+    PRIMARY KEY(branch_id, supplier_name),
+    FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE <span class="m">CASCADE</span>
+);</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/01-createDataBase/images/01-08.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

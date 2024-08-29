@@ -1,0 +1,78 @@
+<h1>05-03-pipelines (part 6 1:27:10) </h1>
+<div class="steps-container show">
+    <!-- 01-01 -->
+    <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Remember to uncomment the code in <code>settings.py</code> and make sure 
+                the pipe line has the same name as the pipeline function in <code>pipelines.py</code>
+            </p>
+        </div>
+        <div class="img-2-container">
+            <div class="step-img">
+                <img src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-02-pipelines/images/01-01.png">
+            </div>
+            <div class="step-img">
+                <img src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-02-pipelines/images/01-01b.png">
+            </div>
+        </div>
+    </div> 
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                &emsp;Instead of using serializer in items.py, use pipelines.py to clean up data of any unwanted 
+                characters or spacing and maniuplate the data to our liking
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="/scrapy/01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-02-pipelines/images/01-02.png">
+        </div>
+    </div>  
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                We can cycles through the <code class="m">field_names</code> to extract the data and replace it, here 
+                we remove the white space from <code>str</code> data and change the titles to lowercase
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+from itemadapter import ItemAdapter
+
+
+class BookscraperPipeline:
+    def process_item(self, item, spider):
+
+        adapter = ItemAdapter(item)
+        field_names = adapter.field_names()
+
+        for field_name in field_names:
+            if field_name != 'description':
+                value = adapter.get(field_name)
+                if isinstance(value,str):
+                    adapter[field_name] = value.strip()
+                else:
+                    spider.logger.warning('not a string')
+        lowercase_keys = ['title', 'product_type']
+        for lowercase_key in lowercase_keys:
+            value = adapter.get(lowercase_key)
+            adapter[lowercase_key] = value.lower()
+
+        return item
+                </pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img class="lg-enlarge" src="/scrapy//01-scrapy-freeCodeCamp/sections/05-itemsPipelines/05-02-pipelines/images/01-03.png">
+        </div>
+    </div>
+</div>
+<footer>
+    <button tabindex="1" id="nxtLesson">next</button>    
+</footer>

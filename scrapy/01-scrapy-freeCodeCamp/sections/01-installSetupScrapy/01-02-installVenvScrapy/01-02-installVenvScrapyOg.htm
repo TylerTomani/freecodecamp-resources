@@ -1,0 +1,107 @@
+<div class="steps-container show">
+    <header>
+        <div class="titles-container">
+            <h2>01-02-installVenvScrapy</h2>
+            <h3>Part 1 - venv</h3> 
+        </div>
+    </header>
+    <!-- 01-01 -->    
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                On mac python 3.9 and higher you don't need this, but on windows you might need to install 
+                <code>virtualenv</code>
+            </p>
+            <div class="code-container">
+                <pre  class="copy-code">
+pip install virtualenv</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            
+            <img class="lg-img" src="sections/01-installSetupScrapy/01-02-installVenvScrapy/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Create and activate the venv
+            </p>
+
+        </div>
+        <div class="step-img">
+            <img src="sections/01-installSetupScrapy/01-02-installVenvScrapy/images/01-02.png">
+        </div>
+    </div>
+            
+</div>
+<h3>Part 2 - scrapy</h3>
+<div class="steps-container show">
+    <!-- 03 02-01 -->
+    <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Install <code>scrapy</code> into the venv with,
+            </p>
+            <div class="code-container">
+                <pre  class="copy-code">
+pip install scrapy</pre>
+            </div>
+            <p>
+                Visit the site for the command if need be <a target="_blank" href="https://scrapy.org/">https://scrapy.org/</a>
+            </p>
+        </div>
+        <div class="img-container">
+            <div class="step-img">
+                <img src="sections/01-installSetupScrapy/01-02-installVenvScrapy/images/02-01.png">
+            </div>
+            <div class="step-img">
+                <img
+                    src="sections/01-installSetupScrapy/01-02-installVenvScrapy/images/02-01b.png">
+            </div>
+        </div>
+    </div>
+    <!-- 04 02-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Run scrapy to see a list of its commands, you can see it say <code class="m">no active project</code>.
+                Create a project with the default folders in the next step.
+            </p>
+            <div class="code-container">
+                <pre  class="copy-code">
+scrapy</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01-installSetupScrapy/01-02-installVenvScrapy/images/02-02.png">
+        </div>
+    </div>
+    <!-- 05 02-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <p>
+                Use the <code>startproject</code> command followed by the name of the project to create on in the current directory.
+            </p>
+            <div class="code-container">
+                <pre  class="copy-code">
+scrapy startproject bookscraper</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01-installSetupScrapy/01-02-installVenvScrapy/images/02-03.png">
+        </div>
+    </div>
+</div>
+<footer>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</footer>

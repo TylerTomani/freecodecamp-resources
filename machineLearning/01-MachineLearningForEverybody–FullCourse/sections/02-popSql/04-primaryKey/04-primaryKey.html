@@ -1,0 +1,52 @@
+<div class="steps-container">
+    <h2>02-04 PRIMARY KEY</h2>
+<!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                The <code class="m">PRIMARY KEY</code> can be created on the same line when declaring a column,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student(
+    student_id INT <span class="m">PRIMARY KEY</span>,
+    name VARCHAR(20),
+    major VARCHAR(20)
+);
+    </pre>
+            </div>
+            <p>
+                We use the <code class="m">PRIMARY KEY</code> to reference the table
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02-popSql/04-primaryKey/images/01-01.png">
+        </div>
+        
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Or, We can place the column we want inside the <code class="gr">PRIMARY KEY()</code> function
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student(
+    student_id INT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    <span class="gr">PRIMARY KEY (</span>student_id<span class="gr">)</span>
+);
+DESCRIBE student</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02-popSql/04-primaryKey/images/01-02.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

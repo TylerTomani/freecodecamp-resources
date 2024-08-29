@@ -1,0 +1,95 @@
+<div class="steps-container">
+    <h2>02-03 CREATE TABLE</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Create the table and hit run, or press <strong><q>Command + R</q></strong> with the lines of the table selected
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student(
+    student_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    major VARCHAR(20)
+);
+    </pre>
+            </div>
+            
+            <p>
+                You will see the console display <q>Rows affected: 0</q> meaning the table has been created
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02-popSql/03-createTable/images/01-01.mov">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Type <code>DESCRIBE</code> followed by the name of the table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+DESCRIBE student;</pre>
+            </div>
+            <p>
+                Make sure the line with <code>DESCRIBE student</code> is highlight in <span class="b">blue</span>,
+                hit run or <strong><q>Command + R</q></strong>
+            </p>   
+        </div>
+        <div class="step-img">
+            <img src="sections/02-popSql/03-createTable/images/01-02.png">
+        </div>
+    </div>
+     <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Delete a table with 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+DROP TABLE student;</pre>
+            </div>
+            <p>
+                Run Describe again to see that it has deleted
+            </p>            
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+DESCRIBE student;</pre>
+            </div>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02-popSql/03-createTable/images/01-03.mov">
+        </div>
+    </div>
+    
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Recreate the table by re-running the lines, <strong><q>Command + R</q></strong> when sections are higlight in <span class="b">blue</span>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student(
+    student_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    major VARCHAR(20)
+);
+DESCRIBE student;</pre>
+            </div>
+            
+        </div>
+        <div class="step-vid">
+            <video src="sections/02-popSql/03-createTable/images/01-04.mov">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

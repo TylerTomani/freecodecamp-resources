@@ -1,0 +1,134 @@
+<div class="steps-container">
+    <header>
+        <div class="titles-container">
+            <h2>9-02 JOIN</h2>
+        </div>
+        <div class="img-container">
+            <a id="tutoralNumLink" target="_blank"
+                href="https://www.giraffeacademy.com/databases/sql/joins/">
+                <img class="playlistVideoNumImg" src="sections/10/10-02/images/logo.png">
+                
+            </a>
+            <h3>example code press "t"</h3>
+        </div>
+    </header>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Select the rows from the table you want in the in new row 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+SELECT employee.emp_id, employee.first_name, 
+branch.branch_name
+from employee
+JOIN branch
+ON employee.emp_id = branch.mgr_id;</pre>
+            </div>
+            <p>
+                This is a 'inner join' which combines the rows from the specified columns
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-02/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                The LEFT join includes all of the rows from the columns specified in select, 
+                the first table FROM
+                in our case <code>employee.</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+LEFT JOIN branch
+ON employee.emp_id = branch.mgr_id;</pre>
+            </div>
+            <p>
+                Notice how each employee is displayed, because they all have an <code>emp_id</code>
+                and <code>first_name</code>
+            </p>
+            <p>
+                But, notice how only the <code>branch</code> columns meeting the condition in ON
+                are displayed
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-02/images/02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Using right join will display only the columns from the 2nd table, <code>branch</code>, 
+                that meet the condition in ON, which occurs with the inner join as well
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+select employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+RIGHT JOIN branch
+on employee.emp_id = branch.mgr_id;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-02/images/03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Insert a new row in the <code>branch</code> table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+insert into branch VALUES(4,'Buffalo',NULL,NULL);</pre>
+            </div>
+            <p>
+                Keep <code>mgr_id</code> and <code>mgr_start_date</code> NULL
+            </p>
+            <p>
+                Then re-run the RIGHT JOIN code from above
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select employee.emp_id, employee.first_name, branch.branch_name
+from employee
+RIGHT JOIN branch
+ON employee.emp_id = branch.mgr_id;</pre>
+            </div>
+            <p>
+                see how the new column we displayed, that doesn't meet the condition in ON.
+                So everything get displayed from the 2nd table <code>branch</code>
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-02/images/04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+     <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <p>
+                NOT in popSQL but in others 
+                you can do a FULL JOIN, which would combine ALL the columns of the specified 
+                tables regardless of the ON condition
+            </p>
+        </div>
+     </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

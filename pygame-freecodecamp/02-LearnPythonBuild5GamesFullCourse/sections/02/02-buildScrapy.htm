@@ -1,0 +1,88 @@
+<div class="steps-container section-page">
+    <h1>Section 2 - installSetupScrapy</h1>
+    <!-- <div class="step wrap"> -->
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>01</h4>
+                <p class="r">
+                    choose to obey <i>Robots.txt</i>
+                </p>
+            </div>
+            <div class="step-img">
+                <img  style="width: 80%;" src="sections/02-buildScrapy/02.png" alt="placeholder image">
+            </div>
+        </div>
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+                    Make a spider, in the spiders directory with the command,
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+scrapy genspider <span class="o">bookspider</span> https://books.toscrape.com/
+                </div>
+                <p>
+                    provide <span class="o">name</span> for spider alone with <code class="g">baseUrl</code>
+                </p>
+                <p>
+                    This is the page the spider will base it self in
+                    <a target="_blank" class="g" href="https://books.toscrape.com/">https://books.toscrape.com/</a>
+                </p>
+            </div>
+            <div class="step-img">
+                <img src="sections/02-buildScrapy/02-01-startScrapyBookspiderPy/images/02.png">
+            </div>
+        </div>
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>03</h4>
+                <p>
+                    Run the scrapy shell or ipython shell
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+scrapy shell</pre>
+                </div>
+                <p>
+                    I can't get ipython to work, just use scrapy shell, you'll need to install ipython with,
+                </p>
+                <p>
+                    <span class="r">see lesson 2 in the section</span>
+                </p>
+            </div>
+            <div class="step-img">
+                <img src="sections/02-buildScrapy/images/03.png">
+            </div>
+        </div>
+        <!-- 04 -->
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>04</h4>
+                <p>
+                    Run the <code class="m">fetch()</code> command in one of the shells to get the response.
+                    supply this url or any base you want.
+                    
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+https://books.toscrape.com/</pre>
+                </div>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+fetch('https://books.toscrape.com/')</pre>
+                </div>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+response</pre>
+                </div>
+                
+                
+            </div>
+            <div class="step-img">
+                <!-- <img src="sections/02-buildScrapy/images/03.png"> -->
+                <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-05.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>

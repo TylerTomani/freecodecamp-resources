@@ -1,0 +1,184 @@
+<div class="steps-container">
+    <h2>01-03 - install Mac - part 2</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Go to system preferences and click on the <i><q>MySQL</q></i> server icon
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>02</h4>
+            <p>
+                Click <i><q>Start Server</q></i> and enter the password for you mac, <strong>NOT</strong>
+                the mySql password creted at the end of install in previous lesson
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/01-introInstall/03-installMac-pt2/images/01-02.mov">
+        </div>
+    </div>
+    <!-- 01-02b -->
+    <div class="step">
+    <div tabindex="1" class="step-txt">
+        <h4 class="r">02b</h4>
+        <p>
+            <span class="r">I ran into a problem</span> the server kept starting and stopping.
+            I found an answer here ,
+            <a target="_blank" href="https://stackoverflow.com/questions/41995912/macos-cant-start-mysql-server#:~:text=I%20suggest%20using%20Terminal%20commands.">stackoverflow</a>
+        </p>
+        <p>
+            and ran the following commands to fix it
+        </p>
+        <div class="code-container">
+            <pre tabindex="1" class="copy-code">
+sudo /usr/local/mysql/support-files/mysql.server start</pre>
+        </div>
+        <div class="code-container">
+            <pre tabindex="1" class="copy-code">
+sudo /usr/local/mysql/support-files/mysql.server stop</pre>
+        </div>
+        <div class="code-container">
+            <pre tabindex="1" class="copy-code">
+sudo /usr/local/mysql/support-files/mysql.server restart</pre>
+        </div>
+
+        
+        
+        
+    </div>
+    <div class="step-img">
+        <img  src="sections/01-introInstall/03-installMac-pt2/images/01-02b.png">
+    </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Open the terminal and type in
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+mysql
+                </pre>
+            </div>
+            <p>
+                The computer doesn't know the path
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Type in the path for my sql, 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.zshrc</pre>
+            </div>
+            <p>
+                or type
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile</pre>
+            </div>
+            <p>
+                If using Bash, run <code>.zshrc</code> or <code>.bash_profile</code>
+                after adding the command
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+. ~/.zshrc</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>05</h4>
+            <p>
+                If we run the mysql command again, we will recieve this error message, which means it's working
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-05.png">
+        </div>
+    </div>
+    <!-- 01-06 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>06</h4>
+            <p>
+                Type in the command
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+mysql -u root -p</pre>
+            </div>
+            <p>
+                <span class="r">THIS IS WHERE</span> we type the password we created at the end of installation, seen at the end of the previous lesson,
+                our pass word is
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+password</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-05.png">
+        </div>
+    </div>
+    <!-- 01-07 -->
+    <div class="step">
+    <div tabindex="1" class="step-txt">
+        <h4>07</h4>
+        <p>
+            It should be working now and look like this
+        </p>
+    </div>
+    <div class="step-img">
+        <img src="sections/01-introInstall/03-installMac-pt2/images/01-07.png">
+    </div>
+    </div>
+     <!-- 01-08 -->
+    <div class="step">
+    <div tabindex="1" class="step-txt">
+        <h4>08</h4>
+        <p>
+            Create a database and name it, remember the name 
+        </p>
+        <div class="code-container">
+            <pre tabindex="1" class="copy-code">
+create database db1;</pre>
+        </div>
+        <p>
+            You can run SQL command right here in the terminal but we will install and use
+            <i>popSql</i>
+        </p>
+    </div>
+    <div class="step-img">
+        <img src="sections/01-introInstall/03-installMac-pt2/images/01-08.png">
+    </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

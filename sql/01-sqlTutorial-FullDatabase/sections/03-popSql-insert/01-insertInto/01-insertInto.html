@@ -1,0 +1,103 @@
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<div class="steps-container">
+    <h1>03-01 INSERT INTO</h1>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                We want to make a table with these values from the example
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02-popSql/02-checkServerCreateTable/images/01-01.png">
+        </div>
+    </div> 
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                The values must correspond to the values types decalred in the table.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+CREATE TABLE student(
+    student_id INT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    PRIMARY KEY(student_id)
+);
+INSERT INTO student VALUES(1,'Jack','Biology');</pre>
+            </div>
+            <p>
+                If inserted, you will see <q>Rows affected: 1</q>
+            </p>
+            
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/01-insertInto/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                To display the table with values use <code>SELECT</code> followed by the 
+                <code class="m">*</code> asterisk then <code>FROM &lt;tablename></code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT <span class="m">*</span> FROM student;</pre>
+            </div>
+            <p class="r">
+                The <code>SELECT * FROM</code> keywords display tables with values, while <code>DESCRIBE</code>
+                show just the table
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/01-insertInto/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Add more values the same way. Since the <code>student_id</code> column is the <code class="gr">PRIMARY KEY</code>
+                it cannot be repeated.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO student VALUES(<span class="r">2</span>,'Kate','Sociology');</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/01-insertInto/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>05</h4>
+            <p>
+                If you try to run the same line,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO student VALUES(<span class="r">2</span>,'Kate','Sociology');</pre>
+            </div>
+            <p>
+                It will throw an error
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/03-popSql-insert/01-insertInto/images/01-05.mov">
+        </div>
+    </div>
+
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

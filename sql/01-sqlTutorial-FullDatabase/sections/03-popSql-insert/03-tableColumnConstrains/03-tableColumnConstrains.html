@@ -1,0 +1,96 @@
+<div class="steps-container">
+    <h2>03-03 TABLE Column Constrains</h2>
+    <h3><code class="r">NOT NULL</code> and <code class="m">UNIQUE</code></h3>
+    <!-- 01-01 -->
+     <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                <strong><q>Constraints</q></strong> can be applied when creating a table,
+                DROP the table and recreate it
+            </p>
+            <div class="code-container">
+                <pre  class="copy-code">
+CREATE TABLE student(
+    student_id INT,
+    name VARCHAR(20) NOT NULL,
+    major VARCHAR(20) UNIQUE,
+    PRIMARY KEY(student_id)
+);
+INSERT INTO student VALUES(1,'Jack','Biology')</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code r ">
+INSERT INTO student VALUES(2,NULL,'Sociology')</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code r ">
+INSERT INTO student VALUES(3,'John','Biology')</pre>
+            </div>
+            
+            
+        </div>
+        
+     </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                We can add <strong><q>Constraints</q></strong> to the columns when created the table.
+            </p>
+            <p>
+                Drop the table at the top then recreate the table with the <strong><q>Constraints</q></strong>
+                after the columns you want constricted
+            </p>
+
+            <p>
+                <code class="r">NOT NULL</code> means it can't be empty,
+                in this case name can not be null
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code r smtxt">
+INSERT INTO student(student_id,major) VALUES(2,'Sociology');</pre>
+            </div>
+            <p>
+                or
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code r smtxt ">
+INSERT INTO student VALUES(2,NULL,Sociology');</pre>
+            </div>
+            <p class="r">
+                so these lines won't work
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/03-tableColumnConstrains/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-03 -unique -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Same with this one,
+                <code class="m">UNIQUE</code> means the rows in the column must be different,
+                in this example we made the <code class="m">major</code> column <code class="m">UNIQUE</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code r smtxt">
+INSERT INTO student VALUE(3,'John','Biology');</pre>
+            </div>
+            
+            <p>
+                <span class="r">The </span> <span class="gr">PRIMARY KEY</span> is both <span class="r">NOT NULL</span>
+                <span class="r">and</span><span class="m">UNIQUE</span>
+            </p>
+        </div>
+        <div class="step-img">
+            <img
+                src="sections/03-popSql-insert/03-tableColumnConstrains/images/01-02.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

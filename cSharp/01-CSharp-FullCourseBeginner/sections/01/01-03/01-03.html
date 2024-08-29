@@ -1,0 +1,89 @@
+<div class="steps-container">
+    <h2>01-03 Setup Project (Basic Script)</h2>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>1</h3>
+            <p>
+                When You open the new project the starting script.cs will look like this
+            </p>
+            <p>
+                Visit this link for an explanation
+                <a target="_blank" href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/top-level-templates">
+                    https://learn.microsoft.com/en-us/dotnet/core/tutorials/top-level-templates
+                </a>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/01/01-03/images/01.mov">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                To fix the project template, create a new file (as seen in video above in 1). It will include the 
+                <code class="m">using System</code> library, and the <code class="lsg">public class Project</code>
+                will have the same name as the saved file. This is where the program of the 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+<span class="m">using System</span>;
+namespace MyApp
+{
+    <span class="lsg">public class Project</span>
+	{
+	    public Project()
+	    {
+            Console.WriteLine("Hello World!");
+            Console.ReadLine();
+            }
+	}
+}</pre>
+            </div>
+            <p>
+                Start a new file or just paste the code from here, (Be sure to change <code class="lsg">public class</code> )
+                to correct file name).
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-03/images/02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                The webpage in the link above explains how the new code format in the above step is the same as the old version seen below
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}</pre>
+            </div>
+
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-03/images/03.png" alt="">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

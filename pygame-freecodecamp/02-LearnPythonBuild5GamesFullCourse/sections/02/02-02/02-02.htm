@@ -1,0 +1,110 @@
+<h1>02-02- scrapy shell <code>fetch</code></h1>
+<div class="steps-container show">
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt rbshadow">
+            <h4>01</h4>
+            <p>
+                Aftering installing and creating, Create a <strong><q>Spider</q></strong>,
+                change into the <strong>spiders</strong> directory
+            </p>
+            <p class="r lgtxt">I don't think you need this, it works without ipython</p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+pip install ipython</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+ipython</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img class=""
+                src="sections/02-buildScrapy/02-02-startShellFetch/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt rbshadow">
+            <h4>02</h4>
+            <p>
+                In order to use the <code>ipython</code> shell with, go into the <code class="m">scrapy.cfg</code>
+                file and add the following code
+            </p>
+            <p class="r lgtxt">I don't think you need this, it works without ipython</p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+shell = ipython</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>03</h4>
+            <p>
+                exit ipyton shell,
+                Re-run the scrapy shell
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+scrapy shell</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Use the url of the page,
+                <br>
+                <a target="_blank" href="https://books.toscrape.com/">https://books.toscrape.com/</a>
+                <br>
+                and inspect the elements we want to get
+            </p>
+        </div>
+        <div class="step-img">
+            <img class=""
+             src="sections/02-buildScrapy/02-02-startShellFetch/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>05</h4>
+            <p>
+                &emsp;Inside the <code>ipython</code> shell use the <code class="gr">fetch()</code> command with the url of the page
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+fetch('https://books.toscrape.com/')</pre>
+            </div>
+            <p>
+                &emsp;The html of the page will be returned into a variable called <code class="m">response</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+response</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-05.png">
+
+        </div>
+    </div>
+    
+</div>
+<footer>
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</footer>
+

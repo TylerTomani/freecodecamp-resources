@@ -1,0 +1,99 @@
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<h1>03-03 <code>rm</code> command</h1>
+<div class="steps-container">
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>01</h3>
+            <div class="code-container">
+                <pre class="copy-code">
+man rm
+                </pre>
+            </div>
+            <p>
+                The <code>rm</code> command will remove just a file
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="/freecodecamp/linux/01-linuxCrashCourse/sections/03-workingWithDirectories/03-03-rm-command/images/01-01.mov"></video>
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>02</h3>
+            <p>
+                You can remove 1 file 
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+rm file1.txt
+                </pre>
+            </div>
+            <p>
+                or multiple files
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+rm file2.txt file3.txt
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/03-workingWithDirectories/03-03-rm-command/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>03</h3>
+            <h4><code class="m">-i</code></h4>
+            <p>
+                The <code class="m">-i</code> I flag stands for <q>interactive</q> mode, and will ask you if you really want to delete the file
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+touch file1.txt
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+rm -i file1.txt
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/03-workingWithDirectories/03-03-rm-command/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>04</h3>
+            <h4><code><span class="m">-rf</span></code></h4>
+            <p>
+                The <code class="m">-rf</code> options stand for <q>recursive</q> and <q>force</q>, which will delete a directory
+                
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+mkdir Test
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+rm Test
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+rm -rf Test
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/03-workingWithDirectories/03-03-rm-command/images/01-04.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

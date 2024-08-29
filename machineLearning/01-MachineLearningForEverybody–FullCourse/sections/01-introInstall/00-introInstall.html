@@ -1,0 +1,104 @@
+<div class="steps-container">
+    <h2>01- Intro / Install</h2>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>01</h3>
+            <p>
+                Install mySql Community Server
+                <a target="_blank" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/02-installMac-pt1/images/01-02.png">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                install <i>popSql</i>
+                <a href="https://popsql.com/">https://popsql.com/</a>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/04-installPopSq-pt1/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02b -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4 class="r">02b</h4>
+            <p>
+                <span class="r">I ran into a problem</span> the server kept starting and stopping.
+                I found an answer here ,
+                <a target="_blank"
+                    href="https://stackoverflow.com/questions/41995912/macos-cant-start-mysql-server#:~:text=I%20suggest%20using%20Terminal%20commands.">stackoverflow</a>
+            </p>
+            <p>
+                and ran the following commands to fix it
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+sudo /usr/local/mysql/support-files/mysql.server start</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+sudo /usr/local/mysql/support-files/mysql.server stop</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+sudo /usr/local/mysql/support-files/mysql.server restart</pre>
+            </div>    
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-02b.png">
+        </div>
+    </div>
+    <!-- 01-03-06 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>06</h4>
+            <p>
+                Type in the command
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+mysql -u root -p</pre>
+            </div>
+            <p>
+                <span class="r">THIS IS WHERE</span> we type the password we created at the end of installation, seen at the
+                end of the previous lesson,
+                our pass word is
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+password</pre>
+            </div>
+    
+    
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-05.png">
+        </div>
+    </div>
+    <!-- 01-03-08 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>08</h4>
+            <p>
+                Create a database and name it, remember the name
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+create database db1;</pre>
+            </div>
+            <p>
+                You can run SQL command right here in the terminal but we will install and use
+                <i>popSql</i>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/01-introInstall/03-installMac-pt2/images/01-08.png">
+        </div>
+    </div>
+</div>

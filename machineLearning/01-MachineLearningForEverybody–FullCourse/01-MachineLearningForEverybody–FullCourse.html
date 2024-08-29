@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-MachineLearningForEverybody</title>
+    <link rel="stylesheet" href="css/tutorial-temp.css">
+    <link rel="stylesheet" href="css/lesson-temp.css">
+    <link rel="stylesheet" href="css/colorsFonts.css">
+    <link rel="stylesheet" href="../../../../css/copy-code.css">
+    <script type="module" src="js/sections-sql.js" defer></script>
+    <script type="module" src="js/copy-code-sql.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav id="mainLinksContainer">
+            <div id="mainLinks">
+                <a tabindex="0" id="backlink" href="../sql.html">&larr;back</a>
+                <a tabindex="0" id="homelink" href="../../../../index.html">Home (main)</a>
+                <a tabindex="0" id="regexCmds" target="_blank" href="../../../../Shortcuts/regex-cmds/regex-cmds.html">regex
+                </a>
+                <a tabindex="0" id="programShorcuts" target="_blank"
+                href="../../../../Shortcuts/programShorcuts.html">program Shorcuts</a>
+            </div>
+            <div class="img-container">
+                <a tabindex="0" id="tutorialLink" target="_blank" href="https://www.youtube.com/watch?v=i_LwzRVP7bg">
+                    
+                    <img src="https://i.ytimg.com/vi/i_LwzRVP7bg/maxresdefault.jpg">
+                </a>
+            </div>
+        </nav>
+        <h1>01- SQL Tutorial - Full Database Course for Begginners</h1>
+    </header>
+    <nav tabindex="0" class="section-lesson-title">
+        <span id="section-lesson-titles"><span id="section-title">Section</span><span id="lesson-title">&rarr;
+                lesson</span></span>
+    </nav>
+    <main>
+        <aside tabindex="0">
+            <ul class="sections-container">
+                <!-- s1 - Intro / Install -->
+                <li class="section-container">
+                    <a  tabindex="0" class="section" href="sections/01-introInstall/00-introInstall.html">Section 1
+                    - Intro / Install</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/01-introInstall/01-installWindows/01-installWindows.html">1. install Windows
+                             </span>
+                        </a></li>
+                        <li><a tabindex="0" href="sections/01-introInstall/02-installMac-pt1/02-installMac-pt1.html">2. install MAC part1</a></li>
+                        <li><a tabindex="0" href="sections/01-introInstall/03-installMac-pt2/03-installMac-pt2.html">3. install MAC part2 <br>
+                            <span class="bl">(create database)</span>
+                        </a></li>
+                        <li><a tabindex="0" href="sections/01-introInstall/04-installPopSq-pt1/04-installPopSq-pt1.html">4. install popSql part1</a></li>
+                        <li><a  tabindex="0" href="sections/01-introInstall/05-installPopSql-pt2/05-installPopSql-pt2.html">5. install popSql part2</a></li>
+                        <li><a  tabindex="0" href="sections/01-introInstall/06-sqlIntro/06-sqlIntro.html">6. SQL Intro</a></li>
+                    </ul>
+                </li>
+                <!-- s2 - popSQL-->
+                <li class="section-container">
+                    <a  tabindex="0" class="section" href="sections/02-popSql/00-popSql.html">Section 2
+                        - popSQL
+                    CREATE / ALTER TABLE</span></a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/02-popSql/01-variables/01-variables.html">1. variable SQL</a></li>
+                        <li><a tabindex="0" href="sections/02-popSql/02-checkServerCreateTable/02-checkServerCreateTable.html">2. check server, 
+                            <br>create table</a></li>
+                            <li><a tabindex="0" href="sections/02-popSql/03-createTable/03-createTable.html">3. Create Table</a>
+                                <ul>
+                                    <li><code>CREATE TABLE</code></li>
+                                    <li><code>DESCRIBE student</code></li>
+                                    <li><code>DROP TABLE student</code></li>
+                                </ul>
+                            </li>
+                        <li><a tabindex="0" href="sections/02-popSql/04-primaryKey/04-primaryKey.html">4. Primary Key</a></li>
+                        <li><a tabindex="0" href="sections/02-popSql/05-alterTable/05-alterTable.html">5. Alter Table</a>
+                            <ul>
+                                <li>ALTER TABLE students ADD</li>
+                                <li>ALTER TABLE students DROP COLUMN</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s3 - INSERT INTO-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/03-popSql-insert/00-popSql-insert.html">Section 3
+                        INSERT INTO</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/03-popSql-insert/01-insertInto/01-insertInto.html">1. Insert Into</a>
+                            <ul>
+                                <li><code>INSERT INTO student VALUES()</code></li>
+                                <li><code>SELECT * student</code></li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="0" href="sections/03-popSql-insert/02-insertNolValue/02-insertNolValue.html">2. Insert NULL Value</a>
+                        </li>
+                        <li><a tabindex="0" href="sections/03-popSql-insert/03-tableColumnConstrains/03-tableColumnConstrains.html">3. Table Column Constrains</a>
+                            <ul>
+                                <li><code class="r">NOT NULL</code></li>
+                                <li><code class="m">UNIQUE</code></li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="0" href="sections/03-popSql-insert/04-columnDefaultVal/04-columnDefaultVal.html">4. Column Default Value</a>
+                            <ul>
+                                <li><code>major VARCHAR(20) <span class="gr">DEFAULT 'undecided'</span></code></li>
+                            </ul>
+                        </li>
+                        <li><a  tabindex="0" href="sections/03-popSql-insert/05-incrementPrimaryKey/05-incrementPrimaryKey.html">5. Increment Primary Key</a>
+                            <ul>
+                                <li><code class="lsg">AUTO_INCREMENT</code></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <!-- s4 - UPDATE / DELETE row-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/04-updateDeleteRows/00-updateDeleteRows.html">Section 4
+                        UPDATE / DELETE rows</a>
+                    <ul class="sub-section ">
+                        <li><a  tabindex="0" href="sections/04-updateDeleteRows/01-update/01-update.html">1. Insert Into</a>
+                            <ul>
+                                <li><code class="lsg" >UPDATE</code></li>
+                                <li><code class="m" >SET</code></li>
+                                <li><code class="lsg" >WHERE</code></li>
+                            </ul>
+                        </li>
+                        <li><a id="section0402" tabindex="0" href="sections/04-updateDeleteRows/02-comparisonOps/02-comparisonOps.html">2. Comparison Operators</a>
+                                <ul class="xsize1">
+                                <li><code class="gr">=</code>,<code class="gr">></code>,<code class="gr">&lt;></code>,
+                                    <code class="gr">&lt;</code>,<code class="gr">&lt;=</code>,<code class="gr">>=</code></li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="0" href="sections/04-updateDeleteRows/03-set/03-set.html">3. <code class="m">SET</code></a></li>
+                        <li><a   tabindex="0" href="sections/04-updateDeleteRows/04-delete/04-delete.html">4. <code class="r">DELETE FROM</code></a></li>
+                    </ul>
+                </li>
+                <!-- s5 - Basic Queries-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/05-basicQueries/00-basicQueries.html">Section 5
+                        Basic Queries</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/05-basicQueries/01-select/01-select.html">1. <code class="m">SELECT</code></a>
+                        <li><a tabindex="0" href="sections/05-basicQueries/02-orderBy/02-orderBy.html">2. <code class="o">ORDER BY</code></a>
+                            <ul>
+                                <li><code>DESC</code> decending</li>
+                                <li><code>ASC</code> acending
+                                <br>default</li>
+                            </ul>
+                        </li>
+                        <li><a tabindex="0" href="sections/05-basicQueries/03-limit/03-limit.html">3. <code class="lsg">LIMIT</code></a>
+                        <li><a tabindex="0" href="sections/05-basicQueries/04-filterWithWhere/04-filterWithWhere.html">4. filter with 
+                            <br><code class="lsg">WHERE</code></a>
+                        <li><a  tabindex="0" href="sections/05-basicQueries/05-in/05-in.html">5. <code class="gr">IN</code></a>
+                    </ul>
+                </li>
+                <!-- s6 - Database Intro-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/06-databaseIntro/00-databaseIntro.html">Section 6
+                        Database Intro <span class="mdlgtxt"><span class="r">Primary</span> & <span class="g">Foriegn keys</span></span></a>
+                    <ul class="sub-section ">
+                        <li><a  tabindex="0" href="sections/06-databaseIntro/01-createDataBase/01-createDataBase.html">1. 
+                            Create the database</a>
+                        </li>
+                        <li><a tabindex="0" href="sections/06-databaseIntro/02-insertIntoTables/02-insertIntoTables.html">2. 
+                            Insert into tables</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s7 - Basic Queries-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/07-basicQueries/00-basicQueries.html">Section 7
+                        Basic Queries</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/07-basicQueries/01-select/01-select.html">1. 
+                            SELECT</a>
+                        </li>
+                        <li><a tabindex="0" href="sections/07-basicQueries/02-selectChangeColname/02-selectChangeColname.html">2. 
+                            SELECT change col name <br> AS</a>
+                        </li>
+                        <li><a   tabindex="0" href="sections/07-basicQueries/03-distinct/03-distinct.html">2. 
+                            DISTINCT</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s8 - Functions-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/08-functions/00-functions.html">Section 8
+                        Functions</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/08-functions/01-count/01-count.html">1. 
+                            COUNT</a>
+                        </li>
+                        <li><a  tabindex="0" href="sections/08-functions/02-avg/02-avg.html">2.
+                            AVG</a>
+                        </li>
+                        <li><a tabindex="0" href="sections/08-functions/03-sum/03-sum.html">3.
+                                SUM</a>
+                        </li>
+                        <li><a  tabindex="0" href="sections/08-functions/04-aggregation/04-aggregation.html">4.
+                                aggregation 
+                                <br>(# of values), colname</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s9 - wild cards and like-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/9/00.html">Section 9
+                        Wild cards and LIKE</a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="0" href="sections/9/09-01/09-01.html">1. 
+                            Wildcards LIKE</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <!-- s10 - UNIION & JOIN-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/10/00.html">Section 10
+                        Union & Join</a>
+                    <ul class="sub-section  ">
+                        <li><a tabindex="0" href="sections/10/10-01/10-01.html">1. 
+                            UNION</a>
+                        </li>
+                        <li><a   tabindex="0" href="sections/10/10-02/10-02.html">2.
+                            JOIN</a>
+                            <ul>
+                                <li><code>LEFT JOIN</code></li>
+                                <li><code>RIGHT JOIN</code></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <!-- s11 - Nested Queries-->
+                <li class="section-container">
+                    <a tabindex="0" class="section" href="sections/11//11.html">Section 11
+                        Nested Quieries, ON DELETE, Triggers</a>
+                    <ul class="sub-section show ">
+                        <li><a  tabindex="0" href="sections/11/11-01/11-01.html">1. 
+                            Nested Quieries</a>
+                        </li>
+                        <li><a  tabindex="0" href="sections/11/11-01/11-01.html">1. 
+                            ON DELETE SET NULL</a>
+                        </li>
+                        <li><a  tabindex="0" href="sections/11/11-01/11-01.html">1. 
+                            ON DELETE SET CASCADE</a>
+                        </li>
+                    </ul>
+                </li>
+
+                
+            </ul>
+        </aside>
+        <div tabindex="0" id="targetDiv">
+            <h3>Welcome to this page,</h3>
+            <p>
+                This contains the code and examples from the freecodecamp tutorial
+            </p>
+            <h4>01- SQL Tutorial - Full Database Course for Begginners</h4>
+            <p>
+                After this tutorial start 
+            </p>
+            <h4>Data Anaylyst Bootcamp for Begginers tutorial</h4>
+            <p>
+                found here ,
+                <a target="_blank"
+                    href="https://www.youtube.com/watch?v=PSNXoAs2FtQ">https://www.youtube.com/watch?v=PSNXoAs2FtQ</a>
+            </p>
+            <div class="steps-container">
+                <div class="step">
+                    <div tabindex="0" class="step-txt">
+                        <h3>Shorcuts:</h3>
+                        <p>
+                            press 'S' to cycles through sections,
+                        </p>
+                        <ul style="list-style: none;">
+                            <li>'M' for this block containing this text called 'main'</li>
+                            <li>'N' for the navigation bar containing Section &rarr; lesson
+                                <p>
+                                    Clicking the navigation bar will toggle the aside bar containing
+                                    the sections and lessons
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="step-txt">
+                        <p>
+                            Use the number keys to cycle through the sections when sections are focused,
+                            lessons, when lessons are focused, and steps within the lesson
+                            when the lesson are focused
+                        </p>
+                        <p>
+                            This site was designed to quickly access information from the tutorials i have completeted
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    
+</body>
+</html>

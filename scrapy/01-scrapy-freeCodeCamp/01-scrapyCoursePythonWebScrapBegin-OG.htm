@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-scrapyCoursePythonWebScrapBegin</title>    
+    <link rel="stylesheet" href="css/copy-code.css">
+    <script src="../../../js/copy-code.js"></script>
+    <link rel="stylesheet" href="css/sideBar-header-temp.css">
+    <link rel="stylesheet" href="css/imgAnimate-v2.css">
+    <link rel="stylesheet" href="css/flex.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/sideBar-temp.css">
+    <link rel="stylesheet" href="css/lesson-temp.css">
+    <script type="module" src="js/chatGpt-drop-topics.js" defer></script>
+    <script type="module" src="js/toggleBars.js" dfefer></script>
+    <script type="module" src="js/partStepFocus.js" defer></script>
+    <script type="module" src="js/sectionFocusLessonLoad.js" defer></script>
+</head>
+<body>
+    <header>
+        <a tabindex="1" href="../scrapy.html" id="homelink">home</a>
+        <div id="pageTitle">
+            <h1>1. Scrapy Course - Python Web Scraping for Beginners</h1>
+            <h2  lass="r smtxt">Make this work, apply same format to 
+                <a id="khanAcademy" tabindex="1" target="_blank"
+                        href="../../../../../../webResources//khanAcademy/khanAcademy.htm">Khan Academy</a>
+                subjects: Statistics, machine learning, electricalEnginering ...
+            </h2>
+        </div>
+        <div id="pageLogoLinks">
+            <a tabindex="1" id="documentationLink" id="mainHomeLink" href="../../../../../../index.html">docs home
+                </a>
+            <img src="https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/32e80b21241c.jpg">
+            <a tabindex="1" target="_blank" id="tutorialLink"
+                href="https://www.youtube.com/watch?v=mBoX_JCKZTE">tutorial</a>
+            <a tabindex="1" target="_blank" id="regexCmds" href="../../../regex-cmds/regex-cmds.html">regex-commands</a>
+            <a tabindex="1" target="_blank" href="https://books.toscrape.com/">reference page</a>
+        </div>
+    </header>
+    <main class="main">
+        <nav tabindex="1" id="navMain" class="nav-main">
+            <p>
+                <span id="displayCurrentSection">Section</span>&rarr;
+                <span id="displayCurrentLesson"></span>
+            </p>
+        </nav>
+        <div class="main-container">
+            <aside tabindex="1" id="asideMain" class="aside-main">
+                <!-- part1 - Install & Setup/Start scrapy -->
+                <section class="section">
+                    <h4><a tabindex="1" id="section01" class="dropSection" href="sections/01-installSetupScrapy/01-installSetupScrapy.htm" >
+                        Part 1 - Install &amp; Setup/Start scrapy
+                        </a>
+                    </h4>
+                    <ul class="show">
+                            <li><a  href="sections/01-installSetupScrapy/01-01-installPythonPip/01-01-installPythonPip.htm">1. install python and pip</a></li>
+                            <li><a href="sections/01-installSetupScrapy/01-02-installVenvScrapy/01-02-installVenvScrapy.htm">2. install venv and scrapy</a></li>
+                            <li><a class="r" href="sections/01-installSetupScrapy/01-03-startScrapyProject/01-03-startScrapyProject.htm">3. start scrapy project</a>
+                                <ul>
+                                    <li>Go back and explain each 
+                                        <br> default script and settings 
+                                        <br> in default folder
+                                    </li>
+                                </ul>
+                            </li>
+                    </ul>
+                </section>                
+                <!-- part2 - Install / Setup scrapy -->
+                <section class="section">
+                    <h4><a tabindex="1" id="" href="sections/02-buildScrapy/02-buildScrapy.htm" class="dropSection">
+                        Part 2 - Build scrapy shell
+                        </a>
+                            <br><sup class="r">ROBOTSTXT_OBEY =</sup>
+                    </h4>
+                    <ul class="">
+                        <li><a   href="sections/02-buildScrapy/02-01-startScrapyBookspiderPy/02-01-startScrapyBookspiderPy.htm">1. start scrapy / spider
+                            <br><code>bookspider.py</code> </a>
+                        </li>                 
+                        <li><a href="sections/02-buildScrapy/02-02-startShellFetch/02-02-startShellFetch.htm">2.
+                        scrapy shell <code>fetch</code>
+                        <br><code>response</code> and <code>ipython</code></a>
+                        </li> 
+                    </ul>
+                </section>                
+                <!-- part3 - Use scrapy shell -->
+                <section class="section">
+                    <h4><a tabindex="1" id="" href="sections/03-useScrapyShell/03-useScrapyShell.htm" class="dropSection">
+                            Part 3 - Use scrapy shell
+                            <br><code class="mdtxt">css selectors</code>
+                        </a>
+                    </h4>
+                    <ul class="">
+                        <li><a  href="sections/03-useScrapyShell/03-01-cssSelectors/03-01-cssSelectors.htm">1. css selectors</a>
+                            <ul class="">
+                                <li><code>css('')</code></li>
+                                <li><code>css('').get()</code> 
+                                <br>first instance</li>
+                            </ul>
+                        </li>
+                        <li><a  href="sections/03-useScrapyShell/03-02-booksSelectElls/03-02-booksSelectElls.htm">2. books css selector</a> 
+                            <ul>
+                                <li>title</li>
+                                <li>price</li>
+                                <li>link</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>           
+                <!-- part4 - get next page and book urls -->
+                <section class="section">
+                    <h4><a  tabindex="1" id="" href="sections/04-getNextPageUrls/04-getNextPageUrls.htm" class="dropSection">
+                        Part 4 - get next page urls
+                        <code class="mdtxt">xpath</code>
+                        <br><span class="r">Export to csv or json</span>
+                        </a>
+                    </h4>
+                    <ul class="">
+                        <li><a href="sections/04-getNextPageUrls/04-01-getNextPage/04-01-getNextPage.htm">1. get next page</a> </li>
+                        <li><a href="sections/04-getNextPageUrls/04-02-scrapeInBookUrl/04-02-scrapeInBookUrl.htm">2. scrape in book url</a> </li>
+                        <li><a class="r"  href="sections/04-getNextPageUrls/04-03-scrapyShellGetEls/04-03-scrapyShellGetEls.htm">3. scrapy shell get els<br>
+                        - xpath</a> </li>
+                        <li><a href="sections/04-getNextPageUrls/04-04-runSpiderExportCsvJson/04-04-runSpiderExportCsvJson.htm">4. run spider export csv json<br></a> </li>
+                    </ul>
+                </section>           
+                <!-- part5 - items.py and pipelines.py-->
+                <section class="section">
+                    <h4><a tabindex="1" id="" href="sections/05-saveJsonCsvandItems/05-saveJsonCsvandItems.htm" class="dropSection">
+                        Part 5 - <code><i>items.py</i></code> and <code><i>pipeline.py</i></code>
+                        </a>
+                    </h4>
+                    <ul class="show ">
+                        <li><a    href="sections/05-itemsPipelines/05-01-items/05-01-items.htm">1 <code>items.py</code></a> </li>
+                        <li><a  href="sections/05-itemsPipelines/05-02-pipelines/05-02-pipelines.htm">2 <code>pipelines.py</code></a> </li>
+                    </ul>
+                </section>           
+
+            </aside>
+             <div tabindex="1" id="mainTargetDivContainer" id="" class="target-div-container">
+                <div class="step wrap">
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h1>1. Scrapy Course - Python Web Scraping for Beginners</h1>
+                        </div>
+                        <div class="step-img">
+                            <img src="https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/32e80b21241c.jpg" alt="placeholder image">
+                        </div>
+                    </div>
+                    <div style="margin-top: 2.5%;" class="step-col">
+                        <h2>Create/Run Scrapy in Terminal</h2>
+                        <div class="step-img">
+                            <img id="scrapyterminal" tabindex="1" src="images/scrapyterminal.png">
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

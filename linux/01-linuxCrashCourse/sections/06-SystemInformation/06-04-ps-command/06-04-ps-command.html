@@ -1,0 +1,51 @@
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<h1>06-04 <code>ps</code> command</h1>
+<div class="steps-container">
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>01</h3>
+            <p>
+                The ps command shows a current snapshot of the processes currently running
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+man ps
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/06-SystemInformation/06-04-ps-command/images/01-01.png">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h3>02</h3>
+            <p>
+                The <code>-A</code> option flag allows us to see ALL proccesses as well as the 
+                <code>-e</code> flag
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+ps -A
+                </pre>
+            </div>
+            <div class="code-container">
+                <pre class="copy-code">
+ps -e
+                </pre>
+            </div>
+            <p>
+                <code>ps</code> alone will display the last proccesses, use head to see top
+            </p>
+            <div class="code-container">
+                <pre class="copy-code">
+ps -A | head
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="/freecodecamp/linux/01-linuxCrashCourse/sections/06-SystemInformation/06-04-ps-command/images/01-02.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

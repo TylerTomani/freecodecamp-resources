@@ -1,0 +1,50 @@
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<div class="steps-container">
+    <h1>03-05 Increment Primary Key</h1>
+    <h2><code class="lsg">AUTO_INCREMENT</code></h2>
+    <!-- 01-01 -->
+    <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>1</h4>
+            <p>
+                Increment the <code class="gr">PRIMARY KEY</code> without an argument in <code>INSERT</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+DROP TABLE student;
+CREATE TABLE student(
+    student_id INT <span class="lsg">AUTO_INCREMENT</span>,
+    name VARCHAR(20),
+    major VARCHAR(20) DEFAULT 'undecided',
+    <span class="gr">PRIMARY KEY</span>(student_id)
+);
+INSERT INTO student(name,major) VALUES('John','Biology');</pre>
+            </div>
+            
+        </div>
+    </div>
+    <!-- 01-02 -->
+     <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                These lines will increment themselves in the <code class="gr">PRIMARY KEY</code>
+                when formatted like this.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO student(name,major) VALUES('John','Biology');
+INSERT INTO student(name,major) VALUES('Claire','Sociology');
+INSERT INTO student(name) VALUES('George');
+INSERT INTO student(name,major) VALUES('John','Computer Science');
+SELECT * FROM student</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/05-incrementPrimaryKey/images/01-02.png">
+        </div>
+     </div>
+
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

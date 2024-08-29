@@ -1,0 +1,60 @@
+<div class="steps-container">
+    <h2>08-01 COUNT</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Use a sequential column with the COUNT function to count the number of employees
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT COUNT(emp_id)
+from employee;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/08-functions/01-count/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Notice <code>super_id</code> will return 8 instead of 9 because David Wallace <code>super_id</code>
+                is null
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT COUNT(super_id)
+from employee;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/08-functions/01-count/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+     <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Find number of female employees born after 1970
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+SELECT *
+from employee
+WHERE sex = 'F' and birth_date > '1970-01-01';</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/08-functions/01-count/images/01-03.png">
+        </div>
+     </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,74 @@
+<script type="module" src="../../../js/lesson-temp.js"defer></script>
+<div class="steps-container">
+    <h1>03-04 TABLE Column Default Val</h1>
+    <h2><code class="gr">DEFAULT</code></h2>
+    <!-- 01-01 -->
+     <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                <strong><q>Constraints</q></strong> can be applied when creating a table,
+                DROP the table and recreate it
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+DROP TABLE student
+CREATE TABLE student(
+    student_id INT,
+    name VARCHAR(20) ,
+    major VARCHAR(20) <span class="gr">DEFAULT='undecided'</span> ,
+    PRIMARY KEY(student_id)
+);</pre>  
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO student(student_id,name) VALUES(1,'John');
+INSERT INTO student VALUES(2,'Claie','Biology');</pre>
+            </div>
+          
+
+        
+     </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                If no value is provided for the column with <code class="gr">DEFAULT</code>, 'undecided' will be the value
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO student VALUES(1,'Jack','Biology');
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt r">
+INSERT INTO student VALUES(2,'Claire');</pre></pre>
+            </div>
+            
+            <p class="r">
+                For some reason it doesn't work when inserted like this
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/04-columnDefaultVal/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                But it works like this,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO student(student_id,name) VALUES(1,'John');
+INSERT INTO student VALUES(2,'Claie','Biology');</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="sections/03-popSql-insert/04-columnDefaultVal/images/01-03.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,72 @@
+<div class="steps-container">
+    <h2>08-04 Aggregation GROUP BY</h2>
+    <h3>(# of values), colname</h3>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                'Aggregation' allows us to display the number of times and value a row of a column has.
+            </p>
+            <p>
+                The <code class="lsg">GROUP BY</code> will group the number of times the value is counted,
+                by whatever column argument we give it.
+            </p>
+            <p>
+                for example, <strong>find the number of male and female employees,</strong>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT COUNT(sex), <span class="m">sex</span>
+from employee
+GROUP BY sex;</pre>
+            </div>
+            <p>
+                the count function counts the value and the <q><span class="m">sex</span></q>
+                column after the comma get displayed.
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/08-functions/04-aggregation/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Shows employees with sales of each employee that sold            
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT SUM(total_sales), emp_id
+from works_with
+GROUP BY emp_id </pre>
+            </div>  
+        </div>
+        <div class="step-img">
+            <img src="sections/08-functions/04-aggregation/images/02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Shows how much each client spent
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select sum(total_sales), client_id
+FROM works_with
+GROUP BY client_id;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/08-functions/04-aggregation/images/03.png">
+        </div>
+    </div>
+
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

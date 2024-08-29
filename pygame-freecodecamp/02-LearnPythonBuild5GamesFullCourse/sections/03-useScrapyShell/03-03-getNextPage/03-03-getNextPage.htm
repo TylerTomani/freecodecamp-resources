@@ -1,0 +1,146 @@
+<h1>03-03-  get next page (part 4 46:09) </h1>
+<div class="steps-container show">
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Inspect the <strong><q>Next</q></strong> button on the page,
+                <br>
+                <a target="_blank" href="https://books.toscrape.com/">https://books.toscrape.com/</a>
+            </p>
+            <p class="lgtxt r">Take note that somepage links are different</p>
+            <p>
+                some contain <code>cataglogue/</code> and others don't
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-03-getNextPage/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Open the scrapy shell, fetch the url and find the next page btn element
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+fetch('https://books.toscrape.com/')</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+response.css('li.next a').arttrib['href']</pre>
+            </div>
+            <p>or</p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+response.css('li.next a::attr(href)').get()</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img">
+            <img class="lg-enlarge"
+                src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-03-getNextPage/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Put the next page element link as a variable in the <code class="gr">parse</code> method in the spider.
+                If the <code class="m">next_page</code> variable is not none, get the href attr and add it to the full url 
+                <span class="c">next_page_url</span>, then pass the <code class="o">yield</code>
+                (which is <code>return</code>for spider), <code class="g">response.follow(</code>
+                pass the url and call back the <code class="gr">self.parse</code> to recursively pass each full url back into the method.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import scrapy 
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allowed_domains =['books.toscrape.com']
+    start_urls = ["https://books.toscrape.com/"]
+    def parse(self,response):
+        books = response.css('article.product_pod')
+        for book in books:
+            yield{
+                'name': book.css('h3 a::text').get(),
+                'price': book.css('.product_price .product_color::text').get(),
+                'url': book.css('h3 a').attrib['href']
+            }
+        <span class="m">next_page</span> = response.css('li.next a::attr(href)').get()
+        if <span class="m">next_page</span> is not None:
+            <span class="c">next_page_url</span> = "https://books.toscrape.com/" + next_page
+            <span class="o">yield</span> <span class="g">response.follow</span>(<span class="c">next_page_url</span>, callback=<span class="gr">self.parse</span>)
+            </pre>
+            </div>
+            <p>
+                run,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+scrapy crawl bookspider</pre>
+            </div>
+            <p>
+                We will only get 40 results
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-03-getNextPage/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Like stated at top of this lesson, some links have <code>catalogue/</code> and others don't, add the condition,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">import scrapy 
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allowed_domains =['books.toscrape.com']
+    start_urls = ["https://books.toscrape.com/"]
+    def parse(self,response):
+        books = response.css('article.product_pod')
+        for book in books:
+            yield{
+                'name': book.css('h3 a::text').get(),
+                'price': book.css('.product_price .product_color::text').get(),
+                'url': book.css('h3 a').attrib['href']
+            }
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            <span class="m">if 'catalogue/' in next_page:
+                next_page_url = "https://books.toscrape.com/" + next_page
+            else:
+                next_page_url = "https://books.toscrape.com/catalogue/" + next_page</span>
+            yield response.follow(next_page_url, callback=self.parse)
+            
+                </pre>
+            </div>
+            <p>
+                run scrapy crawl again and get 1000 results
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+scrapy crawl bookspider</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img">
+<img class="lg-enlarge"
+    src="/documentation/python/scrapy/youtubeChannels/freeCodeCamp-scrapy/01-scrapyCoursePythonWebScrapBegin/sections/03-useScrapyShell/03-03-getNextPage/images/01-04.png">
+        </div>
+    </div>
+
+</div>
+<footer>
+    <button tabindex="1" id="nxtLesson">next</button>    
+</footer>

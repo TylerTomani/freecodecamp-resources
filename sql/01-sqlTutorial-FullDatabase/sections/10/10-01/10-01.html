@@ -1,0 +1,143 @@
+<div class="steps-container">
+    <h2>10-01 UNION</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Union allows us to combine the values of columns of different tables together
+                as long as they are of the same value type 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select branch_name
+from branch
+UNION
+select first_name
+from employee;</pre>
+            </div>
+            <p class="r">
+                you must have the same number of columns when select so branch_name and first_name
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                You can use UNION multiple times
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select branch_name 
+from branch
+UNION
+select client_name
+from client
+UNION
+select supplier_name
+from supplier;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                The column name will use the first column name in the first select statement,
+                us <code class="m">AS</code> on the first selected column to change the name
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select branch_name <span class="m">AS</span> all_names
+from branch
+UNION
+select client_name 
+from client
+UNION
+select supplier_name
+from branch_supplier;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/02.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                We can add multiple columns but **remember, they must be the same number of columns and the values 
+                must be of similiar type
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select branch_id AS branch_ids, client_name AS names
+from client
+UNION
+select branch_id,supplier_name
+from branch_supplier;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <p>
+                Since both the client and branch_supplier tables have a <code>branch_id</code> column, it's good 
+                practice to specify the table when selecting the column
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+select client.branch_id, client.client_name AS names
+from client
+UNION
+select branch_supplier.branch_id, branch_supplier.supplier_name
+from branch_supplier;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/05.png">
+        </div>
+    </div>
+    <!-- 01-06 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>06</h4>
+            <p>
+                Find money spent and earned by company
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select 'operating cost', SUM(salary)
+from employee
+UNION
+select 'total sales' , SUM(total_sales)
+from works_with;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/06.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,41 @@
+<div class="steps-container">
+    <h2>9 - Wildcards and LIKE</h2>
+    <!-- <h2>insert into tables</h2> -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <p>
+                <code>%</code> any number of characters <code>_</code> one character
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select *
+from client
+where client_name <span class="m">LIKE</span> '%LLC%';</pre>
+            </div>
+            
+        </div>
+        
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/images/01.png" alt="">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Find employees born in a month with specified number of characters <code>_</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select * from employee
+where birth_date LIKE '____-02%';</pre>
+            </div>
+    
+        </div>
+        <div class="step-img">
+            <img src="sections/9/09-01/images/03.png">
+        </div>
+    </div>
+    
+    
+</div>

@@ -1,0 +1,48 @@
+<div class="steps-container">
+    <h2>05-04 filter with <code class="lsg">WHERE</code></h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                We can filter the wors with the keyword <code class="lsg">WHERE</code>
+                explained in Section 4 UPDATE / DELETE rows
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT * 
+FROM student
+WHERE major &lt;> 'Biology';</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/05-basicQueries/04-filterWithWhere/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                another example using <span class="g">Comparison Operators</span>
+                explained in Section 4 2. Comparison Operators.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+SELECT *
+FROM student
+WHERE name &lt;> 'John' AND student_id > 3</pre>
+            </div>
+            
+            <p>
+                This example finds any name not 'John' and the student id is greate than 3
+                (just confusing for practice)
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="imagesVideos/">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

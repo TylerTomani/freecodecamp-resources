@@ -1,0 +1,65 @@
+<div class="steps-container">
+    <h2>9-01 Wildcards <span class="m">LIKE</span></h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                <code>%</code> any number of characters <code>_</code> one character
+            </p>
+            <p>
+                Find any client name with 'LLC' in it using <code>%</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select *
+from client
+where client_name <span class="m">LIKE</span> '%LLC';</pre>
+            </div>            
+            <p>
+                This will find any name with 'LLC' at the end
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/9/09-01/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                If you want to find a name with a letter at the beggining
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select *
+from employee
+where first_name LIKE '%an%';</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/9/09-01/images/01.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Find employees born in a month with specified number of characters <code>_</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select * from employee
+where birth_date LIKE '____-02%';</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/9/09-01/images/03.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

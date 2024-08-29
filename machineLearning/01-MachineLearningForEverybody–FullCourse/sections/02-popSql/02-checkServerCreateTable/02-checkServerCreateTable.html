@@ -1,0 +1,82 @@
+<div class="steps-container">
+    <h2>02-02 check Server Create table</h2>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                <code>CREATE</code> and <code>TABLE</code> are SQL reserved words,
+            </p>
+            <p>
+                Place the name of the table after CREATE TABLE followed by () and then a semi colon ;
+            </p>
+            <p>
+                We will create a table like the one shown on the right called 'student'
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student (
+
+);</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02-popSql/02-checkServerCreateTable/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+     <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Now define the different attributes of columns inside the () parenthesis
+            </p>
+            <p>
+                The primary key will be student_id as how we reference the table
+            </p>
+            <p>
+                define the column names and data types seperated by commas ,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+CREATE TABLE student (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    major VARCHAR(20)
+);</pre>
+            </div>
+            <p>
+                click run and an error will appear
+                <br>
+                Error: permission denied for schema public
+                Error Code: 42501
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02-popSql/02-checkServerCreateTable/images/01-02.png">
+        </div>
+     </div>
+     <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>03</h4>
+            <p>
+                Follow the steps from section 1 lesson 4 installPOP step 8 at the end
+            </p>
+            <p>
+                our password for root user is <q>password</q>
+            </p>
+            <p>
+                the database created in terminal is <q>db1</q>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+password</pre>
+            </div>
+            
+        </div>
+        <div class="step-vid">
+            <video src="sections/01-introInstall/05-installPopSql-pt2/images/01-05.mov">
+        </div>
+     </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

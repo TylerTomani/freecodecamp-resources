@@ -1,0 +1,200 @@
+<div class="steps-container">
+    <h2>06-01 Insert data into tables</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Order matter when inserting the tables, If tables have foreign keys, the row values 
+                of the foreign keys <strong>need</strong> to be intiliazed with <code>NULL</code>
+            </p>
+            <p>
+                For example in the first table created in the previous lesson, the last two columns
+                of the <code>employee</code> table are forieng keys from the <code>branch</code> table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO employee VALUES(100,'David','Wallace','1967-11-17','M',250000, <span class="r">NULL</span>, <span class="r">NULL</span>);</pre>                
+            </div>
+                <p>
+                    So insert <code class="r">NULL</code> values for the the primary key <code class="g">super_id</code>
+                    and <code class="g">branch_id</code> because those values haven't been filled yet
+                </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Create the first branch row values, the <code class="g">branch_id</code> can be updated 
+                to <code>employee</code> after being inserted, so foreign branch_id key is connected to employee
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+INSERT INTO employee VALUES(100,'David','Wallace','1967-11-17','M',250000, NULL, NULL);
+
+INSERT INTO branch VALUES(1,'Corporate',100,'2006-02-09');
+
+UPDATE employee
+SET branch_id = 1
+WHERE emp_id = 100;
+
+-- place the next employee who works for that branch in the employee table
+INSERT INTO employee VALUES(101,'Jan','Levinson','1961-05-11','F',110000,100,1);
+
+SELECT * FROM employee;
+</pre>
+            </div>
+            
+            <p>
+                Insert the other employee who works for that branch
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Do this for the other branches,
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO employee VALUES(102,'Michael','Scott','1964-03-15','M',75000,100,<span class="r">NULL</span>);</pre>
+            </div>
+            <p class="r">Remember to place <code>NULL</code>inside <code class="gr">branch_id</code> for employee value
+            if value is not set in the <code>branch</code> table
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO branch VALUES(2,'Scranton',102,'1992-04-06');</pre>
+            </div>
+            <p>
+                Then update the employee, and add other employees to the <code>employee</code> table who work for that branch
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+UPDATE employee
+SET branch_id = 2
+WHERE emp_id = 102;
+
+INSERT INTO employee VAlUES(103,'Angela','Martin','1971-06-25','F',63000,102,2);
+INSERT INTO employee VAlUES(104,'Kelly','Kapoor','1980-02-05','F',55000,102,2);
+INSERT INTO employee VAlUES(105,'Stanley','Hudson','1958-02-19','M',69000,102,2);
+
+SELECT * FROM employee;</pre>
+
+            </div>
+            <p>
+                We have to do it this way. Employess can't get the <code class="g">branch_id</code> or <code
+                    class="g">super_id</code>
+                when no values have been inserted in client_table,
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-03.png">
+        </div>
+    </div>
+    <!-- 01-04 employee & branch (last insert)-->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <h5><strong>employee & branch</strong>(last insert)</h5>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO employee VALUES(106,'Josh','Porter','1969-09-05','M',78000,100,NULL);
+INSERT INTO branch VALUES(3,'Stamford',106,'1998-02-13');
+
+UPDATE employee
+SET branch_id = 3
+WHERE emp_id = 106;
+INSERT INTO employee VALUES(107,'Andy','Bernard','1973-07-22','M',65000,106,3);
+INSERT INTO employee VALUES(108,'Jim','Halpert','1978-10-01','M',71000,106,3);
+SELECT * FROM employee;</pre>
+
+</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 branch_supplier-->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <h3>branch_supplier</h3>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO branch_supplier VALUES(2, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Patriot Paper', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'J.T. Forms & Labels', 'Custom Forms');
+INSERT INTO branch_supplier VALUES(3, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(3, 'Stamford Lables', 'Custom Forms');
+SELECT * FROM branch_supplier</pre>
+
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-05.png">
+        </div>
+    </div>
+    <!-- 01-06 client -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <h3>client</h3>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO client VALUES(400, 'Dunmore Highschool', 2);
+INSERT INTO client VALUES(401, 'Lackawana Country', 2);
+INSERT INTO client VALUES(402, 'FedEx', 3);
+INSERT INTO client VALUES(403, 'John Daly Law, LLC', 3);
+INSERT INTO client VALUES(404, 'Scranton Whitepages', 2);
+INSERT INTO client VALUES(405, 'Times Newspaper', 3);
+INSERT INTO client VALUES(406, 'FedEx', 2);
+SELECT * FROM client;</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-06.png">
+        </div>
+    </div>
+    <!-- 01-07 works_with-->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <h3>work_with</h3>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+INSERT INTO works_with VALUES(105, 400, 55000);
+INSERT INTO works_with VALUES(102, 401, 267000);
+INSERT INTO works_with VALUES(108, 402, 22500);
+INSERT INTO works_with VALUES(107, 403, 5000);
+INSERT INTO works_with VALUES(108, 403, 12000);
+INSERT INTO works_with VALUES(105, 404, 33000);
+INSERT INTO works_with VALUES(107, 405, 26000);
+INSERT INTO works_with VALUES(102, 406, 15000);
+INSERT INTO works_with VALUES(105, 406, 130000);
+SELECT * FROM works_with;</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/02-insertIntoTables/images/01-06.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

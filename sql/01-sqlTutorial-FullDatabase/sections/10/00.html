@@ -1,0 +1,41 @@
+<div class="steps-container">
+    <h2>10 - UNION and JOINE</h2>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                UNION and JOIN
+            </p>
+            <p>
+                Union allows us to combine the values of columns of different tables together
+                as long as they are of the same value type
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/06-databaseIntro/images/01.png" alt="">
+        </div>
+    </div>    
+    <!-- 10-01-06 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>10-01-06</h4>
+            <p>
+                Find money spent and earned by company
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+select 'operating cost', SUM(salary)
+from employee
+UNION
+select 'total sales' , SUM(total_sales)
+from works_with;</pre>
+            </div>
+    
+        </div>
+        <div class="step-img">
+            <img src="sections/10/10-01/images/06.png">
+        </div>
+    </div>
+     
+    
+</div>
