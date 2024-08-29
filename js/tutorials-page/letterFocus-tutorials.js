@@ -25,13 +25,7 @@
                 letterIds.push(el)
             }
         })
-        tutorials.forEach(el => {
-            const h3 = el.querySelector('a > h3')
-            console.log(h3.innerText[1])
-            if (letter == el.innerText[1].toLowerCase() || letter == el.innerText[5].toLowerCase()) {
-                el.focus()
-            }
-        })
+        
         console.log(letterIds)
         if(letterIds){
             if (currentLetter == letter ) {
