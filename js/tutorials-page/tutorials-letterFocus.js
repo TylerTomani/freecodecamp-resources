@@ -1,5 +1,6 @@
 const tutorials = document.querySelectorAll('.tutorial')
 const homelink = document.getElementById('homelink')
+const backlink = document.getElementById('backlink')
 
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
@@ -13,6 +14,9 @@ addEventListener('keydown', e => {
     })
     if(letter == 'h'){
         homelink.focus()
+    }
+    if(letter == 'b'){
+        backlink.focus()
     }
     
 })

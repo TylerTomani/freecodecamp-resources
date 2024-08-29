@@ -47,7 +47,7 @@ a:focus,a:active{
 }
 
 @media screen and (max-width: 700px){
-    header {
+    /* header {
         padding: 10%;
     }
     header > h1 {
@@ -55,5 +55,5 @@ a:focus,a:active{
     }
     .tutorial > h3{
         font-size: 90% ;
-    }
+    } */
 }
