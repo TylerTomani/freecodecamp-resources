@@ -2,6 +2,8 @@
 import {header,nav, mainTargetDiv, targetDivFocusIN} from "./lessons-temp-fcc.js"
 import { stepTxtListeners } from "./lessons-temp-fcc.js"
 import { addCopyCodes } from "./copy-code-resources.js"
+let sTitle = document.querySelector('.section-title')
+let lTitle = document.querySelector('.lesson-title')
 const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
 const homelink = document.querySelector('#homelink')
@@ -29,7 +31,6 @@ function hideSubSections(){
         const sectionContainer = getSectionContainer(el.parentElement)
         const subSection = sectionContainer.querySelector('.sub-section')
         if(subSection){
-
             if(!subSection.classList.contains('show')){
                 subSection.classList.add('hide')
             } 
@@ -82,12 +83,20 @@ export function showAside(){
     }
 
 }
+export function toggleAside(){
+    if(aside.classList.contains('hide')){
+        aside.classList.remove('hide')
+    } else 
+    aside.classList.add('hide')
+
+}
 mainTargetDiv.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if(!lastFocusedSelection && letter == 's'){
         sections[0].focus()
     } else if (lastFocusedSelection && letter == 's') {
         lastFocusedSelection.focus()
+        scrollTo(0, 0)
     }
     if(!currentClickedSelection && letter == 'a'){
         lastFocusedSelection.focus()
@@ -99,8 +108,10 @@ nav.addEventListener('keydown', e => {
         if(aside.classList.contains('hide')){
             aside.classList.remove('hide')
         }
+        scrollTo(0, 0)
         if(!lastFocusedSelection ){
             sections[0].focus()
+            
         } else if(lastFocusedSelection ){
             lastFocusedSelection.focus()
         }
@@ -117,13 +128,14 @@ nav.addEventListener('keydown', e => {
     }
     if(letter == 'enter'){
         aside.classList.toggle('hide')
-        if (!currentClickedSelection) {
-            lastFocusedSelection.focus()
-        } else if (currentClickedSelection) {
-            currentClickedSelection.focus()
-        }
+        // if (!currentClickedSelection) {
+        //     lastFocusedSelection.focus()
+        // } else if (currentClickedSelection) {
+        //     currentClickedSelection.focus()
+        // }
     }
 })
+header.addEventListener('keydown', pageElementsFocus)
 nav.addEventListener('click', (e)=>{
     e.preventDefault()
     aside.classList.toggle('hide')
@@ -186,6 +198,9 @@ sections.forEach(el => {
             hideSubSections()
             toggleSubSection(e) 
             fetchLessonHref(e.target.href)           
+            sTitle = e.target.innerText
+            console.log(sTitle)
+
         }
         
     })
@@ -262,7 +277,7 @@ function pageElementsFocus(letter){
             nav.focus()
             break
     }
-    scrollTo(0,0)
+    // scrollTo(0,0)
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()

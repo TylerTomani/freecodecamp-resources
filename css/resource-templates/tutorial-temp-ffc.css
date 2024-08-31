@@ -26,7 +26,12 @@ header>nav#mainLinksContainer>#mainLinks {
     min-height: 60px;
     max-height: 50px;
 }
-
+nav{
+    position: sticky;
+    z-index: 3;
+    background-color: white;
+    top: 0;
+}
 header {
     display: flex;
     flex-direction: column;

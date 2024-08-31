@@ -4,6 +4,7 @@ export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
 import { sections } from './sections-fcc.js'
 import { showAside } from './sections-fcc.js'
+import { toggleAside } from './sections-fcc.js'
 import { lessons } from './sections-fcc.js'
 export let targetDivFocusIN = false
 import { getSubSection } from './sections-fcc.js'
@@ -244,6 +245,10 @@ export function stepTxtListeners(){
             }
             if (letter == 'e') {
                 nxtLesson.focus()
+            }
+            if (letter == 'a' || letter == 's') {
+                // toggleStepColImages(stepCol)
+                showAside()
             }
             // const rect = stepTxts[currentStepIndex].getBoundingClientRect()
             // scrollTo(0, rect.y * .5)
