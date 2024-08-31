@@ -98,3 +98,12 @@
     right: 20%;
     transform: scale(2);
 }
+@media screen and (max-width: 583px){
+    .enlarge {
+            /* position: fixed; */
+            object-fit: contain;
+            z-index: 2;
+            right: 10%;
+            transform: scale(3);
+        }
+}
