@@ -200,6 +200,13 @@ sections.forEach(el => {
             fetchLessonHref(e.target.href)           
             sTitle.innerText = e.target.innerText.slice(0,9) + ' - '
         }
+        if(letter == 'c'){
+            const codeMain = document.querySelector('.code-main')
+            if (codeMain){
+                codeMain.focus()
+            }
+        }
+        
         
     })
 })
