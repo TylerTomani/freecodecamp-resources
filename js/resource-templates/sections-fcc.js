@@ -26,7 +26,6 @@ const keys = {
 function hideSubSections(){
     sections.forEach(el => {
         const sectionContainer = getSectionContainer(el.parentElement)
-
         const subSection = sectionContainer.querySelector('.sub-section')
         if(subSection){
 
@@ -124,7 +123,8 @@ nav.addEventListener('keydown', e => {
         }
     }
 })
-nav.addEventListener('click', ()=>{
+nav.addEventListener('click', (e)=>{
+    e.preventDefault()
     aside.classList.toggle('hide')
 })
 
@@ -273,7 +273,11 @@ addEventListener('keydown', e => {
     if (letter == 'shift') {
         keys.shift.pressed = true
     }
-
+    if(letter == 'enter'){
+        // if(aside.classList.contains('hide')){
+        //     aside.classList.remove('hide')
+        // }
+    }
     if (!pageStarted && letter == 's') {
         sections[0].focus()
         pageStarted = true
@@ -283,12 +287,9 @@ addEventListener('keydown', e => {
             currentClickedSelection.focus()
         } else {
             lastFocusedSelection.focus()
-        }
-        
+        }   
     }
-    
     pageElementsFocus(letter)
-
 });
 function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
@@ -308,7 +309,6 @@ export function getSubSection(parent){
         return null
     }
 }
-
 function fetchLessonHref(href) {
     fetch(href)
         .then(response => response.text())

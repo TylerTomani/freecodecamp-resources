@@ -60,7 +60,11 @@ export function stepTxtListeners(){
     })
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        stepFocus(letter)
+        if(letter != 'enter'){
+            stepFocus(letter)
+            
+        }
+        
     })
     function stepFocus(letter) {
         const intLetter = parseInt(letter)
