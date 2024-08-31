@@ -23,6 +23,7 @@ const keys = {
         pressed: false
     }
 }
+
 function hideSubSections(){
     sections.forEach(el => {
         const sectionContainer = getSectionContainer(el.parentElement)
@@ -65,17 +66,17 @@ header.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     
     if(!lastFocusedSelection && letter == 's'){
-        showAide()
+        showAside()
         sections[0].focus()
     } else if (lastFocusedSelection && letter == 's') {
-        showAide()
+        showAside()
         lastFocusedSelection.focus()
     }
 
     handleSectionsFocus(letter)
     
 })
-function showAide(){
+export function showAside(){
     if(aside.classList.contains('hide')){
         aside.classList.remove('hide')
     }

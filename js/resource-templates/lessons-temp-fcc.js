@@ -3,6 +3,7 @@ export const mainTargetDiv  = document.querySelector('#mainTargetDiv')
 export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
 import { sections } from './sections-fcc.js'
+import { showAside } from './sections-fcc.js'
 import { lessons } from './sections-fcc.js'
 export let targetDivFocusIN = false
 import { getSubSection } from './sections-fcc.js'
@@ -18,6 +19,19 @@ export function stepTxtListeners(){
     let colCodesFocused = false
     let currentStepIndex = 0
     let imgIndex = 0
+
+    addEventListener('resize', e => {
+        console.log(innerWidth)
+        if (innerWidth < 501) {
+            aside.classList.add('hide')
+            targetDivFocusIN = true
+        } else{
+            aside.classList.remove('hide')
+        }
+        console.log(aside)
+    })
+
+
     allImages.forEach(el => {
         el.addEventListener('click', e => {
             e.target.classList.toggle('enlarge')
@@ -32,6 +46,7 @@ export function stepTxtListeners(){
             const lessons = subSection.querySelectorAll('li > a')
             let index
             if (subSection) {
+                showAside()
                 if (!currentClickedSelection) {
                     lastFocusedSelection.focus()
                 } else if (currentClickedSelection) {

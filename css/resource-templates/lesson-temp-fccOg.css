@@ -86,7 +86,7 @@
 .step-col > .img-container>.step-vid > video {
     max-height: 280px;
     object-fit: scale-down;
-    /* margin: 2% 25%; */
+
 }
 .enlarge {
     position: relative;
