@@ -86,8 +86,10 @@ export function showAside(){
 export function toggleAside(){
     if(aside.classList.contains('hide')){
         aside.classList.remove('hide')
-    } else 
-    aside.classList.add('hide')
+    } else {
+        aside.classList.add('hide')
+        
+    }
 
 }
 mainTargetDiv.addEventListener('keydown', e => {
@@ -237,6 +239,10 @@ lessons.forEach(el => {
             if (e.target == currentClickedSelection) {
                 mainTargetDiv.focus()
             }
+            const sectionContainer = getSectionContainer(e.target.parentElement)
+            const section = sectionContainer.querySelector('.section')
+            console.log(sectionContainer)
+            sTitle.innerText = section.innerText.slice(0, 9) + ' - '
             lTitle.innerText = '0'+e.target.innerText
             currentClickedSelection = e.target
             

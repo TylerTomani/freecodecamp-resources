@@ -110,10 +110,11 @@ main > aside {
     font-size: 40%;
 }
 .sub-section > li > a{
-    display: flex;
-    flex-wrap: wrap;
     text-decoration: none;
-    white-space: nowrap
+    /* white-space: nowrap */ */
+}
+.sub-section > li > a code{
+    display: inline-block;
 }
 
 li > code {

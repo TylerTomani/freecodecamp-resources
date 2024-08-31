@@ -26,6 +26,9 @@
 .step-txt>p {
     font-size: 90%;
 }
+.step-txt>ul {
+    margin: 0 auto;
+}
 .step>.step-txt>p {
     margin: 0 5%;
     line-height: 1.3;
