@@ -1,198 +1,100 @@
-* {
-    margin: 0;
-    padding: 0;
+.step-txt:active,.step-txt:focus {box-shadow: 2px 1px 3px 3px orange;}
+.copy-code:active,.copy-code:focus {box-shadow: 0 1px 3px 2px yellow;}
+#mainTargetDiv {width: 100%;}
+.step {
+    display: flex;
+    flex-wrap: wrap;
 }
-/* mainTargetDiv should be part of tutorial or section temps but 
-work better here */
-#mainTargetDiv {
-    width: 100%;
-    /* overflow: hidden; */
+.step>* {
+    width: 50%;
+    border: 1px solid blue;
 }
-.section-page > .step {padding-top: 5%;}
-
-.step-txt:focus,.step-txt:active{box-shadow: 0 0 5px 5px lightseagreen;}
-/* .steps-container {
+.step-txt {
     display: flex;
     flex-direction: column;
-    width: fit-content;
-} */
-/* .step {
-    display: flex;
-    gap: 2.5%;
-    justify-content: center;
-} */
-/* .step>* {
-    border: 1px solid black;
-    flex-basis: 45%;
-} */
-/* .step > .step-img,
-.step > .step-vid {
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-} */
-/* .step-img>img,
-.step-vid>video{
-    width: 100%;
-} */
-/* .step-col {
-    display: flex;
-    flex-direction: column;
-} */
-/* .step-txt {
-    display: flex;
-    flex-direction: column;
-} */
-/* .step-txt>p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    letter-spacing: 1%;
-    line-height: 1.5;
-    align-self: center;
-    justify-self: center;
-    width: 90%;
-} */
-/* .step-col>.step-txt{
-    border: 1px solid black;
-} */
-/* .step-col>.step-txt>p{
-    padding: 0;
-} */
-/* .step-txt>h4 {
+}
+.step>.step-txt>h4 {
     align-self: flex-start;
-    justify-self: flex-start;
-} */
-/*.step-vid > video {
-    max-width: 400px;
-    object-fit: scale-down;
-} */
-/* .step-col>.img-container {
+}
+.step-txt>p {
+    font-size: 90%;
+}
+.step>.step-txt>p {
+    margin: 0 5%;
+    line-height: 1.3;
+    margin-top: 5%;
+}
+.step-txt>.code-container{
+    font-size: 90%;
+    margin: 2.5% 3%;
+    /* margin-top: 2%; */
+}
+.step-col>.step-txt>.code-container>.copy-code{
+    margin: 1% 0;   
+}
+.step-txt>.code-container> .copy-code{
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.step-col>.step-txt>.code-container>.copy-code,
+.step>.step-txt>.code-container>.copy-code {
+    padding: .5% 2%;
+}
+.code-container>.copy-code {
+    background-color: white;
+    border: 1px solid black;
+}
+.step-vid,
+.step-img {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.step-vid>video,
+.step-img>img {
+    /* object-fit: cover; */
+    min-height: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+}
+.step-col>.step-txt > p{
+    margin: .5% 2.5%;
+}
+.step-col>.img-container {
+    margin: 2% 0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-} */
-/* .step-col > .img-container>.step-img,
-.step-col > .img-container>.step-vid{
+}
+.step-col>.img-container>.step-img,
+.step-col>.img-container>.step-vid {
     position: relative;
-} */
-/* .step-col > .img-container>.step-img > img,
-.step-col > .img-container>.step-vid > video {
-    max-height: 280px;
-    object-fit: scale-down;
-} */
+}
 .enlarge {
-    position: relative;
+    /* position: fixed; */
+    object-fit: contain;
     z-index: 2;
-    margin-right: 50%;
+    right: 10%;
     transform: scale(2.5);
 }
 .enlarged-lg {
     position: relative;
     z-index: 2;
-    margin-right: 50%;
+    /* margin-right: 50%; */
     transform: scale(3);
 }
-.enlarge-col {
-    position: relative;
-    margin-left: 25%;
-    transform: scale(2.5);
+.enlarge-col-l {
+    position: fixed;
+    top: 40%;
+    left: 20%;
+    transform: scale(1.8);
 }
-/* .step-col>.step-txt>.code-container {
-    /* margin: 2%; */
-    /* padding: 1%; */
-    /* width: 85%; */
-/* } */
-/* .step-txt>.code-container {
-    align-self: center;
-    width: 90%
-} */
-/* .code-container>.copy-code{
-    border: 1px solid black;
-    width: 100%;
-    height: 100%;
-    padding: .5% 0 ;
-    padding-left: 1%;
-    display: inline-block;
-    overflow-x: scroll;
-    overflow: scroll;
-} */
-/* @media screen and (max-width: 961px) {
-    .step-col > .img-container{
-        width: 95%;
-        display: flex;
-    }   
-    .step-col>.img-container > .step-img {
-        margin: 5% 0;
-        margin-left: 10%;
-    }
-    .step-col>.img-container img {
-        width: 100%;
-    }
-
-} */
-/* @media screen and (max-width: 641px) {
-    .step-col > .img-container{
-        width: 90%;
-        display: flex;
-    }   
-    .step-col>.img-container > .step-img {
-        margin: 5% 0;
-        margin-left: 10%;
-    }
-    .step-col>.img-container img {
-        width: 90%;
-    }
-    .steps-container{
-        width: 100%;
-    }   
-} */
-@media screen and (max-width: 590px) {
-    .steps-container {
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
-        /* margin: 0 2.5%; */
-        overflow-x: hidden;
-    } 
-    .step {
-        display: flex;
-        flex-direction: column-reverse;
-    } 
-    .step>.step-txt{
-        display: flex;
-        flex-direction: column;
-        background-color: yellow;
-        font-size: 80%;
-    }
-    .step>.step-txt>p{
-        align-self: center;
-        /* padding: 0 2.5% */
-    }
-    .step>.step-txt,
-    .step>.step-img, 
-    .step>.step-vid{
-        /* border: 1px solid black; */
-        /* flex-basis: 50%; */
-        /* width: 50%; */
-    }
-    .step > .step-img,
-    .step > .step-vid {
-        position: relative;
-        float: right;
-        justify-content: center;
-        align-items: center;    
-    }
-    img,video{
-        min-width: 200px;
-        max-width: 350px;
-        width: 100%;
-        min-height: 220px;
-        float: right;
-        /* max-height: 400px; */
-    }
-    .enlarge {
-        position: absolute;
-        z-index: 2;
-        transform: scale(1.5);
-        
-    }
+.enlarge-col-r {
+    position: fixed;
+    top: 40%;
+    right: 20%;
+    transform: scale(2);
 }

@@ -216,10 +216,17 @@ export function stepTxtListeners(){
         const stepImg = step.querySelector('.step-img')
         const img = stepImg.querySelector('img')
         img.style.zIndex = "1"
-        if(!img.classList.contains('lg-enlarge')){
-            img.classList.toggle('enlarge')
-        } else if(img.classList.contains('lg-enlarge')){
-            img.classList.toggle('enlarged-lg')
+        if(!img.classList.contains('enlarge')){
+            img.classList.add('enlarge')
+        } else {
+            img.classList.remove('enlarge')
+
+        }
+        
+        if(img.classList.contains('lg-enlarge') && !img.classList.contains('enlarged-lg')){
+            img.classList.add('enlarged-lg')
+        } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){
+            img.classList.remove('enlarged-lg')
         }
     }
     addEventListener('keydown', e => {

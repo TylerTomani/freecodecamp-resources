@@ -8,8 +8,7 @@ header>nav#mainLinksContainer {
 }
 header>nav#mainLinksContainer>#mainLinks {
     display: flex;
-    flex-basis: 80%; 
-    
+    flex-basis: 80%;     
 }
 #mainLinks>a {
     flex-basis: 40%;
@@ -26,7 +25,6 @@ header>nav#mainLinksContainer>#mainLinks {
     min-height: 60px;
     max-height: 50px;
 }
-
 header {
     display: flex;
     flex-direction: column;
@@ -36,8 +34,6 @@ header a:focus,header a:active {
 }
 header  > h1 {
     font-size: 120%;
-    /* padding-left: 5%; */
-    /* padding-top: 2.5%; */
 }
 header > .title-tutorialLink-container{
     display: flex;
@@ -57,7 +53,7 @@ nav:active,nav:focus{
     box-shadow: 0 0 3px 3px lightseagreen;
 }
 main > aside {
-    flex-basis: 20%;
+    /* flex-basis: 20%; */
     height: 100vh;
     border-right: 1px solid black;
     padding-top: 1%;
@@ -150,6 +146,13 @@ li > code {
         white-space: wrap;
 
     }
+    main>aside {
+            flex-basis: 27%;
+            min-width: 100px;
+            padding-left: 1.5%;
+            width: 10vmax !important;
+            border-bottom: 1px solid black
+    }
 }
 @media screen and (max-width: 500px){
     header > h1{
@@ -175,11 +178,6 @@ li > code {
         font-size: 80%;
         padding: 0 2.5%;
     }
-    main > aside{
-        flex-basis: 27%;
-        padding-left: 1.5%;
-        width: 10vmax !important;
-        border-bottom: 1px solid black 
-    }
+    
     
 }
