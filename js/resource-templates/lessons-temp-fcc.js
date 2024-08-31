@@ -199,11 +199,11 @@ export function stepTxtListeners(){
         
         if(imgIndex == 0){
             img.classList.add('enlarge-col-l')
-            img.style.zIndex = '1'
+            img.style.zIndex = '5'
         }
         if(imgIndex == 1){
             img.classList.add('enlarge-col-r')
-            img.style.zIndex = '1'
+            img.style.zIndex = '5'
         }
         
         else {
@@ -243,6 +243,7 @@ export function stepTxtListeners(){
                 stepFocus(letter)
 
             }
+            
             if (letter == 'e') {
                 nxtLesson.focus()
             }

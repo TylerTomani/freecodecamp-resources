@@ -271,6 +271,12 @@ function pageElementsFocus(letter){
         case 'b':
             backlink.focus()
             break
+        case 'c':
+                const codeMain = document.querySelector('.code-main')
+                if (codeMain) {
+                    codeMain.focus()
+                }
+            break
         case 'h':
             homelink.focus()
             break
