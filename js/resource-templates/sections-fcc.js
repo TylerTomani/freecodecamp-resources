@@ -2,8 +2,8 @@
 import {header,nav, mainTargetDiv, targetDivFocusIN} from "./lessons-temp-fcc.js"
 import { stepTxtListeners } from "./lessons-temp-fcc.js"
 import { addCopyCodes } from "./copy-code-resources.js"
-let sTitle = document.querySelector('.section-title')
-let lTitle = document.querySelector('.lesson-title')
+let sTitle = document.querySelector('#section-title')
+let lTitle = document.querySelector('#lesson-title')
 const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
 const homelink = document.querySelector('#homelink')
@@ -198,9 +198,7 @@ sections.forEach(el => {
             hideSubSections()
             toggleSubSection(e) 
             fetchLessonHref(e.target.href)           
-            sTitle = e.target.innerText
-            console.log(sTitle)
-
+            sTitle.innerText = e.target.innerText.slice(0,9) + ' - '
         }
         
     })
@@ -232,7 +230,9 @@ lessons.forEach(el => {
             if (e.target == currentClickedSelection) {
                 mainTargetDiv.focus()
             }
+            lTitle.innerText = '0'+e.target.innerText
             currentClickedSelection = e.target
+            
         }
     })
 })
