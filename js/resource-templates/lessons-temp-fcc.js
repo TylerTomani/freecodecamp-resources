@@ -108,8 +108,11 @@ export function stepTxtListeners(){
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
             }
-            if (el.classList.contains('enlarge-col')) {
-                el.classList.remove('enlarge-col')
+            if (el.classList.contains('enlarge-col-l')) {
+                el.classList.remove('enlarge-col-l')
+            }
+            if (el.classList.contains('enlarge-col-r')) {
+                el.classList.remove('enlarge-col-r')
             }
             if (el.classList.contains('enlarged-lg')) {
                 el.classList.remove('enlarge-col')
@@ -192,13 +195,17 @@ export function stepTxtListeners(){
         const img = images[imgIndex]
         // imgIndex = (imgIndex +  )
         denlargeAllImages()
-        if (imgIndex < 2) {
-            img.classList.add('enlarge-col')
+        
+        if(imgIndex == 0){
+            img.classList.add('enlarge-col-l')
             img.style.zIndex = '1'
-            // img.scrollIntoView({ behavior: 'smooth', block: 'end' })
-            // scrollTo(0, 2000)
-
-        } else {
+        }
+        if(imgIndex == 1){
+            img.classList.add('enlarge-col-r')
+            img.style.zIndex = '1'
+        }
+        
+        else {
             stepCol.focus()
             // stepCol.scrollIntoView()
         }

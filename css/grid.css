@@ -2,7 +2,6 @@
 .copy-code:active,.copy-code:focus {box-shadow: 0 0 10px 10px yellow;}
 #mainTargetDiv {
     width: 100%;
-    border: 2px solid blue;
 }
 .step {
     display: flex;
@@ -23,10 +22,17 @@
     margin: 0 2.5%;
     margin-top: 5%;
 }
-.step-col>.step-txt>.code-container,
+
+.step-col>.step-txt>.code-container{
+    margin: 0 1%;
+}
 .step>.step-txt>.code-container {
     margin: 0 1%;
     margin-top: 5%;
+}
+.step-col>.step-txt>.code-container>.copy-code{
+    margin: 1% 0;
+    
 }
 .step-col>.step-txt>.code-container>.copy-code,
 .step>.step-txt>.code-container>.copy-code {
@@ -52,36 +58,25 @@
     width: 100%;
     height: 100%;
 }
+.step-col>.step-txt > p{
+    margin: .5% 2.5%;
+}
+.step-col>.img-container {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.step-col>.img-container>.step-img,
+.step-col>.img-container>.step-vid {
+    position: relative;
+}
 .enlarge {
     position: fixed;
     object-fit: contain;
     z-index: 2;
     right: 10%;
-    transform: scale(3);
-}
-
-
-.step-col>.step-txt > p{
-    margin: .5% 2.5%;
-}
-.step-col>.step-txt > p{
-    margin: .5% 2.5%;
-}
-.step-col>.step-txt > .code-container{
-    /* margin: .5% 2.5%; */
-}
-.step-col>.img-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-
-.step-col>.img-container>.step-img>img,
-.step-col>.img-container>.step-vid>video {
-    /* max-height: 280px;
-    object-fit: scale-down; */
-
+    transform: scale(2.5);
 }
 .enlarged-lg {
     position: relative;
@@ -89,16 +84,15 @@
     margin-right: 50%;
     transform: scale(3);
 }
-.step-col>.img-container>.step-img,
-.step-col>.img-container>.step-vid {
-    position: relative;
-}
-.enlarge-col {
+.enlarge-col-l {
     position: fixed;
-    /* z-index: 4; */
-    /* margin-right: 50%; */
-    /* margin: 0 auto; */
     top: 40%;
-    /* margin: 0 25%; */
+    left: 20%;
+    transform: scale(1.8);
+}
+.enlarge-col-r {
+    position: fixed;
+    top: 40%;
+    right: 20%;
     transform: scale(2);
 }
