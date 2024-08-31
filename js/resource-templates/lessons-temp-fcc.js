@@ -108,14 +108,14 @@ export function stepTxtListeners(){
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
             }
+            if (el.classList.contains('enlarged-md')) {
+                el.classList.remove('enlarged-md')
+            }
             if (el.classList.contains('enlarge-col-l')) {
                 el.classList.remove('enlarge-col-l')
             }
             if (el.classList.contains('enlarge-col-r')) {
                 el.classList.remove('enlarge-col-r')
-            }
-            if (el.classList.contains('enlarged-lg')) {
-                el.classList.remove('enlarge-col')
             }
         })
     }    
@@ -227,6 +227,11 @@ export function stepTxtListeners(){
             img.classList.add('enlarged-lg')
         } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){
             img.classList.remove('enlarged-lg')
+        }
+        if(img.classList.contains('md-enlarge') && !img.classList.contains('enlarged-md')){
+            img.classList.add('enlarged-md')
+        } else if (img.classList.contains('md-enlarge') && img.classList.contains('enlarged-md')){
+            img.classList.remove('enlarged-md')
         }
     }
     addEventListener('keydown', e => {

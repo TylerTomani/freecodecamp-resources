@@ -74,11 +74,19 @@
     position: relative;
 }
 .enlarge {
-    /* position: fixed; */
+    position: fixed;
     object-fit: contain;
     z-index: 2;
-    right: 10%;
+    right: 20%;
     transform: scale(2.5);
+}
+.enlarged-md {
+    position: fixed;
+    object-fit: cover;
+    z-index: 2;
+    right: 20%;
+    transform: scale(2.5);
+    max-height: 400px;
 }
 .enlarged-lg {
     position: relative;
