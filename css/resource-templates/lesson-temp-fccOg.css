@@ -2,21 +2,14 @@
     margin: 0;
     padding: 0;
 }
-/* mainTargetDiv should be part of tutorial or section temps but 
-work better here */
-#mainTargetDiv {
-    width: 100%;
-    overflow: hidden;
-}
 .section-page > .step {padding-top: 5%;}
 .steps-container {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 100%;
     margin: 0 5%;
 }
 .step {
-
     display: flex;
     gap: 2.5%;
     justify-content: center;
@@ -25,24 +18,28 @@ work better here */
     border: 1px solid black;
     flex-basis: 45%;
 }
+.step-col {
+    display: flex;
+    flex-direction: column;
+}
 .step-txt:focus,.step-txt:active{
     box-shadow: 0 0 5px 5px lightseagreen;
 }
-/* .step-col {
+.step-txt {
     display: flex;
     flex-direction: column;
-} */
-/* .step-txt {
-    display: flex;
-    flex-direction: column;
-} */
+}
 .step-txt>p {
+    /* margin: 2% 0; */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-size: 1%; */
     letter-spacing: 1%;
     line-height: 1.5;
     align-self: center;
+    /* margin-top: 10%; */
     justify-self: center;
     width: 90%;
+    /* display: none; */
 }
 
 .step-col>.step-txt{

@@ -62,7 +62,6 @@ export function stepTxtListeners(){
         let letter = e.key.toLowerCase()
         if(letter != 'enter'){
             stepFocus(letter)
-            
         }
         
     })
