@@ -322,9 +322,9 @@ addEventListener('keydown', e => {
         if (!lastFocusedSelection) {
             sections[0].focus()
         } 
-
-    } else if (lastFocusedSelection) {
-        lastFocusedSelection.focus()
+        else if (lastFocusedSelection) {
+            lastFocusedSelection.focus()
+        }
     }
     if(letter == 'a'){
         if(currentClickedSelection){
