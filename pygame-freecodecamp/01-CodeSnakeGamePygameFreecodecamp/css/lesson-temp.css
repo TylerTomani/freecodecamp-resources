@@ -20,10 +20,6 @@ body {
 .step {
     display: flex;
 }
-.step,.step-col {
-    overflow: hidden;
-    /* scroll-behavior: ; */
-}
 .step>* {
     width: 50%;
     border: .5px solid black;
@@ -59,24 +55,6 @@ body {
     margin-left: 2.5%;
     align-self: flex-start;
 }
-.code-container {
-    width: 100%;
-    border: 4px solid black;
-    align-self: center;
-    overflow: scroll;
-}
-
-.copy-code {
-    font-size: .6rem;
-    padding-left: 2.5%;
-    overflow-x: scroll;
-    padding-top: 1.5%;
-}
-
-.copy-code:active,
-.copy-code:focus {
-    box-shadow: 0 0 6px 6px lightseagreen;
-}
 .step-txt>ul,
 .step-txt>ol {
     align-self: center;
@@ -110,7 +88,20 @@ body {
     transform: scale(2.2);
     right: 50%;
 }
+.code-container {
+    width: 98%;
+    border: 1px solid black;
+    align-self: center;
+}
+.copy-code {
+    font-size: .6rem;
+    padding-left: 2.5%;
+    overflow-x: scroll;
+    padding-top: 1.5%;
+}
 
+.copy-code:active,
+.copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
 #nxtLesson {
     margin-left: 2.5%;
     padding: .5% 1.5%
@@ -160,12 +151,12 @@ body {
         max-height: 150px !important;
         right: 50%;
     }
-    .step-txt>ul,
-    .step-txt>ol {
-        align-self: center;
-        justify-content: center;
-        margin: 0 5%;
-        margin-bottom: 5%;
-        margin-left: 10%;
-    }
+        .step-txt>ul,
+        .step-txt>ol {
+            align-self: center;
+            justify-content: center;
+            margin: 0 5%;
+            margin-bottom: 5%;
+            margin-left: 10%;
+        }
 }

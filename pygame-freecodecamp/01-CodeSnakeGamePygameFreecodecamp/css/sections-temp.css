@@ -204,5 +204,6 @@ li > code {
     }   
     .sub-section > li > ul{
         font-size: .8rem;
+        color: magenta;
     }   
 }
