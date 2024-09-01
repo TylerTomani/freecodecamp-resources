@@ -14,7 +14,6 @@ const nextLesson = document.getElementById('nxtLesson') ? document.getElementByI
 const targetDiv = document.getElementById('targetDiv')
 let targetDivFocus = false
 let playing = false
-
     sections.forEach(el => {
         if(el.hasAttribute('autofocus')){
             iSection = [...sections].indexOf(el)
@@ -224,29 +223,7 @@ stepTxts.forEach(el => {
         }
     })    
 })
-// Numpad focus to invidiual steps txt focus
-addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    let key = e.keyCode
-    if(targetDivFocus){
-        if(!isNaN(letter) && key != 32 ){
-            let intLetter = parseInt(letter)
-            if(intLetter > stepTxts.length){
-                nextLesson.focus()
-            } else {
-                stepTxts[intLetter - 1].focus()
-            }
-        } else {
-            if(letter == 'e'){
-                if(nextLesson){
-                    nextLesson.focus()
-                } else {
-                    stepTxts[stepTxts.length - 1 ].focus()
-                }
-            }        
-        }
-    } 
-});
+
 // The playing variable is asscoiated with img size so it is placed in here
 
 if(nextLesson){
@@ -283,6 +260,39 @@ if(nextLesson){
         }
     })
 }
+    // Numpad focus to invidiual steps txt focus
+    addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        let key = e.keyCode
+        if (targetDivFocus) {
+            if (!isNaN(letter) && key != 32) {
+                let intLetter = parseInt(letter)
+                if (intLetter > stepTxts.length) {
+                    nextLesson.focus()
+                } else {
+                    stepTxts[intLetter - 1].focus()
+                }
+            } else {
+                if (letter == 'e') {
+                    if (nextLesson) {
+                        nextLesson.focus()
+                    } else {
+                        stepTxts[stepTxts.length - 1].focus()
+                    }
+                }
+            }
+        }
+        if(letter == 'c'){
+            const mainCode = document.querySelector('.main-code')
+            if(mainCode){
+                targetDivFocus = true
+                mainCode.focus()
+
+            }
+            
+        }
+        
+    });
 
 
 }
