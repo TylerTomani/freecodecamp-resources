@@ -116,6 +116,23 @@
     right: 20%;
     transform: scale(2);
 }
+.step-col-in {
+    display: flex;
+    flex-direction: column;
+}
+.step-col-in > .step-txt-in {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.step-col-in > .step-txt-in > .code-container{
+    border: 1px solid black;
+    margin: 1% 2.5%;
+}
+.step-col-in > .step-txt-in > .code-container > .copy-code{
+    border: 1px solid black;
+    padding: 1% 2.5%;
+}
 @media screen and (max-width: 583px){
     .enlarge {
             /* position: fixed; */

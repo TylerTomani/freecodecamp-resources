@@ -9,7 +9,6 @@ header>nav#mainLinksContainer {
 header>nav#mainLinksContainer>#mainLinks {
     display: flex;
     flex-basis: 80%; 
-    
 }
 #mainLinks>a {
     flex-basis: 40%;
@@ -41,8 +40,6 @@ header a:focus,header a:active {
 }
 header  > h1 {
     font-size: 120%;
-    /* padding-left: 5%; */
-    /* padding-top: 2.5%; */
 }
 header > .title-tutorialLink-container{
     display: flex;
@@ -53,8 +50,13 @@ nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
 main {
     display: flex;
+
 }
 aside:active,aside:focus,
 main:active,main:focus,
