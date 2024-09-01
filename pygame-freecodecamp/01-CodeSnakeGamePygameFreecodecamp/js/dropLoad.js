@@ -263,11 +263,11 @@ function navSections(e,letter){
             iSection = (iSection + 1) % sections.length
     
         } else if (keys.shift.pressed && letter == 's'){
-            if(iSection > 0 ){
-                iSection -= 1
-            } else if(iSection <= 0){
-                iSection = sections.length -1
-            }
+            // if(iSection > 0 ){
+            //     iSection -= 1
+            // } else if(iSection <= 0){
+            //     iSection = sections.length -1
+            // }
         }
     }
     sections[iSection].focus()   
@@ -333,7 +333,9 @@ addEventListener('keydown', e => {
     if(letter == 's' && !sectionsFocused ){
         lastFocusedElement.focus()
     }
-    if(letter == 'shift'){keys.shift.pressed = true}
+    if(letter == 'shift'){
+        keys.shift.pressed = true
+    }
     // Controls Section Selection with numbers on keyboard
     if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
         let intLetter = parseInt(letter)
