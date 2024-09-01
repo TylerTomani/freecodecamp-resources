@@ -197,6 +197,8 @@ sections.forEach(el => {
                 targetDiv.focus()
             }
             sectionClicked = !sectionClicked
+            fetchLessonHref(e.target.href)
+            scrollTo(0,0)
             
         }
         
