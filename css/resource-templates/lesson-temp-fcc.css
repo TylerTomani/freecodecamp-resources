@@ -87,13 +87,14 @@
 .step-col>.img-container>.step-vid {
     position: relative;
 }
-.enlarge {
+/* OG */
+/* .enlarge {
     position: fixed;
     object-fit: contain;
     z-index: 2;
     right: 20%;
     transform: scale(2.5);
-}
+} */
 .enlarged-md {
     position: fixed;
     object-fit: cover;
@@ -101,6 +102,12 @@
     right: 20%;
     transform: scale(2.5);
     max-height: 400px;
+}
+.enlarge {
+    position: relative;
+    z-index: 5;
+    /* margin-right: 50%; */
+    transform: scale(3);
 }
 .enlarged-lg {
     position: relative;

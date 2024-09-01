@@ -117,7 +117,7 @@ export function stepTxtListeners(){
 
     function denlargeAllImages() {
         allImages.forEach(el => {
-            el.style.zIndex = "0"
+            // el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
             }
@@ -315,11 +315,18 @@ export function stepTxtListeners(){
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             if(letter == 'c'){
-                removeInnerTabs()
-                
+                removeInnerTabs()               
+            }
+            if(letter == 'enter'){
+                const stepCol = getStepColContainer(e.target.parentElement)
+                const img = stepCol.querySelector('.step > .step-img > img')
+                toggleImgSize(img)
             }
             
-
         })
+        function toggleImgSize(img) {
+            console.log(img)
+            img.classList.toggle('enlarge')
+        }   
     })
 }
