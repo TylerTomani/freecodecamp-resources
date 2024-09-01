@@ -278,12 +278,24 @@ export function stepTxtListeners(){
             if(letter == 'c'){
                 const stepColContainer = getStepColContainer(e.target.parentElement)
                 if(stepColContainer){
+                    removeInnerTabs()
+                    removeOuterTabs()
                     const copyCodeINFirst = stepColContainer.querySelector('.step-col-in .copy-code')
                     const copyCodeINs = stepColContainer.querySelectorAll('.step-col-in .copy-code')
                     copyCodeINFirst.focus()
                     copyCodeINs.forEach(el => {
                         addTabs(el)
                     })
+                } else {
+                    removeInnerTabs()
+                    removeOuterTabs()
+                    const step = getStepContainer(e.target.parentElement)
+                    const copyCodeFirst = step.querySelector('.step-txt .copy-code')
+                    const copyCodes = step.querySelectorAll('.step-txt > .copy-code')
+                    console.log(step)
+                    copyCodeFirst.focus()
+                    copyCodes.forEach(el => {addTabs(el)})
+
                 }
             }
             if (letter == 'tab') {
@@ -294,18 +306,21 @@ export function stepTxtListeners(){
     })
     function handleStepTabIndex(e) {
         const stepCol = getStepColContainer(e.target.parentElement)
-        const copyCodes = e.target.querySelectorAll('.copy-code')
-        const as = e.target.querySelectorAll('p a')
-        const copyCodesIns = stepCol.querySelectorAll('.step-col-in > .step-txt-in .copy-code')
-        copyCodesIns.forEach(el => {
+        if(stepCol){
+
+            const copyCodes = e.target.querySelectorAll('.copy-code')
             
-            addTabs(el)
-        })
-        copyCodes.forEach(el => {
-            addTabs(el)
-        })
-        as.forEach(el => addTabs(el))
-       
+            const as = e.target.querySelectorAll('p a')
+            const copyCodesIns = stepCol.querySelectorAll('.step-col-in > .step-txt-in .copy-code')
+            copyCodesIns.forEach(el => {    
+                addTabs(el)
+            })
+            copyCodes.forEach(el => {
+                addTabs(el)
+            })
+            as.forEach(el => addTabs(el))
+            
+        }
     }    
     codesStepTxtINs.forEach(el => {
         el.addEventListener('click', e => {

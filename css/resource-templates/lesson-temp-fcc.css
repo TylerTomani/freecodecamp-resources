@@ -10,6 +10,7 @@
 }
 .steps-container{
     width: 100%;
+    margin: 0 auto;
     border: 3px solid green;
 }
 .step {
@@ -46,7 +47,7 @@
 .step-col>.step-txt>.code-container>.copy-code{
     margin: 1% 0;   
 }
-.step-txt>.code-container> .copy-code{
+.code-container> .copy-code{
     overflow: scroll;
     scrollbar-width: none;
 }
