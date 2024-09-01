@@ -18,8 +18,27 @@ addEventListener('DOMContentLoaded', e => {
         aside.classList.remove('hide')
     }
 })
+function getStepContainer(parent) {
+    if (parent.classList.contains('step')) {
+        return parent
+    } else if (parent.parentElement) {
+        return getStepContainer(parent.parentElement)
+    } else {
+        return null
+    }
+}
+function getStepColContainer(parent) {
+    if (parent.classList.contains('step-col')) {
+        return parent
+    } else if (parent.parentElement) {
+        return getStepColContainer(parent.parentElement)
+    } else {
+        return null
+    }
+}
 export function stepTxtListeners(){
-    const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
+    const allImages = document.querySelectorAll('.step-img > img') 
+    const allVideos = document.querySelectorAll('.step-vid > video') 
     const steps = document.querySelectorAll('.step')
     const stepTxts = document.querySelectorAll('.step-txt')
     const stepTxtsIns = document.querySelectorAll('.step-txt-in')
@@ -53,6 +72,7 @@ export function stepTxtListeners(){
         el.addEventListener('focus', e => {
         })
     })
+    
     if(nxtLesson){
         nxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(currentClickedSelection)
@@ -107,11 +127,11 @@ export function stepTxtListeners(){
     function stepNumberFocus(intLetter) {
         stepTxts[intLetter - 1].focus()
     }
-    // The code below handle img enlarge and code within step txt
-    
+    // The code below handles img enlarge and code within step txt
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
             denlargeAllImages()
+            stopAllVideos()
         })
     })
 
@@ -135,8 +155,6 @@ export function stepTxtListeners(){
             }
         })
     }    
-    
-    
     function addTabs(el) {el.setAttribute('tabindex', '0')}
     function removeTabs(el) {el.setAttribute('tabindex','-1')}
     function removeInnerTabs() {
@@ -149,24 +167,7 @@ export function stepTxtListeners(){
         // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    function getStepContainer(parent) {
-        if (parent.classList.contains('step')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStepContainer(parent.parentElement)
-        } else {
-            return null
-        }
-    }
-    function getStepColContainer(parent) {
-        if (parent.classList.contains('step-col')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStepColContainer(parent.parentElement)
-        } else {
-            return null
-        }
-    }
+    
 
     
     // This will handle img and video size enlarge and denlarge
@@ -205,27 +206,26 @@ export function stepTxtListeners(){
             imgIndex = (imgIndex + 1) % (images.length + 1)
         }
     }
-
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
-        const img = stepImg.querySelector('img')
-        img.style.zIndex = "1"
-        if(!img.classList.contains('enlarge')){
-            img.classList.add('enlarge')
-        } else {
-            img.classList.remove('enlarge')
-
-        }
-        
-        if(img.classList.contains('lg-enlarge') && !img.classList.contains('enlarged-lg')){
-            img.classList.add('enlarged-lg')
-        } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){
-            img.classList.remove('enlarged-lg')
-        }
-        if(img.classList.contains('md-enlarge') && !img.classList.contains('enlarged-md')){
-            img.classList.add('enlarged-md')
-        } else if (img.classList.contains('md-enlarge') && img.classList.contains('enlarged-md')){
-            img.classList.remove('enlarged-md')
+        if(stepImg){
+            const img = stepImg.querySelector('img')
+            img.style.zIndex = "1"
+            if(!img.classList.contains('enlarge')){
+                img.classList.add('enlarge')
+            } else {
+                img.classList.remove('enlarge')
+            }
+            if(img.classList.contains('lg-enlarge') && !img.classList.contains('enlarged-lg')){
+                img.classList.add('enlarged-lg')
+            } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){
+                img.classList.remove('enlarged-lg')
+            }
+            if(img.classList.contains('md-enlarge') && !img.classList.contains('enlarged-md')){
+                img.classList.add('enlarged-md')
+            } else if (img.classList.contains('md-enlarge') && img.classList.contains('enlarged-md')){
+                img.classList.remove('enlarged-md')
+            }
         }
     }
     addEventListener('keydown', e => {
@@ -265,6 +265,7 @@ export function stepTxtListeners(){
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
             console.log(currentStepIndex)
+            stopAllVideos()
             // el.scrollIntoView()
         })
         el.addEventListener('keydown', e => {
@@ -274,6 +275,7 @@ export function stepTxtListeners(){
                 removeInnerTabs()
                 handleImgSize(e)
                 handleStepTabIndex(e)
+                videoHandle(e)
             }
             if(letter == 'c'){
                 const stepColContainer = getStepColContainer(e.target.parentElement)
@@ -344,4 +346,26 @@ export function stepTxtListeners(){
             img.classList.toggle('enlarge')
         }   
     })
+    function videoHandle(e){
+        const step = getStepContainer(e.target.parentElement)
+        const vid = step.querySelector('.step-vid > video')
+        toggleVid(vid)
+    }
+    function toggleVid(vid){
+        if (vid.paused) {
+            vid.play()
+            vid.classList.add('enlarge')
+        } else {
+            vid.play()
+            vid.classList.add('enlarge')
+        }
+    }
+    function stopAllVideos(){
+        allVideos.forEach(el => {
+            el.pause()
+            if(el.classList.contains('enlarge')){
+                el.classList.remove('enlarge')
+            }
+        })
+    }
 }

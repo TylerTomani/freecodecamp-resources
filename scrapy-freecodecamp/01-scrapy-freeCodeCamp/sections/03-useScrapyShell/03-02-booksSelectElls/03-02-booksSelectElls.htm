@@ -130,33 +130,40 @@ def <span class="gr">parse</span>(self, response):
     'name': book.css('h3 a::text').get(),
     'price': book.css('.product_price .product_color::text').get(),
     'url': book.css('h3 a').attrib['href']
-    }</pre>
+}</pre>
                 </div>
             </div>
         </div>
     </div>
     <!-- 01-04 -->
-    <div class="step">
-        <div tabindex="0" class="step-txt playVid-click">
-            <h4>04</h4>
-            <p>
-                <code>exit</code> the scrapy shell, change directory into the <code>bookscaper</code> folder
-                and run 
-            </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-scrapy crawl bookspider</pre>
+    <div class="step-col">
+        <div class="step">
+            <div tabindex="0" class="step-txt playVid-click">
+                <h4>04</h4>
+                <p>
+                    <code>exit</code> the scrapy shell, change directory into the <code>bookscaper</code> folder
+                    and run 
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+    scrapy crawl bookspider</pre>
+                </div>
+                <p class="r">
+                    You must be in the same directory that contains the <code class="m"><i>scrapy.cfg</i></code>
+                    file
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+    cd /bookscraper
+                    </pre>
+                </div>    
             </div>
-            <p class="r">
-                You must be in the same directory that contains the <code class="m"><i>scrapy.cfg</i></code>
-                file
-            </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-cd /bookscraper
-                </pre>
-            </div>
-            
+            <div class="step-vid">
+                <video src="sections/03-useScrapyShell/03-02-booksSelectElls/images/01-04.mov">
+            </div>  
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
 .
@@ -180,13 +187,7 @@ cd /bookscraper
 
                 </pre>
             </div>
-            
-            
         </div>
-        <div class="step-vid">
-            <video src="sections/03-useScrapyShell/03-02-booksSelectElls/images/01-04.mov">
-        </div>
-
     </div>
     <!-- 01-05 -->
     <div class="step">

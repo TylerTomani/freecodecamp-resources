@@ -300,7 +300,6 @@ function pageElementsFocus(letter){
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
-    console.log(e.target)
     if (letter === 'tab') {
         return; /* default Tab behavior work naturally Very important, lessons were not working,
          this makes the tab key work, Not Sure where this is breaking out to.
@@ -309,16 +308,11 @@ addEventListener('keydown', e => {
     if (letter == 'shift') {
         keys.shift.pressed = true
     }
-    if(letter == 'enter'){
-        // if(aside.classList.contains('hide')){
-        //     aside.classList.remove('hide')
-        // }
-    }
+    
     if (!pageStarted && letter == 's') {
         sections[0].focus()
         pageStarted = true
     } else if(letter == 's'){
-
         if (!lastFocusedSelection) {
             sections[0].focus()
         } 
