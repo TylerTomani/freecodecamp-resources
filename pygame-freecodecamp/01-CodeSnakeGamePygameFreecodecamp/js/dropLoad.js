@@ -15,6 +15,7 @@ const lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
 const lessons = document.querySelectorAll('.sub-section > li > a')
 const targetDiv = document.getElementById('targetDiv')
+let sectionClicked = false
 /* The startSection is crucial to ensure section1 is focus if 's' is pressed whehn 
 page is first opened */
 let startSection = false
@@ -64,14 +65,16 @@ function hideSubSections(){
 function toggleSubSections(e){
     const section = getSectionContainer(e.target.parentElement)
     const subSections = section.querySelector('.sub-section')
-    if(subSections.classList.contains('show')){
-        subSections.classList.remove('show')
-    }
-    if(subSections.classList.contains('hide')){
-        hideSubSections()
-        subSections.classList.remove('hide')
-    } else{
-        subSections.classList.add('hide')
+    if(subSections){
+        if(subSections.classList.contains('show')){
+            subSections.classList.remove('show')
+        }
+        if(subSections.classList.contains('hide')){
+            hideSubSections()
+            subSections.classList.remove('hide')
+        } else{
+            subSections.classList.add('hide')
+        }
     }
 }
 lessons.forEach(el => {
@@ -183,9 +186,22 @@ sections.forEach(el => {
     })  
     el.addEventListener('keydown', e => {
         startSection = true
+        let letter = e.key.toLowerCase()
+        if(letter == 'enter'){
+            const sectionContainer = getSectionContainer(e.target.parentElement)
+            const subSection = sectionContainer.querySelector('.sub-section')
+            if(!subSection && sectionClicked){
+                targetDiv.focus()
+            }
+            console.log(sectionClicked)
+            sectionClicked = !sectionClicked
+            
+        }
+        
     })
     el.addEventListener('focus', e => {
         lastFocusedElement = e.target
+        
         targetDivFocused = false
         sectionsFocused = true
         lessonsFocused = false

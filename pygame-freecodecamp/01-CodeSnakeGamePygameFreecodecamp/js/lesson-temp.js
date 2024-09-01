@@ -7,7 +7,7 @@ const allImages = document.querySelectorAll(".step-img > img")
 const allVideos = document.querySelectorAll(".step-vid > video")
 const allStepTxtPAs = document.querySelectorAll('.step-txt > p > a')
 const copyCodes = document.querySelectorAll('.step-txt > .code-container > .copy-code')
-const nxtLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
+const nextLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
 const targetDiv = document.getElementById('targetDiv')
 let targetDivFocus = false
 let playing = false
@@ -19,8 +19,8 @@ targetDiv.addEventListener('focusout', e => {
 targetDiv.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if(letter == 'e'){
-        if(nxtLesson){
-            nxtLesson.focus()
+        if(nextLesson){
+            nextLesson.focus()
         }
     }
     
@@ -29,13 +29,10 @@ targetDiv.addEventListener('keydown', e => {
 navbar.addEventListener('keydown',e =>{
     let letter = e.key.toLowerCase()
     if(letter == 'e'){
-        if(nxtLesson){
-            nxtLesson.focus()
-        }
-        
+        if(nextLesson){
+            nextLesson.focus()
+        }   
     }
-    
-
 })
 function handleCopyCodes(e){
     const step = getStep(e.target.parentElement)
@@ -99,14 +96,14 @@ addEventListener('keydown', e => {
         if(!isNaN(letter) && key != 32 ){
             let intLetter = parseInt(letter)
             if(intLetter > stepTxts.length){
-                nxtLesson.focus()
+                nextLesson.focus()
             } else {
                 stepTxts[intLetter - 1].focus()
             }
         } else {
             if(letter == 'e'){
-                if(nxtLesson){
-                    nxtLesson.focus()
+                if(nextLesson){
+                    nextLesson.focus()
                 } else {
                     stepTxts[stepTxts.length - 1 ].focus()
                 }
@@ -219,20 +216,19 @@ function handleVideoKeydown(e){
             }            
     }
 }
-if(nxtLesson){
-    nxtLesson.addEventListener('focus', e => {
+if(nextLesson){
+    nextLesson.addEventListener('focus', e => {
         removeAllTabIndex()
         pauseAllVideo()
     })
 }
-if(nxtLesson){
-    nxtLesson.addEventListener('click', e => {
+if(nextLesson){
+    nextLesson.addEventListener('click', e => {
         const subSection = getSubSection(lastFocusedElement)
         if(subSection){
             const lessons = subSection.querySelectorAll('li > a')
             let iLesson = [...lessons].indexOf(lastFocusedElement) + 1
             if(lessons[iLesson]){
-
                 lessons[iLesson].focus()
             } else {
 
@@ -240,9 +236,10 @@ if(nxtLesson){
             }
 
         } else {
+            console.log('nope')
         }        
     })
-    nxtLesson.addEventListener('keydown', e => {
+    nextLesson.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if(letter == 'a'){
             lastFocusedElement.focus()
