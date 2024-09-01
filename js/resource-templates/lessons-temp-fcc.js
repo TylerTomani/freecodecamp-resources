@@ -261,7 +261,7 @@ export function stepTxtListeners(){
     
     stepTxts.forEach(el => {
         el.addEventListener('focus', e => {
-            removeOuterTabs()
+            // removeOuterTabs()
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
             console.log(currentStepIndex)
@@ -278,9 +278,12 @@ export function stepTxtListeners(){
             if(letter == 'c'){
                 const stepColContainer = getStepColContainer(e.target.parentElement)
                 if(stepColContainer){
-                    const copyCodeIN = stepColContainer.querySelector('.step-col-in .copy-code')
-                    console.log()
-                    copyCodeIN.focus()
+                    const copyCodeINFirst = stepColContainer.querySelector('.step-col-in .copy-code')
+                    const copyCodeINs = stepColContainer.querySelectorAll('.step-col-in .copy-code')
+                    copyCodeINFirst.focus()
+                    copyCodeINs.forEach(el => {
+                        addTabs(el)
+                    })
                 }
             }
             if (letter == 'tab') {
@@ -304,4 +307,19 @@ export function stepTxtListeners(){
         as.forEach(el => addTabs(el))
        
     }    
+    codesStepTxtINs.forEach(el => {
+        el.addEventListener('click', e => {
+            const stepCol = getStepColContainer(e.target.parentElement)
+            
+        })
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'c'){
+                removeInnerTabs()
+                
+            }
+            
+
+        })
+    })
 }
