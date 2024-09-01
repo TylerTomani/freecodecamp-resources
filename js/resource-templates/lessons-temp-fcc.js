@@ -271,26 +271,34 @@ export function stepTxtListeners(){
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
                 removeOuterTabs()
+                removeInnerTabs()
                 handleImgSize(e)
                 handleStepTabIndex(e)
+            }
+            if(letter == 'c'){
+                const stepColContainer = getStepColContainer(e.target.parentElement)
+                if(stepColContainer){
+                    const copyCodeIN = stepColContainer.querySelector('.step-col-in .copy-code')
+                    console.log()
+                    copyCodeIN.focus()
+                }
             }
             if (letter == 'tab') {
                 denlargeAllImages()
             }
-            if (e.target != currentStep) {
-                // removeInnerTabs()
-                console.log('l;kjdf')
-            }
-            currentStep = e.target
+            
         })
     })
     function handleStepTabIndex(e) {
-        const step = getStepContainer(e.target.parentElement)
-        // const stepTxtsIn = step.querySelectorAll('.step-txt-in')
+        const stepCol = getStepColContainer(e.target.parentElement)
         const copyCodes = e.target.querySelectorAll('.copy-code')
         const as = e.target.querySelectorAll('p a')
+        const copyCodesIns = stepCol.querySelectorAll('.step-col-in > .step-txt-in .copy-code')
+        copyCodesIns.forEach(el => {
+            
+            addTabs(el)
+        })
         copyCodes.forEach(el => {
-            // removeInnerTabs()
             addTabs(el)
         })
         as.forEach(el => addTabs(el))

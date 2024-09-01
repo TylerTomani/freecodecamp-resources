@@ -27,7 +27,7 @@ header>nav#mainLinksContainer>#mainLinks {
 }
 nav{
     position: sticky;
-    z-index: 3;
+    z-index: 1;
     background-color: white;
     top: 0;
 }
