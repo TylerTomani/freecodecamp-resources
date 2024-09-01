@@ -111,12 +111,20 @@ navBar.addEventListener('keydown', e => {
         }
     }
     targetDivFocused = false
+    if (letter == 's' || letter == 'a') {
+        showAside()
+    }
     if(letter == 's' ){
             lastFocusedElement.focus()
             iSection -= 1
         }    
     
 })
+function showAside(){
+    if(mainAside.classList.contains('hide')){
+        mainAside.classList.remove('hide')
+    }
+}
 navBar.addEventListener('click', e => {
     if(!mainAside.classList.contains('hide')){
         mainAside.classList.add('hide')

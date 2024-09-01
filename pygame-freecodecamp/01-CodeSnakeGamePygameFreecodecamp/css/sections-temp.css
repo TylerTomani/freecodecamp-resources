@@ -80,7 +80,6 @@ main > aside {
 .section-container > .section {    
     width: 100%;
     display: inline-block;
-    /* border: 1px solid black; */
     text-decoration: none;
     color: black;
 }
@@ -169,7 +168,7 @@ li > code {
     .section-lesson-title {padding-left: 2%;}
 
     main>aside {
-        flex-basis: 27%;
+        flex-basis: 31%;
         padding-left: 1.5%;
         width: 10vmax !important;
         border-bottom: 1px solid black
@@ -183,10 +182,11 @@ li > code {
     .section-container {
         margin: 5% 0;
     }
-    .sections-container  > .section {
-        max-height: 8px;
+    .section-container  > .section {
+        /* max-height: 8px;
         overflow-y: hidden;   
-        font-size: 150%;
+        display: inline-block; */
+        font-size: 118%;
     }  
     .sub-section {
         margin-left: 0%;
@@ -195,7 +195,7 @@ li > code {
     .sub-section > li{
         margin: 3% 0;
         margin-left: 5%;
-        font-size: 110%;
+        font-size: 130%;
     }
     .sub-section > li > ul{
         list-style: none;
@@ -203,7 +203,7 @@ li > code {
         margin-left: 10%;
     }
     .sub-section > li > ul > li {
-        color: orange;
+        color: red;
     }
     
 }
