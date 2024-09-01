@@ -63,6 +63,9 @@ body {padding-bottom: 5%;}
     font-size: 80%;
     
 }
+.step-txt > ul > li{
+    
+}
 .step>.step-img,
 .step>.step-vid {
     display: flex;
