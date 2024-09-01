@@ -70,7 +70,7 @@ body {padding-bottom: 5%;}
 }
 .step>.step-img>img,
 .step>.step-vid>video {
-    width: 80%;
+    /* width: 80%; */
     min-height: 150px;
     max-height: 250px;
 }
@@ -146,12 +146,13 @@ body {padding-bottom: 5%;}
 
     .enlarge-vid {
         position: relative;
-        transform: scale(2.2);
+        transform: scale(3.2);
         /* margin-right: 50%; */
         width: 150px !important;
-        height: 150px !important;
+        /* height: 150px !important; */
+        height: 100%;
         max-width: 200px !important;
-        max-height: 150px !important;
+        /* max-height: 150px !important; */
         right: 50%;
     }
         .step-txt>ul,

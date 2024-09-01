@@ -160,6 +160,8 @@ targetDiv.addEventListener('keydown', e => {
 lessons.forEach(el => {
     if (el.hasAttribute('autofocus')) {
         lessonsFocused = true
+        currentLesson = el
+        console.log(currentLesson)
     }
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -180,11 +182,15 @@ lessons.forEach(el => {
 
             }
         }
-        currentLesson = e.target
+        if(letter == 'enter'){
+            // currentLesson = e.target
+            
+        }
+        
 
     })
     el.addEventListener('focus', e => {
-        currentLesson = ''
+        // currentLesson = ''
         lastFocusedElement = e.target
         sectionsFocused = false
         lessonsFocused = true
@@ -217,8 +223,8 @@ sections.forEach(el => {
             
         }
         if(letter == 'a'){
+            console.log(currentLesson)
             if(currentLesson){
-                console.log(currentLesson)
                 currentLesson.focus()
             }
             
@@ -228,7 +234,6 @@ sections.forEach(el => {
     })
     el.addEventListener('focus', e => {
         lastFocusedElement = e.target
-        
         targetDivFocused = false
         sectionsFocused = true
         lessonsFocused = false

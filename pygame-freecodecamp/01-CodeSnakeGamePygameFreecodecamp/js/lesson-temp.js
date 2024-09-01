@@ -156,10 +156,10 @@ function handleVideoKeydown(e) {
                 // 
                 if (!playing) {
                     vid.play()
-                    vid.style.border = "2px solid blue"
+                    // vid.style.border = "2px solid blue"
                 } else if (!playing) {
                     vid.pause()
-                    vid.style.border = "1px dotted red"
+                    // vid.style.border = "1px dotted red"
                 }
                 playing = !playing
                 break;
