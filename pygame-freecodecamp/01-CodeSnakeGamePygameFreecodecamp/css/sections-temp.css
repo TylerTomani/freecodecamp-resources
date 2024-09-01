@@ -158,48 +158,38 @@ li > code {
 }
 @media screen and (max-width: 500px){
     header{ margin-top: 5%;}
+    #mainLinks>a {
+        font-size: 80%;
+        padding: 0 2.5%;
+    }
     header > h1{
         font-size: 120%;
         padding-left: 1%;
     }
     .section-lesson-title {padding-left: 2%;}
+
+    main>aside {
+        flex-basis: 27%;
+        padding-left: 1.5%;
+        width: 10vmax !important;
+        border-bottom: 1px solid black
+    }
     main > aside > .sections-container {
-        font-size: 50%;
-        flex-basis: 40%;
-        /* width:  40%; */
+        font-size: 60%;
         /* display: flex;
         flex-wrap: wrap;
         */
     }
-    #targetDiv {
-        flex-basis: 50%;
-        /* width: 70%; */
-    }
     .section-container {
-        /* margin: 10% 0; */
+        margin: 3% 0;
     }
     .sections-container  > .section {
         max-height: 8px;
-        font-size: 60%;
         overflow-y: hidden;   
     }  
-    
-    #mainLinks>a {
-        font-size: 80%;
-        padding: 0 2.5%;
-    }
-    main > aside{
-        flex-basis: 27%;
-        padding-left: 1.5%;
-        width: 10vmax !important;
-        border-bottom: 1px solid black 
-    }
     .sub-section {
-        margin: 0%;
+        margin-left: 0%;
         list-style: square;
     }
-    ul.sub-section > li {
-        list-style: none;
-        margin-left: 5%;
-    }
+    
 }

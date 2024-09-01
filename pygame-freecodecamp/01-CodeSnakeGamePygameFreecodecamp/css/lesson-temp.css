@@ -9,163 +9,100 @@ body {
     display: flex;
     flex-direction: column;
 }
+.step {
+    display: flex;
+}
+.step > * {
+    flex-basis: 45%;
+    border: .5px solid black;
+    margin: 1.75%;
+}
 .step-col {
     flex-basis: 80%;
     width: 80%;
-    height: 100%;
     align-self: center;
     justify-self: center;
     border: 1px solid black;
 }
-.step {
-    display: flex;
-}
-.step,.step-col {
-    overflow: hidden;
-    /* scroll-behavior: ; */
-}
-.step>* {
-    width: 50%;
-    border: .5px solid black;
-    margin: 1.75%;
-}
-.step-col>.step-txt {
+.step-col > .step-txt{
     display: flex;
     flex-direction: column;
-    padding-top: .5%;
-    padding-left: .5%;
-    padding-bottom: 4.5%;
+    padding-bottom: 5%;
+    align-items: center;
 }
-.step-col>.step-txt>p {
-    padding-left: 5%;
-    padding-bottom: 2.5%;
+.step > .step-txt{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5%;
 }
-.step>.step-txt {
-    padding: 1%;
-    padding-top: 0;
-}
-.step-txt>p {
-    width: 100%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-.step-txt>p a {
-    width: 100%;
-    display: inline-flex;
-    flex-wrap: wrap;
-    font-size: 70%;
-}
-.step-col>.step-txt>h3 {
+.step-col > .step-txt >h3{
     margin-left: 2.5%;
     align-self: flex-start;
 }
-.code-container {
+.step-col > .step-txt{
+    margin-top: 2.5%;
+}
+.step > .step-txt> p{
+    padding-top: 2.5%;
     width: 100%;
-    border: 4px solid black;
+    height: 100%;
+    padding: 5%;
+}
+.step-txt > ul,
+.step-txt > ol {
     align-self: center;
-    overflow: scroll;
 }
-
-.copy-code {
-    font-size: .6rem;
-    padding-left: 2.5%;
-    overflow-x: scroll;
-    padding-top: 1.5%;
-}
-
-.copy-code:active,
-.copy-code:focus {
-    box-shadow: 0 0 6px 6px lightseagreen;
-}
-.step-txt>ul,
-.step-txt>ol {
-    align-self: center;
-    justify-content: center;
-    margin: 0 5%;
-    margin-bottom: 5%;
-}
-.step>.step-img,
-.step>.step-vid {
+.step > .step-img,
+.step > .step-vid{
     display: flex;
     justify-content: center;
 }
-.step>.step-img>img,
-.step>.step-vid>video {
+.step > .step-img >img,
+.step > .step-vid > video{
     width: 80%;
     min-height: 150px;
     max-height: 250px;
 }
-.step>.step-vid>video {
-    border: 2px solid blue;
+.step > .step-vid > video{
+    border : 2px solid blue;
 }
-.step-txt:active,
-.step-txt:focus {box-shadow: 0 0 3px 3px lightseagreen;}
+.step-txt:active,.step-txt:focus{
+    box-shadow: 0 0 3px 3px lightseagreen;
+}
+
 .enlarge {
     position: relative;
     transform: scale(2.2);
+    /* margin-right: 0%; */
     right: 50%;
 }
-.enlarge-vid {
-    position: relative;
-    transform: scale(2.2);
-    right: 50%;
+.code-container {
+    border: 1px solid black;
+    width: 90%;
+    /* justify-self: center; */
+    align-self: center;
+    
+}
+.copy-code {
+    padding-left:2.5%;
+    padding-top:1.5%;
+}
+.copy-code:active,.copy-code:focus{
+    box-shadow: 0 0 6px 6px lightseagreen;
 }
 
-#nxtLesson {
+.b{color: blue;}
+.r{color:red}
+.m{color:magenta}
+.gr{color:goldenrod}
+.lsg{color:lightseagreen}
+.g{color:green}
+.o{color:orange}
+
+#nxtLesson{
     margin-left: 2.5%;
     padding: .5% 1.5%
 }
-#nxtLesson:active,
-#nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}
-
-@media screen and (max-width: 500px) {
-    .step-txt>p {
-        font-size: 80%;
-    }
-
-    .code-container {
-        width: 99%;
-        font-size: 50%;
-    }
-
-    .copy-code {
-        /* padding-left: 2.5%; */
-        /* padding-top: 1.5%; */
-        overflow-x: scroll;
-    }
-
-    .enlarge {
-        position: relative;
-        transform: scale(3.2);
-        width: 400px;
-        height: 150px;
-        max-width: 500px !important;
-        max-height: 150px !important;
-        /* margin-right: 50%; */
-        right: 50%;
-    }
-
-    video {
-        width: 100% !important;
-        height: 100% !important;
-    }
-
-    .enlarge-vid {
-        position: relative;
-        transform: scale(2.2);
-        /* margin-right: 50%; */
-        width: 150px !important;
-        height: 150px !important;
-        max-width: 200px !important;
-        max-height: 150px !important;
-        right: 50%;
-    }
-    .step-txt>ul,
-    .step-txt>ol {
-        align-self: center;
-        justify-content: center;
-        margin: 0 5%;
-        margin-bottom: 5%;
-        margin-left: 10%;
-    }
+#nxtLesson:active,#nxtLesson:focus{
+    box-shadow: 0 0 5px 5px lightseagreen;
 }
