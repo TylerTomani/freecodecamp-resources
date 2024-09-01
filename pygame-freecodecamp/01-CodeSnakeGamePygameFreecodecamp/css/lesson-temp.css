@@ -2,9 +2,7 @@
     margin: 0;
     padding: 0;
 }
-body {
-    padding-bottom: 5%;
-}
+body {padding-bottom: 5%;}
 .steps-container {
     display: flex;
     flex-direction: column;
@@ -58,9 +56,12 @@ body {
 .step-txt>ul,
 .step-txt>ol {
     align-self: center;
-    justify-content: center;
+    justify-self: center;
+    list-style: none;
     margin: 0 5%;
     margin-bottom: 5%;
+    font-size: 80%;
+    
 }
 .step>.step-img,
 .step>.step-vid {
@@ -88,10 +89,14 @@ body {
     transform: scale(2.2);
     right: 50%;
 }
+
 .code-container {
     width: 98%;
     border: 1px solid black;
     align-self: center;
+}
+.step-txt>.code-container {
+
 }
 .copy-code {
     font-size: .6rem;
@@ -99,7 +104,6 @@ body {
     overflow-x: scroll;
     padding-top: 1.5%;
 }
-
 .copy-code:active,
 .copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
 #nxtLesson {
@@ -108,7 +112,6 @@ body {
 }
 #nxtLesson:active,
 #nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}
-
 @media screen and (max-width: 500px) {
     .step-txt>p {
         font-size: 80%;

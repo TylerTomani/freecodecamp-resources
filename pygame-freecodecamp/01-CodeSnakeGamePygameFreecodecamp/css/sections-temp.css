@@ -110,7 +110,7 @@ main > aside {
     font-size: .8rem;
     white-space: nowrap;
 }
-li > code {
+.section li > code {
     background-color: lightgrey;
 
 }
