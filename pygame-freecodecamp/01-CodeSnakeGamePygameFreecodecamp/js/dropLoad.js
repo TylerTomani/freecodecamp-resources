@@ -114,6 +114,11 @@ navBar.addEventListener('keydown', e => {
     if (letter == 's' || letter == 'a') {
         showAside()
     }
+    if ( letter == 'a') {
+        if(currentLesson){
+            currentLesson.focus()
+        }
+    }
     if(letter == 's' ){
             lastFocusedElement.focus()
             iSection -= 1
@@ -132,7 +137,7 @@ navBar.addEventListener('click', e => {
         mainAside.classList.remove('hide')
     }
     targetDivFocused = false
-    if(letter == 's' ){
+    if (letter == 's'  ){
             lastFocusedElement.focus()
             iSection -= 1
         }    
@@ -146,7 +151,7 @@ targetDiv.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     sectionsFocused = false
     if(targetDivFocused){
-        if(letter == 's' ){
+        if (letter == 's' || letter == 'a'){
             lastFocusedElement.focus()
             iSection -= 1
         }    
@@ -161,7 +166,7 @@ lessons.forEach(el => {
         e.stopPropagation()
         clickLesson(e)
         fetchLessonHref(e.target.href)
-        // e.target.focus()
+        currentLesson = e.target
     })
     el.addEventListener('keydown', e => {
         startSection = true
@@ -174,9 +179,8 @@ lessons.forEach(el => {
                 sections[iSection - 1].focus()
 
             }
-
-
         }
+        currentLesson = e.target
 
     })
     el.addEventListener('focus', e => {
@@ -212,6 +216,14 @@ sections.forEach(el => {
             scrollTo(0,0)
             
         }
+        if(letter == 'a'){
+            if(currentLesson){
+                console.log(currentLesson)
+                currentLesson.focus()
+            }
+            
+        }
+        
         
     })
     el.addEventListener('focus', e => {
@@ -260,18 +272,22 @@ function navLessons(e,letter){
     if(sectionContainer){
         const section = sectionContainer.querySelector('.section')
         const subSection = getSubSection(e.target.parentElement)
-        const lessons = subSection.querySelectorAll('li > a')
-        if(letter == 's'){
-            section.focus()
-        }
-        if(!isNaN(letter)){
-            let intLetter = parseInt(letter)
-            if(intLetter <= lessons.length && intLetter >= 0){
-                lastFocusedElement =  lessons[intLetter - 1]
-                lastFocusedElement.focus()
+        if(subSection){
 
+            const lessons = subSection.querySelectorAll('li > a')
+            if(letter == 's'){
+                section.focus()
+            }
+            if(!isNaN(letter)){
+                let intLetter = parseInt(letter)
+                if(intLetter <= lessons.length && intLetter >= 0){
+                    lastFocusedElement =  lessons[intLetter - 1]
+                    lastFocusedElement.focus()
+                    
+                }
             }
         }
+
         
     }
 }
@@ -301,6 +317,14 @@ export function getSubSection(parent){
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()    
+    if(letter == 'a' ){
+        if(currentLesson){
+            console.log('a')
+            console.log(currentLesson)
+
+            currentLesson.focus()
+        }
+    }
     if(letter == 's' && !sectionsFocused ){
         lastFocusedElement.focus()
     }
