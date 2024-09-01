@@ -26,9 +26,11 @@ header>nav#mainLinksContainer>#mainLinks {
     max-height: 50px;
 }
 nav{
+    width: 100%;
     position: sticky;
     z-index: 1;
     background-color: white;
+    height: 5vh !important;
     top: 0;
 }
 header {
