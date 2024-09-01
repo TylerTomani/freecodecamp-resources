@@ -160,12 +160,12 @@ body {
         max-height: 150px !important;
         right: 50%;
     }
-        .step-txt>ul,
-        .step-txt>ol {
-            align-self: center;
-            justify-content: center;
-            margin: 0 5%;
-            margin-bottom: 5%;
-            margin-left: 10%;
-        }
+    .step-txt>ul,
+    .step-txt>ol {
+        align-self: center;
+        justify-content: center;
+        margin: 0 5%;
+        margin-bottom: 5%;
+        margin-left: 10%;
+    }
 }
