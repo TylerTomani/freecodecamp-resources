@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 header>nav#mainLinksContainer {
     display: flex;
 }
@@ -33,17 +34,17 @@ nav{
     height: 5vh !important;
     top: 0;
 }
-header {
+body > header {
     display: flex;
     flex-direction: column;
 }
-header a:focus,header a:active {
+body>header a:focus,header a:active {
     box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);
 }
-header  > h1 {
+body>header  > h1 {
     font-size: 120%;
 }
-header > .title-tutorialLink-container{
+body>header > .title-tutorialLink-container{
     display: flex;
     justify-content: space-between;
     border-top: 1px solid black;
@@ -52,10 +53,7 @@ nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
-body {
-    width: 100%;
-    overflow-x: hidden;
-}
+
 main {
     display: flex;
 
@@ -109,11 +107,14 @@ main > aside {
     width: 100%;
     line-height: 1.2;
     margin-bottom: 3%;
+    list-style-type: none;
 }
 .sub-section > li >ul {
     font-size: 40%;
+    list-style-type: none;
 }
 .sub-section > li > a{
+    list-style-type: none;
     text-decoration: none;
     /* white-space: nowrap */ */
 }
@@ -193,6 +194,9 @@ li > code {
     #mainLinks>a {
         font-size: 80%;
         padding: 0 2.5%;
+    }
+    .sub-section  {
+        margin-left: 5%;
     }
     
     

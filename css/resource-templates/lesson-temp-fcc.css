@@ -4,13 +4,19 @@
 .section-page {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
 }
 .w-100{
-    width: 100% !important;
+    width: 100vw !important
 }
 .steps-container{
-    width: 100%;
-    margin: 0 auto;
+    width: 100% !important;
+    margin: 0 1%;
+}
+.steps-container > .header {
+    margin: 0;
+    padding: 0
+
 }
 .step {
     display: flex;
