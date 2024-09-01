@@ -181,15 +181,29 @@ li > code {
         */
     }
     .section-container {
-        margin: 3% 0;
+        margin: 5% 0;
     }
     .sections-container  > .section {
         max-height: 8px;
         overflow-y: hidden;   
+        font-size: 150%;
     }  
     .sub-section {
         margin-left: 0%;
-        list-style: square;
+        list-style: none;
+    }
+    .sub-section > li{
+        margin: 3% 0;
+        margin-left: 5%;
+        font-size: 110%;
+    }
+    .sub-section > li > ul{
+        list-style: none;
+        margin: 3% 0;
+        margin-left: 10%;
+    }
+    .sub-section > li > ul > li {
+        color: orange;
     }
     
 }

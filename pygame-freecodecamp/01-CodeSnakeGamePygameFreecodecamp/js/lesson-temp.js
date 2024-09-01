@@ -33,6 +33,7 @@ let playing = false
             }
         })
     })
+targetDiv.addEventListener('focus', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusout', e => {
     targetDivFocus = false
