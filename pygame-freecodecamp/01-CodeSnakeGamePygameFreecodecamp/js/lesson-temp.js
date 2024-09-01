@@ -1,5 +1,8 @@
 import { lastFocusedElement } from "./dropLoad.js"
 import { getSubSection } from "./dropLoad.js"
+import { sections } from "./dropLoad.js"
+let iSection = 0
+let currentSection
 export function stepTxtListeners(){
 const navbar = document.querySelector('.section-lesson-title')
 const stepTxts = document.querySelectorAll('.step-txt')
@@ -11,6 +14,26 @@ const nextLesson = document.getElementById('nxtLesson') ? document.getElementByI
 const targetDiv = document.getElementById('targetDiv')
 let targetDivFocus = false
 let playing = false
+
+    sections.forEach(el => {
+        if(el.hasAttribute('autofocus')){
+            iSection = [...sections].indexOf(el)
+            currentSection = sections[iSection]
+        }
+        el.addEventListener('click', e => {
+            e.preventDefault()
+            iSection = [...sections].indexOf(e.target)
+            currentSection = sections[iSection]
+        })
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if (letter == 'enter') {
+                iSection = [...sections].indexOf(e.target)
+                currentSection = sections[iSection]
+                console.log(currentSection)
+            }
+        })
+    })
 targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusout', e => {
     targetDivFocus = false
@@ -22,10 +45,8 @@ targetDiv.addEventListener('keydown', e => {
         if(nextLesson){
             nextLesson.focus()
         }
-    }
-    
+    }  
 })
-
 navbar.addEventListener('keydown',e =>{
     let letter = e.key.toLowerCase()
     if(letter == 'e'){
@@ -34,21 +55,30 @@ navbar.addEventListener('keydown',e =>{
         }   
     }
 })
-function handleCopyCodes(e){
-    const step = getStep(e.target.parentElement)
-    const copyCodes = step.querySelectorAll('.step-txt > .code-container > .copy-code')
-    addTabIndex(copyCodes)
-}
-
-function getStep(parent){
-    if(parent.classList.contains('step') || parent.classList.contains('step-col')){
+function getStep(parent) {
+    if (parent.classList.contains('step') || parent.classList.contains('step-col')) {
         return parent
-    } else if (parent.parentElement){
+    } else if (parent.parentElement) {
         return getStep(parent.parentElement)
     } else {
         return null
     }
 }
+// copy code & a elements handling
+function handleCopyCodes(e) {
+    const step = getStep(e.target.parentElement)
+    const copyCodes = step.querySelectorAll('.step-txt > .code-container > .copy-code')
+    addTabIndex(copyCodes)
+}
+allStepTxtPAs.forEach(el => {
+    el.addEventListener('focus', () => {
+        denlargeAllImages()
+    })
+    el.addEventListener('click', e => {
+        e.preventDefault()
+        open(e.target.href, '_blank')
+    })
+})
 function addTabIndex(els){
     els.forEach(el => {
         el.setAttribute('tabindex','1')
@@ -62,6 +92,112 @@ function removeAllTabIndex(){
         el.setAttribute('tabindex','-1')
     })
 }
+// image handling
+allImages.forEach(el => {
+    el.addEventListener('click', e => {
+        toggleImgSize(e)
+    })
+})
+function denlargeAllImages() {
+    allVideos.forEach(el => {
+        if (el.classList.contains('enlarge-vid')) {
+            el.classList.remove('enlarge-vid')
+            playing = false
+            el.pause()
+        }
+    })
+    allImages.forEach(el => {
+        if (el.classList.contains('enlarge')) {
+            el.classList.remove('enlarge')
+        }
+    })
+}
+// image and video handle size
+function toggleImgSize(e) {
+    const step = getStep(e.target)
+    if (step) {
+        const img = step.querySelector('.step-img > img') ? step.querySelector('.step-img > img') : step.querySelector('.step-vid > video')
+        if (img && img.tagName == 'VIDEO') {
+            if (!img.classList.contains('enlarge-vid')) {
+                img.classList.add('enlarge-vid')
+                img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+            } else {
+                img.classList.remove('enlarge-vid')
+            }
+        } else {
+            if (img) {
+
+                if (!img.classList.contains('enlarge')) {
+                    img.classList.add('enlarge')
+                    img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+                } else {
+                    img.classList.remove('enlarge')
+                }
+            }
+        }
+
+    }
+}
+// video handling
+allVideos.forEach(el => {
+    el.addEventListener('click', e => {
+        e.preventDefault()
+        toggleImgSize(e)
+        handleVideoKeydown(e)
+    })
+})
+function handleVideoKeydown(e) {
+    let key = e.keyCode
+    const step = getStep(e.target.parentElement)
+    const vid = step.querySelector('.step-vid > video')
+    if (vid) {
+        switch (key) {
+            case 32:
+                e.preventDefault()
+                // 
+                if (!playing) {
+                    vid.play()
+                    vid.style.border = "2px solid blue"
+                } else if (!playing) {
+                    vid.pause()
+                    vid.style.border = "1px dotted red"
+                }
+                playing = !playing
+                break;
+            case 37:
+                if (vid.currentTime > 0) {
+                    vid.currentTime = vid.currentTime - 1
+                }
+                if (vid.currentTime < vid.duration) {
+                    vid.style.border = '2px solid blue'
+                }
+                break
+            case 39:
+                vid.currentTime = vid.currentTime + 2
+                if (vid.currentTime >= vid.duration) {
+                    vid.style.border = '14px solid red'
+                    vid.pause()
+                    vid.currentTime = vid.duration()
+                }
+                break
+            default:
+                playing = !playing
+        }
+        if (playing) {
+            vid.play()
+            vid.style.border = "1px solid blue"
+        } else if (!playing) {
+            vid.pause()
+            vid.style.border = "1px dotted red"
+        }
+    }
+}
+function pauseAllVideo() {
+    allVideos.forEach(el => {
+        el.pause()
+    })
+}
+
 stepTxts.forEach(el => {    
     el.addEventListener('focus', e => {
         pauseAllVideo()
@@ -88,7 +224,7 @@ stepTxts.forEach(el => {
         }
     })    
 })
-// Numpad focus to invidiual steps
+// Numpad focus to invidiual steps txt focus
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
@@ -111,132 +247,31 @@ addEventListener('keydown', e => {
         }
     } 
 });
-
 // The playing variable is asscoiated with img size so it is placed in here
-function denlargeAllImages(){
-    allVideos.forEach(el => {
-        if(el.classList.contains('enlarge-vid')){
-            el.classList.remove('enlarge-vid')
-            playing = false
-            el.pause()
-        }
-    })
-    allImages.forEach(el => {
-        if(el.classList.contains('enlarge')){
-            el.classList.remove('enlarge')
-        }
-    })
-}
-function pauseAllVideo(){
-    allVideos.forEach(el => {
-        el.pause()
-    })
-}
-allVideos.forEach(el => {
-    el.addEventListener('click', e =>{
-        e.preventDefault()
-        toggleImgSize(e)
-        handleVideoKeydown(e)
-    })
-})
 
-allImages.forEach(el => {
-    el.addEventListener('click',e => {
-        toggleImgSize(e)
-    })
-})
-function toggleImgSize(e){
-    const step = getStep(e.target)
-    if(step){
-        const img = step.querySelector('.step-img > img') ? step.querySelector('.step-img > img') : step.querySelector('.step-vid > video')
-        if(img && img.tagName == 'VIDEO'){
-            if(!img.classList.contains('enlarge-vid')){
-                img.classList.add('enlarge-vid')
-                img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-            } else{
-                img.classList.remove('enlarge-vid')
-            }   
-        } else {
-            if(img){
-
-                if(!img.classList.contains('enlarge')){
-                    img.classList.add('enlarge')
-                    img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-                } else{
-                    img.classList.remove('enlarge')
-                }   
-            }
-        }
-
-    }
-}
-function handleVideoKeydown(e){
-    let key = e.keyCode    
-    const step = getStep(e.target.parentElement) 
-    const vid = step.querySelector('.step-vid > video')
-    if(vid){
-        switch(key){
-            case 32:
-                e.preventDefault()
-                // 
-                if(!playing){
-                    vid.play() 
-                    vid.style.border = "2px solid blue"
-                } else if(!playing) {
-                    vid.pause()
-                    vid.style.border = "1px dotted red"
-                }
-                playing = !playing
-                break;
-            case 37:
-                if(vid.currentTime > 0){
-                    vid.currentTime = vid.currentTime - 1
-                }
-                if(vid.currentTime < vid.duration){
-                    vid.style.border = '2px solid blue'
-                }
-                break
-            case 39:
-                vid.currentTime = vid.currentTime + 2
-                if(vid.currentTime >= vid.duration ){
-                    vid.style.border = '14px solid red'
-                    vid.pause()
-                    vid.currentTime = vid.duration()
-                } 
-                break
-            default:
-                playing = !playing
-            }    
-            if(playing){
-                vid.play() 
-                vid.style.border = "1px solid blue"
-            } else if(!playing) {
-                vid.pause()
-                vid.style.border = "1px dotted red"
-            }            
-    }
-}
 if(nextLesson){
     nextLesson.addEventListener('focus', e => {
         removeAllTabIndex()
         pauseAllVideo()
     })
-}
-if(nextLesson){
     nextLesson.addEventListener('click', e => {
         const subSection = getSubSection(lastFocusedElement)
+        
         if(subSection){
             const lessons = subSection.querySelectorAll('li > a')
             let iLesson = [...lessons].indexOf(lastFocusedElement) + 1
             if(lessons[iLesson]){
                 lessons[iLesson].focus()
             } else {
-
                 lastFocusedElement.focus()
             }
-
         } else {
-            console.log('nope')
+            console.log(currentSection)
+            if(sections[iSection + 1]){
+                sections[iSection + 1].focus()
+            } else {
+                sections[0].focus()
+            }
         }        
     })
     nextLesson.addEventListener('keydown', e => {
@@ -244,15 +279,10 @@ if(nextLesson){
         if(letter == 'a'){
             lastFocusedElement.focus()
         }
+        if(letter == 'enter'){   
+        }
     })
 }
-allStepTxtPAs.forEach(el =>{
-    el.addEventListener('focus', () =>{
-        denlargeAllImages()
-    })
-    el.addEventListener('click',e =>{
-        e.preventDefault()
-        open(e.target.href,'_blank')
-    })
-})
+
+
 }
