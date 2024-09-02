@@ -129,7 +129,7 @@ navBar.addEventListener('keydown', e => {
         }    
     
 })
-function showAside(){
+export function showAside(){
     if(mainAside.classList.contains('hide')){
         mainAside.classList.remove('hide')
     }

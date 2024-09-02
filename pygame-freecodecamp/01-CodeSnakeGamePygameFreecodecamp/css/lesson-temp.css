@@ -112,8 +112,8 @@ body {padding-bottom: 5%;}
 .copy-code:active,
 .copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
 #nxtLesson {
-    margin-left: 2.5%;
-    padding: .5% 1.5%
+    /* margin-left: 2.5%;
+    padding: .5% 1.5% */
 }
 #nxtLesson:active,
 #nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}

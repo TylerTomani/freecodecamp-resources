@@ -2,6 +2,7 @@ import { lastFocusedElement } from "./side-sections-temp.js"
 import { mainAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
 import { sections } from "./side-sections-temp.js"
+import { showAside } from "./side-sections-temp.js"
 let iSection = 0
 let currentSection
 export function stepTxtListeners(){
@@ -13,14 +14,13 @@ const allStepTxtPAs = document.querySelectorAll('.step-txt > p > a')
 const copyCodes = document.querySelectorAll('.step-txt > .code-container > .copy-code')
 const nextLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
 const targetDiv = document.getElementById('targetDiv')
-    const keys = {
-        meta: {
-            pressed: false
-        }
+const keys = {
+    meta: {
+        pressed: false
     }
+}
 let targetDivFocus = false
 let playing = false
-let videoCurrentPlay
 // This has to be here for now because of going to last clicked section
     sections.forEach(el => {
         if(el.hasAttribute('autofocus')){
@@ -116,7 +116,7 @@ function removeAllTabIndex(){
 // image handling
 allImages.forEach(el => {
     el.addEventListener('click', e => {
-        // toggleImgSize(e.target)
+        toggleImgSize(e.target)
     })
 })
 function toggleImgSize(img) {
@@ -198,7 +198,7 @@ stepTxts.forEach(el => {
         console.log(e.target)
     })
 allVideos.forEach(el => {
-    addEventListener('click', e => {
+    el.addEventListener('click', e => {
         e.preventDefault()
         let vid = e.target
         console.log(vid)
@@ -313,7 +313,7 @@ if(nextLesson){
     })
     nextLesson.addEventListener('click', e => {
         const subSection = getSubSection(lastFocusedElement)
-        
+        showAside()
         if(subSection){
             const lessons = subSection.querySelectorAll('li > a')
             let iLesson = [...lessons].indexOf(lastFocusedElement) + 1
