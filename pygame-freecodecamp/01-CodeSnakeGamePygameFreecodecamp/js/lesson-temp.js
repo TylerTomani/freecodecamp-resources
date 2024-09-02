@@ -124,7 +124,7 @@ stepTxts.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         // toggleImgSize(e)
-        // handleVideoKeydown(e)
+        // toggleVideoSizeKeydown(e)
         
     })
     el.addEventListener('keydown', e => {
@@ -135,6 +135,7 @@ stepTxts.forEach(el => {
         const step = getStep(stepTxt.parentElement)
         const vid = step.querySelector('.step-vid > video')
         if (vid) {
+            toggleVideoSize(vid, key, e)
             handleVideo(vid, key, e)
         }
         if(key === 13){
@@ -157,13 +158,12 @@ stepTxts.forEach(el => {
     })    
 })
 // video handling
-function handleVideo(vid,key,e){
+function toggleVideoSize(vid,key,e){
     if(key == 13){
         console.log(vid)
         if (!vid.classList.contains('enlarge-vid')) {
             vid.classList.add('enlarge-vid')
             vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-            
             playing = true
             console.log(key)
         } else {
@@ -172,29 +172,25 @@ function handleVideo(vid,key,e){
         }
 
     }
-    
-    if(key == 32){
+}
+function handleVideo(vid,key,e){
+    if (key == 32) {
         e.preventDefault()
         playing = !playing
     }
-    console.log(key)
-    if(key == 37){
+    if (key == 37) {
         e.preventDefault()
         vid.currentTime -= 2
     }
-    if(key == 39){
+    if (key == 39) {
         e.preventDefault()
-        if(vid.currentTime < vid.duration){
+        if (vid.currentTime < vid.duration) {
             vid.currentTime += 2
         } else {
             vid.pause()
         }
     }
-    
-    
-    
-    
-    if(playing){
+    if (playing) {
         vid.play()
         vid.style.border = '1px solid green'
     } else {
@@ -206,7 +202,6 @@ function handleVideo(vid,key,e){
         playing = false
         vid.pause()
     }
-    
 }
 
 // Numpad focus to invidiual steps txt focus

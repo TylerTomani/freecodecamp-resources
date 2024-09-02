@@ -31,10 +31,10 @@ let videoCurrentPlay
             if (letter == 'enter') {
                 iSection = [...sections].indexOf(e.target)
                 currentSection = sections[iSection]
-                console.log(currentSection)
             }
         })
     })
+targetDiv.addEventListener('focus', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusout', e => {
     targetDivFocus = false
@@ -96,23 +96,19 @@ function removeAllTabIndex(){
 // image handling
 allImages.forEach(el => {
     el.addEventListener('click', e => {
-        toggleImgSize(e)
+        toggleImgSize(e.target)
     })
 })
-function toggleImgSize(e) {
-    const step = getStep(e.target)
-    if (step) {
-        const img = step.querySelector('.step-img > img')
-        if (img) {
-
-            if (!img.classList.contains('enlarge')) {
-                img.classList.add('enlarge')
-                img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-            } else {
-                img.classList.remove('enlarge')
-            }
+function toggleImgSize(img) {
+    if (img) {
+        if (!img.classList.contains('enlarge')) {
+            img.classList.add('enlarge')
+            img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+        } else {
+            img.classList.remove('enlarge')
         }
     }
+
 }
 /** Go BACK and ADD video denlarge here!!!! */
 function denlargeAllImages() {
@@ -136,12 +132,19 @@ stepTxts.forEach(el => {
         let letter = e.key.toLowerCase()
         const stepTxt = e.target
         const as = stepTxt.querySelectorAll('a')
+        const step = getStep(stepTxt.parentElement)
+        const vid = step.querySelector('.step-vid > video')
+        if (vid) {
+            handleVideo(vid, key, e)
+        }
         if(key === 13){
             addTabIndex(as)
             handleCopyCodes(e)
-            toggleImgSize(e)
+            if(step){
+                const img = step.querySelector('.step-img > img')
+                toggleImgSize(img)
+            }
         }
-        handleVideo(e)
         if(letter == 'c'){
             const step = getStep(e.target.parentElement)
             const mainCode = step.querySelector('.main-code')
@@ -154,13 +157,56 @@ stepTxts.forEach(el => {
     })    
 })
 // video handling
-function handleVideo(e){
-    console.log(e.target)
-    if(!playing){
-        const step = getStep(e.target.parentElement)
-        const vid = step.querySelector('.step-vid > video')
-        vid.play()
+function handleVideo(vid,key,e){
+    if(key == 13){
+        console.log(vid)
+        if (!vid.classList.contains('enlarge-vid')) {
+            vid.classList.add('enlarge-vid')
+            vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+            
+            playing = true
+            console.log(key)
+        } else {
+            vid.classList.remove('enlarge-vid')
+            playing = false
+        }
+
     }
+    
+    if(key == 32){
+        e.preventDefault()
+        playing = !playing
+    }
+    console.log(key)
+    if(key == 37){
+        e.preventDefault()
+        vid.currentTime -= 2
+    }
+    if(key == 39){
+        e.preventDefault()
+        if(vid.currentTime < vid.duration){
+            vid.currentTime += 2
+        } else {
+            vid.pause()
+        }
+    }
+    
+    
+    
+    
+    if(playing){
+        vid.play()
+        vid.style.border = '1px solid green'
+    } else {
+        vid.style.border = '1px solid blue'
+        vid.pause()
+    }
+    if (vid.currentTime == vid.duration) {
+        vid.style.border = '2px solid red'
+        playing = false
+        vid.pause()
+    }
+    
 }
 
 // Numpad focus to invidiual steps txt focus
@@ -186,6 +232,7 @@ addEventListener('keydown', e => {
             }        
         }
     } 
+    
     
 });
 // The playing variable is asscoiated with img size so it is placed in here
