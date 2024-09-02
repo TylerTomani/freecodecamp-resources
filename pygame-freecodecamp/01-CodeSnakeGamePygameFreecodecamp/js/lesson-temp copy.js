@@ -206,13 +206,16 @@ allVideos.forEach(el => {
 function videoPlayClick(vid) {
     console.log(vid)
     console.log(playing)
-    // playing = !playing
-    playPause(vid)
+    // if(!playing){
+    //     vid.play()
+    // } else if(playing){
+    //     vid.pause()
+    // }
 }
 function handleVideo(vid,key){
     if(key == 13){
-        // denlargeAllImages()
         toggleVideoSize(vid)
+        
     }
 }
 function toggleVideoSize(vid){
@@ -243,9 +246,6 @@ function videoPlayKeyDown(vid,key,e){
             vid.pause()
         }
     }
-    playPause(vid)
-}
-function playPause(vid){
     if (playing) {
         vid.play()
         vid.style.border = '1px solid green'
@@ -287,8 +287,6 @@ addEventListener('keydown', e => {
                 nextLesson.focus()
             } else {
                 stepNumFocus(intLetter)
-                denlargeAllImages()
-                pauseAllVideos()
             }
         } else {
             if(letter == 'e'){
