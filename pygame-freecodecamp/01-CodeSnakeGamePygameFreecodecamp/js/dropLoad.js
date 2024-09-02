@@ -1,5 +1,5 @@
-// import { addCopyCodes } from "./copy-code.js"
-// import { stepTxtListeners } from "./lesson-temp.js"
+import { addCopyCodes } from "./copy-code.js"
+import { stepTxtListeners } from "./lesson-temp.js"
 const header = document.querySelector('header')
 const backlink = document.getElementById('backlink')
 const homelink = document.getElementById('homelink')
