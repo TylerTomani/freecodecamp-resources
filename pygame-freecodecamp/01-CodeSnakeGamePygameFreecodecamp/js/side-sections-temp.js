@@ -227,9 +227,10 @@ sections.forEach(el => {
         if(letter == 'a'){
             if(currentLesson){
                 currentLesson.focus()
-            }
-            
+            } 
         }    
+        
+        
     })
     el.addEventListener('focus', e => {
         lastFocusedElement = e.target
@@ -239,6 +240,7 @@ sections.forEach(el => {
         iSection = [...sections].indexOf(e.target)
     })
 })
+
 
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase()
@@ -345,9 +347,13 @@ addEventListener('keydown', e => {
             scrollTo(0,0)
             mainAside.focus()
             break        
+        case 'c':
+            
+            break        
         case 'm':
             scrollTo(0,0)
             targetDiv.focus()
+            targetDivFocused = true
             break        
         case 'n':
             navBar.focus()

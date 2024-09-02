@@ -4,6 +4,7 @@ import { getSubSection } from "./side-sections-temp.js"
 import { sections } from "./side-sections-temp.js"
 import { showAside } from "./side-sections-temp.js"
 let iSection = 0
+let iMainCode = 0
 let currentSection
 export function stepTxtListeners(){
 const navbar = document.querySelector('.section-lesson-title')
@@ -19,9 +20,11 @@ const keys = {
         pressed: false
     }
 }
+let stepsFocused = false
 let targetDivFocus = false
 let playing = false
-// This has to be here for now because of going to last clicked section
+/**  This has to be here for now because so focus can got o last clicked section. 
+AND focus can get to main-code from sections and lessons*/
     sections.forEach(el => {
         if(el.hasAttribute('autofocus')){
             iSection = [...sections].indexOf(el)
@@ -38,6 +41,7 @@ let playing = false
                 iSection = [...sections].indexOf(e.target)
                 currentSection = sections[iSection]
             }
+            
         })
     })
 targetDiv.addEventListener('focus', e => {targetDivFocus = true})
@@ -67,7 +71,8 @@ navbar.addEventListener('keydown',e =>{
         if(mainAside.classList.contains('hide')){
             stepNumFocus(intLetter)
         } else {
-            sections[intLetter - 1].focus()
+            // sections[intLetter - 1].focus()
+            stepNumFocus(intLetter)
         }
     }  
 
@@ -141,7 +146,7 @@ function denlargeAllImages() {
         allVideos.forEach(el => {
             if (el.classList.contains('enlarge-vid')) {
                 el.classList.remove('enlarge-vid')
-                // el.pause()
+                el.pause()
             }
         })
     }
@@ -149,7 +154,7 @@ function denlargeAllImages() {
 stepTxts.forEach(el => {    
     el.addEventListener('focus', e => {
         removeAllTabIndex()
-        // denlargeAllImages()
+        denlargeAllImages()
         // pauseAllVideos()
     })
     el.addEventListener('focusout', e => {
@@ -157,10 +162,10 @@ stepTxts.forEach(el => {
     })
     el.addEventListener('click', e => {
         e.preventDefault()
-        // denlargeAllImages()
-        // toggleImgSize(e)
-        // handleVideo(vid)
-        // toggleVideoSizeKeydown(e)
+        denlargeAllImages()
+        toggleImgSize(e)
+        handleVideo(vid)
+        pauseAllVideos()
         
     })
     el.addEventListener('keydown', e => {
@@ -182,14 +187,16 @@ stepTxts.forEach(el => {
                 toggleImgSize(img)
             }
         }
-        if(letter == 'c'){
-            const step = getStep(e.target.parentElement)
-            const mainCode = step.querySelector('.main-code')
-            if(mainCode){
-                mainCode.focus()
-            }
+        
+        // if(letter == 'c'){
+        //     const step = getStep(e.target.parentElement)
+        //     const mainCode = step.querySelector('.main-code')
+        //     if(mainCode){
+                
+        //         mainCode.focus()
+        //     }
             
-        }
+        // }
         
     })    
 })
@@ -253,20 +260,20 @@ function playPauseVideo(vid){
     if (playing) {
         vid.play()
         vid.style.border = '1px solid green'
-    } else {
+    } else{
         vid.style.border = '1px solid blue'
         vid.pause()
-    }
+    } 
     if (vid.currentTime == vid.duration) {
         vid.style.border = '2px solid red'
         playing = false
-        // vid.pause()
-        pauseAllVideos()
+        vid.pause()
     }
 }
 function pauseAllVideos(){
     allVideos.forEach(el => {
         el.pause()
+        el.style.border = '1px solid blue'
     })
 }
 // Numpad focus to invidiual steps txt focus
@@ -283,6 +290,13 @@ addEventListener('keydown', e => {
     if(letter == 'meta'){
         keys.meta.pressed = true        
     }
+    if(letter != 'n'){
+        if(!isNaN(letter)){
+            denlargeAllImages()
+            pauseAllVideos()
+        }
+
+    }
         
     if(targetDivFocus){
         if(!isNaN(letter) && key != 32 ){
@@ -290,6 +304,7 @@ addEventListener('keydown', e => {
             if(intLetter > stepTxts.length){
                 nextLesson.focus()
             } else {
+                
                 stepNumFocus(intLetter)
             }
         } else {
@@ -302,6 +317,15 @@ addEventListener('keydown', e => {
             }        
         }
     }     
+    if (letter == 'c' && !stepsFocused) {
+        const mainCode = document.querySelector('#mainCode')
+        if (mainCode) {
+            mainCode.focus()
+            console.log(mainCode)
+
+        }
+
+    }
 });
 function stepNumFocus(intLetter){
     stepTxts[intLetter - 1].focus()
@@ -340,4 +364,46 @@ if(nextLesson){
         }
     })
 }
+    stepTxts.forEach(el => {
+        el.addEventListener('focus', e => {
+            removeAllTabIndex()
+            denlargeAllImages()
+            // pauseAllVideos()
+            stepsFocused = true
+        })
+        el.addEventListener('focusout', e => {
+            denlargeAllImages()
+        })
+        el.addEventListener('click', e => {
+            e.preventDefault()
+            denlargeAllImages()
+            toggleImgSize(e)
+            handleVideo(vid)
+            pauseAllVideos()
+
+        })
+        el.addEventListener('keydown', e => {
+            let key = e.keyCode
+            let letter = e.key.toLowerCase()
+            const stepTxt = e.target
+            const as = stepTxt.querySelectorAll('a')
+            const step = getStep(stepTxt.parentElement)
+            const vid = step.querySelector('.step-vid > video')
+            if (vid) {
+                handleVideo(vid, key)
+                videoPlayKeyDown(vid, key, e)
+            }
+            if (key === 13) {
+                addTabIndex(as)
+                handleCopyCodes(e)
+                if (step) {
+                    const img = step.querySelector('.step-img > img')
+                    toggleImgSize(img)
+                }
+            }
+
+            
+
+        })
+    })
 }

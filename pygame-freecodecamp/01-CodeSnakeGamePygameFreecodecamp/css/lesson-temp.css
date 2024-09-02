@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
 }
+.w-100 {width: 100% !important;}
+.w-95 {width: 95% !important;}
+.w-90 {width: 90% !important;}
+.w-80 {width: 80% !important;}
 body {padding-bottom: 5%;}
 .steps-container {
     display: flex;
@@ -9,7 +13,7 @@ body {padding-bottom: 5%;}
 }
 .step-col {
     flex-basis: 80%;
-    width: 80%;
+    width: 95%;
     height: 100%;
     align-self: center;
     justify-self: center;
@@ -78,7 +82,7 @@ body {padding-bottom: 5%;}
     max-height: 250px;
 }
 .step>.step-vid>video {
-    border: 2px solid blue;
+    border: 1px solid blue;
     height: 100%;
     width: 100%;
 }
