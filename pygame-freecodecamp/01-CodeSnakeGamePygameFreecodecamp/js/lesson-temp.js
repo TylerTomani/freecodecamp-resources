@@ -210,11 +210,8 @@ allVideos.forEach(el => {
 function videoPlayClick(vid) {
     console.log(vid)
     console.log(playing)
-    // if(!playing){
-    //     vid.play()
-    // } else if(playing){
-    //     vid.pause()
-    // }
+    toggleVideoSize(vid)
+    playPauseVideo(vid)
 }
 function handleVideo(vid,key){
     if(key == 13){
@@ -250,6 +247,9 @@ function videoPlayKeyDown(vid,key,e){
             vid.pause()
         }
     }
+    playPauseVideo(vid)
+}
+function playPauseVideo(vid){
     if (playing) {
         vid.play()
         vid.style.border = '1px solid green'

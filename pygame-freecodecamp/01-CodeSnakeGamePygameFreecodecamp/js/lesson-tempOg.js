@@ -62,12 +62,15 @@ navbar.addEventListener('keydown',e =>{
             nextLesson.focus()
         }   
     }
-    if(mainAside.classList.contains('hide')){
-        if(!isNaN(letter)){
-            let intLetter = parseInt(letter)
+    if(!isNaN(letter)){
+        let intLetter = parseInt(letter)
+        if(mainAside.classList.contains('hide')){
             stepNumFocus(intLetter)
-        }  
-    }
+        } else {
+            sections[intLetter - 1].focus()
+        }
+    }  
+
 })
 function getStep(parent) {
     if (parent.classList.contains('step') || parent.classList.contains('step-col')) {
@@ -113,7 +116,7 @@ function removeAllTabIndex(){
 // image handling
 allImages.forEach(el => {
     el.addEventListener('click', e => {
-        toggleImgSize(e.target)
+        // toggleImgSize(e.target)
     })
 })
 function toggleImgSize(img) {
@@ -146,16 +149,16 @@ function denlargeAllImages() {
 stepTxts.forEach(el => {    
     el.addEventListener('focus', e => {
         removeAllTabIndex()
-        denlargeAllImages()
-        pauseAllVideos()
+        // denlargeAllImages()
+        // pauseAllVideos()
     })
     el.addEventListener('focusout', e => {
         denlargeAllImages()
     })
     el.addEventListener('click', e => {
         e.preventDefault()
-        denlargeAllImages()
-        toggleImgSize(e)
+        // denlargeAllImages()
+        // toggleImgSize(e)
         // handleVideo(vid)
         // toggleVideoSizeKeydown(e)
         
@@ -198,7 +201,8 @@ allVideos.forEach(el => {
     addEventListener('click', e => {
         e.preventDefault()
         let vid = e.target
-        toggleVideoSize(vid)
+        console.log(vid)
+      
         videoPlayClick(vid)
         // console.log(e.target)
     })
@@ -206,13 +210,13 @@ allVideos.forEach(el => {
 function videoPlayClick(vid) {
     console.log(vid)
     console.log(playing)
-    // playing = !playing
-    playPause(vid)
+    toggleVideoSize(vid)
+    playPauseVideo(vid)
 }
 function handleVideo(vid,key){
     if(key == 13){
-        // denlargeAllImages()
         toggleVideoSize(vid)
+        
     }
 }
 function toggleVideoSize(vid){
@@ -243,9 +247,9 @@ function videoPlayKeyDown(vid,key,e){
             vid.pause()
         }
     }
-    playPause(vid)
+    playPauseVideo(vid)
 }
-function playPause(vid){
+function playPauseVideo(vid){
     if (playing) {
         vid.play()
         vid.style.border = '1px solid green'
@@ -287,8 +291,6 @@ addEventListener('keydown', e => {
                 nextLesson.focus()
             } else {
                 stepNumFocus(intLetter)
-                denlargeAllImages()
-                pauseAllVideos()
             }
         } else {
             if(letter == 'e'){
