@@ -20,7 +20,6 @@ const keys = {
         pressed: false
     }
 }
-let stepsFocused = false
 let targetDivFocus = false
 let playing = false
 /**  This has to be here for now because so focus can got o last clicked section. 
@@ -317,11 +316,15 @@ addEventListener('keydown', e => {
             }        
         }
     }     
-    if (letter == 'c' && !stepsFocused) {
-        const mainCode = document.querySelector('#mainCode')
-        if (mainCode) {
-            mainCode.focus()
-            console.log(mainCode)
+    if (letter == 'c') {
+        const mainCodes = document.querySelectorAll('.main-code')
+        if (mainCodes) {
+            mainCodes.forEach(el => {
+                mainCodes[iMainCode].focus()
+                console.log(mainCodes[iMainCode])
+                console.log(mainCodes[iMainCode])
+                iMainCode = (iMainCode + 1 ) % mainCodes.length 
+            })
 
         }
 
@@ -364,46 +367,4 @@ if(nextLesson){
         }
     })
 }
-    stepTxts.forEach(el => {
-        el.addEventListener('focus', e => {
-            removeAllTabIndex()
-            denlargeAllImages()
-            // pauseAllVideos()
-            stepsFocused = true
-        })
-        el.addEventListener('focusout', e => {
-            denlargeAllImages()
-        })
-        el.addEventListener('click', e => {
-            e.preventDefault()
-            denlargeAllImages()
-            toggleImgSize(e)
-            handleVideo(vid)
-            pauseAllVideos()
-
-        })
-        el.addEventListener('keydown', e => {
-            let key = e.keyCode
-            let letter = e.key.toLowerCase()
-            const stepTxt = e.target
-            const as = stepTxt.querySelectorAll('a')
-            const step = getStep(stepTxt.parentElement)
-            const vid = step.querySelector('.step-vid > video')
-            if (vid) {
-                handleVideo(vid, key)
-                videoPlayKeyDown(vid, key, e)
-            }
-            if (key === 13) {
-                addTabIndex(as)
-                handleCopyCodes(e)
-                if (step) {
-                    const img = step.querySelector('.step-img > img')
-                    toggleImgSize(img)
-                }
-            }
-
-            
-
-        })
-    })
 }
