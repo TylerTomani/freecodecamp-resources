@@ -153,7 +153,7 @@ function denlargeAllImages() {
 stepTxts.forEach(el => {    
     el.addEventListener('focus', e => {
         removeAllTabIndex()
-        // denlargeAllImages()
+        denlargeAllImages()
         // pauseAllVideos()
     })
     el.addEventListener('focusout', e => {
@@ -186,14 +186,8 @@ stepTxts.forEach(el => {
                 toggleImgSize(img)
             }
         }
-        if(letter == 'c'){
-            const step = getStep(e.target.parentElement)
-            const mainCode = step.querySelector('.main-code')
-            if(mainCode){
-                mainCode.focus()
-            }
-            
-        }
+        
+        
         
     })    
 })
@@ -301,6 +295,7 @@ addEventListener('keydown', e => {
             if(intLetter > stepTxts.length){
                 nextLesson.focus()
             } else {
+                
                 stepNumFocus(intLetter)
             }
         } else {
@@ -314,12 +309,11 @@ addEventListener('keydown', e => {
         }
     }     
     if (letter == 'c') {
-        const mainCodes = document.querySelectorAll('.main-code')
-        if (mainCodes) {
-            mainCodes.forEach(el => {
-                mainCodes[iMainCode].focus()
-                iMainCode = (iMainCode + 1) % mainCodes.length
-            })
+        if (letter == 'c') {
+            const mainCode = document.querySelector('#mainCode')
+            if (mainCode) {
+                mainCode.focus()
+            }
 
         }
 
@@ -356,6 +350,7 @@ if(nextLesson){
     nextLesson.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if(letter == 'a'){
+            // if(les)
             lastFocusedElement.focus()
         }
         if(letter == 'enter'){   

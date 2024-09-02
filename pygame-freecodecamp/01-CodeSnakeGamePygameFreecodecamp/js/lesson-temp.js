@@ -1,4 +1,5 @@
 import { lastFocusedElement } from "./side-sections-temp.js"
+import { getSectionContainer } from "./side-sections-temp.js"
 import { mainAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
 import { sections } from "./side-sections-temp.js"
@@ -6,9 +7,10 @@ import { showAside } from "./side-sections-temp.js"
 let iSection = 0
 let iMainCode = 0
 let currentSection
+let stepTxts = document.querySelectorAll('.step-txt')
 export function stepTxtListeners(){
 const navbar = document.querySelector('.section-lesson-title')
-const stepTxts = document.querySelectorAll('.step-txt')
+stepTxts = document.querySelectorAll('.step-txt')
 const allImages = document.querySelectorAll(".step-img > img")
 const allVideos = document.querySelectorAll(".step-vid > video")
 const allStepTxtPAs = document.querySelectorAll('.step-txt > p > a')
@@ -39,6 +41,15 @@ AND focus can get to main-code from sections and lessons*/
             if (letter == 'enter') {
                 iSection = [...sections].indexOf(e.target)
                 currentSection = sections[iSection]
+            }
+            if (letter == 'enter') {
+                const sectionContainer = getSectionContainer(e.target.parentElement)
+                const subSection = sectionContainer.querySelector('.sub-section')
+                if (!subSection) {
+                    console.log('jkljd')
+                    targetDiv.focus()
+                    targetDivFocus = true
+                }
             }
             
         })
@@ -295,9 +306,8 @@ addEventListener('keydown', e => {
             if(intLetter > stepTxts.length){
                 nextLesson.focus()
             } else {
-                
-                stepNumFocus(intLetter)
             }
+            stepNumFocus(intLetter)
         } else {
             if(letter == 'e'){
                 if(nextLesson){
@@ -319,9 +329,7 @@ addEventListener('keydown', e => {
 
     }
 });
-function stepNumFocus(intLetter){
-    stepTxts[intLetter - 1].focus()
-}
+
 // The playing variable is asscoiated with img size so it is placed in here
 if(nextLesson){
     nextLesson.addEventListener('focus', e => {
@@ -357,4 +365,7 @@ if(nextLesson){
         }
     })
 }
+}
+export function stepNumFocus(intLetter) {
+    stepTxts[intLetter - 1].focus()
 }
