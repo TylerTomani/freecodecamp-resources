@@ -14,7 +14,6 @@ const nextLesson = document.getElementById('nxtLesson') ? document.getElementByI
 const targetDiv = document.getElementById('targetDiv')
 let targetDivFocus = false
 let playing = false
-
     sections.forEach(el => {
         if(el.hasAttribute('autofocus')){
             iSection = [...sections].indexOf(el)
@@ -30,7 +29,6 @@ let playing = false
             if (letter == 'enter') {
                 iSection = [...sections].indexOf(e.target)
                 currentSection = sections[iSection]
-                console.log(currentSection)
             }
         })
     })
@@ -157,10 +155,10 @@ function handleVideoKeydown(e) {
                 // 
                 if (!playing) {
                     vid.play()
-                    vid.style.border = "2px solid blue"
+                    // vid.style.border = "2px solid blue"
                 } else if (!playing) {
                     vid.pause()
-                    vid.style.border = "1px dotted red"
+                    // vid.style.border = "1px dotted red"
                 }
                 playing = !playing
                 break;
@@ -266,7 +264,6 @@ if(nextLesson){
                 lastFocusedElement.focus()
             }
         } else {
-            console.log(currentSection)
             if(sections[iSection + 1]){
                 sections[iSection + 1].focus()
             } else {

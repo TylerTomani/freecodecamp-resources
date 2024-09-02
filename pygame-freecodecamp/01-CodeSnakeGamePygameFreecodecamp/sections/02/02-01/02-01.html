@@ -28,11 +28,25 @@
         <div tabindex="0" class="step-txt">
             <h4>02</h4>
             <p>
-                If not install it with
+                We use <code class="b">init()</code>, 
+                <code class="g">set_mode</code> to 
+                create the window,
             </p>
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
-xcode-select --install</pre>
+pygame.<span class="b">init()</span>
+surface = pygame.display.<span class="g">set_mode</span>((900,300))
+pygame.display.<span class="gr">flip</span>()</pre>
+            </div>
+            <p>
+                <code class="gr">flip()</code> is needed to display 
+                it <strong>But</strong>
+                 <span class="r">**NOTICE in the Video</span>
+                the screen appears briefly behind vs code and in front of the browser.
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code main-code">
+</pre>
             </div>
             <p>
                 We get an error because it it already installed
