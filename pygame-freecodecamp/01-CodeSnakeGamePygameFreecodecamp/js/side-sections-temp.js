@@ -218,12 +218,12 @@ function navLessons(e,letter){
         
     }
 }
-// function clickLesson(e){
-//     if(currentLesson == e.target){
-//         targetDiv.focus()
-//     }
-//     currentLesson = e.target
-// }
+function clickLesson(e){
+    if(currentLesson == e.target){
+        targetDiv.focus()
+    }
+    currentLesson = e.target
+}
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
         return parent
@@ -250,9 +250,10 @@ lessons.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         e.stopPropagation()
-        // clickLesson(e)
+        clickLesson(e)
         fetchLessonHref(e.target.href)
         currentLesson = e.target
+        
     })
     el.addEventListener('keydown', e => {
         startSection = true
@@ -336,6 +337,8 @@ addEventListener('keydown', e => {
     if(letter == 'a' ){
         if(currentLesson){
             currentLesson.focus()
+        } else {
+            lastFocusedElement.focus()
         }
     }
     if(letter == 's' && !sectionsFocused ){
