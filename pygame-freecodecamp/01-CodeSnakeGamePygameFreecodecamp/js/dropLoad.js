@@ -226,9 +226,7 @@ sections.forEach(el => {
                 currentLesson.focus()
             }
             
-        }
-        
-        
+        }    
     })
     el.addEventListener('focus', e => {
         lastFocusedElement = e.target

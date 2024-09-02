@@ -1,6 +1,9 @@
 *{
-    /* background-color: limegreen; */
+    background-color: bisque;
 }
+.w-100{width: 100% !important;}
+.w-90{width: 90% !important;}
+.w-80{width: 80% !important;}
 header>nav#mainLinksContainer {
     display: flex;
 }
