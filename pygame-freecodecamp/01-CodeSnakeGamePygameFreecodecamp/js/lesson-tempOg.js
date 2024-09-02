@@ -1,6 +1,7 @@
-import { lastFocusedElement } from "./dropLoad.js"
-import { getSubSection } from "./dropLoad.js"
-import { sections } from "./dropLoad.js"
+import { lastFocusedElement } from "./side-sections-temp.js"
+import { mainAside } from "./side-sections-temp.js"
+import { getSubSection } from "./side-sections-temp.js"
+import { sections } from "./side-sections-temp.js"
 let iSection = 0
 let currentSection
 export function stepTxtListeners(){
@@ -61,6 +62,12 @@ navbar.addEventListener('keydown',e =>{
             nextLesson.focus()
         }   
     }
+    if(mainAside.classList.contains('hide')){
+        if(!isNaN(letter)){
+            let intLetter = parseInt(letter)
+            stepNumFocus(intLetter)
+        }  
+    }
 })
 function getStep(parent) {
     if (parent.classList.contains('step') || parent.classList.contains('step-col')) {
@@ -79,6 +86,10 @@ function handleCopyCodes(e) {
 }
 allStepTxtPAs.forEach(el => {
     el.addEventListener('focus', () => {
+        denlargeAllImages()
+        denlargeAllImages()
+    })
+    el.addEventListener('focusin', () => {
         denlargeAllImages()
     })
     el.addEventListener('click', e => {
@@ -145,7 +156,7 @@ stepTxts.forEach(el => {
         e.preventDefault()
         denlargeAllImages()
         toggleImgSize(e)
-        toggleVideoSize(vid, key, e)
+        // handleVideo(vid)
         // toggleVideoSizeKeydown(e)
         
     })
@@ -157,8 +168,8 @@ stepTxts.forEach(el => {
         const step = getStep(stepTxt.parentElement)
         const vid = step.querySelector('.step-vid > video')
         if (vid) {
-            toggleVideoSize(vid, key, e)
-            handleVideo(vid, key, e)
+            handleVideo(vid, key)
+            videoPlayKeyDown(vid, key, e)
         }
         if(key === 13){
             addTabIndex(as)
@@ -180,22 +191,42 @@ stepTxts.forEach(el => {
     })    
 })
 // video handling
-function toggleVideoSize(vid,key,e){
+    addEventListener('click', e => {
+        console.log(e.target)
+    })
+allVideos.forEach(el => {
+    addEventListener('click', e => {
+        e.preventDefault()
+        let vid = e.target
+        toggleVideoSize(vid)
+        videoPlayClick(vid)
+        // console.log(e.target)
+    })
+})
+function videoPlayClick(vid) {
+    console.log(vid)
+    console.log(playing)
+    // playing = !playing
+    playPause(vid)
+}
+function handleVideo(vid,key){
     if(key == 13){
-        // console.log(vid)
-        if (!vid.classList.contains('enlarge-vid')) {
-            vid.classList.add('enlarge-vid')
-            vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-            playing = true
-            // console.log(key)
-        } else {
-            vid.classList.remove('enlarge-vid')
-            playing = false
-        }
-
+        // denlargeAllImages()
+        toggleVideoSize(vid)
     }
 }
-function handleVideo(vid,key,e){
+function toggleVideoSize(vid){
+    if (!vid.classList.contains('enlarge-vid')) {
+        vid.classList.add('enlarge-vid')
+        vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+        playing = true
+        // console.log(key)
+    } else {
+        vid.classList.remove('enlarge-vid')
+        playing = false
+    }
+}
+function videoPlayKeyDown(vid,key,e){
     if (key == 32) {
         e.preventDefault()
         playing = !playing
@@ -212,6 +243,9 @@ function handleVideo(vid,key,e){
             vid.pause()
         }
     }
+    playPause(vid)
+}
+function playPause(vid){
     if (playing) {
         vid.play()
         vid.style.border = '1px solid green'
@@ -231,7 +265,6 @@ function pauseAllVideos(){
         el.pause()
     })
 }
-
 // Numpad focus to invidiual steps txt focus
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase()
@@ -239,6 +272,7 @@ addEventListener('keyup', e => {
         keys.meta.pressed = true        
     }
 })
+
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
@@ -252,7 +286,9 @@ addEventListener('keydown', e => {
             if(intLetter > stepTxts.length){
                 nextLesson.focus()
             } else {
-                stepTxts[intLetter - 1].focus()
+                stepNumFocus(intLetter)
+                denlargeAllImages()
+                pauseAllVideos()
             }
         } else {
             if(letter == 'e'){
@@ -263,10 +299,11 @@ addEventListener('keydown', e => {
                 }
             }        
         }
-    } 
-    
-    
+    }     
 });
+function stepNumFocus(intLetter){
+    stepTxts[intLetter - 1].focus()
+}
 // The playing variable is asscoiated with img size so it is placed in here
 if(nextLesson){
     nextLesson.addEventListener('focus', e => {
