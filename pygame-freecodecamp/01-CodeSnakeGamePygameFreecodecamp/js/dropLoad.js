@@ -263,11 +263,11 @@ function navSections(e,letter){
             iSection = (iSection + 1) % sections.length
     
         } else if (keys.shift.pressed && letter == 's'){
-            // if(iSection > 0 ){
-            //     iSection -= 1
-            // } else if(iSection <= 0){
-            //     iSection = sections.length -1
-            // }
+            if(iSection > 0 ){
+                iSection -= 1
+            } else if(iSection <= 0){
+                iSection = sections.length -1
+            }
         }
     }
     sections[iSection].focus()   
@@ -346,9 +346,9 @@ addEventListener('keydown', e => {
         }
     }
     if(sectionsFocused && !targetDivFocused){
-        navSections(e,letter)}
+        // navSections(e,letter)}
     if(lessonsFocused){
-        navLessons(e,letter)
+        // navLessons(e,letter)
     }
     switch(letter){     
         case 'a':
