@@ -190,7 +190,7 @@ lessons.forEach(el => {
 
     })
     el.addEventListener('focus', e => {
-        // currentLesson = ''
+        currentLesson = ''
         lastFocusedElement = e.target
         sectionsFocused = false
         lessonsFocused = true
@@ -333,9 +333,7 @@ addEventListener('keydown', e => {
     if(letter == 's' && !sectionsFocused ){
         lastFocusedElement.focus()
     }
-    if(letter == 'shift'){
-        // keys.shift.pressed = true
-    }
+    if(letter == 'shift'){keys.shift.pressed = true}
     // Controls Section Selection with numbers on keyboard
     if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
         let intLetter = parseInt(letter)
@@ -346,9 +344,9 @@ addEventListener('keydown', e => {
         }
     }
     if(sectionsFocused && !targetDivFocused){
-        // navSections(e,letter)}
+        navSections(e,letter)}
     if(lessonsFocused){
-        // navLessons(e,letter)
+        navLessons(e,letter)
     }
     switch(letter){     
         case 'a':
