@@ -1,0 +1,50 @@
+
+<div class="steps-container">
+    <h3>03 - Draw Player & Movment</h3>
+    <!-- 01 -->
+    <div class="step-col">
+        <div tabindex="0" class="step-txt">
+            <h4>01</h4>
+            <h5>Open & Close window surface</h5>
+            <div class="code-container">
+                <pre tabindex="0" id="mainCode" class="copy-code ">
+import pygame 
+from pygame.locals import *
+
+if __name__ == "__main__":
+    pygame.init()
+    surface = pygame.display.set_mode((800,400))
+    pygame.display.flip()
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                print(event.key)
+                if <span class="m-fix">event</span>.<span class="y-fix">key</span> == K_ESCAPE:
+                    running = False
+            if event.type == QUIT:
+                running = False
+
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <!-- <img src="sections/01/images/01.png"> -->
+        </div>
+    </div>
+    <div class="step-col w-90">
+        <div tabindex="0" class="step-txt w-100">
+            <h4>02</h4>
+            <p>
+                This sections goes over
+            </p>
+            <ul>
+                <li><code>pygame.init()</code></li>
+                <li><code>surface = pygame.display.set_mode((width,height))</code></li>
+            </ul>
+        </div>
+        
+    </div>        
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>

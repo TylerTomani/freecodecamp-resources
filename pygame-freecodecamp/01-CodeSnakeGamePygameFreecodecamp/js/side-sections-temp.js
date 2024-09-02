@@ -124,9 +124,9 @@ navBar.addEventListener('keydown', e => {
         }
     }
     if(letter == 's' ){
-            lastFocusedElement.focus()
-            iSection -= 1
-        }    
+        lastFocusedElement.focus()
+        iSection -= 1
+    }    
     
 })
 export function showAside(){

@@ -9,7 +9,7 @@ const programShorcutsLink = document.getElementById('programShorcuts')
 export const navBar = document.querySelector('.section-lesson-title')
 const allEls = document.querySelectorAll('body *')
 export const sections = document.querySelectorAll('.section')
-const mainAside = document.querySelector('main > aside')
+export const mainAside = document.querySelector('main > aside')
 const sectionTitle = document.getElementById('section-title')
 const lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
@@ -124,12 +124,12 @@ navBar.addEventListener('keydown', e => {
         }
     }
     if(letter == 's' ){
-            lastFocusedElement.focus()
-            iSection -= 1
-        }    
+        lastFocusedElement.focus()
+        iSection -= 1
+    }    
     
 })
-function showAside(){
+export function showAside(){
     if(mainAside.classList.contains('hide')){
         mainAside.classList.remove('hide')
     }
@@ -227,9 +227,10 @@ sections.forEach(el => {
         if(letter == 'a'){
             if(currentLesson){
                 currentLesson.focus()
-            }
-            
+            } 
         }    
+        
+        
     })
     el.addEventListener('focus', e => {
         lastFocusedElement = e.target
@@ -239,6 +240,7 @@ sections.forEach(el => {
         iSection = [...sections].indexOf(e.target)
     })
 })
+
 
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase()
@@ -345,9 +347,13 @@ addEventListener('keydown', e => {
             scrollTo(0,0)
             mainAside.focus()
             break        
+        case 'c':
+            
+            break        
         case 'm':
             scrollTo(0,0)
             targetDiv.focus()
+            targetDivFocused = true
             break        
         case 'n':
             navBar.focus()
