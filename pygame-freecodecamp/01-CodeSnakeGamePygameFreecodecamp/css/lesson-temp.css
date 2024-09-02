@@ -70,16 +70,17 @@ body {padding-bottom: 5%;}
 .step>.step-vid {
     display: flex;
     justify-content: center;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
 }
-.step>.step-img>img,
-.step>.step-vid>video {
+.step>.step-img>img{
     width: 80%;
     min-height: 150px;
     max-height: 250px;
 }
 .step>.step-vid>video {
     border: 2px solid blue;
+    height: 100%;
+    width: 100%;
 }
 .step-txt:active,
 .step-txt:focus {box-shadow: 0 0 3px 3px lightseagreen;}

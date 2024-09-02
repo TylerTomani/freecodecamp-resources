@@ -14,7 +14,8 @@ const nextLesson = document.getElementById('nxtLesson') ? document.getElementByI
 const targetDiv = document.getElementById('targetDiv')
 let targetDivFocus = false
 let playing = false
-
+let videoCurrentPlay
+// This has to be here for now because of going to last clicked section
     sections.forEach(el => {
         if(el.hasAttribute('autofocus')){
             iSection = [...sections].indexOf(el)
@@ -30,10 +31,10 @@ let playing = false
             if (letter == 'enter') {
                 iSection = [...sections].indexOf(e.target)
                 currentSection = sections[iSection]
-                console.log(currentSection)
             }
         })
     })
+targetDiv.addEventListener('focus', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusout', e => {
     targetDivFocus = false
@@ -95,117 +96,31 @@ function removeAllTabIndex(){
 // image handling
 allImages.forEach(el => {
     el.addEventListener('click', e => {
-        toggleImgSize(e)
+        toggleImgSize(e.target)
     })
 })
-function denlargeAllImages() {
-    allVideos.forEach(el => {
-        if (el.classList.contains('enlarge-vid')) {
-            el.classList.remove('enlarge-vid')
-            playing = false
-            el.pause()
+function toggleImgSize(img) {
+    if (img) {
+        if (!img.classList.contains('enlarge')) {
+            img.classList.add('enlarge')
+            img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+        } else {
+            img.classList.remove('enlarge')
         }
-    })
+    }
+
+}
+/** Go BACK and ADD video denlarge here!!!! */
+function denlargeAllImages() {
     allImages.forEach(el => {
         if (el.classList.contains('enlarge')) {
             el.classList.remove('enlarge')
         }
     })
 }
-// image and video handle size
-function toggleImgSize(e) {
-    const step = getStep(e.target)
-    if (step) {
-        const img = step.querySelector('.step-img > img') ? step.querySelector('.step-img > img') : step.querySelector('.step-vid > video')
-        if (img && img.tagName == 'VIDEO') {
-            if (!img.classList.contains('enlarge-vid')) {
-                img.classList.add('enlarge-vid')
-                img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-            } else {
-                img.classList.remove('enlarge-vid')
-            }
-        } else {
-            if (img) {
-
-                if (!img.classList.contains('enlarge')) {
-                    img.classList.add('enlarge')
-                    img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-                } else {
-                    img.classList.remove('enlarge')
-                }
-            }
-        }
-
-    }
-}
-// video handling
-allVideos.forEach(el => {
-    el.addEventListener('click', e => {
-        e.preventDefault()
-        toggleImgSize(e)
-        handleVideoKeydown(e)
-    })
-})
-function handleVideoKeydown(e) {
-    let key = e.keyCode
-    const step = getStep(e.target.parentElement)
-    const vid = step.querySelector('.step-vid > video')
-    if (vid) {
-        switch (key) {
-            case 32:
-                e.preventDefault()
-                // 
-                if (!playing) {
-                    vid.play()
-                    vid.style.border = "2px solid blue"
-                } else if (!playing) {
-                    vid.pause()
-                    vid.style.border = "1px dotted red"
-                }
-                playing = !playing
-                break;
-            case 37:
-                if (vid.currentTime > 0) {
-                    vid.currentTime = vid.currentTime - 1
-                }
-                if (vid.currentTime < vid.duration) {
-                    vid.style.border = '2px solid blue'
-                }
-                break
-            case 39:
-                vid.currentTime = vid.currentTime + 2
-                if (vid.currentTime >= vid.duration) {
-                    vid.style.border = '14px solid red'
-                    vid.pause()
-                    vid.currentTime = vid.duration()
-                }
-                break
-            default:
-                playing = !playing
-        }
-        if (playing) {
-            vid.play()
-            vid.style.border = "1px solid blue"
-        } else if (!playing) {
-            vid.pause()
-            vid.style.border = "1px dotted red"
-        }
-    }
-}
-function pauseAllVideo() {
-    allVideos.forEach(el => {
-        el.pause()
-    })
-}
-
 stepTxts.forEach(el => {    
-    el.addEventListener('focus', e => {
-        pauseAllVideo()
-        removeAllTabIndex()
-    })
-    el.addEventListener('focusout', e => {
-        denlargeAllImages()
-    })
+    el.addEventListener('focus', e => {removeAllTabIndex()})
+    el.addEventListener('focusout', e => {denlargeAllImages()})
     el.addEventListener('click', e => {
         e.preventDefault()
         // toggleImgSize(e)
@@ -217,11 +132,18 @@ stepTxts.forEach(el => {
         let letter = e.key.toLowerCase()
         const stepTxt = e.target
         const as = stepTxt.querySelectorAll('a')
-        handleVideoKeydown(e)
+        const step = getStep(stepTxt.parentElement)
+        const vid = step.querySelector('.step-vid > video')
+        if (vid) {
+            handleVideo(vid, key, e)
+        }
         if(key === 13){
             addTabIndex(as)
             handleCopyCodes(e)
-            toggleImgSize(e)
+            if(step){
+                const img = step.querySelector('.step-img > img')
+                toggleImgSize(img)
+            }
         }
         if(letter == 'c'){
             const step = getStep(e.target.parentElement)
@@ -234,10 +156,64 @@ stepTxts.forEach(el => {
         
     })    
 })
+// video handling
+function handleVideo(vid,key,e){
+    if(key == 13){
+        console.log(vid)
+        if (!vid.classList.contains('enlarge-vid')) {
+            vid.classList.add('enlarge-vid')
+            vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+            
+            playing = true
+            console.log(key)
+        } else {
+            vid.classList.remove('enlarge-vid')
+            playing = false
+        }
+
+    }
+    
+    if(key == 32){
+        e.preventDefault()
+        playing = !playing
+    }
+    console.log(key)
+    if(key == 37){
+        e.preventDefault()
+        vid.currentTime -= 2
+    }
+    if(key == 39){
+        e.preventDefault()
+        if(vid.currentTime < vid.duration){
+            vid.currentTime += 2
+        } else {
+            vid.pause()
+        }
+    }
+    
+    
+    
+    
+    if(playing){
+        vid.play()
+        vid.style.border = '1px solid green'
+    } else {
+        vid.style.border = '1px solid blue'
+        vid.pause()
+    }
+    if (vid.currentTime == vid.duration) {
+        vid.style.border = '2px solid red'
+        playing = false
+        vid.pause()
+    }
+    
+}
+
 // Numpad focus to invidiual steps txt focus
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
+    
     if(targetDivFocus){
         if(!isNaN(letter) && key != 32 ){
             let intLetter = parseInt(letter)
@@ -256,13 +232,13 @@ addEventListener('keydown', e => {
             }        
         }
     } 
+    
+    
 });
 // The playing variable is asscoiated with img size so it is placed in here
-
 if(nextLesson){
     nextLesson.addEventListener('focus', e => {
         removeAllTabIndex()
-        pauseAllVideo()
     })
     nextLesson.addEventListener('click', e => {
         const subSection = getSubSection(lastFocusedElement)
@@ -293,6 +269,4 @@ if(nextLesson){
         }
     })
 }
-
-
 }
