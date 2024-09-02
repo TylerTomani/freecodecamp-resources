@@ -13,11 +13,19 @@ let iSection = 0
 let sectionsFocused = true
 let lessonsFocused = false
 let started = false
+const keys = {
+    shift :{
+        pressed: false
+    }
+}
 sections.forEach(el => {
     el.addEventListener('focus', e =>{
         sectionsFocused = true
         lessonsFocused = false
-        iSection = [...sections].indexOf(el)
+        if(!keys.shift.pressed){
+            iSection = [...sections].indexOf(el)
+
+        }
     })
     el.addEventListener('click', e =>{
         e.preventDefault()
@@ -34,10 +42,23 @@ lessons.forEach(el => {
         e.stopPropagation()
     })
 })
+addEventListener('keyup', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'shift'){
+        keys.shift.pressed = false
+    }
+})
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     started = true
-    console.log(iSection)
+    // console.log(iSection)
+    
+    if(letter == 'shift'){
+        keys.shift.pressed = true
+        
+    }
+    console.log(keys.shift.pressed)
+    
     if(!lessonsFocused){
         if(letter == 's'){
             navSections(e,letter)
@@ -46,8 +67,15 @@ addEventListener('keydown', e => {
     }
 });
 function navSections(e,letter){
+    console.log(iSection)
+    if(!keys.shift.pressed){
+        sections[iSection].focus()
+        iSection = (iSection  + 1) % sections.length
+    } else {
+        iSection = (iSection - 1 + sections.length ) % sections.length;            
+
+    }
     sections[iSection].focus()
-    iSection = (iSection  + 1) % sections.length
     
 }
 function mainFocusElements(letter){
