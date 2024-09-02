@@ -70,10 +70,11 @@ body {padding-bottom: 5%;}
 .step>.step-vid {
     display: flex;
     justify-content: center;
+    border: 2px solid blue;
 }
 .step>.step-img>img,
 .step>.step-vid>video {
-    /* width: 80%; */
+    width: 80%;
     min-height: 150px;
     max-height: 250px;
 }

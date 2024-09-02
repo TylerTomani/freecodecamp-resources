@@ -1,3 +1,6 @@
+*{
+    background-color: orange;
+}
 header>nav#mainLinksContainer {
     display: flex;
 }
