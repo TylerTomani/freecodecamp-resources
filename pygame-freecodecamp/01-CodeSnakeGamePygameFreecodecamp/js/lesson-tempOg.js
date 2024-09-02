@@ -127,17 +127,25 @@ function denlargeAllImages() {
         allVideos.forEach(el => {
             if (el.classList.contains('enlarge-vid')) {
                 el.classList.remove('enlarge-vid')
-                el.pause()
+                // el.pause()
             }
         })
     }
 }
 stepTxts.forEach(el => {    
-    el.addEventListener('focus', e => {removeAllTabIndex()})
-    el.addEventListener('focusout', e => {denlargeAllImages()})
+    el.addEventListener('focus', e => {
+        removeAllTabIndex()
+        denlargeAllImages()
+        pauseAllVideos()
+    })
+    el.addEventListener('focusout', e => {
+        denlargeAllImages()
+    })
     el.addEventListener('click', e => {
         e.preventDefault()
-        // toggleImgSize(e)
+        denlargeAllImages()
+        toggleImgSize(e)
+        toggleVideoSize(vid, key, e)
         // toggleVideoSizeKeydown(e)
         
     })
@@ -174,12 +182,12 @@ stepTxts.forEach(el => {
 // video handling
 function toggleVideoSize(vid,key,e){
     if(key == 13){
-        console.log(vid)
+        // console.log(vid)
         if (!vid.classList.contains('enlarge-vid')) {
             vid.classList.add('enlarge-vid')
             vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             playing = true
-            console.log(key)
+            // console.log(key)
         } else {
             vid.classList.remove('enlarge-vid')
             playing = false
@@ -214,8 +222,14 @@ function handleVideo(vid,key,e){
     if (vid.currentTime == vid.duration) {
         vid.style.border = '2px solid red'
         playing = false
-        vid.pause()
+        // vid.pause()
+        pauseAllVideos()
     }
+}
+function pauseAllVideos(){
+    allVideos.forEach(el => {
+        el.pause()
+    })
 }
 
 // Numpad focus to invidiual steps txt focus
