@@ -334,7 +334,7 @@ addEventListener('keydown', e => {
         lastFocusedElement.focus()
     }
     if(letter == 'shift'){
-        keys.shift.pressed = true
+        // keys.shift.pressed = true
     }
     // Controls Section Selection with numbers on keyboard
     if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
