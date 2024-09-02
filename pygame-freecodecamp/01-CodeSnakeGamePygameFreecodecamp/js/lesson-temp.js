@@ -12,6 +12,11 @@ const allStepTxtPAs = document.querySelectorAll('.step-txt > p > a')
 const copyCodes = document.querySelectorAll('.step-txt > .code-container > .copy-code')
 const nextLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
 const targetDiv = document.getElementById('targetDiv')
+    const keys = {
+        meta: {
+            pressed: false
+        }
+    }
 let targetDivFocus = false
 let playing = false
 let videoCurrentPlay
@@ -39,6 +44,7 @@ targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
 targetDiv.addEventListener('focusout', e => {
     targetDivFocus = false
     denlargeAllImages()    
+
 })
 targetDiv.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
@@ -112,18 +118,34 @@ function toggleImgSize(img) {
 }
 /** Go BACK and ADD video denlarge here!!!! */
 function denlargeAllImages() {
-    allImages.forEach(el => {
-        if (el.classList.contains('enlarge')) {
-            el.classList.remove('enlarge')
-        }
-    })
+    if(!keys.meta.pressed){
+        allImages.forEach(el => {
+            if (el.classList.contains('enlarge')) {
+                el.classList.remove('enlarge')
+            }
+        })
+        allVideos.forEach(el => {
+            if (el.classList.contains('enlarge-vid')) {
+                el.classList.remove('enlarge-vid')
+                // el.pause()
+            }
+        })
+    }
 }
 stepTxts.forEach(el => {    
-    el.addEventListener('focus', e => {removeAllTabIndex()})
-    el.addEventListener('focusout', e => {denlargeAllImages()})
+    el.addEventListener('focus', e => {
+        removeAllTabIndex()
+        denlargeAllImages()
+        pauseAllVideos()
+    })
+    el.addEventListener('focusout', e => {
+        denlargeAllImages()
+    })
     el.addEventListener('click', e => {
         e.preventDefault()
-        // toggleImgSize(e)
+        denlargeAllImages()
+        toggleImgSize(e)
+        toggleVideoSize(vid, key, e)
         // toggleVideoSizeKeydown(e)
         
     })
@@ -160,12 +182,12 @@ stepTxts.forEach(el => {
 // video handling
 function toggleVideoSize(vid,key,e){
     if(key == 13){
-        console.log(vid)
+        // console.log(vid)
         if (!vid.classList.contains('enlarge-vid')) {
             vid.classList.add('enlarge-vid')
             vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             playing = true
-            console.log(key)
+            // console.log(key)
         } else {
             vid.classList.remove('enlarge-vid')
             playing = false
@@ -203,12 +225,26 @@ function handleVideo(vid,key,e){
         vid.pause()
     }
 }
+function pauseAllVideos(){
+    allVideos.forEach(el => {
+        el.pause()
+    })
+}
 
 // Numpad focus to invidiual steps txt focus
+addEventListener('keyup', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'meta'){
+        keys.meta.pressed = true        
+    }
+})
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
-    
+    if(letter == 'meta'){
+        keys.meta.pressed = true        
+    }
+        
     if(targetDivFocus){
         if(!isNaN(letter) && key != 32 ){
             let intLetter = parseInt(letter)
