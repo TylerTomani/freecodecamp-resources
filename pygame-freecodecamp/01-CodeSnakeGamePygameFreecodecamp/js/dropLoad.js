@@ -197,7 +197,6 @@
 //     })
 // })
 // sections.forEach(el => {
-    
 //     el.addEventListener('click', e => {
 //         e.preventDefault()
 //         e.stopPropagation()

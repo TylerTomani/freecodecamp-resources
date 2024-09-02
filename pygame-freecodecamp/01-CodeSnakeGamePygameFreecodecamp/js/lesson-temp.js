@@ -15,24 +15,24 @@
 // let targetDivFocus = false
 // let playing = false
 
-//     sections.forEach(el => {
-//         if(el.hasAttribute('autofocus')){
-//             iSection = [...sections].indexOf(el)
-//             currentSection = sections[iSection]
-//         }
-//         el.addEventListener('click', e => {
-//             e.preventDefault()
-//             iSection = [...sections].indexOf(e.target)
-//             currentSection = sections[iSection]
-//         })
-//         el.addEventListener('keydown', e => {
-//             let letter = e.key.toLowerCase()
-//             if (letter == 'enter') {
-//                 iSection = [...sections].indexOf(e.target)
-//                 currentSection = sections[iSection]
-//             }
-//         })
-//     })
+//     // sections.forEach(el => {
+//     //     if(el.hasAttribute('autofocus')){
+//     //         iSection = [...sections].indexOf(el)
+//     //         currentSection = sections[iSection]
+//     //     }
+//     //     el.addEventListener('click', e => {
+//     //         e.preventDefault()
+//     //         iSection = [...sections].indexOf(e.target)
+//     //         currentSection = sections[iSection]
+//     //     })
+//     //     el.addEventListener('keydown', e => {
+//     //         let letter = e.key.toLowerCase()
+//     //         if (letter == 'enter') {
+//     //             iSection = [...sections].indexOf(e.target)
+//     //             currentSection = sections[iSection]
+//     //         }
+//     //     })
+//     // })
 // targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
 // targetDiv.addEventListener('focusout', e => {
 //     targetDivFocus = false
