@@ -8,8 +8,8 @@ const regexCmdsLink = document.getElementById('regexCmds')
 const programShorcutsLink = document.getElementById('programShorcuts')
 export const navBar = document.querySelector('.section-lesson-title')
 const allEls = document.querySelectorAll('body *')
-const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
+const mainAside = document.querySelector('main > aside')
 const sectionTitle = document.getElementById('section-title')
 const lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
@@ -81,7 +81,6 @@ function toggleSubSections(e){
         }
     }
 }
-
 mainAside.addEventListener('focus', e => {
     targetDivFocused = false
     sectionsFocused = false
@@ -160,6 +159,8 @@ targetDiv.addEventListener('keydown', e => {
 lessons.forEach(el => {
     if (el.hasAttribute('autofocus')) {
         lessonsFocused = true
+        currentLesson = el
+        console.log(currentLesson)
     }
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -180,7 +181,11 @@ lessons.forEach(el => {
 
             }
         }
-        currentLesson = e.target
+        if(letter == 'enter'){
+            // currentLesson = e.target
+            
+        }
+        
 
     })
     el.addEventListener('focus', e => {
@@ -192,7 +197,6 @@ lessons.forEach(el => {
     })
 })
 sections.forEach(el => {
-    
     el.addEventListener('click', e => {
         e.preventDefault()
         e.stopPropagation()
@@ -217,18 +221,15 @@ sections.forEach(el => {
             
         }
         if(letter == 'a'){
+            console.log(currentLesson)
             if(currentLesson){
-                console.log(currentLesson)
                 currentLesson.focus()
             }
             
-        }
-        
-        
+        }    
     })
     el.addEventListener('focus', e => {
         lastFocusedElement = e.target
-        
         targetDivFocused = false
         sectionsFocused = true
         lessonsFocused = false

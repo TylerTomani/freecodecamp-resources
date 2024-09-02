@@ -160,7 +160,6 @@ lessons.forEach(el => {
     if (el.hasAttribute('autofocus')) {
         lessonsFocused = true
         currentLesson = el
-        console.log(currentLesson)
     }
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -221,7 +220,6 @@ sections.forEach(el => {
             
         }
         if(letter == 'a'){
-            console.log(currentLesson)
             if(currentLesson){
                 currentLesson.focus()
             }
@@ -320,9 +318,6 @@ addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()    
     if(letter == 'a' ){
         if(currentLesson){
-            console.log('a')
-            console.log(currentLesson)
-
             currentLesson.focus()
         }
     }

@@ -214,6 +214,7 @@ stepTxts.forEach(el => {
     })
     el.addEventListener('keydown', e => {
         let key = e.keyCode
+        let letter = e.key.toLowerCase()
         const stepTxt = e.target
         const as = stepTxt.querySelectorAll('a')
         handleVideoKeydown(e)
@@ -222,6 +223,15 @@ stepTxts.forEach(el => {
             handleCopyCodes(e)
             toggleImgSize(e)
         }
+        if(letter == 'c'){
+            const step = getStep(e.target.parentElement)
+            const mainCode = step.querySelector('.main-code')
+            if(mainCode){
+                mainCode.focus()
+            }
+            
+        }
+        
     })    
 })
 // Numpad focus to invidiual steps txt focus
