@@ -1,5 +1,5 @@
 *{
-    /* background-color: gainsboro; */
+    background-color: lightblue;
     box-sizing: border-box;
 }
 main>aside {
@@ -243,21 +243,13 @@ nav:active,nav:focus{
 } */
 
 @media screen and (max-width: 500px) {
-    body{
-        
-        /* background-color: aqua; */
-        /* width: fit-content; */
-    }
     main>aside {
-        width: 25%;
-        flex-basis: 25%;
-        padding-left: 1.5%;
-        border-bottom: 1px solid black
-    }
-
-    #targetDiv {
-        width: 69%;
-        flex-basis: 69%;
-        width: 100vw;
-    }
+            width: 31%;
+            padding-left: 1.5%;
+            border-bottom: 1px solid black
+        }
+    
+        #targetDiv {
+            width: 100vw;
+        }
 }
