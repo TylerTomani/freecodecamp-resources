@@ -244,8 +244,7 @@ nav:active,nav:focus{
 
 @media screen and (max-width: 500px) {
     body{
-        
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
         /* width: fit-content; */
     }
     main>aside {

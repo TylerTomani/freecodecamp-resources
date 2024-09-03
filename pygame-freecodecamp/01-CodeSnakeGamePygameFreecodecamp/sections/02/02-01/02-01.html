@@ -1,20 +1,19 @@
 
 <div class="steps-container">
-    <h3>02-01 - Create Window</h3>
-    
+    <h3>02-01 - Create Window</h3>    
     <!-- 01 -->
     <div class="step-col ">
         <div class="step">
             <div tabindex="0" class="step-txt">
                 <h4>01</h4>
                 <p>
-                    We use <code class="b">init()</code>, 
+                    We use <code class="b-fix">init()</code>, 
                     <code class="g">set_mode</code> to 
                     create the window,
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code">
-pygame.<span class="b">init()</span>
+pygame.<span class="b-fix">init()</span>
 surface = pygame.display.<span class="g">set_mode</span>((900,300))
 pygame.display.<span class="gr">flip</span>()</pre>
                 </div>
@@ -32,14 +31,16 @@ pygame.display.<span class="gr">flip</span>()</pre>
             <div class="step-txt-in">
                 <p>
                     <span class="r">**NOTICE in the Video</span>
-                    the screen appears briefly behind vs code and in front of the browser.
+                    the screen appears briefly behind vs code and in front of the browser,
+                    <span class="r">AND MAKE SURE</span> python 3.10.9 interpreter is selected,
+                    (Install pygame in venv) if not working from default
                 </p>
                 <div class="code-container">
-                    <pre tabindex="0" class="copy-code main-code">
+                    <pre tabindex="0" class="copy-code" id="mainCode">
 import pygame
 
 if __name__ == '__main__':
-    pygame.<span class="b">init()</span>
+    pygame.<span class="b-fix">init()</span>
     surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
     pygame.display.flip()</pre>
                 </div>
@@ -71,7 +72,7 @@ if __name__ == '__main__':
 import pygame
 
 if __name__ == '__main__':
-    pygame.<span class="b">init()</span>
+    pygame.<span class="b-fix">init()</span>
     surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
     pygame.display.flip()</pre>
                 </div>

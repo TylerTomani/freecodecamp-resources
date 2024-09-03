@@ -20,9 +20,10 @@ const keys = {
         pressed: false
     }
 }
-let  iSection,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
+let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
 function setLetVariables(){
     iSection = 0
+    iLesson = 0
     currentSection
     intLetter = 0
     sectionsFocused = false
@@ -268,8 +269,8 @@ function navLessons(e, letter) {
     if (sectionContainer) {
         const section = sectionContainer.querySelector('.section')
         const subSection = getSubSection(e.target.parentElement)
+        const lessons = subSection.querySelectorAll('li > a')
         if (subSection) {
-            const lessons = subSection.querySelectorAll('li > a')
             if (letter == 's') {
                 section.focus()
             }
@@ -279,6 +280,10 @@ function navLessons(e, letter) {
                     lastFocusedElement = lessons[intLetter - 1]
                     lastFocusedElement.focus()
                 }
+            }
+            if(letter == 'a'){
+                iLesson = (iLesson + 1) % lessons.length
+                lessons[iLesson].focus()
             }
         }
     }
