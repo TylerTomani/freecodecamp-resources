@@ -1,9 +1,9 @@
 
 <div class="steps-container">
-    <h3>02-01 - Create Window</h3>
-    
+    <h4>03-01 - Draw Player</h4>
+    <h5>import image</h5>
     <!-- 01-->
-    <!-- <div class="step">
+    <div class="step">
         <div tabindex="0" class="step-txt">
             <h4>01</h4>
             <p>
@@ -15,27 +15,24 @@
             </p>
         </div>
         <div class="step-img">
-            <img src="sections/">
+            <img src="sections/03/03-01/images/01.png">
         </div>
-    </div> -->
+    </div>
     <!-- 02-->
     <div class="step-col ">
         <div class="step">
             <div tabindex="0" class="step-txt">
                 <h4>02</h4>
                 <p>
-
+                    import the image into the <code class="m-fix">block</code>
+                    variable, and use the <span class="o-fix">blit()</span> method to draw it on 
+                    the surface. 
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code">
-pygame.<span class="b">init()</span>
-surface = pygame.display.<span class="g">set_mode</span>((900,300))
-pygame.display.<span class="gr">flip</span>()</pre>
+<span class="b-fix">block</span> = pygame.image.load
                 </div>
-                <p>
-                    <code class="gr">flip()</code> is needed to display 
-                    it <strong>But</strong>
-                </p>
+                
             </div>
             <div class="step-vid">
                 <video poster="sections/02/02-01/images/01-thumb.png" 
@@ -45,8 +42,12 @@ pygame.display.<span class="gr">flip</span>()</pre>
         <div class="step-col-in">
             <div class="step-txt-in">
                 <p>
-                    <span class="r">**NOTICE in the Video</span>
-                    the screen appears briefly behind vs code and in front of the browser.
+                    Documentation for <code class="m">pygame.image.load()</code>
+                    is here
+                    <a target="_blank"
+                        href="https://www.pygame.org/docs/ref/image.html?highlight=frombuffer#:~:text=pygame.image.load-,load%20new%20image%20from%20a%20file%20(or%20file%2Dlike%20object),-pygame.image.save">
+                        https://www.pygame.org/docs/ref/image.html?highlight=frombuffer
+                    </a>
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code">

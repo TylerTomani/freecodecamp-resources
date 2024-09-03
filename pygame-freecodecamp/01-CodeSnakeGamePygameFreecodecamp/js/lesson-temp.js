@@ -24,22 +24,6 @@ export function stepTxtListeners(){
     }
     let targetDivFocus = false
     let playing = false
-    
-    targetDiv.addEventListener('focus', e => {targetDivFocus = true})
-    targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
-    targetDiv.addEventListener('focusout', e => {
-        targetDivFocus = false
-        denlargeAllImages()    
-
-    })
-    targetDiv.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        if(letter == 'e'){
-            if(nextLesson){
-                nextLesson.focus()
-            }
-        }  
-    })
     navbar.addEventListener('keydown',e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'e'){
@@ -257,8 +241,21 @@ export function stepTxtListeners(){
         }
     })
 
-    addEventListener('keydown', e => {
+    targetDiv.addEventListener('focus', e => { targetDivFocus = true })
+    targetDiv.addEventListener('focusin', e => { targetDivFocus = true })
+    targetDiv.addEventListener('focusout', e => {
+        targetDivFocus = false
+        denlargeAllImages()
+
+    })
+    targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        if (letter == 'e') {
+            if (nextLesson) {
+                nextLesson.focus()
+            }
+        }
+    
         let key = e.keyCode
         if(letter == 'meta'){
             keys.meta.pressed = true        
