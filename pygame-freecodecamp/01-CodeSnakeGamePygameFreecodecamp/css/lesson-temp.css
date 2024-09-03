@@ -115,6 +115,7 @@ body {padding-bottom: 5%;}
 
 .code-container {
     width: 98%;
+    
     border: 1px solid black;
     align-self: center;
 }
@@ -126,7 +127,7 @@ body {padding-bottom: 5%;}
 
 }
 .copy-code {
-    font-size: .6rem;
+    font-size: .68rem;
     padding-left: 2.5%;
     overflow-x: scroll;
     padding-top: 1.5%;
