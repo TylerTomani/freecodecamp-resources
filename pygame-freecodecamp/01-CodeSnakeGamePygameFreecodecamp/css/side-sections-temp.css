@@ -1,5 +1,5 @@
 *{
-    background-color: bisque;
+    background-color: yellow;
     box-sizing: border-box;
 }
 main>aside {
@@ -86,7 +86,7 @@ nav:active,nav:focus{
 }
 .section-container > .section {    
     width: fit-content;
-    font-size: 90%;
+    font-size: 82%;
     text-decoration: none;
     text-wrap: wrap;
     white-space: wrap;
@@ -95,26 +95,28 @@ nav:active,nav:focus{
 }
 .sub-section{
     width: fit-content;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
-    /* margin-left: 5%; */
+    
     list-style:none;
     white-space: wrap;
+    text-wrap: wrap;
 }
-.sub-section > li{
-    border: 1px solid black;
-    width: fit-content;
-    line-height: 1.2;
+.sub-section > li {
+    font-size: 75%;
+    /* line-height: 1.2; */
     margin-bottom: 3%;
-    font-size: .8rem;
+    white-space: wrap;
+    text-wrap: wrap;
 }
 
 .sub-section > li > a{
-    display: flex;
-    flex-wrap: wrap;
     text-decoration: none;
-    white-space: nowrap
+    color: black;
+    /* Breaks long words */    
+    word-wrap: break-word;
+    /* Allows text to wrap */
+    white-space: normal;
+    /* Breaks long text for older browsers */
+    overflow-wrap: break-word;
 }
 
 .sub-section > li > ul {
@@ -131,7 +133,7 @@ nav:active,nav:focus{
 }
 
 .sub-section>li>ul>li>code{
-    font-size: .6rem;
+    font-size: .5rem;
     white-space: wrap;
     text-wrap: wrap;
 }
