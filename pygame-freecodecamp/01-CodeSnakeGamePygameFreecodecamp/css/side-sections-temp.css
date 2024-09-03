@@ -1,5 +1,5 @@
 *{
-    /* background-color: bisque; */
+    background-color: bisque;
     box-sizing: border-box;
 }
 main>aside {
@@ -70,7 +70,7 @@ nav:active,nav:focus{
 }
 
 .sections-container{
-    width: 100%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     color: black;
