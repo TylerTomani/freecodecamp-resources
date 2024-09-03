@@ -90,6 +90,7 @@ nav:active,nav:focus{
     text-decoration: none;
     text-wrap: wrap;
     white-space: wrap;
+    margin-bottom: 3%;
     /* display: inline-block; */
     /* color: black; */
 }
