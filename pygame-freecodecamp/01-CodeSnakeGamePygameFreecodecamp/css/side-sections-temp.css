@@ -243,6 +243,10 @@ nav:active,nav:focus{
 } */
 
 @media screen and (max-width: 500px) {
+    body{
+        background-color: aqua;
+        width: fit-content;
+    }
     main>aside {
         width: 31%;
         padding-left: 1.5%;
@@ -250,6 +254,7 @@ nav:active,nav:focus{
     }
 
     #targetDiv {
+        width: 69%;
         width: 100vw;
     }
 }
