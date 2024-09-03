@@ -1,5 +1,6 @@
 *{
     /* background-color: bisque; */
+    box-sizing: border-box;
 }
 main>aside {
     flex-basis: 20%;
@@ -78,29 +79,31 @@ nav:active,nav:focus{
     display: flex;
     flex-direction: column;
     margin: 4% 0;
-    width: 100%;
+    width: fit-content;
     flex-wrap: wrap;
     list-style:none;
 }
 .section-container > .section {    
-    width: 100%;
+    width: fit-content;
     font-size: 90%;
     display: inline-block;
     text-decoration: none;
+    text-wrap: wrap;
+    white-space: none;
     color: black;
 }
 .sub-section{
-    width: 100%;
-    display: flex;
+    width: fit-content;
+    /* display: flex; */
     /* flex-direction: column; */
-    flex-wrap: wrap;
-    margin-left: 5%;
+    /* flex-wrap: wrap; */
+    /* margin-left: 5%; */
     list-style:none;
     white-space: wrap;
 }
 .sub-section > li{
-    /* border: 1px solid black; */
-    width: 100%;
+    border: 1px solid black;
+    width: fit-content;
     line-height: 1.2;
     margin-bottom: 3%;
     font-size: .8rem;
@@ -116,7 +119,7 @@ nav:active,nav:focus{
 .sub-section > li > ul {
     list-style: none;
     font-size: .8rem;
-    width: 100%;
+    width: fit-content;
     white-space: wrap;
     text-wrap: wrap;
 }
