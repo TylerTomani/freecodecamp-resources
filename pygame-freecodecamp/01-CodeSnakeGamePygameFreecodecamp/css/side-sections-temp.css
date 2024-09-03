@@ -74,6 +74,7 @@ nav:active,nav:focus{
     display: flex;
     flex-direction: column;
     color: black;
+    overflow: wrap;
 }
 .section-container{
     display: flex;
@@ -86,11 +87,11 @@ nav:active,nav:focus{
 .section-container > .section {    
     width: fit-content;
     font-size: 90%;
-    display: inline-block;
     text-decoration: none;
     text-wrap: wrap;
-    white-space: none;
-    color: black;
+    white-space: wrap;
+    /* display: inline-block; */
+    /* color: black; */
 }
 .sub-section{
     width: fit-content;
