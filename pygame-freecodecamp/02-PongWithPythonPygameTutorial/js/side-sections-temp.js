@@ -119,8 +119,12 @@ navBar.addEventListener('keydown', e => {
         showAside()
     }
     if ( letter == 'a') {
+        console.log('slkj')
         if(currentLesson){
+            console.log(currentLesson)
             currentLesson.focus()
+        } else {
+            lastFocusedElement.focus()
         }
     }
     if(letter == 's' ){
@@ -155,7 +159,7 @@ targetDiv.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     sectionsFocused = false
     if(targetDivFocused){
-        if (letter == 's' || letter == 'a'){
+        if (letter == 's' ){
             lastFocusedElement.focus()
             iSection -= 1
         }    
@@ -249,6 +253,7 @@ lessons.forEach(el => {
         clickLesson(e)
         fetchLessonHref(e.target.href)
         currentLesson = e.target
+        
     })
     el.addEventListener('keydown', e => {
         startSection = true
@@ -293,42 +298,47 @@ sections.forEach(el => {
         sectionTitle.innerText = e.target.innerText
         lessonTitle.innerText = ''
         startSection = true
+        const sectionContainer = getSectionContainer(e.target.parentElement)
+        const subSection = sectionContainer.querySelector('.sub-section')
+        if (!subSection ) {
+            targetDivFocused = true
+        }
+        // sectionClicked = !sectionClicked
         currentSection = e.target
     })
     el.addEventListener('keydown', e => {
         startSection = true
         let letter = e.key.toLowerCase()
+        if (letter == 'a') {
+            console.log(currentLesson)
+            if (currentLesson) {
+                currentLesson.focus()
+            }
+        }
         if (letter == 'enter') {
             const sectionContainer = getSectionContainer(e.target.parentElement)
             const subSection = sectionContainer.querySelector('.sub-section')
             if (!subSection && sectionClicked) {
-                targetDiv.focus()
+                targetDiv.focus()            
                 targetDivFocused = true
+                console.log('lkjf')
             }
             sectionClicked = !sectionClicked
             fetchLessonHref(e.target.href)
             scrollTo(0, 0)
 
         }
-        if (letter == 'a') {
-            if (currentLesson) {
-                currentLesson.focus()
-            }
-        }
-
-
+        
     })
     
 })
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()    
-    console.log(currentSection)
     if(letter == 'a' ){
         if(currentLesson){
-            currentSection.focus()
-        }
-        if(currentLesson){
             currentLesson.focus()
+        } else {
+            currentSection.focus()
         }
     }
     if(letter == 's' && !sectionsFocused ){
@@ -336,54 +346,57 @@ addEventListener('keydown', e => {
     }
     if(letter == 'shift'){keys.shift.pressed = true}
     // Controls Section Selection with numbers on keyboard
-    if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
-        let intLetter = parseInt(letter)
-        if(intLetter <= sections.length){
-            if(sections[intLetter - 1]){
-                sections[intLetter - 1].focus()
+    if(!targetDivFocused){
+
+        if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
+            let intLetter = parseInt(letter)
+            if(intLetter <= sections.length){
+                if(sections[intLetter - 1]){
+                    sections[intLetter - 1].focus()
+                }
             }
         }
-    }
-    if(sectionsFocused && !targetDivFocused){
-        navSections(e,letter)}
-    if(lessonsFocused){
-        navLessons(e,letter)
-    }
-    switch(letter){     
-        case 'a':
-            scrollTo(0,0)
-            mainAside.focus()
-            break        
-        case 'c':
-            
-            break        
-        case 'm':
-            scrollTo(0,0)
-            targetDiv.focus()
-            targetDivFocused = true
-            break        
-        case 'n':
-            navBar.focus()
-            break
-        case 'b':
-            backlink.focus()
-            break
-        case 'h':
-            homelink.focus()
-            break
-        case 'r':
-            regexCmdsLink.focus()
-            // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            break   
-        case 'p':
-            programShorcutsLink.focus()
-            break
-        case 't':
-            tutorialLink.focus()
-            break
-            
-    }
-    startSection = true    
+        if(sectionsFocused && !targetDivFocused){
+            navSections(e,letter)}
+            if(lessonsFocused){
+                navLessons(e,letter)
+            }
+        }
+        switch(letter){     
+            case 'a':
+                scrollTo(0,0)
+                mainAside.focus()
+                break        
+            case 'c':
+                
+                break        
+            case 'm':
+                scrollTo(0,0)
+                targetDiv.focus()
+                targetDivFocused = true
+                break        
+            case 'n':
+                navBar.focus()
+                break
+            case 'b':
+                backlink.focus()
+                break
+            case 'h':
+                homelink.focus()
+                break
+            case 'r':
+                regexCmdsLink.focus()
+                // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                break   
+            case 'p':
+                programShorcutsLink.focus()
+                break
+            case 't':
+                tutorialLink.focus()
+                break
+                
+        }
+        startSection = true    
 });
 
 function fetchLessonHref(href){

@@ -337,6 +337,8 @@ addEventListener('keydown', e => {
     if(letter == 'a' ){
         if(currentLesson){
             currentLesson.focus()
+        } else {
+            currentSection.focus()
         }
     }
     if(letter == 's' && !sectionsFocused ){
