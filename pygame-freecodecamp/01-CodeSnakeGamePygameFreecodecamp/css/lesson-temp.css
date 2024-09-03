@@ -38,20 +38,34 @@ body {padding-bottom: 5%;}
     padding-left: 5%;
     padding-bottom: 2.5%;
 }
+
+
 .step>.step-txt {
     padding: 1%;
     padding-top: 0;
 }
+.step-txt {
+    
+}
 .step-txt>p {
     width: 100%;
     margin-top: 1%;
-    margin-bottom: 1%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    text-wrap: wrap;
+    
 }
-.step-txt>p a {
-    width: 100%;
-    display: inline-flex;
-    flex-wrap: wrap;
+.step-txt>p >a {
+    display: inline-block;
+    /* width: 50%; */
+    width: inherit;
+    overflow-x: hidden;
     font-size: 70%;
+    background-color: yellow;
+    word-wrap: wrap;
+    text-wrap: wrap;
+    overflow-wrap: wrap;
+    white-space: normal;
 }
 .step-col>.step-txt>h3 {
     margin-left: 2.5%;
@@ -106,7 +120,7 @@ body {padding-bottom: 5%;}
 }
 .step-txt>.code-container,
 .step-txt-in>.code-container {
-    background-color: rgb(37, 42, 42);
+    background-color: rgb(33, 38, 38);
     color: white;;
 
 

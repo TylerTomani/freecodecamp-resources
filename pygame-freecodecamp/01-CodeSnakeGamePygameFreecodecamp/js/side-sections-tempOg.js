@@ -181,7 +181,7 @@ function navSections(e,letter){
     if(!startSection){
         return  
     } else {
-        if(!keys.shift.pressed && letter == 's'){
+        if(!keys.shift.pressed && letter == 's' && !targetDivFocused){
             iSection = (iSection + 1) % sections.length
     
         } else if (keys.shift.pressed && letter == 's'){

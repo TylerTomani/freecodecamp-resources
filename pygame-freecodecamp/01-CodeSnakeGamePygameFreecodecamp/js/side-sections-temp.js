@@ -181,7 +181,7 @@ function navSections(e,letter){
     if(!startSection){
         return  
     } else {
-        if(!keys.shift.pressed && letter == 's'){
+        if(!keys.shift.pressed && letter == 's' && !targetDivFocused){
             iSection = (iSection + 1) % sections.length
     
         } else if (keys.shift.pressed && letter == 's'){
@@ -328,6 +328,12 @@ sections.forEach(el => {
             scrollTo(0, 0)
 
         }
+        if(letter == 'c'){
+            const mainCode = document.querySelector('#mainCode')
+            targetDivFocused = true
+            
+        }
+        
         
     })
     
@@ -347,7 +353,6 @@ addEventListener('keydown', e => {
     if(letter == 'shift'){keys.shift.pressed = true}
     // Controls Section Selection with numbers on keyboard
     if(!targetDivFocused){
-
         if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
             let intLetter = parseInt(letter)
             if(intLetter <= sections.length){
@@ -361,42 +366,42 @@ addEventListener('keydown', e => {
             if(lessonsFocused){
                 navLessons(e,letter)
             }
-        }
-        switch(letter){     
-            case 'a':
-                scrollTo(0,0)
-                mainAside.focus()
-                break        
-            case 'c':
-                
-                break        
-            case 'm':
-                scrollTo(0,0)
-                targetDiv.focus()
-                targetDivFocused = true
-                break        
-            case 'n':
-                navBar.focus()
-                break
-            case 'b':
-                backlink.focus()
-                break
-            case 'h':
-                homelink.focus()
-                break
-            case 'r':
-                regexCmdsLink.focus()
-                // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                break   
-            case 'p':
-                programShorcutsLink.focus()
-                break
-            case 't':
-                tutorialLink.focus()
-                break
-                
-        }
-        startSection = true    
+    }
+    switch(letter){     
+        case 'a':
+            scrollTo(0,0)
+            mainAside.focus()
+            break        
+        case 'c':
+            
+            break        
+        case 'm':
+            scrollTo(0,0)
+            targetDiv.focus()
+            targetDivFocused = true
+            break        
+        case 'n':
+            navBar.focus()
+            break
+        case 'b':
+            backlink.focus()
+            break
+        case 'h':
+            homelink.focus()
+            break
+        case 'r':
+            regexCmdsLink.focus()
+            // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            break   
+        case 'p':
+            programShorcutsLink.focus()
+            break
+        case 't':
+            tutorialLink.focus()
+            break
+            
+    }
+    startSection = true    
 });
 
 function fetchLessonHref(href){
