@@ -24,36 +24,7 @@ export function stepTxtListeners(){
     }
     let targetDivFocus = false
     let playing = false
-    /**  This has to be here for now because so focus can got o last clicked section. 
-    AND focus can get to main-code from sections and lessons*/
-        sections.forEach(el => {
-            if(el.hasAttribute('autofocus')){
-                iSection = [...sections].indexOf(el)
-                currentSection = sections[iSection]
-            }
-            el.addEventListener('click', e => {
-                e.preventDefault()
-                iSection = [...sections].indexOf(e.target)
-                currentSection = sections[iSection]
-            })
-            el.addEventListener('keydown', e => {
-                let letter = e.key.toLowerCase()
-                if (letter == 'enter') {
-                    iSection = [...sections].indexOf(e.target)
-                    currentSection = sections[iSection]
-                }
-                if (letter == 'enter') {
-                    const sectionContainer = getSectionContainer(e.target.parentElement)
-                    const subSection = sectionContainer.querySelector('.sub-section')
-                    if (!subSection) {
-                        console.log('jkljd')
-                        targetDiv.focus()
-                        targetDivFocus = true
-                    }
-                }
-                
-            })
-        })
+    
     targetDiv.addEventListener('focus', e => {targetDivFocus = true})
     targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
     targetDiv.addEventListener('focusout', e => {
