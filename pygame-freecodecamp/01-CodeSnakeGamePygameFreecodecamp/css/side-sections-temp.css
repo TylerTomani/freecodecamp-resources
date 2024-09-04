@@ -249,6 +249,8 @@ nav:active,nav:focus{
     body{
         /* background-color: yellowgreen; */
         width: fit-content;
+        overflow-x: hidden;
+
     }
     main>aside {
         /* width: 25%; */

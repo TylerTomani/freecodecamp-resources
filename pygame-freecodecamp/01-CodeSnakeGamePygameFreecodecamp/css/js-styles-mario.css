@@ -9,6 +9,9 @@ canvas {
     z-index: 5; 
     /* overflow: hidden; */
 }
+#jsCavnasScriptContainer {
+    width: 100%;
+}
 #scriptsContainer {
     background-color: black;
     /* display: flex;
@@ -32,7 +35,14 @@ canvas {
     color: white;
     /* height: 100%; */
     /* margin: 0 1%; */
-    /* scrollbar-width: none; */
+    max-width: 50%;
+    overflow: hidden;
+    scroll-behavior: none;
+}
+#scriptsContainer>.code-container >.copy-code{
+    overflow: hidden;
+    scroll-behavior: none;
+    width: 100%;
 }
 /* Keep The Commented  */
 /* #scriptsContainer>.code-container>pre.copy-code:active,
@@ -70,7 +80,7 @@ canvas:active,canvas:focus {box-shadow: 0px 0px 2px 4px orange;}
     font-size: 40% !important;
     top: 0;
     right: 0;
-    margin: 0 !important;
+    /* margin: 0 !important; */
     max-height: 100vh !important;
     overflow-y: scroll;
 }
