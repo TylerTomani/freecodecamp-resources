@@ -1,5 +1,6 @@
 import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
+import { popScriptWindow } from "./popup-script.js"
 export const navBar = document.querySelector('.section-lesson-title')
 export const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
@@ -395,7 +396,9 @@ addEventListener('keydown', e => {
             // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
             break   
         case 'p':
-            programShorcutsLink.focus()
+            if(!keys.shift.pressed){
+                programShorcutsLink.focus()
+            }
             break
         case 't':
             tutorialLink.focus()
@@ -412,6 +415,7 @@ function fetchLessonHref(href){
 ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
             stepTxtListeners()
             addCopyCodes()
+            popScriptWindow()
     })
     .catch(error => console.log('Error fetching content.html:', error));   
 }

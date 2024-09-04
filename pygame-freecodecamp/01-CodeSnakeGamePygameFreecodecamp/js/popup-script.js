@@ -1,6 +1,10 @@
-(function(){
+export function popScriptWindow(){
+
+
     // I need to figure strict out
     // 'use strict' 
+    const scriptsContainer = document.querySelector("#scriptsContainer")
+    const xExitContainer = document.querySelector("#xExitContainer")
     const keys = {
         shift : {
             pressed : false
@@ -12,9 +16,18 @@
     addEventListener('keydown', e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'shift'){
-            keys.shift.pressed  true
+            keys.shift.pressed  = true
+        }
+        if(keys.shift.pressed && letter == 'p'){
+            console.log('kjsd')
+            togglePopUp()
         }
         
     })
+    function togglePopUp(){
+        scriptsContainer.classList.toggle('popped-up')
+        if(scriptsContainer.classList.contains('popped-up'))
+        console.log(scriptsContainer)
+    }
 
-}())
+}
