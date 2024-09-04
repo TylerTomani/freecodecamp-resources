@@ -12,7 +12,9 @@ main>aside {
     padding-right: 2%;
 }
 #targetDiv {
-    width: 100vw;
+    width: 68%;
+        flex-basis: 69%;
+        flex-grow: 1;
 }
 header>nav#mainLinksContainer {
     display: flex;
@@ -264,6 +266,5 @@ nav:active,nav:focus{
         width: 68%;
         flex-basis: 69%;
         flex-grow: 1;
-        /* width: 100vw; */
     }
 }
