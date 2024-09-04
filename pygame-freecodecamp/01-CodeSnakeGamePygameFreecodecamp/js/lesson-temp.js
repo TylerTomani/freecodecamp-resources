@@ -139,7 +139,7 @@ export function stepTxtListeners(){
     // image handling
     allImages.forEach(el => {
         el.addEventListener('click', e => {
-            toggleImgSize(e.target)
+            toggleImgSize(e = e.target)
         })
     })
 
@@ -271,7 +271,7 @@ export function stepTxtListeners(){
                 img.classList.add('enlarge')
                 img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             } else {
-                e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+                // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
             }
         } else {
