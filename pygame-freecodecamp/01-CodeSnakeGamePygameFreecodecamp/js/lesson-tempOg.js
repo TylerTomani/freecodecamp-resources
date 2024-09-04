@@ -23,14 +23,19 @@ export function stepTxtListeners(){
             pressed: false
         }
     }
+    const mainCodes = document.querySelectorAll('.main-code')
+    let iMainCodes
+    let mainCodesFocused = false
     let targetDivFocus = false
+    let stepFocused = false
     let playing = false
+    
     sections.forEach(el => {
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             if(letter == 'c'){
                 const mainCode = document.querySelector('#mainCode')
-                if(mainCode){
+                if (mainCode && !mainCodesFocused) {
                     mainCode.focus()
                 }
             }
@@ -42,13 +47,14 @@ export function stepTxtListeners(){
             let letter = e.key.toLowerCase()
             if(letter == 'c'){
                 const mainCode = document.querySelector('#mainCode')
-                if(mainCode){
+                if(mainCode && !mainCodesFocused){
                     mainCode.focus()
                 }
             }
             
         })
     })
+
     navbar.addEventListener('keydown',e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'e'){
@@ -141,8 +147,31 @@ export function stepTxtListeners(){
             })
         }
     }
+    mainCodes.forEach(el => {
+        el.addEventListener('focus', e => {
+            mainCodesFocused = true
+            stepFocused = false
+            iMainCode = [...mainCodes].indexOf(e.target)
+
+        });
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if (letter == 'c' && mainCodesFocused && !stepFocused) {
+                console.log(iMainCode)
+                if(mainCodes){
+
+                    iMainCode = (iMainCode + 1) % mainCodes.length
+                    mainCodes[iMainCode].focus()
+                }
+            }
+
+
+        });
+    })
     stepTxts.forEach(el => {    
         el.addEventListener('focus', e => {
+            mainCodesFocused = false
+            stepFocused = true
             removeAllTabIndex()
             denlargeAllImages()
             // pauseAllVideos()
@@ -176,7 +205,14 @@ export function stepTxtListeners(){
                     const img = step.querySelector('.step-img > img')
                     toggleImgSize(img)
                 }
-            }      
+            } 
+            if(letter == 'c' &&  stepFocused && !mainCodesFocused){
+                if(step.parentElement.classList.contains('step-col')){
+                    const mainCode = step.parentElement.querySelector('.main-code')
+                    mainCode.focus()
+
+                }
+            }
         })    
     })
     stepTxtInsCopyCodes.forEach(el => {    
@@ -242,10 +278,7 @@ export function stepTxtListeners(){
             if(e.target.classList.contains('step-txt')){
                 toggleVideoSize(vid,false)
             } 
-            console.log(e.target)
             if(e.target.classList.contains('main-code')){
-                console.log(vid)
-                console.log(vid)
                 toggleVideoSize(vid, true)
             }
             
@@ -274,7 +307,6 @@ export function stepTxtListeners(){
                 playing = false
             }
         }
-        console.log(vid)
     }
     function videoPlayKeyDown(vid,key,e){
         if (key == 32) {
@@ -333,6 +365,11 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
+        if (letter == 'c') {
+            if(mainCodes.length > 0){
+                mainCodes[iMainCode].focus()
+            }
+        }
         if (letter == 'e') {
             if (nextLesson) {
                 nextLesson.focus()
@@ -366,18 +403,7 @@ export function stepTxtListeners(){
                     }
                 }        
             }
-        }     
-        if (letter == 'c') {
-            if (letter == 'c') {
-                const mainCode = document.querySelector('#mainCode')
-                if (mainCode) {
-                    mainCode.focus()
-                    targetDivFocus = true
-                }
-
-            }
-
-        }
+        }            
         if(key === 32 && playing){
             // e.preventDefault()
         }
@@ -410,8 +436,15 @@ export function stepTxtListeners(){
         })
         nextLesson.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
+            if(letter == 'c'){
+                if(mainCodes.length > 0){
+                    mainCodes[iMainCode]
+                } else {
+                    const mainCode = document.querySelector('#mainCode')
+                    mainCode.focus()
+                }
+            }
             if(letter == 'a'){
-                // if(les)
                 lastFocusedElement.focus()
             }
             if(letter == 'enter'){   

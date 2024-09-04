@@ -89,7 +89,8 @@ if __name__ == '__main__':
             <div class="step-txt-in">
                 <p>
                     Now we can click the x or hit the escape (ASCII 27) to close the window, remember to set <code class="b-fix">running</code>
-                    to <code>False</code>
+                    to <code>False</code>, and use <code>surface.<span class="r-fix">fill()</span></code> to change background color. 
+                    Do before <code class="r">flip()</code>
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code" id="mainCode">
@@ -99,7 +100,9 @@ from pygame.locals import *
 if __name__ == "__main__":
     pygame.init()
     surface = pygame.display.set_mode((800,400))
-    pygame.display.flip()
+    surface.<span class="r">fill</span>((255,255,255))
+
+    pygame.display.<span class="r">flip()</span>
 
     running = True
     while running:

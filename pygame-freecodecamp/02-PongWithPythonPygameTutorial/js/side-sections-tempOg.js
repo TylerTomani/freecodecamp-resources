@@ -1,8 +1,9 @@
 import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 export const navBar = document.querySelector('.section-lesson-title')
-export const sections = document.querySelectorAll('.section')
 export const mainAside = document.querySelector('main > aside')
+export const sections = document.querySelectorAll('.section')
+export const lessons = document.querySelectorAll('.sub-section > li > a')
 const header = document.querySelector('header')
 const backlink = document.getElementById('backlink')
 const homelink = document.getElementById('homelink')
@@ -13,7 +14,6 @@ const allEls = document.querySelectorAll('body *')
 const sectionTitle = document.getElementById('section-title')
 const lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
-const lessons = document.querySelectorAll('.sub-section > li > a')
 const targetDiv = document.getElementById('targetDiv')
 const keys = {
     shift: {
@@ -258,7 +258,7 @@ sections.forEach(el => {
             scrollTo(0, 0)
         }
         if(letter == 'c'){
-            const mainCode = document.querySelector('#mainCode')
+            // const mainCode = document.querySelector('#mainCode')
             targetDivFocused = true
         }
         
@@ -321,6 +321,11 @@ lessons.forEach(el => {
         if (lessonsFocused) {
             navLessons(e, letter)
         }
+        if(letter == 'c'){
+            targetDivFocused = true
+            
+        }
+        
     })
 
 })

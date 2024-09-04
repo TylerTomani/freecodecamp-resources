@@ -2,7 +2,7 @@ import { lastFocusedElement } from "./side-sections-temp.js"
 import { getSectionContainer } from "./side-sections-temp.js"
 import { mainAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
-import { sections } from "./side-sections-temp.js"
+import { sections,lessons } from "./side-sections-temp.js"
 import { showAside } from "./side-sections-temp.js"
 let iSection = 0
 let iMainCode = 0
@@ -17,29 +17,44 @@ export function stepTxtListeners(){
     const copyCodes = document.querySelectorAll('.step-txt > .code-container > .copy-code')
     const nextLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
     const targetDiv = document.getElementById('targetDiv')
+    const stepTxtInsCopyCodes = document.querySelectorAll('.step-txt-in > .code-container > .copy-code')
     const keys = {
         meta: {
             pressed: false
         }
     }
+    const mainCodes = document.querySelectorAll('.main-code')
+    let iMainCodes
+    let mainCodesFocused = false
     let targetDivFocus = false
+    let stepFocused = false
     let playing = false
     
-    targetDiv.addEventListener('focus', e => {targetDivFocus = true})
-    targetDiv.addEventListener('focusin', e => {targetDivFocus = true})
-    targetDiv.addEventListener('focusout', e => {
-        targetDivFocus = false
-        denlargeAllImages()    
-
-    })
-    targetDiv.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        if(letter == 'e'){
-            if(nextLesson){
-                nextLesson.focus()
+    sections.forEach(el => {
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'c'){
+                const mainCode = document.querySelector('#mainCode')
+                if (mainCode && !mainCodesFocused) {
+                    mainCode.focus()
+                }
             }
-        }  
+            
+        })
     })
+    lessons.forEach(el => {
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'c'){
+                const mainCode = document.querySelector('#mainCode')
+                if(mainCode && !mainCodesFocused){
+                    mainCode.focus()
+                }
+            }
+            
+        })
+    })
+
     navbar.addEventListener('keydown',e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'e'){
@@ -132,8 +147,31 @@ export function stepTxtListeners(){
             })
         }
     }
+    mainCodes.forEach(el => {
+        el.addEventListener('focus', e => {
+            mainCodesFocused = true
+            stepFocused = false
+            iMainCode = [...mainCodes].indexOf(e.target)
+
+        });
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if (letter == 'c' && mainCodesFocused && !stepFocused) {
+                console.log(iMainCode)
+                if(mainCodes){
+
+                    iMainCode = (iMainCode + 1) % mainCodes.length
+                    mainCodes[iMainCode].focus()
+                }
+            }
+
+
+        });
+    })
     stepTxts.forEach(el => {    
         el.addEventListener('focus', e => {
+            mainCodesFocused = false
+            stepFocused = true
             removeAllTabIndex()
             denlargeAllImages()
             // pauseAllVideos()
@@ -157,7 +195,7 @@ export function stepTxtListeners(){
             const step = getStep(stepTxt.parentElement)
             const vid = step.querySelector('.step-vid > video')
             if (vid) {
-                handleVideo(vid, key)
+                handleVideo(vid, key,e)
                 videoPlayKeyDown(vid, key, e)
             }
             if(key === 13){
@@ -167,10 +205,52 @@ export function stepTxtListeners(){
                     const img = step.querySelector('.step-img > img')
                     toggleImgSize(img)
                 }
+            } 
+            if(letter == 'c' &&  stepFocused && !mainCodesFocused){
+                if(step.parentElement.classList.contains('step-col')){
+                    const mainCode = step.parentElement.querySelector('.main-code')
+                    mainCode.focus()
+
+                }
             }
+        })    
+    })
+    stepTxtInsCopyCodes.forEach(el => {    
+        // el.addEventListener('focus', e => {
+        //     removeAllTabIndex()
+        //     denlargeAllImages()
+        //     // pauseAllVideos()
+        // })
+        // el.addEventListener('focusout', e => {
+        //     denlargeAllImages()
+        // })
+        // el.addEventListener('click', e => {
+        //     e.preventDefault()
+        //     denlargeAllImages()
+        //     toggleImgSize(e)
+        //     handleVideo(vid)
+        //     pauseAllVideos()
             
-            
-            
+        // })
+        el.addEventListener('keydown', e => {
+            let key = e.keyCode
+            let letter = e.key.toLowerCase()
+            const stepTxt = e.target
+            const as = stepTxt.querySelectorAll('a')
+            const step = getStep(stepTxt.parentElement)
+            const vid = step.querySelector('.step-vid > video')
+            if (vid) {
+                handleVideo(vid, key,e)
+                videoPlayKeyDown(vid, key, e)
+            }
+            if(key === 13){
+                addTabIndex(as)
+                handleCopyCodes(e)
+                if(step){
+                    const img = step.querySelector('.step-img > img')
+                    toggleImgSize(img)
+                }
+            }      
         })    
     })
     // video handling
@@ -193,21 +273,39 @@ export function stepTxtListeners(){
         toggleVideoSize(vid)
         playPauseVideo(vid)
     }
-    function handleVideo(vid,key){
+    function handleVideo(vid,key,e){
         if(key == 13){
-            toggleVideoSize(vid)
+            if(e.target.classList.contains('step-txt')){
+                toggleVideoSize(vid,false)
+            } 
+            if(e.target.classList.contains('main-code')){
+                toggleVideoSize(vid, true)
+            }
             
         }
     }
-    function toggleVideoSize(vid){
-        if (!vid.classList.contains('enlarge-vid')) {
-            vid.classList.add('enlarge-vid')
-            vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-            playing = true
-            // console.log(key)
+    function toggleVideoSize(vid,zoomBack){
+        if(!zoomBack){
+            if (!vid.classList.contains('enlarge-vid')) {
+                vid.classList.add('enlarge-vid')
+                vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+                playing = true
+                // console.log(key)
+            } else {
+                vid.classList.remove('enlarge-vid')
+                playing = false
+            }
         } else {
-            vid.classList.remove('enlarge-vid')
-            playing = false
+            if (!vid.classList.contains('enlarge-vid')) {
+                vid.classList.add('enlarge-vid')
+                vid.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+                playing = true
+                // console.log(key)
+            } else {
+                vid.classList.remove('enlarge-vid')
+                vid.scrollIntoView({ behavior: "smooth", block: "start", inline: "end" });
+                playing = false
+            }
         }
     }
     function videoPlayKeyDown(vid,key,e){
@@ -257,9 +355,26 @@ export function stepTxtListeners(){
         }
     })
 
-    addEventListener('keydown', e => {
+    targetDiv.addEventListener('focus', e => { targetDivFocus = true })
+    targetDiv.addEventListener('focusin', e => { targetDivFocus = true })
+    targetDiv.addEventListener('focusout', e => {
+        targetDivFocus = false
+        denlargeAllImages()
+
+    })
+    targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
+        if (letter == 'c') {
+            if(mainCodes.length > 0){
+                mainCodes[iMainCode].focus()
+            }
+        }
+        if (letter == 'e') {
+            if (nextLesson) {
+                nextLesson.focus()
+            }
+        }   
         if(letter == 'meta'){
             keys.meta.pressed = true        
         }
@@ -288,17 +403,9 @@ export function stepTxtListeners(){
                     }
                 }        
             }
-        }     
-        if (letter == 'c') {
-            if (letter == 'c') {
-                const mainCode = document.querySelector('#mainCode')
-                if (mainCode) {
-                    mainCode.focus()
-                    targetDivFocus = true
-                }
-
-            }
-
+        }            
+        if(key === 32 && playing){
+            // e.preventDefault()
         }
     });
 
@@ -329,8 +436,15 @@ export function stepTxtListeners(){
         })
         nextLesson.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
+            if(letter == 'c'){
+                if(mainCodes.length > 0){
+                    mainCodes[iMainCode]
+                } else {
+                    const mainCode = document.querySelector('#mainCode')
+                    mainCode.focus()
+                }
+            }
             if(letter == 'a'){
-                // if(les)
                 lastFocusedElement.focus()
             }
             if(letter == 'enter'){   
