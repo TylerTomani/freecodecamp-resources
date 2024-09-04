@@ -1,5 +1,5 @@
 *{
-    /* background-color: gainsboro; */
+    background-color: yellow;
     box-sizing: border-box;
 }
 main>aside {
@@ -12,8 +12,22 @@ main>aside {
     padding-right: 2%;
 }
 #targetDiv {
-    width: 100vw;
+    /* width: 100vw; */
 }
+ main>aside {
+     /* width: 25%; */
+     flex-basis: 22%;
+     padding-left: 1.5%;
+     border-bottom: 1px solid black;
+     /* flex-grow: 0; */
+ }
+
+ #targetDiv {
+     /* width: 68%; */
+     flex-basis: 69%;
+     /* flex-grow: 1; */
+     /* width: 100vw; */
+ }
 header>nav#mainLinksContainer {
     display: flex;
 }
@@ -261,7 +275,7 @@ nav:active,nav:focus{
     }
 
     #targetDiv {
-        width: 68%;
+        /* width: 68%; */
         flex-basis: 69%;
         /* flex-grow: 1; */
         /* width: 100vw; */
