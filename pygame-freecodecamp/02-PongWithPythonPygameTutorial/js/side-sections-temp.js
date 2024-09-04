@@ -162,14 +162,7 @@ targetDiv.addEventListener('keydown', e => {
         if (letter == 's' || letter == 'a' ){
             lastFocusedElement.focus()
         }
-        if(letter == 'c'){
-            const mainCode = document.querySelector('#mainCode')
-            if(mainCode){
-                // mainCode.focus()
-                // targetDivFocused = true
-            }
-            
-        }
+        
             
     }    
     // if(letter == 'c'){

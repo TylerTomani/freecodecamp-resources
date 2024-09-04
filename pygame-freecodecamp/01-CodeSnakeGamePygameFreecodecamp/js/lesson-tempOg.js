@@ -396,9 +396,9 @@ export function stepTxtListeners(){
         let letter = e.key.toLowerCase()
         let key = e.keyCode
         if (letter == 'c' ) {
-            // if(mainCodes.length > 0){
-            //     mainCodes[iMainCode].focus()
-            // }
+            if(mainCodes.length > 0){
+                mainCodes[iMainCode].focus()
+            }
         }
         if (letter == 'e') {
             if (nextLesson) {
