@@ -150,8 +150,7 @@ export function stepTxtListeners(){
         el.addEventListener('focus', e => {
             mainCodesFocused = true
             stepFocused = false
-            // iMainCode = [...mainCodes].indexOf(e.target)
-
+            iMainCode = [...mainCodes].indexOf(e.target)
         });
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
@@ -203,7 +202,7 @@ export function stepTxtListeners(){
                     handleImg(img, key, e)
                 }
             } 
-            if(letter == 'c' &&  stepFocused && !mainCodesFocused){
+            if((letter == 'c' && !keys.meta.pressed) &&  stepFocused && !mainCodesFocused){
                 if(step.parentElement.classList.contains('step-col')){
                     const mainCode = step.parentElement.querySelector('.main-code')
                     mainCode.focus()

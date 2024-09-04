@@ -9,9 +9,8 @@
                 Place the code to draw object in to function 
             </p>
             <div class="code-container">
-                <pre tabindex="0" class="copy-code mdtxt">
+                <pre tabindex="0" class="copy-code mdtxt main-code">
 def <span class="o">drawBlock</span>():
-    block = pygame.image.load('images/block.jpg').convert()
     surface.blit(block,(block_x,block_y))
     pygame.display.flip()</pre>
             </div>
@@ -32,15 +31,19 @@ def <span class="o">drawBlock</span>():
                     to use <span class="g-fix">up, down, left, and right</span> keys to affect <code class="lsg-fix">block_x</code> and <code class="lsg-fix">block_y</code>
                 </p>
                 <div class="code-container">
-                    <pre tabindex="0" class="copy-code mdtxt">
-if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_DOWN</span>:
+                    <pre tabindex="0" class="copy-code mdtxt main-code">
+if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_DOWN</span>:
     <span class="lsg-fix">block_y</span> += 10
-if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_UP</span>:
+    <span class="o-fix">drawBlock()</span>
+if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_UP</span>:
     <span class="lsg-fix">block_y</span> -= 10
-if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_LEFT</span>:
+    <span class="o-fix">drawBlock()</span>
+if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_LEFT</span>:
     <span class="lsg-fix">block_x</span> -= 10
-if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_RIGHT</span>:
+    <span class="o-fix">drawBlock()</span>
+if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_RIGHT</span>:
     <span class="lsg-fix">block_x</span> += 10
+    <span class="o-fix">drawBlock()</span>
 </pre>
 
                 </div>
