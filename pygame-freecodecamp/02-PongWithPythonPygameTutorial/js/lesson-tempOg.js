@@ -199,7 +199,7 @@ export function stepTxtListeners(){
                 handleCopyCodes(e)
                 if(step){
                     const img = step.querySelector('.step-img > img')
-                    toggleImgSize(img)
+                    handleImg(img, key, e)
                 }
             } 
             if(letter == 'c' &&  stepFocused && !mainCodesFocused){
@@ -212,22 +212,7 @@ export function stepTxtListeners(){
         })    
     })
     stepTxtInsCopyCodes.forEach(el => {    
-        // el.addEventListener('focus', e => {
-        //     removeAllTabIndex()
-        //     denlargeAllImages()
-        //     // pauseAllVideos()
-        // })
-        // el.addEventListener('focusout', e => {
-        //     denlargeAllImages()
-        // })
-        // el.addEventListener('click', e => {
-        //     e.preventDefault()
-        //     denlargeAllImages()
-        //     toggleImgSize(e)
-        //     handleVideo(vid)
-        //     pauseAllVideos()
-            
-        // })
+        
         el.addEventListener('keydown', e => {
             let key = e.keyCode
             let letter = e.key.toLowerCase()
@@ -259,7 +244,7 @@ export function stepTxtListeners(){
     function handleImg(vid, key, e) {
         if (key == 13) {
             if (e.target.classList.contains('step-txt')) {
-                toggleImgSize(vid, false)
+                toggleImgSize(vid, false, e)
             }
             if (e.target.classList.contains('main-code')) {
                 toggleImgSize(vid, true,e)
@@ -273,6 +258,7 @@ export function stepTxtListeners(){
                 img.classList.add('enlarge')
                 img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             } else {
+                e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
             }
         } else {
