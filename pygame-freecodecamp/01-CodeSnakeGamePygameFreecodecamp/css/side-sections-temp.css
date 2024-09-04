@@ -1,5 +1,5 @@
 *{
-    /* background-color: yellow; */
+    background-color: yellow;
     box-sizing: border-box;
 }
 main>aside {
@@ -165,35 +165,33 @@ nav:active,nav:focus{
     }
 } */
 
-/* @media screen and (max-width: 771px){
-    main > aside {
-        width: 20vmax !important;
-    }
-    .sections-container {
-        font-size: 75%;
-    }
-    .section-container>.section {
-        width: 100% !important;
-    }
-} */
-
-/* @media screen and (max-width: 581px){    
-    main>aside {
-    }
-    .sections-container {
-        font-size: 70%;
-    }
-    .sections-container > .sub-section {
-        border: 1px solid black;
-    }
-    .sub-section > li > a{
-        font-size: 100% !important;
-        white-space: wrap;
-    }
-    .sub-section>li>ul {
-        font-size: .8rem;
-    }
-} */
+@media screen and (max-width: 771px){
+    body>header {
+            width: fit-content;
+        }
+    
+        body {
+            /* background-color: yellowgreen; */
+            /* width: fit-content; */
+            overflow-x: hidden;
+    
+        }
+    
+        main>aside {
+            /* width: 25%; */
+            flex-basis: 22%;
+            padding-left: 1.5%;
+            border-bottom: 1px solid black;
+            /* flex-grow: 0; */
+        }
+    
+        #targetDiv {
+            width: 100%;
+            flex-basis: 68%;
+            flex-grow: 1;
+            /* width: 100vw; */
+        }
+}
 
 /* @media screen and (max-width: 500px){
     header{ margin-top: 5%;}
