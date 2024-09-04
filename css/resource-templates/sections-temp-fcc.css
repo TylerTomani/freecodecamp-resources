@@ -1,3 +1,11 @@
+main>aside>.sections-container {
+    font-size: 80%;
+    /* width: fit-content; */
+}
+
+#mainTargetDiv {
+    flex-basis: 100%;
+}
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;

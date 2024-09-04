@@ -22,6 +22,9 @@ const keys = {
     }
 }
 let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
+[mainAside, navBar, targetDiv, backlink].forEach(el => {
+    el.addEventListener('focus', () => { scrollTo(0, 0) });
+})
 function setLetVariables(){
     iSection = 0
     iLesson = 0
@@ -35,7 +38,8 @@ function setLetVariables(){
     sectionClicked = false
     shiftS = []
 }
-// This function is meant to save space in this top part of the code
+/** This function, set let variable values, saves space 
+in top part of the code */
 setLetVariables()
 header.addEventListener('focusin', e => { sectionsFocused = false})
 header.addEventListener('keydown', e => {
@@ -199,9 +203,7 @@ function clickLesson(e) {
     }
     currentLesson = e.target
 }
-
 function navSections(letter) {
-
     if (!keys.shift.pressed && letter == 's' && !targetDivFocused) {
         iSection = (iSection + 1) % sections.length
 
@@ -269,8 +271,7 @@ sections.forEach(el => {
         if(letter == 'c'){
             // const mainCode = document.querySelector('#mainCode')
             targetDivFocused = true
-        }
-        
+        }        
     })
 })
 function navLessons(e, letter) {
@@ -336,7 +337,6 @@ lessons.forEach(el => {
         }
         
     })
-
 })
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase()
@@ -419,6 +419,4 @@ function fetchLessonHref(href){
     })
     .catch(error => console.log('Error fetching content.html:', error));   
 }
-[mainAside,navBar,targetDiv,backlink].forEach( el => {
-    el.addEventListener('focus', ()=>{scrollTo(0,0)});
-})
+
