@@ -357,6 +357,7 @@ export function stepTxtListeners(){
                 vid.currentTime += 2
             } else {
                 vid.pause()
+                // denlargeAllImages()
             }
         }
         playPauseVideo(vid)

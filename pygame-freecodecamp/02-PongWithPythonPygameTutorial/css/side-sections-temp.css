@@ -1,6 +1,9 @@
 *{
-    /* background-color: gainsboro; */
+    
     box-sizing: border-box;
+}
+body {
+    background-color: lightblue;
 }
 main>aside {
     flex-basis: 20%;
@@ -11,11 +14,24 @@ main>aside {
     padding-left: .5%;
     padding-right: 2%;
 }
-#targetDiv {
-    width: 68%;
-        flex-basis: 69%;
-        flex-grow: 1;
+
+main>aside {
+    /* width: 25%; */
+    flex-basis: 22%;
+    padding-left: 1.5%;
+    border-bottom: 1px solid black;
+    /* flex-grow: 0; */
 }
+
+#targetDiv {
+    width: 100vw;
+    flex-basis: 78%;
+     display: flex;;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     flex-grow: 1;
+ }
 header>nav#mainLinksContainer {
     display: flex;
 }
@@ -155,35 +171,33 @@ nav:active,nav:focus{
     }
 } */
 
-/* @media screen and (max-width: 771px){
-    main > aside {
-        width: 20vmax !important;
-    }
-    .sections-container {
-        font-size: 75%;
-    }
-    .section-container>.section {
-        width: 100% !important;
-    }
-} */
-
-/* @media screen and (max-width: 581px){    
-    main>aside {
-    }
-    .sections-container {
-        font-size: 70%;
-    }
-    .sections-container > .sub-section {
-        border: 1px solid black;
-    }
-    .sub-section > li > a{
-        font-size: 100% !important;
-        white-space: wrap;
-    }
-    .sub-section>li>ul {
-        font-size: .8rem;
-    }
-} */
+@media screen and (max-width: 771px){
+    body>header {
+            width: fit-content;
+        }
+    
+        body {
+            /* background-color: yellowgreen; */
+            /* width: fit-content; */
+            overflow-x: hidden;
+    
+        }
+    
+        main>aside {
+            /* width: 25%; */
+            flex-basis: 22%;
+            padding-left: 1.5%;
+            border-bottom: 1px solid black;
+            /* flex-grow: 0; */
+        }
+    
+        #targetDiv {
+            width: 100%;
+            flex-basis: 68%;
+            flex-grow: 1;
+            /* width: 100vw; */
+        }
+}
 
 /* @media screen and (max-width: 500px){
     header{ margin-top: 5%;}
@@ -250,7 +264,7 @@ nav:active,nav:focus{
     }
     body{
         /* background-color: yellowgreen; */
-        width: fit-content;
+        /* width: fit-content; */
         overflow-x: hidden;
 
     }
@@ -263,8 +277,9 @@ nav:active,nav:focus{
     }
 
     #targetDiv {
-        width: 68%;
-        flex-basis: 69%;
+        width: 100%;
+        flex-basis: 68%;
         flex-grow: 1;
+        /* width: 100vw; */
     }
 }
