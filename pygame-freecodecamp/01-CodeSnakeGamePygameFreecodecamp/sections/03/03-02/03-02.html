@@ -34,16 +34,12 @@ def <span class="o">drawBlock</span>():
                     <pre tabindex="0" class="copy-code mdtxt main-code">
 if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_DOWN</span>:
     <span class="lsg-fix">block_y</span> += 10
-    <span class="o-fix">drawBlock()</span>
 if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_UP</span>:
     <span class="lsg-fix">block_y</span> -= 10
-    <span class="o-fix">drawBlock()</span>
 if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_LEFT</span>:
     <span class="lsg-fix">block_x</span> -= 10
-    <span class="o-fix">drawBlock()</span>
 if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span class="g-fix">K_RIGHT</span>:
     <span class="lsg-fix">block_x</span> += 10
-    <span class="o-fix">drawBlock()</span>
 </pre>
 
                 </div>
@@ -53,46 +49,51 @@ if <span class="m-fix">event</span>.<span class="y-fix">key</span> == <span clas
                     </a>
                 </p>
             </div>
-            <div class="step-img">
-                <img src="sections/03/03-01/images/02.png" alt="">
+            <div class="step-vid">
+                <video 
+                poster="sections/03/03-02/images/02-thumb.png"
+                 src="sections/03/03-02/images/02.mov" alt="">
             </div>
         </div>
         <div class="step-col-in">
             <div class="step-txt-in">
                 <p>
-                    draw the <span class="b-fix">block</span> after 
-                    <code>surface.<span class="y-fix">fill((255,255,255))</span></code>.
-                    use the <span class="o-fix">blit()</span> method to draw it on
-                    the surface. Take the image as first argument, then x and y in <span class="lsg">(x,y)</span>
-                </p>
-                <p class="r">** Make this code so if clicked, you can focus to invidiual parts like 
-                    in mario chris courses
+                    Place <code class="o-fix">drawBlock()</code> at the bottom of <code> while running:</code> 
+                    loop
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
-<div class="code-container"><pre class="copy-code">
 import pygame
 from pygame.locals import *
+def <span class="o-fix">drawBlock</span>():
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()
 if __name__ == '__main__':
     pygame.init()
-    surface = pygame.display.set_mode((900,300))</span>
-    surface.<span class="y-fix">fill((255,255,255))</span></pre></div>
-
-    <span class="b-fix">block</span> = <span class="m-fix">pygame.image.load</span>('images/block.jpg').<span class="r-fix">convert()</span>
-    <span class="lsg-fix">block_x</span> = 100
-    <span class="lsg-fix">block_y</span> = 100
-    surface.blit(<span class="o-fix">block</span>,(<span class="lsg-fix">block_x</span>,<span class="lsg-fix">block_y</span>))
+    surface = pygame.display.set_mode((500,400))
+    surface.fill((255,255,255))
+    block = pygame.image.load('images/block.jpg').convert()
+    block_x = 100
+    block_y = 100
     pygame.display.flip()
 
     running = True
     while running:
-
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE or event.key == K_q:
                     running = False
+                if event.key == K_DOWN:
+                    block_y += 10
+                if event.key == K_UP:
+                    block_y -= 10
+                if event.key == K_LEFT:
+                    block_x -= 10
+                if event.key == K_RIGHT:
+                    block_x += 10
             if event.type == QUIT:
-                running = False</pre>
+                running = False
+        <span class="o-fix">drawBlock()</span></pre>
         
         
                 </div>

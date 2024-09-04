@@ -4,15 +4,43 @@
     <!-- 01 -->
     <div class="step-col">
         <div tabindex="0" class="step-txt">
-            <h4>01</h4>
-            <h5>Draw Player</h5>
-            <div class="code-container">
-                <pre tabindex="0" id="mainCode" class="copy-code ">
-import pygame 
+            <h5>Draw & Move Player</h5>
+<div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+import pygame
 from pygame.locals import *
+def <span class="o-fix">drawBlock</span>():
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()
+if __name__ == '__main__':
+    pygame.init()
+    surface = pygame.display.set_mode((500,400))
+    surface.fill((255,255,255))
+    block = pygame.image.load('images/block.jpg').convert()
+    block_x = 100
+    block_y = 100
+    pygame.display.flip()
 
-Place script here when done
-            </div>
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    running = False
+                if event.key == K_DOWN:
+                    block_y += 10
+                if event.key == K_UP:
+                    block_y -= 10
+                if event.key == K_LEFT:
+                    block_x -= 10
+                if event.key == K_RIGHT:
+                    block_x += 10
+            if event.type == QUIT:
+                running = False
+        <span class="o-fix">drawBlock()</span></pre>
+        
+        
+                </div>
             
         </div>
         <div class="step-img">
