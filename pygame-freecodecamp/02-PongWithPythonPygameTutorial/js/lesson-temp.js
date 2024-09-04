@@ -4,6 +4,7 @@ import { mainAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
 import { sections,lessons } from "./side-sections-temp.js"
 import { showAside } from "./side-sections-temp.js"
+import { header } from "./side-sections-temp.js"
 let iSection = 0
 let iMainCode = 0
 let currentSection
@@ -63,7 +64,14 @@ export function stepTxtListeners(){
             
         })
     })
-
+    header.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if (letter == 'c' && !keys.meta.pressed) {
+            if (mainCodes.length > 0) {
+                mainCodes[iMainCode].focus()
+            }
+        }
+    })
     navbar.addEventListener('keydown',e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'e'){
@@ -80,6 +88,11 @@ export function stepTxtListeners(){
                 stepNumFocus(intLetter)
             }
         }  
+        if (letter == 'c' && !keys.meta.pressed) {
+            if (mainCodes.length > 0) {
+                mainCodes[iMainCode].focus()
+            }
+        }
 
     })
     function getStep(parent) {
@@ -126,7 +139,7 @@ export function stepTxtListeners(){
     // image handling
     allImages.forEach(el => {
         el.addEventListener('click', e => {
-            toggleImgSize(e.target)
+            toggleImgSize(e = e.target)
         })
     })
 
@@ -258,7 +271,7 @@ export function stepTxtListeners(){
                 img.classList.add('enlarge')
                 img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             } else {
-                e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+                // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
             }
         } else {

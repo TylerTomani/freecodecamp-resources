@@ -4,7 +4,7 @@ export const navBar = document.querySelector('.section-lesson-title')
 export const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.sub-section > li > a')
-const header = document.querySelector('header')
+export const header = document.querySelector('header')
 const backlink = document.getElementById('backlink')
 const homelink = document.getElementById('homelink')
 const tutorialLink = document.getElementById('tutorialLink')
@@ -161,8 +161,16 @@ targetDiv.addEventListener('keydown', e => {
     if(targetDivFocused){
         if (letter == 's' || letter == 'a' ){
             lastFocusedElement.focus()
-        }    
+        }
+        
+            
     }    
+    // if(letter == 'c'){
+    //     const mainCode = document.querySelector('#mainCode')
+    //     if(mainCode){
+    //         mainCode.focus()
+    //     }
+    // }
 })
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){

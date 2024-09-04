@@ -251,15 +251,17 @@ nav:active,nav:focus{
         width: fit-content;
     }
     main>aside {
-        width: 25%;
-        flex-basis: 25%;
+        /* width: 25%; */
+        flex-basis: 22%;
         padding-left: 1.5%;
-        border-bottom: 1px solid black
+        border-bottom: 1px solid black;
+        /* flex-grow: 0; */
     }
 
     #targetDiv {
-        /* width: 69%; */
-        /* flex-basis: 69%; */
-        width: 100vw;
+        width: 68%;
+        flex-basis: 69%;
+        flex-grow: 1;
+        /* width: 100vw; */
     }
 }
