@@ -1,21 +1,24 @@
 
 <div class="steps-container">
-    <h4>03-01 - Draw Player</h4>
-    <h5>import image</h5>
+    <h4>03-02 </h4>
     <!-- 01-->
-    <div class="step">
+    <div class="step-col">
         <div tabindex="0" class="step-txt">
-            <h4>01</h4>
+            <h4>02</h4>
             <p>
-                Get the block image from his repo at
-                <a target="_blank" href="https://github.com/codebasics/python_projects/tree/main/1_snake_game/resources">
-                    https://github.com/codebasics/python_projects/tree/main/1_snake_game/resources
-                </a>
-                save it in the same directory as project script
+                Place the code to draw object in to function 
             </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code mdtxt">
+def drawBlock():
+    block = pygame.image.load('images/block.jpg').convert()
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()</pre>
+            </div>
+            
         </div>
         <div class="step-img">
-            <img src="sections/03/03-01/images/01.png">
+            <!-- <img src="sections/"> -->
         </div>
     </div>
     <!-- 02-->
@@ -24,24 +27,26 @@
             <div tabindex="0" class="step-txt">
                 <h4>02</h4>
                 <p>
-                    import the image into the <code class="m-fix">block</code> with 
-                    <code><span class="m-fix">pygame.image.load()</span> .<span class="r-fix">convert</span>()</code>,
-                    Don't Forget <span class="r">convert()</span> at the end
-                    variable
+                    Add functionality in side <code>while running:</code> loop, 
+                    use <code><span class="m-fix">event</span>.<span class="y-fix">key</span></code>,
+                    to use <span class="g-fix">up, down, left, and right</span> keys to affect <code class="lsg-fix">block_x</code> and <code class="lsg-fix">block_y</code>
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code mdtxt">
-<span class="b-fix">block</span> = <span class="m-fix lgtxt">pygame.image.load</span>('images/block.jpeg').<span class="r-fix">convert()</span>
-block_x = 100
-block_y = 100
-surface.blit(block,(block_x, block_y))
+if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_DOWN</span>:
+    <span class="lsg-fix">block_y</span> += 10
+if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_UP</span>:
+    <span class="lsg-fix">block_y</span> -= 10
+if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_LEFT</span>:
+    <span class="lsg-fix">block_x</span> -= 10
+if <span class="m-fix">event</span>.<span class="y-fix">type</span> == <span class="g-fix">K_RIGHT</span>:
+    <span class="lsg-fix">block_x</span> += 10
+</pre>
+
                 </div>
                 <p>
-                    Documentation for <code class="m-fix">pygame.image.load()</code>
-                    is here
-                    <a target="_blank"
-                        href="https://www.pygame.org/docs/ref/image.html?highlight=frombuffer#:~:text=pygame.image.load-,load%20new%20image%20from%20a%20file%20(or%20file%2Dlike%20object),-pygame.image.save">
-                        https://www.pygame.org/docs/ref/image.html?highlight=frombuffer
+                    Documentation is pygame.locals <a target="_blank" href="https://www.pygame.org/docs/ref/key.html#module-pygame.key:~:text=K_UP%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20up%20arrow">
+                        https://www.pygame.org/docs/ref/key.html#module-pygame.key
                     </a>
                 </p>
             </div>

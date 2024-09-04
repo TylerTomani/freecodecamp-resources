@@ -41,7 +41,7 @@
 }
     
 .r {color: red !important ;}
-.r-fix {color: rgb(227, 75, 75) !important ;
+.r-fix {color: rgb(247, 119, 119) !important ;
     font-size: var(--fSize);
     text-shadow: 0 0 10px 10px black;
     font-weight: var(--fWeight);
