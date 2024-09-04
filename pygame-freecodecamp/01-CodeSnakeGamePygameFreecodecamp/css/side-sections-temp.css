@@ -1,5 +1,5 @@
 *{
-    background-color: yellow;
+    /* background-color: yellow; */
     box-sizing: border-box;
 }
 main>aside {
@@ -12,7 +12,7 @@ main>aside {
     padding-right: 2%;
 }
 #targetDiv {
-    /* width: 100vw; */
+    width: 100vw;
 }
  main>aside {
      /* width: 25%; */
@@ -23,10 +23,8 @@ main>aside {
  }
 
  #targetDiv {
-     /* width: 68%; */
-     flex-basis: 69%;
-     /* flex-grow: 1; */
-     /* width: 100vw; */
+     flex-basis: 78%;
+     width: 100%;
  }
 header>nav#mainLinksContainer {
     display: flex;
@@ -275,9 +273,9 @@ nav:active,nav:focus{
     }
 
     #targetDiv {
-        /* width: 68%; */
-        flex-basis: 69%;
-        /* flex-grow: 1; */
+        width: 100%;
+        flex-basis: 68%;
+        flex-grow: 1;
         /* width: 100vw; */
     }
 }
