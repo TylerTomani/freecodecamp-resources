@@ -337,7 +337,7 @@ lessons.forEach(el => {
 function navJsCanvasLessons(letter){
     jsCanvasLessons.forEach(el => {
         const subSection = getSubSection(el.parentElement)
-        if(!subSection.classList.contains('show')){
+        if(subSection.classList.contains('show')){
             el.focus()
         }
     })

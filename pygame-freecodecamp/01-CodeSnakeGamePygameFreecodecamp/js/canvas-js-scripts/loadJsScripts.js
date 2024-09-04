@@ -4,6 +4,9 @@ export function injectJsScripts(){
     const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
     const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCode')
     const tempScript = document.getElementById('tempScript')
+    console.log(tempScript)
+
+    console.log("Injecting script:", injectScript);
 
     loadScript(injectScript);
     
@@ -12,14 +15,18 @@ export function injectJsScripts(){
         fetch(injectScript)
             .then(response => response.text())
             .then(data => {
-                // fill .copy-code innerText
                 jsParenCode.innerHTML = data
-                // Assign tempScript's source
+                // // Remove old script elements if they exist
+
+                // // Create and append new script element
+                // document.removeChild(tempScript)                                
                 const scriptContent = jsParenCode.textContent
+                const tempScript = document.createElement('script');
                 tempScript.setAttribute('id', 'tempScript')
                 tempScript.type = 'text/javascript';
                 tempScript.textContent = scriptContent;
                 tempScript.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
+                document.body.appendChild(tempScript);
             })
             .catch(error => console.error('Error loading script:', error));
     }
