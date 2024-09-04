@@ -171,6 +171,7 @@ export function stepTxtListeners(){
             removeAllTabIndex()
             denlargeAllImages()
             // pauseAllVideos()
+            e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
         })
         el.addEventListener('focusout', e => {
             denlargeAllImages()
