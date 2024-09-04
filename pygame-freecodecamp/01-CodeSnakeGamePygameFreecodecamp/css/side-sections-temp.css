@@ -259,7 +259,7 @@ nav:active,nav:focus{
 
     #targetDiv {
         /* width: 69%; */
-        /* flex-basis: 69%; */
-        width: 100vw;
+        flex-basis: 69%;
+        /* width: 100vw; */
     }
 }
