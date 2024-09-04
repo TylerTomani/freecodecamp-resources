@@ -172,6 +172,12 @@ targetDiv.addEventListener('keydown', e => {
         }
             
     }    
+    // if(letter == 'c'){
+    //     const mainCode = document.querySelector('#mainCode')
+    //     if(mainCode){
+    //         mainCode.focus()
+    //     }
+    // }
 })
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){

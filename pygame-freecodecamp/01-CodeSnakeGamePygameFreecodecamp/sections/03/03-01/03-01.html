@@ -24,98 +24,124 @@
             <div tabindex="0" class="step-txt">
                 <h4>02</h4>
                 <p>
-                    import the image into the <code class="m-fix">block</code>
-                    variable, and use the <span class="o-fix">blit()</span> method to draw it on 
-                    the surface. 
+                    import the image into the <code class="m-fix">block</code> with 
+                    <code><span class="m-fix">pygame.image.load()</span> .<span class="r-fix">convert</span>()</code>,
+                    Don't Forget <span class="r">convert()</span> at the end
+                    variable
                 </p>
                 <div class="code-container">
-                    <pre tabindex="0" class="copy-code">
-<span class="b-fix">block</span> = pygame.image.load('images/block.jpeg')
+                    <pre tabindex="0" class="copy-code mdtxt">
+<span class="b-fix">block</span> = <span class="m-fix lgtxt">pygame.image.load</span>('images/block.jpeg').<span class="r-fix">convert()</span>
 block_x = 100
 block_y = 100
 surface.blit(block,(block_x, block_y))
                 </div>
-                
-            </div>
-            <div class="step-vid">
-                <video poster="sections/02/02-01/images/01-thumb.png" 
-                src="sections/02/02-01/images/01.mov">
-            </div>
-        </div>
-        <div class="step-col-in">
-            <div class="step-txt-in">
                 <p>
-                    Documentation for <code class="m">pygame.image.load()</code>
+                    Documentation for <code class="m-fix">pygame.image.load()</code>
                     is here
                     <a target="_blank"
                         href="https://www.pygame.org/docs/ref/image.html?highlight=frombuffer#:~:text=pygame.image.load-,load%20new%20image%20from%20a%20file%20(or%20file%2Dlike%20object),-pygame.image.save">
                         https://www.pygame.org/docs/ref/image.html?highlight=frombuffer
                     </a>
                 </p>
-                <div class="code-container">
-                    <pre tabindex="0" class="copy-code main-code">
-import pygame
-
-if __name__ == '__main__':
-    pygame.<span class="b">init()</span>
-    surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
-    pygame.display.flip()</pre>
-                </div>
             </div>
-        </div>
-    </div>
-    <!-- 02 -->
-    <div class="step-col ">
-        <div class="step">
-            <div tabindex="0" class="step-txt">
-                <h4>02</h4>
-                <p>
-                    import the time library and use sleep for 3 seconds
-                </p>
-                
-                
-            </div>
-            <div class="step-vid">
-                <video poster="sections/02/02-01/images/02-thumb.png" src="sections/02/02-01/images/02.mov">
+            <div class="step-img">
+                <img src="sections/03/03-01/images/02.png" alt="">
             </div>
         </div>
         <div class="step-col-in">
             <div class="step-txt-in">
                 <p>
-                    It now stays open for 2 seconds.
+                    draw the <span class="b-fix">block</span> after 
+                    <code>surface.<span class="y-fix">fill((255,255,255))</span></code>.
+                    use the <span class="o-fix">blit()</span> method to draw it on
+                    the surface. Take the image as first argument, then x and y in (x,y)
                 </p>
                 <div class="code-container">
-                    <pre tabindex="0" class="copy-code main-code">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
 import pygame
-
+from pygame.locals import *
 if __name__ == '__main__':
     pygame.<span class="b">init()</span>
     surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
-    pygame.display.flip()</pre>
+    surface.<span class="y-fix">fill((255,255,255))</span>
+    
+    <span class="b-fix">block</span> = <span class="m-fix">pygame.image.load('images/block.jpg').<span class="r-fix">convert()</span></span>
+    block_x = 100
+    block_y = 100
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()
+
+    running = True
+    while running:
+
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    running = False
+            if event.type == QUIT:
+                running = False</pre>
+        
+        
                 </div>
             </div>
         </div>
     </div>
     
+    
     <!-- 03 -->
-    <div class="step-col">
-        <div tabindex="0" class="step-txt">
-            <h4>01</h4>
-            <p>
-                Visit Pygame documentation <a target="_blank" href="https://www.pygame.org/docs/">https://www.pygame.org/docs/</a> for infomation on function, methods, flag ...
-            </p>
-            <p>
-                It's a little confusing, you have to dig around, review documentation on the the above
-            </p>
-            <ul>
-                <li>pygame.init()</li>
-                <li>pygame.display.set_mode</li>
-                <li>pygame.display.flip()</li>
-            </ul>
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>03</h4>
+                <p>
+                    TBD
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code mdtxt">
+<span class="b-fix">block</span> = <span class="m-fix lgtxt">pygame.image.load</span>('images/block.jpeg').<span class="r-fix">convert()</span>
+block_x = 100
+block_y = 100
+surface.blit(block,(block_x, block_y))
+                </div>
+            </div>
+            <div class="step-img">
+                <img src="sections/03/03-01/images/02.png" alt="">
+            </div>
         </div>
-        <!-- <div class="step-vid">
-            <video poster="sections/02/02-01/images/03-thumb.png" src="sections/02/02-01/images/03.mov">
-        </div> -->
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" >
+import pygame
+from pygame.locals import *
+if __name__ == '__main__':
+    pygame.<span class="b">init()</span>
+    surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
+    surface.<span class="y-fix">fill((255,255,255))</span>
+    
+    <span class="b-fix">block</span> = <span class="m-fix">pygame.image.load('images/block.jpg').<span class="r-fix">convert()</span></span>
+    block_x = 100
+    block_y = 100
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()
+
+    running = True
+    while running:
+
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    running = False
+            if event.type == QUIT:
+                running = False</pre>
+        
+        
+                </div>
+            </div>
+        </div>
     </div>
+    
     <button tabindex="0" id="nxtLesson">next lesson</button>
 </div>
