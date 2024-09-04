@@ -3,9 +3,7 @@ export function injectJsScripts(){
     let injectScript = `./js/canvas-js-scripts/03-js-drawMove.js`;
     const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
     const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCode')
-
-
-    console.log("Injecting script:", injectScript);
+    const tempScript = document.getElementById('tempScript')
 
     loadScript(injectScript);
     
@@ -14,22 +12,14 @@ export function injectJsScripts(){
         fetch(injectScript)
             .then(response => response.text())
             .then(data => {
+                // fill .copy-code innerText
                 jsParenCode.innerHTML = data
-                console.log(data)
-                // Extract script content
-                // const tempDiv = document.createElement('div');
-                // tempDiv.innerHTML = data;
-                // const scriptContent = parentScript.textContent;
-
-                // // Remove old script elements if they exist
-
-                // // Create and append new script element
+                // Assign tempScript's source
                 const scriptContent = jsParenCode.textContent
-                const newScriptElement = document.createElement('script');
-                newScriptElement.type = 'text/javascript';
-                newScriptElement.textContent = scriptContent;
-                newScriptElement.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
-                document.body.appendChild(newScriptElement);
+                tempScript.setAttribute('id', 'tempScript')
+                tempScript.type = 'text/javascript';
+                tempScript.textContent = scriptContent;
+                tempScript.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
             })
             .catch(error => console.error('Error loading script:', error));
     }

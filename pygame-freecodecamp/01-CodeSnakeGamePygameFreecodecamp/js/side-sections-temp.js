@@ -128,9 +128,7 @@ navBar.addEventListener('keydown', e => {
         showAside()
     }
     if ( letter == 'a') {
-        console.log('slkj')
         if(currentLesson){
-            console.log(currentLesson)
             currentLesson.focus()
         } else {
             lastFocusedElement.focus()
@@ -236,7 +234,6 @@ sections.forEach(el => {
         fetchLessonHref(e.target.href)
         sectionTitle.innerText = e.target.innerText
         lessonTitle.innerText = ''
-        console.log('clicked')
         currentSection = e.target
     })
     el.addEventListener('keydown', e => {
@@ -254,11 +251,6 @@ sections.forEach(el => {
                 }
                 firstLesson.focus()
             }
-            console.log(firstLesson)
-
-            // firstLesson.focus()
-                
-
         }
         if (letter == 'enter') {
             const sectionContainer = getSectionContainer(e.target.parentElement)
@@ -342,6 +334,14 @@ lessons.forEach(el => {
         
     })
 })
+function navJsCanvasLessons(letter){
+    jsCanvasLessons.forEach(el => {
+        const subSection = getSubSection(el.parentElement)
+        if(!subSection.classList.contains('show')){
+            el.focus()
+        }
+    })
+}
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase()
     switch (letter) {
@@ -358,6 +358,11 @@ addEventListener('keydown', e => {
         } 
         
     }
+    if(letter == 'j'){
+        navJsCanvasLessons()
+        
+    }
+    
     if(letter == 's' && !sectionsFocused ){
         lastFocusedElement.focus()
     }
