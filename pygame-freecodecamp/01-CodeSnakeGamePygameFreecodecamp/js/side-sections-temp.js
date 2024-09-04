@@ -269,8 +269,7 @@ sections.forEach(el => {
         if(letter == 'c'){
             // const mainCode = document.querySelector('#mainCode')
             targetDivFocused = true
-        }
-        
+        }        
     })
 })
 function navLessons(e, letter) {
@@ -336,7 +335,6 @@ lessons.forEach(el => {
         }
         
     })
-
 })
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase()
