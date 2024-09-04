@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 body {
-    /* background-color: lightblue; */
+    background-color: rgb(173, 216, 230,.2);
 }
 main>aside {
     flex-basis: 20%;

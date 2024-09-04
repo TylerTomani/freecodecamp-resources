@@ -1,32 +1,37 @@
 
 export function injectJsScripts(){
-    const titleJsScript = document.querySelector('#titleJsScript')
+    let injectScript = `./js/canvas-js-scripts/03-js-drawMove.js`;
+    const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
+    const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCode')
 
-    let injectScript = `./canvas-js-scripts/${titleJsScript.innerText}`
-    console.log(injectScript)
+
+    console.log("Injecting script:", injectScript);
+
+    loadScript(injectScript);
     
-    // loadScript(injectScript)
     function loadScript(injectScript) {
         // Fetch the JavaScript file content
         fetch(injectScript)
             .then(response => response.text())
             .then(data => {
-                let script = data
-                // console.log(script)
+                jsParenCode.innerHTML = data
+                console.log(data)
                 // Extract script content
                 // const tempDiv = document.createElement('div');
                 // tempDiv.innerHTML = data;
-                // const scriptContent = script.textContent;
-                // Remove old script elements if they exist
+                // const scriptContent = parentScript.textContent;
 
-                // Create and append new script element
-                // const newScriptElement = document.createElement('script');
-                // newScriptElement.type = 'text/javascript';
-                // newScriptElement.textContent = scriptContent;
-                // newScriptElement.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
-                // document.body.appendChild(newScriptElement);
+                // // Remove old script elements if they exist
+
+                // // Create and append new script element
+                const scriptContent = jsParenCode.textContent
+                const newScriptElement = document.createElement('script');
+                newScriptElement.type = 'text/javascript';
+                newScriptElement.textContent = scriptContent;
+                newScriptElement.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
+                document.body.appendChild(newScriptElement);
             })
             .catch(error => console.error('Error loading script:', error));
     }
-
+    
 }

@@ -182,7 +182,7 @@ export function stepTxtListeners(){
             stepFocused = true
             removeAllTabIndex()
             denlargeAllImages()
-            // pauseAllVideos()
+            pauseAllVideos()
             e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
         })
         el.addEventListener('focusout', e => {
@@ -299,6 +299,9 @@ export function stepTxtListeners(){
         
             videoPlayClick(vid)
             // console.log(e.target)
+            if(!vid.play){
+                denlargeAllImages()
+            }
         })
     })
     function videoPlayClick(vid) {

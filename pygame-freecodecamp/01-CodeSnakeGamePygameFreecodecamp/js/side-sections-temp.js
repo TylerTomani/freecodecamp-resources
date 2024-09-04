@@ -1,7 +1,7 @@
 import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 import { popScriptWindow } from "./popup-script.js"
-// import {}}
+import { injectJsScripts } from "./canvas-js-scripts/loadJsScripts.js"
 
 
 export const navBar = document.querySelector('.section-lesson-title')
@@ -9,6 +9,7 @@ export const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.sub-section > li > a')
 export const header = document.querySelector('header')
+const jsCanvasLessons = document.querySelectorAll('.js-canvas-lesson')
 const backlink = document.getElementById('backlink')
 const homelink = document.getElementById('homelink')
 const tutorialLink = document.getElementById('tutorialLink')
@@ -409,6 +410,7 @@ addEventListener('keydown', e => {
             
     }
 });
+
 function fetchLessonHref(href){
     fetch(href)
     .then(response => response.text())
