@@ -1,0 +1,32 @@
+
+export function injectJsScripts(){
+    const titleJsScript = document.querySelector('#titleJsScript')
+
+    let injectScript = `./canvas-js-scripts/${titleJsScript.innerText}`
+    console.log(injectScript)
+    
+    // loadScript(injectScript)
+    function loadScript(injectScript) {
+        // Fetch the JavaScript file content
+        fetch(injectScript)
+            .then(response => response.text())
+            .then(data => {
+                let script = data
+                // console.log(script)
+                // Extract script content
+                // const tempDiv = document.createElement('div');
+                // tempDiv.innerHTML = data;
+                // const scriptContent = script.textContent;
+                // Remove old script elements if they exist
+
+                // Create and append new script element
+                // const newScriptElement = document.createElement('script');
+                // newScriptElement.type = 'text/javascript';
+                // newScriptElement.textContent = scriptContent;
+                // newScriptElement.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
+                // document.body.appendChild(newScriptElement);
+            })
+            .catch(error => console.error('Error loading script:', error));
+    }
+
+}

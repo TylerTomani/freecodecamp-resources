@@ -248,7 +248,7 @@ nav:active,nav:focus{
     }
     body{
         /* background-color: yellowgreen; */
-        width: fit-content;
+        /* width: fit-content; */
         overflow-x: hidden;
 
     }
@@ -263,7 +263,7 @@ nav:active,nav:focus{
     #targetDiv {
         width: 68%;
         flex-basis: 69%;
-        flex-grow: 1;
+        /* flex-grow: 1; */
         /* width: 100vw; */
     }
 }
