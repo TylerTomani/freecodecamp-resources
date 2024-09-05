@@ -268,6 +268,14 @@ sections.forEach(el => {
             // const mainCode = document.querySelector('#mainCode')
             targetDivFocused = true
         }        
+        if(letter == 'j'){
+            const sectionContainer = getSectionContainer(e.target)
+            const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')
+            lessons.forEach(el => {
+                el.classList.contains('js-canvas-lesson')
+                el.focus()
+            })
+        }
     })
 })
 function navLessons(e, letter) {

@@ -117,11 +117,7 @@ navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
     if(key === 13){
-        if(!mainAside.classList.contains('hide')){
-            mainAside.classList.add('hide')
-        } else {
-            mainAside.classList.remove('hide')
-        }
+        toggleAside()
     }
     targetDivFocused = false
     if (letter == 's' || letter == 'a') {
@@ -140,6 +136,17 @@ navBar.addEventListener('keydown', e => {
     }    
     
 })
+function toggleAside(){
+    const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
+    if (!mainAside.classList.contains('hide')){
+        mainAside.classList.add('hide')
+        jsCanvasScriptContainer.style.alignSelf = 'center'
+
+    } else {
+        mainAside.classList.remove('hide')
+        jsCanvasScriptContainer.style.alignSelf = 'flex-start'
+    }
+}
 export function showAside(){
     if(mainAside.classList.contains('hide')){
         mainAside.classList.remove('hide')
@@ -268,6 +275,14 @@ sections.forEach(el => {
             // const mainCode = document.querySelector('#mainCode')
             targetDivFocused = true
         }        
+        if(letter == 'j'){
+            const sectionContainer = getSectionContainer(e.target)
+            const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')
+            lessons.forEach(el => {
+                el.classList.contains('js-canvas-lesson')
+                el.focus()
+            })
+        }
     })
 })
 function navLessons(e, letter) {
