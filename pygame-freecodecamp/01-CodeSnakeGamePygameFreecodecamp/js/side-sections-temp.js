@@ -140,11 +140,11 @@ function toggleAside(){
     const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
     if (!mainAside.classList.contains('hide')){
         mainAside.classList.add('hide')
-        jsCanvasScriptContainer.style.alignSelf = 'center'
+        // jsCanvasScriptContainer.style.alignSelf = 'center'
 
     } else {
         mainAside.classList.remove('hide')
-        jsCanvasScriptContainer.style.alignSelf = 'flex-start'
+        // jsCanvasScriptContainer.style.alignSelf = 'statics'
     }
 }
 export function showAside(){
