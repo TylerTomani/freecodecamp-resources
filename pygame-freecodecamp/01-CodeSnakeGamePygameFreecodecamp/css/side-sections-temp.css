@@ -3,7 +3,8 @@
     box-sizing: border-box;
 }
 body {
-    background-color: rgb(173, 216, 230,.2);
+    /* background-color: rgb(173, 216, 230,.2); */
+    
 }
 main>aside {
     flex-basis: 20%;
