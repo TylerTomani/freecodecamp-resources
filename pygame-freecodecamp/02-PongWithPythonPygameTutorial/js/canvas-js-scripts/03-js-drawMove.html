@@ -1,11 +1,11 @@
 (function(){
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d')
-    let xBlock = 10
-    let yBlock = 10
-    let heightWidth = 20
+    let <span class="lsg-fix">xBlock</span> = 10
+    let <span class="lsg-fix">yBlock</span> = 10
+    let <span class="y-fix">heightWidth</span> = 20
     const block = new Image();
-    block.src = './js/canvas-js-scripts/img/block.jpg';
+    <span class="m-fix">block.src = './js/canvas-js-scripts/img/block.jpg';</span>
     const keys = {
         down :{
             pressed: false
@@ -23,9 +23,7 @@
     }
     function animate(){
         requestAnimationFrame(animate)
-        c.fillStyle = 'rgb(255,255,255)'
-        // c.fillRect(0,0,canvas.width,canvas.height)
-        c.drawImage(block, xBlock, yBlock, heightWidth, heightWidth)
+        c.drawImage(block,<span class="lsg-fix">xBlock</span>,<span class="lsg-fix">yBlock</span>, <span class="y-fix">heightWidth</span>,<span class="y-fix">heightWidth</span> )
         if(keys.down.pressed){
             yBlock += heightWidth * .1
         }
@@ -38,11 +36,6 @@
         if(keys.left.pressed){
             xBlock -= heightWidth * .1
         }
-
-
-
-        
-
     }
     animate()
     addEventListener('keyup', e => {

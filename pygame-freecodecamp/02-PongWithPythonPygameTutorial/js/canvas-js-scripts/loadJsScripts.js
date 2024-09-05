@@ -1,6 +1,7 @@
 
 export function injectJsScripts(){
-    let injectScript = `./js/canvas-js-scripts/03-js-drawMove.js`;
+    let injectScript = `./js/canvas-js-scripts/03-js-drawMove.html`;
+    // let injectScript = `./js/canvas-js-scripts/03-js-drawMove.js`;
     const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
     const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCode')
     const tempScript = document.getElementById('tempScript')
@@ -17,10 +18,13 @@ export function injectJsScripts(){
             .then(data => {
                 jsParenCode.innerHTML = data
                 // // Remove old script elements if they exist
-
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = data;
+                
                 // // Create and append new script element
                 // document.removeChild(tempScript)                                
-                const scriptContent = jsParenCode.textContent
+                const scriptContent = jsParenCode.textContent;
+
                 const tempScript = document.createElement('script');
                 tempScript.setAttribute('id', 'tempScript')
                 tempScript.type = 'text/javascript';
