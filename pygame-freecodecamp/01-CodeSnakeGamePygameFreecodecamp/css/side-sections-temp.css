@@ -165,11 +165,11 @@ nav:active,nav:focus{
     display: none;
 }
 
-/* @media screen and (max-width: 900px){
-    .sections-container {
-            font-size: 70%;
+@media screen and (max-width: 900px){
+    main > aside  {
+    min-width: 120px;
     }
-} */
+}
 
 @media screen and (max-width: 771px){
     body>header {
@@ -274,6 +274,7 @@ nav:active,nav:focus{
         padding-left: 1.5%;
         border-bottom: 1px solid black;
         /* flex-grow: 0; */
+        min-width: 120px;
     }
 
     #targetDiv {
