@@ -5,7 +5,7 @@ canvas {
     border: 1px solid black;
     width: 100%; 
     flex-grow: 1;
-    height: 50vh; 
+    /* height: 50vh;  */
     z-index: 5; 
     overflow: hidden;
 }

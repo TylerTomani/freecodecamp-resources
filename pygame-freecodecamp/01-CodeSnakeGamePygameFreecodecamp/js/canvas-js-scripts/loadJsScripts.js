@@ -1,13 +1,10 @@
 
 export function injectJsScripts(){
-    let injectScript = `./js/canvas-js-scripts/03-js-drawMove.html`;
-    // let injectScript = `./js/canvas-js-scripts/03-js-drawMove.js`;
+    // let injectScript = `./js/canvas-js-scripts/03-js-drawMove.html`;
+    let injectScript = `./js/canvas-js-scripts/03-js-drawMove.js`;
     const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
     const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCode')
     const tempScript = document.getElementById('tempScript')
-    console.log(tempScript)
-
-    console.log("Injecting script:", injectScript);
 
     loadScript(injectScript);
     
