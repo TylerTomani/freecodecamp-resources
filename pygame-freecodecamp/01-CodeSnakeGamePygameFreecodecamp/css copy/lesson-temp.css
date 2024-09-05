@@ -11,6 +11,7 @@ body {padding-bottom: 5%;}
     width: 100%;
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
 }
 .step-col {
     flex-basis: 80%;
