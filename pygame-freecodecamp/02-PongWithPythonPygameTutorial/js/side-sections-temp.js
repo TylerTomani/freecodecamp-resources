@@ -117,11 +117,7 @@ navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
     if(key === 13){
-        if(!mainAside.classList.contains('hide')){
-            mainAside.classList.add('hide')
-        } else {
-            mainAside.classList.remove('hide')
-        }
+        toggleAside()
     }
     targetDivFocused = false
     if (letter == 's' || letter == 'a') {
@@ -140,6 +136,17 @@ navBar.addEventListener('keydown', e => {
     }    
     
 })
+function toggleAside(){
+    const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
+    if (!mainAside.classList.contains('hide')){
+        mainAside.classList.add('hide')
+        // jsCanvasScriptContainer.style.alignSelf = 'center'
+
+    } else {
+        mainAside.classList.remove('hide')
+        // jsCanvasScriptContainer.style.alignSelf = 'statics'
+    }
+}
 export function showAside(){
     if(mainAside.classList.contains('hide')){
         mainAside.classList.remove('hide')

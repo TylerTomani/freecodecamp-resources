@@ -11,10 +11,11 @@ canvas {
     background-color: blue !important;
 }
 #jsCanvasScriptContainer {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column ;
-    align-items: center;
+    /* margin:  0 5%; */
+    /* align-items: center; */
 
 }
 #scriptsContainer {
