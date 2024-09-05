@@ -5,11 +5,12 @@
     <div class="step-col">
         <div tabindex="0" class="step-txt">
             <h5>Draw & Move Player</h5>
-<div class="code-container">
+                <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
 import pygame
 from pygame.locals import *
 def <span class="o-fix">drawBlock</span>():
+    <span class="y-fix">surface.fill((255,255,255))</span>
     surface.blit(block,(block_x,block_y))
     pygame.display.flip()
 if __name__ == '__main__':
@@ -38,11 +39,8 @@ if __name__ == '__main__':
             if event.type == QUIT:
                 running = False
         <span class="o-fix">drawBlock()</span></pre>
-        
-        
                 </div>
-            
-        </div>
+                </div>
         <div class="step-img">
             <!-- <img src="sections/01/images/01.png"> -->
         </div>

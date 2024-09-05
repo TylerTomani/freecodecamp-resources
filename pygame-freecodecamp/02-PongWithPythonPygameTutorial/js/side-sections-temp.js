@@ -334,6 +334,7 @@ lessons.forEach(el => {
         
     })
 })
+// This is not working yet, Get "J" to go to js canvas
 function navJsCanvasLessons(letter){
     jsCanvasLessons.forEach(el => {
         const subSection = getSubSection(el.parentElement)
