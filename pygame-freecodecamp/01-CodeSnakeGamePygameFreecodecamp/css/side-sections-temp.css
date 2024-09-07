@@ -5,6 +5,8 @@
 }
 body {
     /* background-color: rgb(173, 216, 230,.2); */
+    overflow: hidden;
+    scroll-behavior: none;
 
 }
 body > header a:focus,
