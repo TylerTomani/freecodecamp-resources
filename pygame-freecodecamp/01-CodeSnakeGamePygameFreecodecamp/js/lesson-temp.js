@@ -403,6 +403,10 @@ export function stepTxtListeners(){
         let letter = e.key.toLowerCase()
         let key = e.keyCode
         if (letter == 'c' && !keys.meta.pressed ) {
+            const mainCode = document.querySelector('#mainCode')
+            if(mainCode){
+                mainCode.focus()
+            }
             if(mainCodes.length > 0){
                 mainCodes[iMainCode].focus()
             }
