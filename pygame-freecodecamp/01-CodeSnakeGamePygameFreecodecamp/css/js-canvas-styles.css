@@ -36,8 +36,15 @@ canvas {
 #scriptsContainer>.code-container {
     border: 1px solid black;
     color: white;
+    overflow: scroll;
+    width: 100% !important;
+}
+#scriptsContainer>.code-container>.copy-code {
     overflow: hidden;
-    scroll-behavior: none;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    /* scroll-behavior: none; */
+    width: 100%;
 }
 #scriptsContainer>#xExitContainer{
     display: flex;
@@ -50,12 +57,7 @@ canvas {
     width: 20px;
     border-radius: 2px;
 }
-#scriptsContainer>.code-container >.copy-code{
-    overflow: hidden;
-    overflow-x: scroll;
-    scroll-behavior: none;
-    width: 100%;
-}
+
 .popped-up {
     position: absolute;
     width: 50%;

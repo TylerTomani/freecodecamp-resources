@@ -119,7 +119,7 @@ body {padding-bottom: 5%;}
 
 .code-container {
     width: 98%;
-    
+    max-height: 90vh;
     border: 1px solid black;
     align-self: center;
 }
@@ -133,13 +133,10 @@ body {padding-bottom: 5%;}
 .step-txt-in>.code-container {
     background-color: rgb(33, 38, 38);
     color: white;;
-
-
 }
 .copy-code {
     font-size: .68rem;
     padding-left: 2.5%;
-    overflow-x: scroll;
     padding-top: 1.5%;
 }
 .copy-code:active,
