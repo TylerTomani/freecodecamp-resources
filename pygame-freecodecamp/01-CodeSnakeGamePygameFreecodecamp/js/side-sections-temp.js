@@ -407,6 +407,12 @@ function switchNavPageElements(letter){
             mainAside.focus()
             break
         case 'c':
+            const mainCode = document.querySelector('#mainCode')
+            if(mainCode){
+                mainCode.focus()
+            }
+            break
+        case 'j':
 
             break
         case 'm':

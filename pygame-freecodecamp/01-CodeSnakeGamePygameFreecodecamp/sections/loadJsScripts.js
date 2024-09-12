@@ -30,7 +30,10 @@ export function injectJsScripts(){
                     tempScript.type = 'text/javascript';
                     tempScript.textContent = scriptContent;
                     tempScript.setAttribute('data-dynamic', 'true'); // Optional: mark as dynamic to easily remove later
-                    document.body.appendChild(tempScript);
+                    console.log(tempScript)
+                    if(tempScript && scriptContent){
+                        document.body.appendChild(tempScript);
+                    }
                 })
                 .catch(error => console.error('Error loading script:', error));
         }
