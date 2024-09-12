@@ -369,8 +369,10 @@ addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()    
     if(!STARTED && letter == 's'){
         sections[0].focus()
+        switchNavPageElements(letter)
     }
     STARTED = true
+    switchNavPageElements(letter)
     if(letter == 'a' ){
         if(currentLesson){
             currentLesson.focus()
@@ -396,19 +398,22 @@ addEventListener('keydown', e => {
             }
         }
     }
-    switch(letter){     
+    
+});
+function switchNavPageElements(letter){
+    switch (letter) {
         case 'a':
-            scrollTo(0,0)
+            scrollTo(0, 0)
             mainAside.focus()
-            break        
+            break
         case 'c':
-            
-            break        
+
+            break
         case 'm':
-            scrollTo(0,0)
+            scrollTo(0, 0)
             targetDiv.focus()
             targetDivFocused = true
-            break        
+            break
         case 'n':
             navBar.focus()
             break
@@ -421,19 +426,18 @@ addEventListener('keydown', e => {
         case 'r':
             regexCmdsLink.focus()
             // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            break   
+            break
         case 'p':
-            if(!keys.shift.pressed){
+            if (!keys.shift.pressed) {
                 programShorcutsLink.focus()
             }
             break
         case 't':
             tutorialLink.focus()
             break
-            
-    }
-});
 
+    }
+}
 function fetchLessonHref(href){
     fetch(href)
     .then(response => response.text())
