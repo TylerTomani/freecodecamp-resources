@@ -5,8 +5,8 @@
     canvas.height = innerHeight * .7
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
+    let clickedX, clickedY
     let lastKey = ''
-    let playerSpeed = .1
     const keys = {
         down: {
             pressed: false
@@ -72,7 +72,7 @@
     })
     addEventListener('keydown', e => {
         let key = e.keyCode
-        switch(key){
+        switch (key) {
             case 40:
                 e.preventDefault()
                 keys.down.pressed = true
@@ -91,6 +91,20 @@
                 break
         }
     });
+    addEventListener('pointerup', e => {
+        keys.down.pressed = false
+        keys.right.pressed = false
+        keys.up.pressed = false
+        keys.left.pressed = false
+    })
+    
+    addEventListener('pointerdown', e => {
+        const rect = canvas.getBoundingClientRect()
+        const x = rect.x
+        const y = rect.y
+        console.log(x)
+
+    });
     function animate(){
         requestAnimationFrame(animate)
         c.fillStyle = 'white'
@@ -98,16 +112,16 @@
         block.update()
         
         if(keys.right.pressed){
-            block.velocity.x += playerSpeed
+            block.position.x += Player.width * .25
         } else
         if(keys.down.pressed){
-            block.velocity.y += playerSpeed
+            block.position.y += Player.width * .25
         } else
         if(keys.up.pressed){
-            block.velocity.y -= playerSpeed
+            block.position.y -= Player.width * .25
         } else
         if(keys.left.pressed){
-            block.velocity.x -= playerSpeed
+            block.position.x -= Player.width * .25
         }
          else {
             block.velocity.x = 0
