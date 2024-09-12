@@ -7,43 +7,180 @@
             <div tabindex="0" class="step-txt">
                 <h4>01</h4>
                 <p>
-                    Move the game intialization variable into a <code class="lsg-fix">Game</code>
+                    Move the contents of snake in a  <code class="lsg-fix">Snake</code>
                     class
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code smtxt main-code">
-pygame.init()
-surface = pygame.display.set_mode((500,400))
-surface.fill((255,255,255))
-</pre>
-
+block = pygame.image.load('images/block.jpg').convert()
+block_x = 100
+block_y = 100</pre></div>
+                <p>
+                    put the <code class="r-fix">draw()</code> function into a
+                    method of <code class="lsg-fix">Snake</code>
+                </p>   
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt">
+def <span class="r-fix">drawBlock</span>():
+    self.surface.fill((255,255,255))
+    self.surface.blit(block,(block_x,block_y))
+    pygame.display.flip()
                 </div>
                 
             </div>
             <div class="step-img">
                 <img
-                 src="sections/04/04-01/images/01.png" alt="">
+                 src="sections/04/04-02/images/01.png" alt="">
             </div>
         </div>
         <div class="step-col-in">
             <div class="step-txt-in mdtxt">
                 <p>
-                    <span class="r">**The code will not run yet</span>
+                    <span class="r">**The code will not run yet</span> AND the <code class="lsg-fix">Snake</code>                
+                    needs to be passed in the surface
+                </p>
+                <p>
+                    remember to change block_x and y with <code><span class="b-fix">self</span>.x</code>
+                    and <code><span class="b-fix">self</span>.y</code>
                     
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
-class <span class="lsg-fix">Game</span>:
+class Snake:
+    def __init__(self):
+        self.block = pygame.image.load('images/block.jpg').convert()
+        self.block_x = 100
+        self.block_y = 100
+
+    def drawBlock(self):
+        self.surface.fill((255,255,255))
+        self.surface.blit(block,(<span><span class="b-fix">self</span>.x</span>,<span><span class="b-fix">self</span>.y</span>))
+        pygame.display.flip()</pre></div>
+            </div>
+        </div>
+    </div>
+    <!-- 02-->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+                    Pass in the <code class="m">surface</code> as an argument into the 
+                    <code class="lsg-fix">Snake</code> class and call it 
+                    <code class="m-fix">parent_surface</code>
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt main-code">
+class Snake:
+    def __init__(self,<span class="m-fix">parent_surface</span>):
+        self.<span class="m-fix">parent_surface</span> = parent_surface
+        self.block = pygame.image.load('images/block.jpg').convert()
+        self.block_x = 100
+        self.block_y = 100
+
+    def drawBlock(self):
+        self.parent_surface.blit(block,(block_x,block_y))</pre></div>
+                <p>
+                    put the <code class="r-fix">draw()</code> function into a
+                    method of <code class="lsg-fix">Snake</code>
+                </p>   
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt">
+def <span class="r-fix">drawBlock</span>():
+    surface.fill((255,255,255))
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()</pre>
+                </div>
+                
+            </div>
+            <div class="step-img">
+                <img
+                 src="sections/04/04-02/images/01.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <p>
+                    <span class="r">**The code will still not run</span>, Now we need to 
+                    add a snake class in the <code class="lsg">Game</code> class
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+class Snake:
+    def __init__(self):
+        block = pygame.image.load('images/block.jpg').convert()
+        block_x = 100
+        block_y = 100
+
+    def drawBlock(self):
+        surface.fill((255,255,255))
+        surface.blit(block,(block_x,block_y))
+        pygame.display.flip()</pre></div>
+            </div>
+        </div>
+    </div>
+    <!-- 03-->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>03</h4>
+                <p>
+                    Create an instance of the <code class="y-fix">Snake</code>
+                    class in the <code class="lsg-fix">Game</code> class. This is also where
+                    we pass in the <code class="m-fix">surface</code> into the <code class="y-fix">Snake</code>
+                    class
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt main-code">
+class Game:
     def __init__(self):
         pygame.init()
         self.surface = pygame.display.set_mode((500,400))
         self.surface.fill((255,255,255))
+        self.snake = <span class="y-fix">Snake(self.<span class="m">surface</span>)</span>
+        self.snake.<span class="r-fix">draw()</span>
     def run(self):
         pass</pre></div>
+                <p>
+                    put the <code class="r-fix">draw()</code> function into a
+                    method of <code class="lsg-fix">Snake</code>
+                </p>   
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt">
+def <span class="r-fix">drawBlock</span>():
+    surface.fill((255,255,255))
+    surface.blit(block,(block_x,block_y))
+    pygame.display.flip()</pre>
+                </div>
+                
+            </div>
+            <div class="step-img">
+                <img
+                 src="sections/04/04-02/images/01.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <p>
+                    <span class="r">**The code will still not run</span>, Now we need to 
+                    add a snake class in the <code class="lsg">Game</code> class
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+class Snake:
+    def __init__(self):
+        block = pygame.image.load('images/block.jpg').convert()
+        block_x = 100
+        block_y = 100
+
+    def drawBlock(self):
+        surface.fill((255,255,255))
+        surface.blit(block,(block_x,block_y))
+        pygame.display.flip()</pre></div>
             </div>
         </div>
     </div>
-        
+    
     
     <button tabindex="0" id="nxtLesson">next lesson</button>
 </div>
