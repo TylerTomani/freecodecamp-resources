@@ -1,15 +1,14 @@
 import { lastFocusedElement } from "./side-sections-temp.js"
 import { getSectionContainer } from "./side-sections-temp.js"
-import { mainAside,toggleAside } from "./side-sections-temp.js"
-import { showAside } from "./side-sections-temp.js"
-import { hideAside } from "./side-sections-temp.js"
+import { mainAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
 import { sections,lessons } from "./side-sections-temp.js"
+import { showAside } from "./side-sections-temp.js"
 import { header } from "./side-sections-temp.js"
 let iSection = 0
 let iMainCode = 0
 let currentSection
-export let stepTxts = document.querySelectorAll('.step-txt')
+let stepTxts = document.querySelectorAll('.step-txt')
 export function stepTxtListeners(){
     const navbar = document.querySelector('.section-lesson-title')
     stepTxts = document.querySelectorAll('.step-txt')
@@ -31,9 +30,7 @@ export function stepTxtListeners(){
     let targetDivFocus = false
     let stepFocused = false
     let playing = false
-    if (mainAside.classList.contains('hide')) {
-        // targetDivFocus = true
-    }    
+    
     sections.forEach(el => {
         el.addEventListener('focus', e => {
             mainCodesFocused = false
@@ -42,12 +39,7 @@ export function stepTxtListeners(){
 
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if(letter == 'c' && !keys.meta.pressed){
-                const mainCode = document.querySelector('#mainCode')
-                if (mainCode && !mainCodesFocused && !stepFocused) {
-                    mainCode.focus()
-                }
-            }
+            
             
         })
     })
@@ -187,12 +179,9 @@ export function stepTxtListeners(){
             denlargeAllImages()
             pauseAllVideos()
             e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-            e.target.style.zIndex = 10
-
         })
         el.addEventListener('focusout', e => {
             denlargeAllImages()
-            e.target.style.zIndex = 0
         })
         el.addEventListener('click', e => {
             e.preventDefault()
@@ -263,7 +252,7 @@ export function stepTxtListeners(){
     function handleImg(vid, key, e) {
         if (key == 13) {
             if (e.target.classList.contains('step-txt')) {
-                toggleImgSize(vid, true, e)
+                toggleImgSize(vid, false, e)
             }
             if (e.target.classList.contains('main-code')) {
                 toggleImgSize(vid, true,e)
@@ -275,9 +264,8 @@ export function stepTxtListeners(){
         if (!zoomBack) {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
-                hideAside()
                 img.style.zIndex = 10
-                img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
+                img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             } else {
                 // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
@@ -286,8 +274,7 @@ export function stepTxtListeners(){
         } else {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
-
-                // img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+                img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.style.zIndex = 10
             } else {
                 e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
@@ -410,20 +397,17 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
-        if(letter == 'p'){
-            targetDivFocus = true
-            // const 
-            
-        }
         if(letter == 'enter'){
-            targetDivFocus = true
-            const canvas = document.querySelector('#canvas')
+            const canvas = document.querySelector('canvas')
             if(canvas){
                 canvas.focus()
             }
         }
-        
         if (letter == 'c' && !keys.meta.pressed ) {
+            const mainCode = document.querySelector('#mainCode')
+            if(mainCode){
+                mainCode.focus()
+            }
             if(mainCodes.length > 0){
                 mainCodes[iMainCode].focus()
             }
@@ -433,9 +417,6 @@ export function stepTxtListeners(){
                 nextLesson.focus()
             }
         }   
-        if(letter == 's' ){
-            toggleAside()
-        }
         if(letter == 'meta'){
             keys.meta.pressed = true        
         }
@@ -516,7 +497,5 @@ export function stepTxtListeners(){
     }
 }
 export function stepNumFocus(intLetter) {
-    if(stepTxts.length > 0 && stepTxts[intLetter - 1]){
-        stepTxts[intLetter - 1].focus()
-    }
+    stepTxts[intLetter - 1].focus()
 }
