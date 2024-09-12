@@ -39,20 +39,7 @@ export function stepTxtListeners(){
 
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if(letter == 'c' && !keys.meta.pressed){
-                const mainCode = document.querySelector('#mainCode')
-                const mainCodes = document.querySelectorAll('main-code')
-                if(!mainCodes){
-                    if (mainCode && !mainCodesFocused && !stepFocused) {
-                        mainCode.focus()
-                    } 
-                } else {
-                    mainCodes[iMainCode].focus()
-                    iMainCode = (iMainCode + 1) % mainCodes.length
-                    
-                }
-
-            }
+            
             
         })
     })
