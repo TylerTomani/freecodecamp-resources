@@ -2,8 +2,6 @@ import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 import { popScriptWindow } from "./popup-script.js"
 import { injectJsScripts } from "./canvas-js-scripts/loadJsScripts.js"
-
-
 export const navBar = document.querySelector('.section-lesson-title')
 export const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
@@ -20,6 +18,7 @@ const sectionTitle = document.getElementById('section-title')
 const lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
 const targetDiv = document.getElementById('targetDiv')
+let STARTED = false
 const keys = {
     shift: {
         pressed: false
@@ -368,20 +367,23 @@ addEventListener('keyup', e => {
 })
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()    
+    if(!STARTED && letter == 's'){
+        sections[0].focus()
+    }
+    STARTED = true
     if(letter == 'a' ){
         if(currentLesson){
             currentLesson.focus()
-        } 
-        
+        }         
     }
     if(letter == 'j'){
         navJsCanvasLessons()
-        
     }
-    
     if(letter == 's' && !sectionsFocused ){
         lastFocusedElement.focus()
-    }
+    } 
+        
+    
     if(letter == 'shift'){keys.shift.pressed = true}
     // Controls Section Selection with numbers on keyboard
     if(!targetDivFocused){

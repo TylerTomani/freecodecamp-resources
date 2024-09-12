@@ -402,6 +402,12 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
+        if(letter == 'enter'){
+            const canvas = document.querySelector('canvas')
+            if(canvas){
+                canvas.focus()
+            }
+        }
         if (letter == 'c' && !keys.meta.pressed ) {
             const mainCode = document.querySelector('#mainCode')
             if(mainCode){
