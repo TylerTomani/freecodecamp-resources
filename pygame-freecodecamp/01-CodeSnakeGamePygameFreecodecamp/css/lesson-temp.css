@@ -123,6 +123,9 @@ body {padding-bottom: 5%;}
     border: 1px solid black;
     align-self: center;
 }
+.code-container > .copy-code {
+    overflow: hidden;
+}
 .code-container > .copy-code > .code-container ,
 .code-container > .copy-code > .code-container > .copy-code{
     scroll-behavior: none;
@@ -134,6 +137,7 @@ body {padding-bottom: 5%;}
     background-color: rgb(33, 38, 38);
     color: white;;
 }
+
 .copy-code {
     font-size: .68rem;
     padding-left: 2.5%;

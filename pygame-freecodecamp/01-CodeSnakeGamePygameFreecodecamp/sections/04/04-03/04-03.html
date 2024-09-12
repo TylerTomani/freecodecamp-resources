@@ -1,0 +1,107 @@
+
+<div class="steps-container">
+    <h4>04-03 Add running Loop & 
+        Movement in Game class </h4>
+    <!-- 01-->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Place the <code class="y-fix">while running:</code>
+                loop in the <code class="lsg-fix">Game</code> <code class="r-fix">run()</code>
+                method
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code smtxt main-code">
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == KEYDOWN:
+            if event.key == K_ESCAPE or event.key == K_q:
+                running = False
+            if event.key == K_DOWN:
+                block_y += 10
+            if event.key == K_UP:
+                block_y -= 10
+            if event.key == K_LEFT:
+                block_x -= 10
+            if event.key == K_RIGHT:
+                block_x += 10
+        if event.type == QUIT:
+            running = False
+</pre></div>
+            
+        </div>
+        <div class="step-img">
+            <img
+             src="sections/04/04-03/images/01.png" alt="">
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>01</h4>
+                <p>
+                    Instead of adjusting each <code class="y-fix">block_x</code>
+                    and <code class="y-fix">block_y</code>, refer to 
+                    <code><span class="b-fix">self</span>.<span class="lsg-fix">snake</span></code>
+                    <code class="m-fix">move</code>
+                    methods, but create the methods in the <code class="lsg-fix">Snake</code> and adjust there
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt main-code">
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    running = False
+                if event.key == K_DOWN:
+                    self.snake.<span class="m-fix">move_down</span>()
+                if event.key == K_UP:
+                    self.snake.<span class="m-fix">move_up</span>()
+                if event.key == K_LEFT:
+                    self.snake.<span class="m-fix">move_left</span>()
+                if event.key == K_RIGHT:
+                    self.snake.<span class="m-fix">move_right</span>()
+            if event.type == QUIT:
+                running = False
+    </pre></div>
+                
+            </div>
+            <div class="step-img">
+                <img
+                src="sections/04/04-03/images/01.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <p>
+                    <span class="r">**The code will not run yet</span> AND the <code class="lsg-fix">Snake</code>                
+                    needs to be passed in the surface
+                </p>
+                <p>
+                    remember to change block_x and y with <code><span class="b-fix">self</span>.x</code>
+                    and <code><span class="b-fix">self</span>.y</code>
+                    
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+class Snake:
+    def __init__(self):
+        self.block = pygame.image.load('images/block.jpg').convert()
+        self.block_x = 100
+        self.block_y = 100
+
+    def <span class="r-fix">drawBlock</span>(self):
+        self.surface.fill((255,255,255))
+        self.surface.blit(block,(<span><span class="b-fix">self</span>.x</span>,<span><span class="b-fix">self</span>.y</span>))
+        pygame.display.flip()</pre></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>
