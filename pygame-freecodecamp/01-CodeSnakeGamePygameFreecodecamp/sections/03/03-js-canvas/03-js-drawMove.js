@@ -102,7 +102,7 @@
         const rect = canvas.getBoundingClientRect()
         const x = rect.x
         const y = rect.y
-        console.log(x)
+        console.log(rect.x) 
 
     });
     function animate(){
