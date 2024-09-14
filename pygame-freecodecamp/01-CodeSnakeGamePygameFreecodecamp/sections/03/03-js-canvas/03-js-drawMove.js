@@ -120,21 +120,21 @@
     
     addEventListener('pointerdown', e => {
         const mousePoint = getMousePosition(e);
-        const blockCenterX = block.position.x + block.width / 2;
-        const blockCenterY = block.position.y + block.width / 2;
+        const blockCenterX = block.position.x 
+        const blockCenterY = block.position.y 
         const angle = calculateAngle(mousePoint.x, mousePoint.y, blockCenterX, blockCenterY);
         console.log('Angle:', angle.toFixed(2), 'degrees');
-        if(angle > 350 || angle < 45){
+        if(angle > 315 || angle < 45){
             block.velocity.x = block.width
-        }
+        } else
+        if(angle > 215 && angle < 315){
+            block.velocity.y = (block.width * -1)
+        } else
+        if(angle > 135 && angle < 215){
+            block.velocity.x = (block.width * -1)
+        } else 
         if(angle > 45 && angle < 135){
             block.velocity.y = block.width
-        }
-        if(angle > 135 && angle < 270){
-            block.velocity.x = (block.width * -1)
-        }
-        if(angle > 270 && angle < 350){
-            block.velocity.y = (block.width * -1)
         }
     });
     function animate(){
