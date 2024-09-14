@@ -100,9 +100,37 @@
     
     addEventListener('pointerdown', e => {
         const rect = canvas.getBoundingClientRect()
-        const x = rect.x
-        const y = rect.y
-        console.log(rect.x) 
+        clickedX = e.clientX - rect.left
+        clickedY = e.clientY - rect.top
+        if(clickedX > block.position.x
+            && (clickedY <= (block.position.y + block.width * 2
+            || clickedY <= block.position.y - block.width * 2))){
+            block.velocity.x = block.width
+            console.log('limit')
+            lastKey = 'r'
+        } 
+        if(clickedY > block.position.y
+            && (clickedY <= (block.position.y + block.width * 2
+            || clickedY <= block.position.y - block.width * 2))){
+            block.velocity.x = block.width
+            console.log('limit')
+            lastKey = 'r'
+        } 
+        
+        // if(clickedX > block.position.x && clickedY > block.position.y
+        //     && lastKey == 'r'){
+        //     block.velocity.y = block.width
+        //     lastKey = 'd'
+        // }
+        if(clickedX < block.position.x){
+            lastKey = 'l'
+        }
+        if(clickedY < block.position.y){
+            lastKey = 'u'
+        }
+        if(clickedY > block.position.y){
+        }
+
 
     });
     function animate(){
