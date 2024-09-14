@@ -10,6 +10,23 @@ canvas {
     overflow: hidden;
     background-color: blue !important;
 }
+#canvas {
+    -webkit-user-select: none;
+    /* Disable text selection in Safari */
+    -webkit-touch-callout: none;
+    /* Disable callout, like the text copy/paste popup */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* Disable the highlight color */
+    user-select: none;
+    /* Disable text selection in other browsers */
+    touch-action: none;
+    /* Disable the default touch behavior */
+    border: 1px solid black;
+    width: 99%;
+    height: 50vh;
+    z-index: 5;
+    overflow: hidden;
+}
 #jsCanvasScriptContainer {
     width: 100%;
     display: flex;
@@ -18,33 +35,21 @@ canvas {
     /* align-items: center; */
 
 }
-#scriptsContainer {
-    background-color: black;
-    overflow: hidden;
-    scroll-behavior: none;
-    /* max-width: 400px; */
-    width: 100%;
-}
-#scriptsContainer > #xExitContainer{
-    /* position: relative;
-    top: 0;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    border: 2px solid blue; */
-}
 #scriptsContainer>.code-container {
     border: 1px solid black;
-    color: white;
-    overflow: scroll;
-    width: 100% !important;
-}
-#scriptsContainer>.code-container>.copy-code {
-    overflow: hidden;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    /* scroll-behavior: none; */
+    align-self: flex-start;
+    background-color: white;
     width: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#scriptsContainer>.code-container>#mainCode {
+    width: 100%;
+}
+
+#scriptsContainer>.code-container>#mainCode>.code-container {
+    border: none;
 }
 #scriptsContainer>#xExitContainer{
     display: flex;

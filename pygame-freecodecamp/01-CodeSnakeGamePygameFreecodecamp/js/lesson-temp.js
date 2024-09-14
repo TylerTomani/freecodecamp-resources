@@ -434,7 +434,7 @@ export function stepTxtListeners(){
             }
         }   
         if(letter == 's' ){
-            toggleAside()
+            showAside()
         }
         if(letter == 'meta'){
             keys.meta.pressed = true        
