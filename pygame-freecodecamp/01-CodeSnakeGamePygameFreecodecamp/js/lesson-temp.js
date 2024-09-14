@@ -410,11 +410,7 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
-        if(letter == 'p'){
-            targetDivFocus = true
-            // const 
-            
-        }
+        if(letter == 'p'){targetDivFocus = true}
         if(letter == 'enter'){
             targetDivFocus = true
             const canvas = document.querySelector('#canvas')
@@ -424,7 +420,7 @@ export function stepTxtListeners(){
         }
         
         if (letter == 'c' && !keys.meta.pressed ) {
-            if(mainCodes.length > 0){
+            if (mainCodes.length > 0) {
                 mainCodes[iMainCode].focus()
             }
         }
@@ -433,8 +429,14 @@ export function stepTxtListeners(){
                 nextLesson.focus()
             }
         }   
-        if(letter == 's' ){
+        if(letter == 's'){
             showAside()
+        }
+        if(letter == 'a' ){
+            showAside()
+            if(lastFocusedElement)[
+                lastFocusedElement.focus()
+            ]
         }
         if(letter == 'meta'){
             keys.meta.pressed = true        
@@ -499,7 +501,7 @@ export function stepTxtListeners(){
             let letter = e.key.toLowerCase()
             if(letter == 'c'){
                 if(mainCodes.length > 0){
-                    // console.log('slkjd')
+                    // 
                     // console.log(mainCodes[0])
                     mainCodes[iMainCode].focus()
                 } else {
