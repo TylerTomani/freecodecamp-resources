@@ -124,7 +124,7 @@
         const blockCenterY = block.position.y + block.width / 2;
         const angle = calculateAngle(mousePoint.x, mousePoint.y, blockCenterX, blockCenterY);
         console.log('Angle:', angle.toFixed(2), 'degrees');
-        if(angle > 0 && angle < 45){
+        if(angle > 315 || angle < 45){
             block.velocity.x = block.width
         }
         if(angle > 45 && angle < 135){
@@ -133,7 +133,7 @@
         if(angle > 135 && angle < 270){
             block.velocity.x = (block.width * -1)
         }
-        if(angle > 270 && angle < 350){
+        if(angle > 270 && angle < 315){
             block.velocity.y = (block.width * -1)
         }
     });
