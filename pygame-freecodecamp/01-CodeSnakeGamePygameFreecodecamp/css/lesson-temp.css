@@ -125,6 +125,7 @@ body {padding-bottom: 5%;}
 }
 .code-container > .copy-code {
     overflow: hidden;
+    width: 100%;
 }
 .code-container > .copy-code > .code-container ,
 .code-container > .copy-code > .code-container > .copy-code{
@@ -142,6 +143,7 @@ body {padding-bottom: 5%;}
     font-size: .68rem;
     padding-left: 2.5%;
     padding-top: 1.5%;
+    overflow-x: scroll;
 }
 .copy-code:active,
 .copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
