@@ -242,6 +242,10 @@ export function stepTxtListeners(){
             const step = getStep(stepTxt.parentElement)
             const vid = step.querySelector('.step-vid > video')
             const img = step.querySelector('.step-img > img')
+            if(!isNaN(letter)){
+                let intLetter = parseInt(letter)
+                stepTxts[intLetter  -1 ].focus()
+            }
             if (vid) {
                 handleVideo(vid, key,e)
                 videoPlayKeyDown(vid, key, e)
@@ -249,6 +253,7 @@ export function stepTxtListeners(){
             if(key === 13){
                 addTabIndex(as)
                 handleCopyCodes(e)
+                
             }      
             if(img){
                 handleImg(img,key, e)

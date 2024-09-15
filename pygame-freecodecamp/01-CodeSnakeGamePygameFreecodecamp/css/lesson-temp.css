@@ -94,10 +94,11 @@ body {padding-bottom: 5%;}
     justify-content: center;
     /* border: 2px solid blue; */
 }
-.step>.step-img>img{
+.step-img>img{
     width: 100%;
     min-height: 150px;
     max-height: 250px;
+    /* object-fit: cover; */
 }
 .step>.step-vid>video {
     border: 1px solid blue;

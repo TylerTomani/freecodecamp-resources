@@ -15,26 +15,124 @@
                 <pre tabindex="0" class="copy-code smtxt main-code">
 running = True
 while running:
-    for event in pygame.event.get():
-        if event.type == KEYDOWN:
-            if event.key == K_ESCAPE or event.key == K_q:
-                running = False
-            if event.key == K_DOWN:
-                block_y += 10
-            if event.key == K_UP:
-                block_y -= 10
-            if event.key == K_LEFT:
-                block_x -= 10
-            if event.key == K_RIGHT:
-                block_x += 10
-        if event.type == QUIT:
+for event in pygame.event.get():
+    if event.type == KEYDOWN:
+        if event.key == K_ESCAPE or event.key == K_q:
             running = False
+        if event.key == K_DOWN or event.key == K_s:
+            block_y += 10
+        if event.key == K_UP or event.key == K_w:
+            block_y -= 10
+        if event.key == K_LEFT or event.key == K_a:
+            block_x -= 10
+        if event.key == K_RIGHT or event.key == K_d:
+            block_x += 10
+    if event.type == QUIT:
+        running = False
 </pre></div>
             
         </div>
         <div class="step-img">
             <img
              src="sections/04/04-03/images/01.png" alt="">
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+                    Instead of adjusting each <code class="y-fix">block_x</code>
+                    and <code class="y-fix">block_y</code>, refer to 
+                    <code><span class="b-fix">self</span>.<span class="lsg-fix">snake</span></code>
+                    <code class="m-fix">move</code>
+                    methods, but create the methods in the <code class="lsg-fix">Snake</code>. 
+                </p>
+            </div>
+            <div class="step-img">
+                <img
+                src="sections/04/04-03/images/02.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt main-code">
+class Game:
+    def __init__(self):
+        pygame.init()
+        self.surface = pygame.display.set_mode((500,400))
+        self.surface.fill((255,255,255))
+        self.snake = Snake(self.surface)
+        self.snake.draw()
+    def run(self):
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == KEYDOWN:
+                    if event.key == K_ESCAPE or event.key == K_q:
+                        running = False
+                    if event.key == K_DOWN or event.key == K_s:
+                        self.snake.<span class="m-fix">move_down</span>()
+                    if event.key == K_UP or event.key == K_w:
+                        self.snake.<span class="m-fix">move_up</span>()
+                    if event.key == K_LEFT or event.key == K_a:
+                        self.snake.<span class="m-fix">move_left</span>()
+                    if event.key == K_RIGHT or event.key == K_d:
+                        self.snake.<span class="m-fix">move_right</span>()
+                if event.type == QUIT:
+                    running = False
+    </pre></div>
+                
+        
+            </div>
+        </div>
+    </div>
+    <div class="step-col "></div>
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>01</h4>
+                <p>
+                    Create <span class="m">move</span> methods in the <code class="lsg-fix">Snake</code> 
+                </p>
+
+                <p>
+                </p>
+                
+            </div>
+            <div class="step-img">
+                <img
+                src="sections/04/04-03/images/03.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+class Snake:
+    def __init__(self,parent_surface):
+        self.parent_surface = parent_surface
+        self.block = pygame.image.load('images/block.jpg').convert()
+        self.x = 100
+        self.y = 100
+    def draw(self):
+        self.parent_surface.fill((255,255,255))
+        self.parent_surface.blit(self.block,(self.x,self.y))
+        pygame.display.flip()
+    def <span class="m-fix">move_down</span>(self):
+        self.y += 10
+        self.draw()
+    def <span class="m-fix">move_up</span>(self):
+        self.y -= 10
+        self.draw()
+    def <span class="m-fix">move_left</span>(self):
+        self.x -= 10
+        self.draw()
+    def <span class="m-fix">move_right</span>(self):
+        self.x += 10
+        self.draw()</pre></div>
+            </div>
         </div>
     </div>
     <!-- 02 -->
@@ -51,22 +149,22 @@ while running:
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code smtxt main-code">
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == KEYDOWN:
-                if event.key == K_ESCAPE or event.key == K_q:
-                    running = False
-                if event.key == K_DOWN:
-                    self.snake.<span class="m-fix">move_down</span>()
-                if event.key == K_UP:
-                    self.snake.<span class="m-fix">move_up</span>()
-                if event.key == K_LEFT:
-                    self.snake.<span class="m-fix">move_left</span>()
-                if event.key == K_RIGHT:
-                    self.snake.<span class="m-fix">move_right</span>()
-            if event.type == QUIT:
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == KEYDOWN:
+            if event.key == K_ESCAPE or event.key == K_q:
                 running = False
+            if event.key == K_DOWN or event.key == K_s:
+                self.snake.<span class="m-fix">move_down</span>()
+            if event.key == K_UP or event.key == K_w:
+                self.snake.<span class="m-fix">move_up</span>()
+            if event.key == K_LEFT or event.key == K_a:
+                self.snake.<span class="m-fix">move_left</span>()
+            if event.key == K_RIGHT or event.key == K_d:
+                self.snake.<span class="m-fix">move_right</span>()
+        if event.type == QUIT:
+            running = False
     </pre></div>
                 
             </div>
@@ -93,6 +191,43 @@ class Snake:
         self.surface.fill((255,255,255))
         self.surface.blit(block,(<span><span class="b-fix">self</span>.x</span>,<span><span class="b-fix">self</span>.y</span>))
         pygame.display.flip()</pre></div>
+            </div>
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>03</h4>
+                <p>
+                    Create the <code class="m-fix">move</code> methods in the <code class="lsg">Snake</code>
+                    class
+                </p>
+                
+            </div>
+            <div class="step-img">
+                <!-- <img src="sections/04/04-03/images/03.png" alt=""> -->
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+class Snake:
+    def __init__(self,parent_surface):
+        self.parent_surface = parent_surface
+        self.block = pygame.image.load('images/block.jpg').convert()
+        self.x = 100
+        self.y = 100
+
+    def draw(self):
+        self.parent_surface.fill((255,255,255))
+        self.parent_surface.blit(self.block,(self.x,self.y))
+        pygame.display.flip()
+    def move_down(self):
+
+    </pre></div>
             </div>
         </div>
     </div>
