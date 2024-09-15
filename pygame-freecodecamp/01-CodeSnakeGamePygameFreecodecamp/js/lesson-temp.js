@@ -70,9 +70,7 @@ export function stepTxtListeners(){
     header.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (letter == 'c' && !keys.meta.pressed) {
-            if (mainCodes.length > 0) {
-                mainCodes[iMainCode].focus()
-            }
+            
         }
     })
     navbar.addEventListener('keydown',e =>{
@@ -145,7 +143,6 @@ export function stepTxtListeners(){
             toggleImgSize(e = e.target)
         })
     })
-
     /** Go BACK and ADD video denlarge here!!!! */
     function denlargeAllImages() {
         if(!keys.meta.pressed){
@@ -170,6 +167,8 @@ export function stepTxtListeners(){
         });
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
+            targetDivFocus = false
+            mainCodesFocused = true
             if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
                 console.log(iMainCode)
                 e.preventDefault()
@@ -251,12 +250,6 @@ export function stepTxtListeners(){
             if(img){
                 handleImg(img,key, e)
             }
-            // if(letter == 'c' && !stepFocused && mainCodesFocused){
-            //     if(mainCodes.length > 0){
-            //         mainCodes[iMainCode].focus()
-            //         iMainCode = (iMainCode + 1) % mainCodes.length
-            //     }
-            // }
             
         })    
     })
@@ -303,18 +296,13 @@ export function stepTxtListeners(){
         el.addEventListener('click', e => {
             e.preventDefault()
             let vid = e.target
-            console.log(vid)
-        
             videoPlayClick(vid)
-            // console.log(e.target)
             if(!vid.play){
                 denlargeAllImages()
             }
         })
     })
     function videoPlayClick(vid) {
-        console.log(vid)
-        console.log(playing)
         toggleVideoSize(vid)
         playPauseVideo(vid)
     }
@@ -405,21 +393,19 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('focusout', e => {
         targetDivFocus = false
         denlargeAllImages()
-
     })
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
         if(letter == 'p'){targetDivFocus = true}
         if(letter == 'enter'){
-            targetDivFocus = true
+            targetDivFocus = false
             const canvas = document.querySelector('#canvas')
             if(canvas){
                 canvas.focus()
             }
         }
-        
-        if (letter == 'c' && !keys.meta.pressed ) {
+        if (letter == 'c' && !keys.meta.pressed) {
             if (mainCodes.length > 0) {
                 mainCodes[iMainCode].focus()
             }
