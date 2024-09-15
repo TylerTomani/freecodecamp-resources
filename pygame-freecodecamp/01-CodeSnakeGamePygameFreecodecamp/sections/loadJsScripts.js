@@ -45,7 +45,6 @@ export function injectJsScripts(){
                         // // Create and append new script element
                         // document.removeChild(tempScript)                                
                         const scriptContent = data.textContent;
-                        console.log(data)
                         const tempScript = document.createElement('script');
                         
                         tempScript.setAttribute('id', 'tempScript')

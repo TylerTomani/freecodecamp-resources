@@ -44,9 +44,8 @@ export function stepTxtListeners(){
             let letter = e.key.toLowerCase()
             if(letter == 'c' && !keys.meta.pressed){
                 const mainCode = document.querySelector('#mainCode')
-                if (mainCode && !mainCodesFocused && !stepFocused) {
-                    mainCode.focus()
-                }
+                mainCode.focus()
+                
             }
             
         })
@@ -208,6 +207,10 @@ export function stepTxtListeners(){
             const as = stepTxt.querySelectorAll('a')
             const step = getStep(stepTxt.parentElement)
             const vid = step.querySelector('.step-vid > video')
+           if(!isNaN(letter)){
+               let intLetter = parseInt(letter)
+               stepTxts[intLetter  -1 ].focus()
+           }
             if (vid) {
                 handleVideo(vid, key,e)
                 videoPlayKeyDown(vid, key, e)

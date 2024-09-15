@@ -22,8 +22,8 @@ block_y = 100</pre></div>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code smtxt">
 def <span class="y-fix">drawBlock</span>():
-    self.surface.fill((255,255,255))
-    self.surface.blit(block,(block_x,block_y))
+    surface.fill((255,255,255))
+    surface.blit(block,(block_x,block_y))
     pygame.display.flip()
                 </div>
                 
@@ -40,7 +40,8 @@ def <span class="y-fix">drawBlock</span>():
                     needs to be passed in the surface
                 </p>
                 <p>
-                    remember to change block_x and y with <code><span class="b-fix">self</span>.x</code>
+                    remember to change block, block_x and y with <code><span class="b-fix">self</span>.block</code>,
+                    <code><span class="b-fix">self</span>.x</code>
                     and <code><span class="b-fix">self</span>.y</code>
                     
                 </p>
@@ -54,7 +55,7 @@ class Snake:
 
     def <span class="r-fix">drawBlock</span>(self):
         self.surface.fill((255,255,255))
-        self.surface.blit(block,(<span><span class="b-fix">self</span>.x</span>,<span><span class="b-fix">self</span>.y</span>))
+        self.surface.blit(<span class="b-fix">self</span>.block,(<span><span class="b-fix">self</span>.x</span>,<span><span class="b-fix">self</span>.y</span>))
         pygame.display.flip()</pre></div>
             </div>
         </div>
@@ -81,17 +82,15 @@ class Snake:
     def drawBlock(self):
         self.<span class="m-fix">parent_surface</span>.blit(block,(block_x,block_y))</pre></div>
                 
-                
             </div>
             <div class="step-img">
-                <img
-                 src="sections/04/04-02/images/01.png" alt="">
+                <img src="sections/04/04-02/images/02.png" alt="">
             </div>
         </div>
         <div class="step-col-in">
-            <div class="step-txt-in xmdtxt">
+            <div class="step-txt-in txt">
                 <p>
-                    <span class="r">**The code will still not run</span>, Now we need to 
+                    <span class="r">**The code will still not run</span>, We Need to 
                     add a snake class in the <code class="lsg">Game</code> class, where we 
                     can pass the <code class="m-fix">surface</code> into
                 </p>
@@ -99,13 +98,13 @@ class Snake:
                     <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
 class Snake:
     def __init__(self):
-        block = pygame.image.load('images/block.jpg').convert()
-        block_x = 100
-        block_y = 100
+        self.block = pygame.image.load('images/block.jpg').convert()
+        self.x = 100
+        self.y = 100
 
     def drawBlock(self):
         surface.fill((255,255,255))
-        surface.blit(block,(block_x,block_y))
+        surface.blit(self.block,(self.x,self.y))
         pygame.display.flip()</pre></div>
             </div>
         </div>

@@ -252,6 +252,14 @@ sections.forEach(el => {
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()       
+        if(letter == 'c'){
+            const mainCode = document.querySelector('#mainCode')
+            if(mainCode){
+                mainCode.focus()
+                console.log(mainCode)
+            }
+            targetDivFocused = true
+        }   
         if (letter == 's'){
             navSections(letter)
         }
@@ -278,11 +286,7 @@ sections.forEach(el => {
             }
             fetchLessonHref(e.target.href)
             scrollTo(0, 0)
-        }
-        if(letter == 'c'){
-            // const mainCode = document.querySelector('#mainCode')
-            targetDivFocused = true
-        }        
+        }     
         if(letter == 'j'){
             const sectionContainer = getSectionContainer(e.target)
             const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')

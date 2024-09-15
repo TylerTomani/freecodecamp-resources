@@ -9,7 +9,7 @@
                 <button tabindex="0" id="xBtn">x</button>
             </div>
             <div id="" class="code-container hide">
-                <pre tabindex="0" class="copy-code" id="mainCode">
+                <pre tabindex="0" class="copy-code" id="">
                     
                 </pre>
             </div>
@@ -49,13 +49,13 @@ if __name__ == '__main__':
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE or event.key == K_q:
                     running = False
-                if event.key == K_DOWN:
+                if event.key == K_DOWN or event.key == K_s:
                     block_y += 10
-                if event.key == K_UP:
+                if event.key == K_UP or event.key == K_w:
                     block_y -= 10
-                if event.key == K_LEFT:
+                if event.key == K_LEFT or event.key == K_a:
                     block_x -= 10
-                if event.key == K_RIGHT:
+                if event.key == K_RIGHT or event.key == K_d:
                     block_x += 10
             if event.type == QUIT:
                 running = False
