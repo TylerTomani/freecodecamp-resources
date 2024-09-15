@@ -95,7 +95,7 @@ body {padding-bottom: 5%;}
     /* border: 2px solid blue; */
 }
 .step>.step-img>img{
-    width: 80%;
+    width: 100%;
     min-height: 150px;
     max-height: 250px;
 }
@@ -109,6 +109,7 @@ body {padding-bottom: 5%;}
 .enlarge {
     position: relative;
     transform: scale(2.2);
+    z-index: 100;
     right: 50%;
 }
 .enlarge-vid {

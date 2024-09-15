@@ -1,25 +1,42 @@
-*{
-    /* background-color: gainsboro; */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-main>aside {
-    flex-basis: 20%;
-    width: fit-content;
-    height: 100vh;
-    border-right: 1px solid black;
-    padding-top: 1%;
-    padding-left: .5%;
-    padding-right: 2%;
+body {
+    /* background-color: rgb(173, 216, 230,.2); */
+    /* background-color: lime ; */
+    /* background-color: lightgoldenrodyellow ; */
+    overflow: hidden;
+    overflow-y: scroll;
+
 }
-#targetDiv {
-    width: 100vw;
+body > header a:focus,
+body > header a:active {box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);}
+body > header>h1 {font-size: 120%;}
+
+body > header{
+
 }
-header>nav#mainLinksContainer {
+nav{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+}
+body > header>nav#mainLinksContainer {
+    width: 100%;
     display: flex;
+    width: 100% !important;
+    
 }
-header>nav#mainLinksContainer>#mainLinks {
+
+header > nav#mainLinksContainer >#mainLinks {
     display: flex;
-    flex-basis: 80%;    
+    width: 100%;
+    justify-content: space-around;
+    /* flex-basis: 80%;     */
+    /* border: 3px solid black; */
 }
 #mainLinks>a {
     flex-basis: 40%;
@@ -30,32 +47,23 @@ header>nav#mainLinksContainer>#mainLinks {
     justify-content: center;
     align-items: center;
 }
+
 #tutorialLink>img {
     min-width: 150px;
     max-width: 200px;
     min-height: 60px;
     max-height: 50px;
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-header {
-    display: flex;
-    flex-direction: column;
-}
-header a:focus,header a:active {
-    box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);
-}
-header  > h1 {
-    font-size: 120%;
-}
-header > .title-tutorialLink-container{
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid black;
-}
+#targetDiv {
+    width: 100vw;
+    flex-basis: 78%;
+     display: flex;;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     flex-grow: 1;
+ }
+
 nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -63,12 +71,25 @@ nav.section-lesson-title {
 main {
     display: flex;
 }
+main>aside {
+    flex-basis: 20%;
+    width: fit-content;
+    position: sticky;
+    top: 2%;
+    height: 100vh;
+    border-right: 1px solid black;
+    padding-top: 1%;
+    padding-left: .5%;
+    padding-right: 2%;
+}
+main>aside {
+    flex-basis: 22%;
+    padding-left: 1.5%;
+    border-bottom: 1px solid black;
+}
 aside:active,aside:focus,
 main:active,main:focus,
-nav:active,nav:focus{
-    box-shadow: 0 0 3px 3px lightseagreen;
-}
-
+nav:active,nav:focus{box-shadow: 0 0 3px 3px lightseagreen;}
 .sections-container{
     width: fit-content;
     display: flex;
@@ -96,19 +117,16 @@ nav:active,nav:focus{
 }
 .sub-section{
     width: fit-content;
-    
     list-style:none;
     white-space: wrap;
     text-wrap: wrap;
 }
 .sub-section > li {
     font-size: 75%;
-    /* line-height: 1.2; */
     margin-bottom: 3%;
     white-space: wrap;
     text-wrap: wrap;
 }
-
 .sub-section > li > a{
     text-decoration: none;
     color: black;
@@ -132,7 +150,6 @@ nav:active,nav:focus{
     white-space: wrap;
     text-wrap: wrap;
 }
-
 .sub-section>li>ul>li>code{
     font-size: .5rem;
     white-space: wrap;
@@ -142,124 +159,48 @@ nav:active,nav:focus{
     display: inline-block;
     background-color: lightgrey;
 }
-
 .hide {
     display: none;
 }
-
-/* @media screen and (max-width: 900px){
-    .sections-container {
-            font-size: 70%;
+@media screen and (max-width: 900px){
+    main > aside  {
+        min-width: 120px;
     }
-} */
-
-/* @media screen and (max-width: 771px){
-    main > aside {
-        width: 20vmax !important;
+}
+@media screen and (max-width: 771px){
+    body>header {
+            /* width: fit-content; */
     }
-    .sections-container {
-        font-size: 75%;
+    body {
+        overflow-x: hidden;
     }
-    .section-container>.section {
-        width: 100% !important;
-    }
-} */
-
-/* @media screen and (max-width: 581px){    
     main>aside {
-    }
-    .sections-container {
-        font-size: 70%;
-    }
-    .sections-container > .sub-section {
-        border: 1px solid black;
-    }
-    .sub-section > li > a{
-        font-size: 100% !important;
-        white-space: wrap;
-    }
-    .sub-section>li>ul {
-        font-size: .8rem;
-    }
-} */
-
-/* @media screen and (max-width: 500px){
-    header{ margin-top: 5%;}
-    #mainLinks>a {
-        font-size: 80%;
-        padding: 0 2.5%;
-    }
-    header > h1{
-        font-size: 120%;
-        padding-left: 1%;
-    }
-    .section-lesson-title {padding-left: 2%;}
-
- 
-    main > aside > .sections-container {
-        font-size: 60%;
-    }
-    .section-container {
-        margin: 5% 0;
-    }
-    .section-container  > .section {
-        font-size: 118%;
-    }  
-    .sub-section {
-        margin-left: 0%;
-        list-style: none;
-        width: fit-content;
-        white-space: wrap;
-        text-wrap: wrap;
-        
-    }
-    .sub-section > li {
-        margin: 4% 0;
-        margin-left: 5%;
-        font-size: 130%;
-    }   
-    .sub-section > li > ul{
-        font-size: .8rem;
-        margin-left: 5%;
-        color: darkolivegreen;
-    }   
-    .sub-section > li > ul{
-        font-size: .6rem;
-        width: fit-content;
-        white-space: wrap;
-        text-wrap: wrap;
-        border: 2px solid red;
-        margin-left: 5%;
-        color: darkolivegreen;
-    }   
-    main>aside {
-        flex-basis: 31%;
-        width: fit-content;
+        flex-basis: 22%;
         padding-left: 1.5%;
-        border-bottom: 1px solid black
+        border-bottom: 1px solid black;
+    }    
+    #targetDiv {
+        width: 100%;
+        flex-basis: 68%;
+        flex-grow: 1;
     }
-
-    #targetDiv {}
-} */
-
+}
 @media screen and (max-width: 500px) {
+    body{
+        overflow-x: hidden;
+    }
     body > header {
         width: fit-content;
     }
-    body{
-        /* background-color: yellowgreen; */
-        width: fit-content;
-    }
     main>aside {
-        width: 25%;
-        flex-basis: 25%;
+        flex-basis: 22%;
         padding-left: 1.5%;
-        border-bottom: 1px solid black
+        border-bottom: 1px solid black;
+        min-width: 120px;
     }
-
     #targetDiv {
-        /* width: 69%; */
-        /* flex-basis: 69%; */
-        width: 100vw;
+        width: 100%;
+        flex-basis: 68%;
+        flex-grow: 1;
     }
 }

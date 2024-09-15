@@ -18,6 +18,12 @@ body > header>h1 {font-size: 120%;}
 body > header{
 
 }
+nav{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+}
 body > header>nav#mainLinksContainer {
     width: 100%;
     display: flex;
@@ -68,6 +74,8 @@ main {
 main>aside {
     flex-basis: 20%;
     width: fit-content;
+    position: sticky;
+    top: 2%;
     height: 100vh;
     border-right: 1px solid black;
     padding-top: 1%;
