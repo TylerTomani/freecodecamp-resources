@@ -347,11 +347,11 @@ export function stepTxtListeners(){
             playing = !playing
         }
         if (key == 37) {
-            e.preventDefault()
+            // e.preventDefault()
             vid.currentTime -= 2
         }
         if (key == 39) {
-            e.preventDefault()
+            // e.preventDefault()
             if (vid.currentTime < vid.duration) {
                 vid.currentTime += 2
             } else {

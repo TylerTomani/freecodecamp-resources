@@ -124,14 +124,14 @@ body {padding-bottom: 5%;}
     align-self: center;
 }
 .code-container > .copy-code {
-    overflow: hidden;
-    overflow-x: scroll;
+    /* overflow: hidden; */
+    /* overflow-x: scroll; */
     width: 100%;
 }
 .code-container > .copy-code > .code-container ,
 .code-container > .copy-code > .code-container > .copy-code{
-    scroll-behavior: none;
-    overflow: hidden;
+    /* scroll-behavior: none; */
+    /* overflow: hidden; */
 
 }
 .step-txt>.code-container,
@@ -167,7 +167,7 @@ body {padding-bottom: 5%;}
     .copy-code {
         /* padding-left: 2.5%; */
         /* padding-top: 1.5%; */
-        overflow-x: scroll;
+        /* overflow-x: scroll; */
     }
 
     .enlarge {
