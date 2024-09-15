@@ -19,10 +19,11 @@ canvas {
     /* Disable the highlight color */
     user-select: none;
     /* Disable text selection in other browsers */
-    touch-action: none;
+    /* touch-action: none; */
     /* Disable the default touch behavior */
     border: 1px solid black;
-    width: 99%;
+    width: 98%;
+    margin-right: 2.5%;
     height: 50vh;
     z-index: 5;
     overflow: hidden;
