@@ -1,0 +1,59 @@
+
+<div class="steps-container">
+    <h4>04-01 Move Game to Class </h4>
+    <!-- 01-->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>01</h4>
+                <p>
+                    Move the game intialization variable into a <code class="lsg-fix">Game</code>
+                    class
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code smtxt main-code">
+pygame.init()
+surface = pygame.display.set_mode((500,400))
+surface.fill((255,255,255))
+</pre>
+
+                </div>
+                <p>
+                    Create an instance, <code class="m-fix">game</code> of the <code class="lsg-fix">Game</code> class in 
+                    in the main <code class="c">__init__</code> function
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code">
+game = Game()
+game.run()</pre>
+                </div>
+                
+                
+            </div>
+            <div class="step-img">
+                <img
+                 src="sections/04/04-01/images/01.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <p>
+                    <span class="r">**The code will not run yet</span>
+                    
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+class <span class="lsg-fix">Game</span>:
+    def __init__(self):
+        pygame.init()
+        self.surface = pygame.display.set_mode((500,400))
+        self.surface.fill((255,255,255))
+    def run(self):
+        pass</pre></div>
+            </div>
+        </div>
+    </div>
+        
+    
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>
