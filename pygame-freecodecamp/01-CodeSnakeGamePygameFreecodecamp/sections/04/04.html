@@ -1,22 +1,94 @@
 
 <div class="steps-container">
     <h3>03 - Draw Player & Movment</h3>
-    <!-- 01 -->
-    <div class="step-col">
-        <div tabindex="0" class="step-txt">
-            <h5>OPP</h5>
-<div class="code-container">
-                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
-
-        <span class="o-fix">drawBlock()</span></pre>
-        
-        
-                </div>
+    <h4 id="titleJsScript">03/03-js-canvas/03-js-drawMove.js</h4>
+    <div id="jsCanvasScriptContainer"></div>
+        <canvas id="canvas" tabindex="0"></canvas>
+        <div tabindex="0" id="scriptsContainer" class="popup"  >
+            <div id="xExitContainer" class="display-none">
+                <button tabindex="0" id="xBtn">x</button>
+            </div>
+            <div id="" class="code-container hide">
+                <pre tabindex="0" class="copy-code" id="">
+                    
+                </pre>
+            </div>
             
         </div>
-        <div class="step-img">
-            <!-- <img src="sections/01/images/01.png"> -->
+        <div class="step-txt">
+            <p>
+                The Js is no different only the python script below is
+            </p>
+            <p>
+                The code dislayed above is written in javascript, which performs the python code below by 
+                    clicking on the cavas. Press "J" to go to js-canvas-lesson and get the script.
+            </p>
         </div>
+    </div>
+    <!-- 01 -->
+    <div class="step-col w-100">
+        <div tabindex="0" class="step-txt">
+            <h5>Draw & Move Player</h5>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+import pygame
+from pygame.locals import *
+
+class Snake:
+def __init__(self,parent_surface):
+    self.parent_surface = parent_surface
+    self.block = pygame.image.load('images/block.jpg').convert()
+    self.x = 100
+    self.y = 100
+def draw(self):
+    self.parent_surface.fill((255,255,255))
+    self.parent_surface.blit(self.block,(self.x,self.y))
+    pygame.display.flip()
+def move_down(self):
+    self.y += 10
+    self.draw()
+def move_up(self):
+    self.y -= 10
+    self.draw()
+def move_left(self):
+    self.x -= 10
+    self.draw()
+def move_right(self):
+    self.x += 10
+    self.draw()
+
+class Game:
+def __init__(self):
+    pygame.init()
+    self.surface = pygame.display.set_mode((500,400))
+    self.surface.fill((255,255,255))
+    self.snake = Snake(self.surface)
+    self.snake.draw()
+def run(self):
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    running = False
+                if event.key == K_DOWN or event.key == K_s:
+                    self.snake.move_down()
+                if event.key == K_UP or event.key == K_w:
+                    self.snake.move_up()
+                if event.key == K_LEFT or event.key == K_a:
+                    self.snake.move_left()
+                if event.key == K_RIGHT or event.key == K_d:
+                    self.snake.move_right()
+            if event.type == QUIT:
+                running = False
+
+if __name__ == '__main__':
+game = Game()
+game.run()
+
+    </pre></div>
+                </div>
+        
     </div>
     
     <button tabindex="0" id="nxtLesson">next lesson</button>
