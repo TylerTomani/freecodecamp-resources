@@ -30,7 +30,12 @@ export function popScriptWindow(){
 
     function togglePopUp(){
         scriptsContainer.classList.toggle('popped-up')
-        scriptsContainer.focus()
+        const mainCode = scriptsContainer.querySelector('#mainCode')
+        console.log(mainCode)
+        if(mainCode){
+
+            mainCode.focus()
+        }
         if(scriptsContainer.classList.contains('popped-up')){
             xExitContainer.classList.remove('display-none')
         } else {

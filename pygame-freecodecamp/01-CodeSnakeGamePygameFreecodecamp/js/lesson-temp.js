@@ -423,7 +423,7 @@ export function stepTxtListeners(){
             const mainCodeJS = document.querySelector('.mainCodeJS') 
             if(mainCodeJS){
                 mainCodeJS.focus()
-                mainCodeJS.scrollIntoView({behavior:'smooth', block:'nearest' })
+                // mainCodeJS.scrollIntoView({behavior:'smooth', block:'nearest' })
             } else 
             if (mainCodes.length > 0 && mainCodes && iMainCode) {
                 mainCodes[iMainCode].focus()

@@ -60,8 +60,11 @@ canvas {
     max-height: 500px;
     overflow: hidden;
     /* overflow-x: scroll; */
-    padding-top: 0 !important;
+    /* padding-top: 0 !important; */
     overflow-y: scroll;
+    padding-top: .5%;
+    padding-left: .5%;
+    
 }
 #scriptsContainer>.code-container > .copy-code > .code-container{
     overflow:visible;
@@ -71,9 +74,11 @@ canvas {
 }
 #scriptsContainer>.code-container > .copy-code > .code-container > .copy-code{
     overflow:visible;
+    padding-bottom: .5%;
     /* overflow-x: scroll; */
-    padding-top: 0 !important;
+    /* padding-top: 0 !important; */
     /* overflow-y: scroll; */
+    
 }
 
 #scriptsContainer>.code-container>#mainCode {
