@@ -1,26 +1,68 @@
 
 <div class="steps-container">
-    <h4>04-01 Move Game to Class </h4>
+    <h4>05-01 import time create snake.walk() </h4>
     <!-- 01-->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>02</h4>
+            <p>
+                import time at top
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code smtxt main-code">
+import time</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img
+             src="sections/04/04-01/images/01.png" alt="">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>01</h4>
+            <p>
+                use <code>time.sleep(.3)</code> at the bottom of the <code class="lsg">Game</code>
+                <code>while running loop</code>. Place a <code>self.snake.<span class="m-fix">walk()</span></code>
+                right before <code>sleep()</code>, Then Create the <code>snake.<span class="m-fix">walk()</span></code>
+
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code smtxt main-code">
+import time</pre>
+
+            </div>
+            <p>
+
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code main-code">
+game = Game()
+game.run()</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img">
+            <img
+             src="sections/04/04-01/images/01.png" alt="">
+        </div>
+    </div>
+    <!-- 02-->
     <div class="step-col ">
         <div class="step">
             <div tabindex="0" class="step-txt">
-                <h4>01</h4>
+                <h4>02</h4>
                 <p>
-                    Move the game intialization variable into a <code class="lsg-fix">Game</code>
-                    class
+                    import time at top
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code smtxt main-code">
-pygame.init()
-surface = pygame.display.set_mode((500,400))
-surface.fill((255,255,255))
-</pre>
+import time</pre>
 
                 </div>
                 <p>
-                    Create an instance, <code class="m-fix">game</code> of the <code class="lsg-fix">Game</code> class in 
-                    in the main <code class="c">__init__</code> function
+
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code">
