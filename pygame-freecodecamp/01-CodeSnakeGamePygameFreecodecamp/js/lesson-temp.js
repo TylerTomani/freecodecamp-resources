@@ -294,7 +294,8 @@ export function stepTxtListeners(){
             } else {
                 img.classList.remove('enlarge')
                 // scrolllToX
-                scrollX(0)
+                img.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+                // scrollX(0)
                 img.style.zIndex = 0
             }
         }
