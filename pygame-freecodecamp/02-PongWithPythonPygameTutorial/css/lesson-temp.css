@@ -109,7 +109,6 @@ body {padding-bottom: 5%;}
 .enlarge {
     position: relative;
     transform: scale(2.2);
-    z-index: 100;
     right: 50%;
 }
 .enlarge-vid {
