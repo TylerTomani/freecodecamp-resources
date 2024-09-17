@@ -1,3 +1,4 @@
+import { iMainCode } from "./lesson-temp.js"
 import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 import { popScriptWindow } from "./popup-script.js"
@@ -183,8 +184,16 @@ targetDiv.addEventListener('keydown', e => {
         if (letter == 's' || letter == 'a' ){
             lastFocusedElement.focus()
         }
-        
-            
+        if (letter = 'c'){
+
+            // const mainCodes = document.querySelectorAll('.main-code')
+            // if(mainCodes){
+            //     console.log(mainCodes[iMainCode])
+            //     console.log(iMainCode)
+            //     // mainCodes[iMainCode].focus()
+            // }
+        }
+        // targetDivFocused = true  
     }    
     // if(letter == 'c'){
     //     const mainCode = document.querySelector('#mainCode')

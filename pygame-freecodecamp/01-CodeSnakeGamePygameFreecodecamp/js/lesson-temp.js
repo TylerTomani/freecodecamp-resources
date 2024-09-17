@@ -7,7 +7,7 @@ import { getSubSection } from "./side-sections-temp.js"
 import { sections,lessons } from "./side-sections-temp.js"
 import { header } from "./side-sections-temp.js"
 let iSection = 0
-let iMainCode = 0
+export let iMainCode = 0
 let currentSection
 export let stepTxts = document.querySelectorAll('.step-txt')
 export function stepTxtListeners(){
@@ -20,6 +20,7 @@ export function stepTxtListeners(){
     const nextLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
     const targetDiv = document.getElementById('targetDiv')
     const stepTxtInsCopyCodes = document.querySelectorAll('.step-txt-in > .code-container > .copy-code')
+    const canvas  = document.querySelector('canvas') ? document.querySelector('canvas'): ''
     const keys = {
         meta: {
             pressed: false
@@ -414,8 +415,7 @@ export function stepTxtListeners(){
             // }
         }
         if (letter == 'c' && !keys.meta.pressed) {
-            // if()
-            if (mainCodes.length > 0) {
+            if (mainCodes.length > 0 && mainCodes && iMainCode) {
                 mainCodes[iMainCode].focus()
             }
             
