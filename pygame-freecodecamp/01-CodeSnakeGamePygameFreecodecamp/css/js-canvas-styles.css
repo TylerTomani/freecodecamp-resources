@@ -6,7 +6,6 @@ canvas {
     width: 100%; 
     /* flex-grow: 1; */
     /* height: 50vh;  */
-    z-index: 5; 
     overflow: hidden;
     background-color: blue !important;
 }
@@ -25,7 +24,7 @@ canvas {
     width: 98%;
     margin-right: 2.5%;
     height: 50vh;
-    z-index: 5;
+    /* z-index: 5; */
     overflow: hidden;
 }
 #jsCanvasScriptContainer {

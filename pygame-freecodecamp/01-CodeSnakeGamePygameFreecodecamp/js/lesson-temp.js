@@ -396,6 +396,9 @@ export function stepTxtListeners(){
         if(letter == 'meta'){
             keys.meta.pressed = false
         }
+        if(letter == 'shift'){
+            keys.shift.pressed = false
+        }
     })
     targetDiv.addEventListener('focus', e => { targetDivFocus = true })
     targetDiv.addEventListener('focusin', e => { targetDivFocus = true })
