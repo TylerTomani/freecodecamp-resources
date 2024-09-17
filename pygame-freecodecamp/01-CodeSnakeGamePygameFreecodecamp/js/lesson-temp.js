@@ -409,14 +409,16 @@ export function stepTxtListeners(){
         if(letter == 'enter'){
             targetDivFocus = false
             const canvas = document.querySelector('#canvas')
-            if(canvas){
-                canvas.focus()
-            }
+            // if(canvas){
+            //     canvas.focus()
+            // }
         }
         if (letter == 'c' && !keys.meta.pressed) {
+            // if()
             if (mainCodes.length > 0) {
                 mainCodes[iMainCode].focus()
             }
+            
         }
         if (letter == 'e') {
             if (nextLesson) {
