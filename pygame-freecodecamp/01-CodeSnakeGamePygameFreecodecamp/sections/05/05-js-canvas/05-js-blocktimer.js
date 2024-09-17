@@ -3,7 +3,7 @@
    const c = canvas.getContext('2d')
    canvas.width = innerWidth
    canvas.height = innerHeight * .7
-   c.fillStyle = 'white'
+   c.fillStyle = 'royalblue'
    c.fillRect(0, 0, canvas.width, canvas.height)
    // Keys set to true when clicked initially then immediately to false
    const keys = {
@@ -13,31 +13,42 @@
        left: false
    }
     class Player {
-        static width = 20
+        static width = 30
         constructor({ position,direction},) {
             this.position = position
             this.direction = direction
-            this.width = 20
+            this.width = 30
         }
         draw() {
             c.fillStyle = 'orange'
             c.fillRect(this.position.x, this.position.y, this.width, this.width)
         }
         update() {
-            if(this.direction == 'down'){
+            if(this.direction == 'down' 
+                && (this.position.y + (this.width * 2)) < canvas.height
+                && (this.position.y)  > -1
+                ){
                 this.position.y += this.width
             } else 
-            if(this.direction == 'up'){
+            if(this.direction == 'up'
+                && (this.position.y ) < canvas.height
+                && (this.position.y)  > 0
+            ){
                 this.position.y -= this.width
 
             } else 
-            if(this.direction == 'right'){
+            if(this.direction == 'right'
+                && (this.position.x + (this.width * 2)) < canvas.width
+                && (this.position.x)  > this.width 
+            ){
                 this.position.x += this.width
 
             } else 
-            if(this.direction == 'left'){
+            if(this.direction == 'left'
+                && (this.position.x + (this.width * 2)) < canvas.width
+                && (this.position.x )  > 0
+            ){
                 this.position.x -= this.width
-
             }
             this.draw()
         }
@@ -50,15 +61,6 @@
    }
   })
   
-  
-  
-  
-  
-
-  
-  
-  
-  // Mouse Click Control
     addEventListener('pointerup', e => {
         //Nice Code
         Object.keys(keys).forEach(key => keys[key] = false)
