@@ -15,8 +15,6 @@ export function handleCodeFocus(){
             pressed: false
         }
     }
-
-
     canvasMainCode.addEventListener('focusin', e => {
         scriptHasFocusIn = true 
         console.log(scriptHasFocusIn)
@@ -28,12 +26,12 @@ export function handleCodeFocus(){
 
     canvasMainCode.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        let innerCopyCodes = e.target.querySelectorAll('.code-container >.copy-code')
+        let innerCopyCodes = e.target.querySelectorAll('.copy-code')
         if(letter == 'enter'){
             clickedParent = true
             
+            console.log(innerCopyCodes.length)
         }
-        
         if(clickedParent){
             innerCopyCodes.forEach(el => { el.setAttribute('tabindex','0')})
         } else {

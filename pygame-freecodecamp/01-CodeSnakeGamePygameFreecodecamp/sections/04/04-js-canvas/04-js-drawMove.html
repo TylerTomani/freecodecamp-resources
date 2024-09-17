@@ -1,20 +1,18 @@
-(function(){<div class="code-container"><pre tabindex="" class="copy-code"> 
+(function(){
+<div class="code-container"><pre tabindex="" class="copy-code"> 
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d')
     canvas.width = innerWidth
     canvas.height = innerHeight * .7
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
-    // Keys set to true when clicked initially then immediately to false
-</pre></div><div class="code-container"><pre href="#GO" tabindex="0" class="copy-code y-fix"> 
+</pre></div>
     const keys = {
         down: false,
         right: false,
         up: false,
         left: false
     }
-</pre></div>
-<div class="code-container"><pre tabindex="0" class="copy-code"> 
 
     class Player {
         static width = 20
@@ -30,15 +28,14 @@
             this.draw()
         }
     }
-    
+
     const block = new Player({
         position: {
             x: 200,
             y: 80
         }
     })
-</pre></div>
-    // Key Pressing
+
     addEventListener('keyup', e => {
         const key = e.keyCode
         switch(key){
@@ -78,11 +75,11 @@
                 break
         }
     })
-</pre></div>
-    // Mouse Click Control
+
     addEventListener('pointerup', e => {
         Object.keys(keys).forEach(key => keys[key] = false)
     })
+
     function getMousePosition(event) {
         const rect = canvas.getBoundingClientRect()
         return {
@@ -90,12 +87,13 @@
             y: event.clientY - rect.top
         }
     }
+
     function calculateAngle(mouseX, mouseY, blockX, blockY) {
         const dx = mouseX - blockX
         const dy = mouseY - blockY
         let angle = Math.atan2(dy, dx) * (180 / Math.PI) // Angle in degrees
 
-        if (angle &lt; 0) {
+        if (angle < 0) {
             angle += 360
         }
 
@@ -112,13 +110,13 @@
         // console.log('mouseX',mousePoint.x,'mouseY',mousePoint.y)
         const angle = calculateAngle(mousePoint.x, mousePoint.y, blockCenterX, blockCenterY)
         console.log(angle)
-        if (angle > 315 || angle &lt; 45) {
+        if (angle > 315 || angle < 45) {
             keys.right = true
-        } else if (angle > 215 && angle &lt; 315) {
+        } else if (angle > 215 && angle < 315) {
             keys.up = true
-        } else if (angle > 135 && angle &lt; 215) {
+        } else if (angle > 135 && angle < 215) {
             keys.left = true
-        } else if (angle > 45 && angle &lt; 135) {
+        } else if (angle > 45 && angle < 135) {
             keys.down = true
         }
     })
@@ -128,8 +126,8 @@
         c.fillStyle = 'white'
         c.fillRect(0, 0, canvas.width, canvas.height)
         block.update()
+
         // Move block based on key presses
-        
         if (keys.right) {
             block.position.x += block.width
             keys.right = false // Ensure it moves only once per press

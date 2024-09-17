@@ -415,9 +415,15 @@ export function stepTxtListeners(){
             // }
         }
         if (letter == 'c' && !keys.meta.pressed) {
+            const mainCodeJS = document.querySelector('.mainCodeJS') 
+            if(mainCodeJS){
+                mainCodeJS.focus()
+                mainCodeJS.scrollIntoView({behavior:'smooth', block:'nearest' })
+            } else 
             if (mainCodes.length > 0 && mainCodes && iMainCode) {
                 mainCodes[iMainCode].focus()
-            }
+            } 
+
             
         }
         if (letter == 'e') {

@@ -45,6 +45,13 @@ canvas {
     overflow-x: scroll;
     overflow-y: scroll;
 }
+#scriptsContainer>.code-container > .copy-code{
+    width: 100%;
+    max-height: 500px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+
+}
 
 #scriptsContainer>.code-container>#mainCode {
     width: 100%;
