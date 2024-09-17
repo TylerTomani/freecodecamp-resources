@@ -120,7 +120,7 @@ body {padding-bottom: 5%;}
 }
 
 
-.code-container > .copy-code {
+.step-txt > .code-container > .copy-code {
     /* overflow: hidden; */
     /* overflow-x: scroll; */
     width: 100%;
@@ -137,7 +137,7 @@ body {padding-bottom: 5%;}
     color: white;;
 }
 
-.copy-code {
+.step-txt > .code-container > .copy-code {
     font-size: .68rem;
     padding-left: 2.5%;
     padding-top: 1.5%;
@@ -148,7 +148,7 @@ body {padding-bottom: 5%;}
     /* margin-left: 2.5%;
     padding: .5% 1.5% */
 }
-.code-container {
+.step-txt > .code-container {
     width: 98%;
     max-height: 90vh;
     border: 1px solid black;
@@ -156,8 +156,8 @@ body {padding-bottom: 5%;}
 }
 .copy-code:active,
 .copy-code:focus {
-    overflow-y: scroll;
-    max-height: 90vh;
+    /* overflow-y: scroll; */
+    /* max-height: 90vh; */
     box-shadow: 0 0 6px 6px lightseagreen;
 }
 #nxtLesson:active,

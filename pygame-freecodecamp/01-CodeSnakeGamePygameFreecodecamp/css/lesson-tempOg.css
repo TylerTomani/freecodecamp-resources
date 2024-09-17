@@ -94,10 +94,11 @@ body {padding-bottom: 5%;}
     justify-content: center;
     /* border: 2px solid blue; */
 }
-.step>.step-img>img{
-    width: 80%;
+.step-img>img{
+    width: 100%;
     min-height: 150px;
     max-height: 250px;
+    /* object-fit: cover; */
 }
 .step>.step-vid>video {
     border: 1px solid blue;
@@ -109,6 +110,7 @@ body {padding-bottom: 5%;}
 .enlarge {
     position: relative;
     transform: scale(2.2);
+    z-index: 100;
     right: 50%;
 }
 .enlarge-vid {
@@ -117,12 +119,7 @@ body {padding-bottom: 5%;}
     right: 50%;
 }
 
-.code-container {
-    width: 98%;
-    max-height: 90vh;
-    border: 1px solid black;
-    align-self: center;
-}
+
 .code-container > .copy-code {
     /* overflow: hidden; */
     /* overflow-x: scroll; */
@@ -146,11 +143,22 @@ body {padding-bottom: 5%;}
     padding-top: 1.5%;
     overflow-x: scroll;
 }
-.copy-code:active,
-.copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
+
 #nxtLesson {
     /* margin-left: 2.5%;
     padding: .5% 1.5% */
+}
+.code-container {
+    width: 98%;
+    max-height: 90vh;
+    border: 1px solid black;
+    align-self: center;
+}
+.copy-code:active,
+.copy-code:focus {
+    overflow-y: scroll;
+    max-height: 90vh;
+    box-shadow: 0 0 6px 6px lightseagreen;
 }
 #nxtLesson:active,
 #nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}

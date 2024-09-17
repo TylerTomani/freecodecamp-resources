@@ -24,6 +24,9 @@ export function stepTxtListeners(){
     const keys = {
         meta: {
             pressed: false
+        },
+        shift: {
+            pressed: false
         }
     }
     const mainCodes = document.querySelectorAll('.main-code')
@@ -170,11 +173,10 @@ export function stepTxtListeners(){
             targetDivFocus = false
             mainCodesFocused = true
             if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
-                console.log(iMainCode)
                 e.preventDefault()
                 iMainCode = (iMainCode + 1) % mainCodes.length
                 mainCodes[iMainCode].focus()
-                console.log(mainCodes[iMainCode])
+                ///////
             }
         });
     })
@@ -407,6 +409,9 @@ export function stepTxtListeners(){
         let letter = e.key.toLowerCase()
         let key = e.keyCode
         if(letter == 'p'){targetDivFocus = true}
+        if(letter == 'shift'){
+            key.shift.pressed = true
+         }
         if(letter == 'enter'){
             targetDivFocus = false
             const canvas = document.querySelector('#canvas')
@@ -414,7 +419,7 @@ export function stepTxtListeners(){
             //     canvas.focus()
             // }
         }
-        if (letter == 'c' && !keys.meta.pressed) {
+        if (letter == 'c' && !keys.meta.pressed && !keys.shift.pressed) {
             const mainCodeJS = document.querySelector('.mainCodeJS') 
             if(mainCodeJS){
                 mainCodeJS.focus()
@@ -423,8 +428,6 @@ export function stepTxtListeners(){
             if (mainCodes.length > 0 && mainCodes && iMainCode) {
                 mainCodes[iMainCode].focus()
             } 
-
-            
         }
         if (letter == 'e') {
             if (nextLesson) {
@@ -491,7 +494,6 @@ export function stepTxtListeners(){
                     lastFocusedElement.focus()
                 }
             } else {
-                console.log(currentSection)
                 if(sections[iSection + 1]){
                     sections[iSection + 1].focus()
                 } else {
@@ -504,7 +506,6 @@ export function stepTxtListeners(){
             if(letter == 'c'){
                 if(mainCodes.length > 0){
                     // 
-                    // console.log(mainCodes[0])
                     mainCodes[iMainCode].focus()
                 } else {
                     const mainCode = document.querySelector('#mainCode')

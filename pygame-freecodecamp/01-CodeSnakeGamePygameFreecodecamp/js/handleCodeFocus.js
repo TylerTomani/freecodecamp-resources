@@ -17,21 +17,27 @@ export function handleCodeFocus(){
     }
     canvasMainCode.addEventListener('focusin', e => {
         scriptHasFocusIn = true 
-        console.log(scriptHasFocusIn)
     })
     canvasMainCode.addEventListener('focusout', e => { 
         scriptHasFocusIn = false 
         clickedParent = false
     })
-
+    let iInnerCode = 0
     canvasMainCode.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let innerCopyCodes = e.target.querySelectorAll('.copy-code')
         if(letter == 'enter'){
             clickedParent = true
             
-            console.log(innerCopyCodes.length)
         }
+        if(letter == 'c' && innerCopyCodes){
+            
+            // innerCopyCodes[iInnerCode].focus()
+            // console.log(innerCopyCodes[iInnerCode])
+            // iInnerCode = (iInnerCode + 1) % innerCopyCodes.length
+        }
+
+
         if(clickedParent){
             innerCopyCodes.forEach(el => { el.setAttribute('tabindex','0')})
         } else {
@@ -59,12 +65,9 @@ export function handleCodeFocus(){
     //     if(letter == 'enter'){
     //         clickedParent = true
     //         innerCopyCodes = e.target.querySelectorAll('.copy-code')
-    //         console.log(innerCopyCodes)
     //     }
     //     // console.log(clickedParent)
     //     if (clickedParent && scriptHasFocusIn && innerCopyCodes) {
-    //         console.log('clickedParent', clickedParent)
-    //         console.log(scriptHasFocusIn)
     //         innerCopyCodes.forEach(el => {el.setAttribute('tabindex', '0')})
     //         if (!isNaN(letter)) {
     //             let intLet = parseInt(letter)

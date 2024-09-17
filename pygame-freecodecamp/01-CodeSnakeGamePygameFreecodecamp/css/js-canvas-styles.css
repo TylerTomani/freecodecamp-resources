@@ -46,6 +46,12 @@ canvas {
     /* overflow-x: scroll; */
     overflow-y: scroll;
 }
+#scriptsContainer>.code-container > .copy-code:active,#scriptsContainer>.code-container > .copy-code:focus{
+    border: 2px solid indianred;
+    /* z-index: 6; */
+    /* position: relative; */
+}
+
 #scriptsContainer>.code-container > .copy-code{
     border: 1px solid black;
     align-self: flex-start;
@@ -54,7 +60,20 @@ canvas {
     max-height: 500px;
     overflow: hidden;
     /* overflow-x: scroll; */
+    padding-top: 0 !important;
     overflow-y: scroll;
+}
+#scriptsContainer>.code-container > .copy-code > .code-container{
+    overflow:visible;
+    /* overflow-x: scroll; */
+    padding-top: 0 !important;
+    /* overflow-y: scroll; */
+}
+#scriptsContainer>.code-container > .copy-code > .code-container > .copy-code{
+    overflow:visible;
+    /* overflow-x: scroll; */
+    padding-top: 0 !important;
+    /* overflow-y: scroll; */
 }
 
 #scriptsContainer>.code-container>#mainCode {
