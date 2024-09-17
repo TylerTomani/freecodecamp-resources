@@ -12,21 +12,36 @@
        up: false,
        left: false
    }
-   class Player {
-   static width = 20
-   constructor({ position }) {
-       this.position = position
-       this.width = 20
-   }
-   draw() {
-       c.fillStyle = 'orange'
-       c.fillRect(this.position.x, this.position.y, this.width, this.width)
-   }
-   update() {
-        
-        this.draw()
-   }
-  } 
+    class Player {
+        static width = 20
+        constructor({ position,direction},) {
+            this.position = position
+            this.direction = direction
+            this.width = 20
+        }
+        draw() {
+            c.fillStyle = 'orange'
+            c.fillRect(this.position.x, this.position.y, this.width, this.width)
+        }
+        update() {
+            if(this.direction == 'down'){
+                this.position.y += this.width
+            } else 
+            if(this.direction == 'up'){
+                this.position.y -= this.width
+
+            } else 
+            if(this.direction == 'right'){
+                this.position.x += this.width
+
+            } else 
+            if(this.direction == 'left'){
+                this.position.x -= this.width
+
+            }
+            this.draw()
+        }
+    } 
       
   const block = new Player({
    position: {
@@ -37,46 +52,9 @@
   
   
   
-   // Key Pressing
-  canvas.addEventListener('keyup', e => {
-   const key = e.keyCode
-   switch(key){
-    case 40: // Down arrow
-     keys.down = false
-     break
-    case 39: // Right arrow
-     keys.right = false
-     break
-    case 38: // Up arrow
-     keys.up = false
-     break
-    case 37: // Left arrow
-     keys.left = false
-     break
-  }
-  })
   
-  canvas.addEventListener('keydown', e => {
-   const key = e.keyCode
-   switch (key) {
-    case 40: // Down arrow
-     e.preventDefault()
-     keys.down = true
-     break
-    case 39: // Right arrow
-     e.preventDefault()
-     keys.right = true
-     break
-    case 38: // Up arrow
-     e.preventDefault()
-     keys.up = true
-     break
-    case 37: // Left arrow
-     e.preventDefault()
-     keys.left = true
-     break
-  }
-  })
+  
+
   
   
   
@@ -115,40 +93,62 @@
         const angle = calculateAngle(mousePoint.x, mousePoint.y, blockCenterX, blockCenterY)
         console.log(angle)
         if (angle > 315 || angle < 45) {
-            keys.right = true
+            block.direction = 'right'
         } else if (angle > 215 && angle < 315) {
-            keys.up = true
+            block.direction = 'up'
+
         } else if (angle > 135 && angle < 215) {
-            keys.left = true
+            block.direction = 'left'
+
         } else if (angle > 45 && angle < 135) {
-            keys.down = true
+            block.direction = 'down'
+
         }
     })
-    let frameNum = 0
-    function animate() {
-        requestAnimationFrame(animate)
-        c.fillStyle = 'white'
+    
+
+     // Key Pressing
+    canvas.addEventListener('keyup', e => {
+        const key = e.keyCode
+        switch(key){
+            case 40: // Down arrow
+                keys.down = false
+                break
+            case 39: // Right arrow
+                keys.right = false
+                break
+            case 38: // Up arrow
+                keys.up = false
+                break
+            case 37: // Left arrow
+               keys.left = false
+                break
+        }
+    })
+    block.draw()
+    addEventListener('keydown', e => {
+        const key = e.keyCode
+        switch (key) {
+        case 40: // Down arrow
+            block.direction = 'down'
+            break
+        case 39: // Right arrow
+            block.direction = 'right'
+            break
+        case 38: // Up arrow
+            
+            block.direction = 'up'
+            break
+        case 37: // Left arrow
+            block.direction = 'left'
+            break
+        }
+    })
+    setInterval(() => {
+        c.fillStyle = 'royalblue'
         c.fillRect(0, 0, canvas.width, canvas.height)
         block.update()
-        // Move block based on key presses
-        
-        if (keys.right) {
-            block.position.x += block.width
-            // keys.right = false // Ensure it moves only once per press
-        }
-        if (keys.down) {
-            block.position.y += block.width
-            // keys.down = false // Ensure it moves only once per press
-        }
-        if (keys.up) {
-            block.position.y -= block.width
-            // keys.up = false // Ensure it moves only once per press
-        }
-        if (keys.left) {
-            block.position.x -= block.width
-            // keys.left = false // Ensure it moves only once per press
-        }
-    }
-    animate()
+    },250)
+
 }())
   
