@@ -4,7 +4,7 @@
     <!-- 01-->
     <div class="step">
         <div tabindex="0" class="step-txt">
-            <h4>02</h4>
+            <h4>01</h4>
             <p>
                 import time at top
             </p>
@@ -12,62 +12,43 @@
                 <pre tabindex="0" class="copy-code smtxt main-code">
 import time</pre>
             </div>
-        </div>
-        <div class="step-img">
-            <img
-             src="sections/04/04-01/images/01.png" alt="">
-        </div>
-    </div>
-    <div class="step">
-        <div tabindex="0" class="step-txt">
-            <h4>01</h4>
             <p>
                 use <code>time.sleep(.3)</code> at the bottom of the <code class="lsg">Game</code>
-                <code>while running loop</code>. Place a <code>self.snake.<span class="m-fix">walk()</span></code>
-                right before <code>sleep()</code>, Then Create the <code>snake.<span class="m-fix">walk()</span></code>
-
+                <code>while running loop</code>. Place a <code>self.snake.<span class="y-fix">walk()</span></code>
+                right before <code>sleep()</code>, Then Create the <code>snake.<span class="y-fix">walk()</span></code>
             </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code smtxt main-code">
-import time</pre>
-
-            </div>
-            <p>
-
-            </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code main-code">
-game = Game()
-game.run()</pre>
-            </div>
-            
-            
+            <div class="code-container"><pre tabindex="0" class="copy-code"> 
+self.snake.<span class="y-fix">walk()</span>
+time.sleep(.3)
+            </pre></div>
         </div>
         <div class="step-img">
             <img
              src="sections/04/04-01/images/01.png" alt="">
         </div>
     </div>
-    <!-- 02-->
+    <!-- 03-->
     <div class="step-col ">
         <div class="step">
             <div tabindex="0" class="step-txt">
                 <h4>02</h4>
                 <p>
-                    import time at top
+                    Assign any initial value for <code>self.<span class="b-fix">direction</span></code>
+                    inside <code>__init__</code> for <code class="lsg">Snake</code>
                 </p>
-                <div class="code-container">
-                    <pre tabindex="0" class="copy-code smtxt main-code">
-import time</pre>
-
-                </div>
+                <div class="code-container"><pre tabindex="0" class="copy-code"> 
+self.<span class="b-fix">direction</span> = 'down'
+                </pre></div>
                 <p>
-
+                    Move block movement logic inside <code class="y-fix">walk()</code> and inside 
+                    the <code class="m-fix">move_</code> methods, change the <code>self.<span class="b-fix">direction</span></code>
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code">
-game = Game()
-game.run()</pre>
+def <span class="y-fix">walk(</span>self<span class="y-fix">)</span>:
+    if self.direction ==  'down':
+        self.y += 10
+    else if self.direction ==</pre>
                 </div>
                 
                 

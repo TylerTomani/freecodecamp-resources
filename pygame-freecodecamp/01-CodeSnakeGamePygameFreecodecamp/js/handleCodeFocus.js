@@ -18,6 +18,7 @@ export function handleCodeFocus(){
     }
     const innerCopyCodes = parentCopyCode.querySelectorAll('.code-container .copy-code')
     let iInnerCode
+    // let started = 
     parentCopyCode.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase() 
         if(letter == 'tab'){

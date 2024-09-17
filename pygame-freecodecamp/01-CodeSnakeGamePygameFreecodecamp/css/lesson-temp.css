@@ -142,6 +142,7 @@ body {padding-bottom: 5%;}
     padding-left: 2.5%;
     padding-top: 1.5%;
     overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 #nxtLesson {
@@ -186,6 +187,7 @@ body {padding-bottom: 5%;}
         max-width: 500px !important;
         max-height: 150px !important;
         /* margin-right: 50%; */
+        z-index: 3;
         right: 50%;
     }
 
