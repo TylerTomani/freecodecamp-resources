@@ -292,8 +292,9 @@ export function stepTxtListeners(){
                 img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.style.zIndex = 10
             } else {
-                e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
                 img.classList.remove('enlarge')
+                // scrolllToX
+                scrollX(0)
                 img.style.zIndex = 0
             }
         }
