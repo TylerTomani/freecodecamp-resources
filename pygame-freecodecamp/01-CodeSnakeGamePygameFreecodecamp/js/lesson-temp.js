@@ -410,7 +410,7 @@ export function stepTxtListeners(){
         let key = e.keyCode
         if(letter == 'p'){targetDivFocus = true}
         if(letter == 'shift'){
-            key.shift.pressed = true
+            keys.shift.pressed = true
          }
         if(letter == 'enter'){
             targetDivFocus = false
@@ -428,6 +428,10 @@ export function stepTxtListeners(){
             if (mainCodes.length > 0 && mainCodes && iMainCode) {
                 mainCodes[iMainCode].focus()
             } 
+        }
+        if(keys.shift.pressed && letter == 'c'){
+            canvas.focus()
+            console.log(canvas)
         }
         if (letter == 'e') {
             if (nextLesson) {
