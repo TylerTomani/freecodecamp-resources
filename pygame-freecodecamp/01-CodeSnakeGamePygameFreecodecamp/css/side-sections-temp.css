@@ -10,7 +10,7 @@ nav{
 body {
     background-color: rgb(173, 216, 230,.2);
     background-color: lime ;
-    background-color: lightgoldenrodyellow ;
+    /* background-color: lightgoldenrodyellow ; */
     overflow: hidden;
     overflow-y: scroll;
 
