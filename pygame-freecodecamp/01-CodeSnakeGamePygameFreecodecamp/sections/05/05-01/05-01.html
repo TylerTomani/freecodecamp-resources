@@ -17,62 +17,114 @@ import time</pre>
                 <code>while running loop</code>. Place a <code>self.snake.<span class="y-fix">walk()</span></code>
                 right before <code>sleep()</code>, Then Create the <code>snake.<span class="y-fix">walk()</span></code>
             </p>
-            <div class="code-container"><pre tabindex="0" class="copy-code"> 
+            <div class="code-container"><pre tabindex="0" class="copy-code main-code"> 
 self.snake.<span class="y-fix">walk()</span>
 time.sleep(.3)
             </pre></div>
+            <p class="">
+                <span class="r">
+                    Make sure    
+                </span>
+                 self.snake.walk() and time.sleep(.3) are indented inside <code>for event in ..</code>
+            </p>
         </div>
         <div class="step-img">
             <img
-             src="sections/04/04-01/images/01.png" alt="">
+             src="sections/05/05-01/images/01.png" alt="">
         </div>
     </div>
-    <!-- 03-->
+    <!-- 02-->
     <div class="step-col ">
         <div class="step">
             <div tabindex="0" class="step-txt">
                 <h4>02</h4>
                 <p>
-                    Assign any initial value for <code>self.<span class="b-fix">direction</span></code>
+                    Assign a blank value for <code>self.<span class="b-fix">direction</span></code>
                     inside <code>__init__</code> for <code class="lsg">Snake</code>
                 </p>
                 <div class="code-container"><pre tabindex="0" class="copy-code"> 
 self.<span class="b-fix">direction</span> = 'down'
                 </pre></div>
                 <p>
-                    Move block movement logic inside <code class="y-fix">walk()</code> and inside 
-                    the <code class="m-fix">move_</code> methods, change the <code>self.<span class="b-fix">direction</span></code>
+                    Move block movement logic inside <code class="y-fix">walk()</code> 
                 </p>
                 <div class="code-container">
-                    <pre tabindex="0" class="copy-code main-code">
+                    <pre tabindex="0" class="copy-code main-code smtxt">
 def <span class="y-fix">walk(</span>self<span class="y-fix">)</span>:
     if self.direction ==  'down':
         self.y += 10
-    else if self.direction ==</pre>
+    if self.direction == 'up':
+        self.y += 10
+    if self.direction == 'left':
+        self.x -= 10
+    if self.direction == 'right':
+        self.x += 10
+    self.draw()
+</pre>
                 </div>
                 
                 
             </div>
             <div class="step-img">
                 <img
-                 src="sections/04/04-01/images/01.png" alt="">
+                 src="sections/05/05-01/images/02.png" alt="">
             </div>
         </div>
         <div class="step-col-in">
             <div class="step-txt-in mdtxt">
                 <p>
-                    <span class="r">**The code will not run yet</span>
+                    and inside 
+                    the <code class="m-fix">move_</code> methods, change the <code>self.<span class="b-fix">direction</span></code>
                     
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
-class <span class="lsg-fix">Game</span>:
-    def __init__(self):
-        pygame.init()
-        self.surface = pygame.display.set_mode((500,400))
-        self.surface.fill((255,255,255))
-    def run(self):
-        pass</pre></div>
+    def <span class="m-fix">move_down</span>(self):
+        self.<span class="b-fix">direction</span> = 'down'
+    def <span class="m-fix">move_up</span>(self):
+        self.<span class="b-fix">direction</span> = 'up'
+    def <span class="m-fix">move_left</span>(self):
+        self.<span class="b-fix">direction</span> = 'left'
+    def <span class="m-fix">move_right</span>(self):
+        self.<span class="b-fix">direction</span> = 'right'
+    </pre></div>
+            </div>
+        </div>
+    </div>
+    <!-- 03-->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt playClick">
+                <h4>03</h4>
+                <p>
+                    This code now allows for constant movement when key is pressed
+                </p>
+            </div>
+            <div class="step-vid">
+                <video 
+                
+                 poster="sections/05/05-01/images/03-thumb.png"
+                 src="sections/05/05-01/images/02.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in mdtxt">
+                <p>
+                    and inside 
+                    the <code class="m-fix">move_</code> methods, change the <code>self.<span class="b-fix">direction</span></code>
+                    
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+    def <span class="m-fix">move_down</span>(self):
+        self.<span class="b-fix">direction</span> = 'down'
+    def <span class="m-fix">move_up</span>(self):
+        self.<span class="b-fix">direction</span> = 'up'
+    def <span class="m-fix">move_left</span>(self):
+        self.<span class="b-fix">direction</span> = 'left'
+    def <span class="m-fix">move_right</span>(self):
+        self.<span class="b-fix">direction</span> = 'right'
+    </pre></div>
             </div>
         </div>
     </div>

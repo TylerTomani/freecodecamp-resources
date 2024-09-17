@@ -296,7 +296,7 @@ export function stepTxtListeners(){
                 // scrolllToX
                 img.scrollIntoView({ behavior: "auto", block: "start", inline: "start" });
                 // scrollX(0)   
-                // img.style.zIndex = 0
+                img.style.zIndex = 0
             }
         }
 

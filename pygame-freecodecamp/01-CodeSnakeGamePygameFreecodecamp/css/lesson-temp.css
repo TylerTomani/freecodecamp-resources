@@ -94,11 +94,10 @@ body {padding-bottom: 5%;}
     justify-content: center;
     /* border: 2px solid blue; */
 }
-.step-img>img{
-    width: 100%;
+.step>.step-img>img{
+    width: 80%;
     min-height: 150px;
     max-height: 250px;
-    /* object-fit: cover; */
 }
 .step>.step-vid>video {
     border: 1px solid blue;
@@ -110,7 +109,6 @@ body {padding-bottom: 5%;}
 .enlarge {
     position: relative;
     transform: scale(2.2);
-    z-index: 100;
     right: 50%;
 }
 .enlarge-vid {
@@ -119,47 +117,36 @@ body {padding-bottom: 5%;}
     right: 50%;
 }
 
-
-.step-txt > .code-container > .copy-code {
-    /* overflow: hidden; */
-    /* overflow-x: scroll; */
-    width: 100%;
+.code-container {
+    width: 98%;
+    
+    border: 1px solid black;
+    align-self: center;
 }
 .code-container > .copy-code > .code-container ,
 .code-container > .copy-code > .code-container > .copy-code{
-    /* scroll-behavior: none; */
-    /* overflow: hidden; */
+    scroll-behavior: none;
+    overflow: hidden;
 
 }
 .step-txt>.code-container,
 .step-txt-in>.code-container {
     background-color: rgb(33, 38, 38);
     color: white;;
-}
 
-.step-txt > .code-container > .copy-code {
+
+}
+.copy-code {
     font-size: .68rem;
     padding-left: 2.5%;
-    padding-top: 1.5%;
     overflow-x: scroll;
-    overflow-y: scroll;
+    padding-top: 1.5%;
 }
-
+.copy-code:active,
+.copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
 #nxtLesson {
     /* margin-left: 2.5%;
     padding: .5% 1.5% */
-}
-.step-txt > .code-container {
-    width: 98%;
-    max-height: 90vh;
-    border: 1px solid black;
-    align-self: center;
-}
-.copy-code:active,
-.copy-code:focus {
-    /* overflow-y: scroll; */
-    /* max-height: 90vh; */
-    box-shadow: 0 0 6px 6px lightseagreen;
 }
 #nxtLesson:active,
 #nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}
@@ -176,7 +163,7 @@ body {padding-bottom: 5%;}
     .copy-code {
         /* padding-left: 2.5%; */
         /* padding-top: 1.5%; */
-        /* overflow-x: scroll; */
+        overflow-x: scroll;
     }
 
     .enlarge {
@@ -187,7 +174,6 @@ body {padding-bottom: 5%;}
         max-width: 500px !important;
         max-height: 150px !important;
         /* margin-right: 50%; */
-        z-index: 3;
         right: 50%;
     }
 
