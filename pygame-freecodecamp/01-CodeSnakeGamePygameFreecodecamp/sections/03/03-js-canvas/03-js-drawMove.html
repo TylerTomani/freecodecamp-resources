@@ -1,18 +1,18 @@
-(function(){<div class="code-container"><pre tabindex="" class="copy-code"> 
-    const canvas = document.querySelector('canvas')
-    const c = canvas.getContext('2d')
-    canvas.width = innerWidth
-    canvas.height = innerHeight * .7
-    c.fillStyle = 'white'
-    c.fillRect(0, 0, canvas.width, canvas.height)
-    // Keys set to true when clicked initially then immediately to false
-</pre></div><div class="code-container"><pre href="#GO" tabindex="0" class="copy-code y-fix"> 
-    const keys = {
-        down: false,
-        right: false,
-        up: false,
-        left: false
-    }
+(function(){<div class="code-container"><pre tabindex="" class="copy-code"> const canvas = document.querySelector('canvas')
+ const c = canvas.getContext('2d')
+ canvas.width = innerWidth
+ canvas.height = innerHeight * .7
+ c.fillStyle = 'white'
+ c.fillRect(0, 0, canvas.width, canvas.height)
+</pre></div>
+<div class="code-container"><pre  tabindex="0" class="copy-code y-fix"> 
+ <span class="g">// Keys set to true when clicked initially then immediately to false</span>
+ const keys = {
+     down: false,
+     right: false,
+     up: false,
+     left: false
+ }
 </pre></div>
 <div class="code-container"><pre tabindex="0" class="copy-code"> 
 
@@ -39,7 +39,7 @@
     })
 </pre></div>
     // Key Pressing
-    addEventListener('keyup', e => {
+    canvas.addEventListener('keyup', e => {
         const key = e.keyCode
         switch(key){
             case 40: // Down arrow
@@ -57,7 +57,7 @@
         }
     })
 
-    addEventListener('keydown', e => {
+    canvas.addEventListener('keydown', e => {
         const key = e.keyCode
         switch (key) {
             case 40: // Down arrow
