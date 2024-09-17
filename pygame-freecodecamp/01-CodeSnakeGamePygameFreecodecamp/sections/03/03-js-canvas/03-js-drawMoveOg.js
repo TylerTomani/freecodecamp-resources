@@ -118,23 +118,23 @@
         return angle;
     }
     
-    canvas.addEventListener('pointerdown', e => {
+    addEventListener('pointerdown', e => {
         const mousePoint = getMousePosition(e);
         const blockCenterX = block.position.x 
         const blockCenterY = block.position.y 
         const angle = calculateAngle(mousePoint.x, mousePoint.y, blockCenterX, blockCenterY);
         console.log('Angle:', angle.toFixed(2), 'degrees');
         if(angle > 315 || angle < 45){
-            keys.pressed.right = true
+            block.velocity.x = block.width
         } else
         if(angle > 215 && angle < 315){
-            keys.pressed.down = true
+            block.velocity.y = (block.width * -1)
         } else
         if(angle > 135 && angle < 215){
-            keys.pressed.left = true
+            block.velocity.x = (block.width * -1)
         } else 
         if(angle > 45 && angle < 135){
-            keys.pressed.up = true
+            block.velocity.y = block.width
         }
     });
     function animate(){
@@ -144,16 +144,16 @@
         block.update()
         
         if(keys.right.pressed){
-            block.velocity.x = Player.width 
+            block.velocity.x = Player.width * .25
         } else
         if(keys.down.pressed){
-            block.velocity.y = Player.width 
+            block.position.y += Player.width * .25
         } else
         if(keys.up.pressed){
-            block.velocity.y = Player.width * -1
+            block.position.y -= Player.width * .25
         } else
         if(keys.left.pressed){
-            block.velocity.x = Player.width * -1
+            block.position.x -= Player.width * .25
         }
          else {
             block.velocity.x = 0
