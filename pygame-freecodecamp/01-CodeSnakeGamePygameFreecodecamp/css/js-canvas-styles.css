@@ -42,7 +42,8 @@ canvas {
     background-color: white;
     width: 100%;
     max-height: 500px;
-    overflow-x: scroll;
+    overflow: hidden;
+    /* overflow-x: scroll; */
     overflow-y: scroll;
 }
 
