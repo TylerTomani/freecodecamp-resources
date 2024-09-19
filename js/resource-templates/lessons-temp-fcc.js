@@ -8,8 +8,8 @@ import { toggleAside } from './sections-fcc.js'
 import { lessons } from './sections-fcc.js'
 export let targetDivFocusIN = false
 import { getSubSection } from './sections-fcc.js'
-import { currentClickedSelection } from './sections-fcc.js'
-import { lastFocusedSelection } from './sections-fcc.js'
+// import { currentClickedSelection } from './sections-fcc.js'
+// import { lastFocusedSelection } from './sections-fcc.js'
 addEventListener('DOMContentLoaded', e => {
     if (innerWidth < 501) {
         // aside.classList.add('hide')
@@ -60,11 +60,7 @@ export function stepTxtListeners(){
             // aside.classList.remove('hide')
         }
     })
-    allImages.forEach(el => {
-        el.addEventListener('click', e => {
-            e.target.classList.toggle('enlarge')
-        })
-    })
+    
     sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
     lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
     pAs.forEach(el => {
@@ -116,13 +112,16 @@ export function stepTxtListeners(){
         
     })
     function stepFocus(letter) {
-        const intLetter = parseInt(letter)
-        if (intLetter <= stepTxts.length) {
-            denlargeAllImages()
-            stepNumberFocus(intLetter)
-        } else {
-            if(nxtLesson){
-                nxtLesson.focus()
+        if(!isNaN(letter)){
+
+            const intLetter = parseInt(letter)
+            if (intLetter <= stepTxts.length) {
+                denlargeAllImages()
+                stepNumberFocus(intLetter)
+            } else {
+                if(nxtLesson){
+                    nxtLesson.focus()
+                }
             }
         }
     }
@@ -215,24 +214,14 @@ export function stepTxtListeners(){
         const stepImg = step.querySelector('.step-img')
         if(stepImg){
             const img = stepImg.querySelector('img')
-            img.style.zIndex = "1"
-            if(!img.classList.contains('enlarge')){
-                img.classList.add('enlarge')
-            } else {
-                img.classList.remove('enlarge')
-            } 
-            if(img.classList.contains('lg-enlarge') && !img.classList.contains('enlarged-lg')){
-                img.classList.add('enlarged-lg')
-            } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){
-                img.classList.remove('enlarged-lg')
-            }
-            if(img.classList.contains('md-enlarge') && !img.classList.contains('enlarged-md')){
-                img.classList.add('enlarged-md')
-            } else if (img.classList.contains('md-enlarge') && img.classList.contains('enlarged-md')){
-                img.classList.remove('enlarged-md')
-            }
+            toggleImgSize(img)
         }
     }
+    allImages.forEach(el => {
+        el.addEventListener('click', e => {
+            toggleImgSize(e.target)
+        })
+    })
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (targetDivFocusIN) {
@@ -346,11 +335,12 @@ export function stepTxtListeners(){
             }
             
         })
-        function toggleImgSize(img) {
-            console.log(img)
-            img.classList.toggle('enlarge')
-        }   
     })
+    function toggleImgSize(img) {
+        img.style.zIndex = "1"
+
+       console.log(img)
+    }   
     function videoHandle(e){
         const step = getStepContainer(e.target.parentElement)
         const vid = step.querySelector('.step-vid > video')

@@ -52,6 +52,9 @@ body>header > .title-tutorialLink-container{
 nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding: 4% 0;
 }
 
 main {

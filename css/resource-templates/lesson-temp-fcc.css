@@ -108,6 +108,14 @@
     right: 20%;
     transform: scale(2.5);
 } */
+.enlarged-sm {
+    position: fixed;
+    object-fit: cover;
+    z-index: 2;
+    right: 20%;
+    transform: scale(1.5);
+    max-height: 400px;
+}
 .enlarged-md {
     position: fixed;
     object-fit: cover;

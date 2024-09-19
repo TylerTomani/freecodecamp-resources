@@ -1,352 +1,199 @@
-
-import {header,nav, mainTargetDiv, targetDivFocusIN} from "./lessons-temp-fcc.js"
-import { stepTxtListeners } from "./lessons-temp-fcc.js"
 import { addCopyCodes } from "./copy-code-resources.js"
-let sTitle = document.querySelector('#section-title')
-let lTitle = document.querySelector('#lesson-title')
-const aside = document.querySelector('aside')
-const backlink = document.querySelector('#backlink')
-const homelink = document.querySelector('#homelink')
-const regexCmds = document.querySelector('#regexCmds')
-const programShortcuts = document.querySelector('#programShortcuts')
-const tutorialLink = document.querySelector('#tutorialLink')
+import { stepTxtListeners } from "./lessons-temp-fcc.js"
+// import { popScriptWindow } from "./popup-script.js"
+// import { injectJsScripts } from "../sections/loadJsScripts.js"
+// import { handleCodeFocus } from "../../js/handleCodeFocus.js"
 
-export const lessons = document.querySelectorAll('.sub-section > li > a')
+export const navBar = document.querySelector('.section-lesson-title')
+export const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
-let sectionsFocused = true
-let lessonsFocused = false
-// let targetDivFocus = false
-let pageStarted = false
-let iSection = 0
-let iLesson = 0
-export let lastFocusedSelection
-export let currentClickedSelection
+export const lessons = document.querySelectorAll('.sub-section > li > a')
+export const header = document.querySelector('header')
+const jsCanvasLessons = document.querySelectorAll('.js-canvas-lesson')
+const backlink = document.getElementById('backlink')
+const homelink = document.getElementById('homelink')
+const tutorialLink = document.getElementById('tutorialLink')
+const regexCmdsLink = document.getElementById('regexCmds')
+const programShorcutsLink = document.getElementById('programShorcuts')
+const allEls = document.querySelectorAll('body *')
+let sectionTitle = document.getElementById('section-title')
+let lessonTitle = document.getElementById('lesson-title')
+const subSections = document.querySelectorAll('.sub-section')
+export const targetDiv = document.getElementById('targetDiv')
 const keys = {
     shift: {
         pressed: false
     }
 }
+let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
 
-function hideSubSections(){
-    sections.forEach(el => {
-        const sectionContainer = getSectionContainer(el.parentElement)
-        const subSection = sectionContainer.querySelector('.sub-section')
-        if(subSection){
-            if(!subSection.classList.contains('show')){
-                subSection.classList.add('hide')
-            } 
-        }
-    })
-}
-function toggleSubSection(e){
-    const sectionContainer = getSectionContainer(e.target.parentElement)
-    const el = sectionContainer.querySelector('.sub-section')
-    if(el){
-
-        if(el.classList.contains('show')){
-            el.classList.remove('show')
-        } 
-        else  if(!el.classList.contains('hide')){
-            el.classList.add('hide')
-        } else if(el.classList.contains('hide') && el.classList.contains("show")) {
-            el.classList.remove('show')
-            el.classList.remove('hide')
-        } else {
-            el.classList.remove('hide')
-            
-        }
-    }
-}
-hideSubSections()
-header.addEventListener('focus', e => {
-    sectionsFocused = true
+[mainAside, backlink].forEach(el => {
+    el.addEventListener('focus', () => { scrollTo(0, 0) });
 })
-// mainTargetDiv.addEventListener('focus', e => {
-//     targetDivFocus = true
-// })
+function setLetVariables(){
+    iSection = 0
+    iLesson = 0
+    currentSection
+    intLetter = 0
+    sectionsFocused = false
+    lessonsFocused = false
+    asideFocused = false
+    targetDivFocused = false
+    currentLesson
+    sectionClicked = false
+    shiftS = []
+}
+/** This function, set let variable values, saves space 
+in top part of the code */
+setLetVariables()
+
+header.addEventListener('focusin', e => { sectionsFocused = false})
 header.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
-    
-    if(!lastFocusedSelection && letter == 's'){
-        showAside()
-        sections[0].focus()
-    } else if (lastFocusedSelection && letter == 's') {
-        showAside()
-        lastFocusedSelection.focus()
-    }
-
-    handleSectionsFocus(letter)
-    
+    if(letter == 's' ){
+        lastFocusedElement.focus()
+    }    
 })
-export function showAside(){
-    if(aside.classList.contains('hide')){
-        aside.classList.remove('hide')
-    }
-
-}
-export function toggleAside(){
-    if(aside.classList.contains('hide')){
-        aside.classList.remove('hide')
-    } else {
-        aside.classList.add('hide')
-        
-    }
-
-}
-mainTargetDiv.addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    if(!lastFocusedSelection && letter == 's'){
-        sections[0].focus()
-    } else if (lastFocusedSelection && letter == 's') {
-        lastFocusedSelection.focus()
-        scrollTo(0, 0)
-    }
-    if(!currentClickedSelection && letter == 'a'){
-        lastFocusedSelection.focus()
-    }
-})
-nav.addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    if(letter == 's'){
-        if(aside.classList.contains('hide')){
-            aside.classList.remove('hide')
-        }
-        scrollTo(0, 0)
-        if(!lastFocusedSelection ){
-            sections[0].focus()
-            
-        } else if(lastFocusedSelection ){
-            lastFocusedSelection.focus()
-        }
-    }
-    if(letter == 'a'){
-        if(aside.classList.contains('hide')){
-            aside.classList.remove('hide')
-        }
-        if(!currentClickedSelection ){
-            lastFocusedSelection.focus()
-        } else if (currentClickedSelection ){
-            currentClickedSelection.focus()
-        }
-    }
-    if(letter == 'enter'){
-        aside.classList.toggle('hide')
-        // if (!currentClickedSelection) {
-        //     lastFocusedSelection.focus()
-        // } else if (currentClickedSelection) {
-        //     currentClickedSelection.focus()
-        // }
-    }
-})
-header.addEventListener('keydown', pageElementsFocus)
-nav.addEventListener('click', (e)=>{
-    e.preventDefault()
-    aside.classList.toggle('hide')
-})
-
-addEventListener('keyup', e => {
-    let letter = e.key.toLowerCase()
-    if (letter == 'shift') {
-        keys.shift.pressed = false
-    }
-})
-
-
-// handle shift key up
-sections.forEach(el => {
-    if (el.hasAttribute('autofocus')) {
-        fetchLessonHref(el.href)
-        sectionsFocused = true   
-        sTitle.innerText = el.innerText.slice(0, 9) + ' - '
-    }
-    el.addEventListener('focus', e => {
-        sectionsFocused = true
-        lessonsFocused = false
-        iSection = [...sections].indexOf(el)
-        lastFocusedSelection = el
-    })
-    el.addEventListener('click', e => {
-        e.preventDefault()
-        e.stopPropagation()
-        hideSubSections()
-        toggleSubSection(e)
-        fetchLessonHref(e.target.href)
-        sTitle.innerText = e.target.innerText.slice(0, 9) + ' - '
-        lTitle.innerText = ' '
-    })
-    el.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        if (letter == 'a') {
-            console.log(currentClickedSelection)
-        }
-        if(sectionsFocused){
-            handleSectionsFocus(letter)
-        } else {
-            return
-        }
-        if(letter == 'enter'){
-            hideSubSections()
-            toggleSubSection(e) 
-            fetchLessonHref(e.target.href)           
-            sTitle.innerText = e.target.innerText.slice(0,9) + ' - '
-        }
-        if(letter == 'c'){
-            const codeMain = document.querySelector('.code-main')
-            if (codeMain){
-                codeMain.focus()
-            }
-        }
-       
-        
-        
-    })
-})
-function handleLessonsFocus(e,letter){
-    if (letter === 'tab') {
-        return; /* default Tab behavior work naturally Very important, lessons were not working,
-         this makes the tab key work, Not Sure where this is breaking out to.
-        */
-    }
-    const sectionContainer = getSectionContainer(e.target.parentElement)
-    const section = sectionContainer.querySelector('.section') 
-    const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')
-    if(letter == 's'){   
-        // deer
-        section.focus()
-    }
-    if(letter == 'a'){
-        iLesson = (iLesson + 1) % lessons.length
-        lessons[iLesson - 1].focus()
-    }
-    if(!isNaN(letter)){
-        const intLetter = parseInt(letter)
-        if(intLetter <= lessons.length){
-
-            lessons[intLetter - 1].focus()
-        }
-    }
-}
-lessons.forEach(el => {
-    if(el.hasAttribute('autofocus')){
-        fetchLessonHref(el.href)
-        lessonsFocused = true
-        currentClickedSelection = el
-        const sectionContainer = getSectionContainer(el.parentElement)
-        const section = sectionContainer.querySelector('.section')
-        sTitle.innerText = section.innerText.slice(0, 9) + ' - '
-        lTitle.innerText = '0'+ el.innerText
-    }
-    el.addEventListener('focus', e => {
-        sectionsFocused = false
-        lessonsFocused = true
-        lastFocusedSelection = e.target
-
-    })
-    el.addEventListener('click', e => {
-        e.preventDefault()
-        e.stopPropagation()
-        fetchLessonHref(e.target.href)
-    })
-    el.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        if (lessonsFocused) {
-            handleLessonsFocus(e, letter)
-        }
-        if (letter == 'enter') {
-            fetchLessonHref(e.target.href)
-            if (e.target == currentClickedSelection) {
-                mainTargetDiv.focus()
-            }
-            const sectionContainer = getSectionContainer(e.target.parentElement)
-            const section = sectionContainer.querySelector('.section')
-            sTitle.innerText = section.innerText.slice(0, 9) + ' - '
-            lTitle.innerText = '0'+e.target.innerText
-            currentClickedSelection = e.target
-            
+/** When the pages first loads, the first .section "Section 1" is the 
+lastFocused Element */
+export let lastFocusedElement = document.querySelector('.section')
+/** If element has autofocus, it is the lastFocusElement*/
+addEventListener('DOMContentLoaded',()  => {
+    allEls.forEach(el => {
+        if(el.hasAttribute('autofocus')){
+            fetchLessonHref(el.href)                
+            lastFocusedElement = el            
         }
     })
-})
-function handleSectionsFocus(letter) {
-    if(!isNaN(letter)){
-        const intLetter = parseInt(letter)
-        if(intLetter <= sections.length){
-            sections[intLetter - 1 ].focus()
-        }
-    } 
-    if (letter == 's') {
-        if (!keys.shift.pressed) {
-            iSection = (iSection + 1) % sections.length
-        } else if (keys.shift.pressed) {
-            iSection = (iSection - 1 + sections.length) % sections.length;            
-        }
-        sections[iSection].focus()
-    }
-}
-function pageElementsFocus(letter){
-    switch(letter){
-        case 'b':
-            backlink.focus()
-            break
-        case 'c':
-                const codeMain = document.querySelector('.code-main')
-                if (codeMain) {
-                    codeMain.focus()
-                }
-            break
-        case 'h':
-            homelink.focus()
-            break
-        case 'r':
-            regexCmds.focus()
-            break
-        case 'p':
-            programShortcuts.focus()
-            break
-        case 't':
-            tutorialLink.focus()
-            break
-        case 'm':
-            mainTargetDiv.focus()
-            break
-        case 'n':
-            nav.focus()
-            break
-    }
-    // scrollTo(0,0)
-}
-addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    if (letter === 'tab') {
-        return; /* default Tab behavior work naturally Very important, lessons were not working,
-         this makes the tab key work, Not Sure where this is breaking out to.
-        */
-    }
-    if (letter == 'shift') {
-        keys.shift.pressed = true
-    }
-    
-    if (!pageStarted && letter == 's') {
-        sections[0].focus()
-        pageStarted = true
-    } else if(letter == 's'){
-        if (!lastFocusedSelection) {
-            sections[0].focus()
-        } 
-        else if (lastFocusedSelection) {
-            lastFocusedSelection.focus()
-        }
-    }
-    if(letter == 'a' && !sectionsFocused){
-        if(currentClickedSelection){
-            // currentClickedSelection.focus()
-        } else {
-            // lastFocusedSelection.focus()
-        }   
-    }
-    
-    pageElementsFocus(letter)
 });
-function getSectionContainer(parent){
+subSections.forEach(el =>{
+    if(el.hasAttribute('autofocus')){
+        sectionsFocused = true
+    }
+    if(!el.classList.contains('show')){
+        el.classList.add('hide')
+    }
+})
+function hideSubSections(){
+    subSections.forEach(el =>{
+        if(el.classList.contains('show')){
+            el.classList.remove('show')
+        }
+        el.classList.add('hide')
+    })
+}
+function toggleSubSections(e){
+    const section = getSectionContainer(e.target.parentElement)
+    const subSections = section.querySelector('.sub-section')
+    if(subSections){
+        if(subSections.classList.contains('show')){
+            subSections.classList.remove('show')
+        }
+        if(subSections.classList.contains('hide')){
+            hideSubSections()
+            subSections.classList.remove('hide')
+        } else{
+            subSections.classList.add('hide')
+        }
+    }
+}
+mainAside.addEventListener('focus', e => {
+    targetDivFocused = false
+    sectionsFocused = false
+})
+mainAside.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 's' && !sectionsFocused){
+        if(lastFocusedElement.classList.contains('section')){
+            lastFocusedElement.focus()
+            iSection -= 1
+        }    
+        
+    }
+    
+})
+navBar.addEventListener('focus', e => {
+    targetDivFocused = false    
+})
+navBar.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    let key = e.keyCode
+    if(key === 13){
+        toggleAside()
+    }
+    targetDivFocused = false
+    if (letter == 's' || letter == 'a') {
+        showAside()
+    }
+    if ( letter == 'a') {
+        if(currentLesson){
+            currentLesson.focus()
+        } else {
+            lastFocusedElement.focus()
+        }
+    }
+    if(letter == 's' ){
+        lastFocusedElement.focus()
+        iSection -= 1
+    }    
+    
+})
+export function toggleAside(){
+    // const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
+    if (!mainAside.classList.contains('hide')){
+        mainAside.classList.add('hide')
+        // jsCanvasScriptContainer.style.alignSelf = 'center'
+
+    } else {
+        mainAside.classList.remove('hide')
+        // jsCanvasScriptContainer.style.alignSelf = 'statics'
+    }
+}
+export function showAside(){
+    if(mainAside.classList.contains('hide')){
+        mainAside.classList.remove('hide')
+    }
+}
+export function hideAside(){
+    if(!mainAside.classList.contains('hide')){
+        mainAside.classList.add('hide')
+    }
+}
+navBar.addEventListener('click', e => {
+    if(!mainAside.classList.contains('hide')){
+        mainAside.classList.add('hide')
+    } else {
+        mainAside.classList.remove('hide')
+    }
+    targetDivFocused = false
+    if (letter == 's'  ){
+            lastFocusedElement.focus()
+            iSection -= 1
+        }    
+    
+})
+targetDiv.addEventListener('focus', e => {
+    targetDivFocused = true
+    sectionsFocused = false
+})
+targetDiv.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    sectionsFocused = false
+    if(targetDivFocused){
+        if (letter == 's' || letter == 'a' ){
+            lastFocusedElement.focus()
+        }
+        
+            
+    }    
+    // if(letter == 'c'){
+    //     const mainCode = document.querySelector('#mainCode')
+    //     if(mainCode){
+    //         mainCode.focus()
+    //     }
+    // }
+})
+export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
         return parent
     } else if (parent.parentElement){
@@ -364,16 +211,282 @@ export function getSubSection(parent){
         return null
     }
 }
-function fetchLessonHref(href) {
+/** For Reasons Unknown i Need this function do double click capability 
+to focus to targetDiv from lessons */
+function clickLesson(e) {
+    if (currentLesson == e.target) {
+        targetDiv.focus()
+    }
+    currentLesson = e.target
+}
+function navSections(letter) {
+    if (!keys.shift.pressed && letter == 's' && !targetDivFocused) {
+        iSection = (iSection + 1) % sections.length
+
+    } else if (keys.shift.pressed && letter == 's') {
+        if (iSection > 0) {
+            iSection -= 1
+        } else if (iSection <= 0) {
+            iSection = sections.length - 1
+        }
+    }
+    sections[iSection].focus()
+}
+sections.forEach(el => {
+    el.addEventListener('focus', e => {
+        sectionClicked = false
+        lastFocusedElement = e.target
+        targetDivFocused = false
+        sectionsFocused = true
+        lessonsFocused = false
+        iSection = [...sections].indexOf(e.target)
+    })
+    el.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        toggleSubSections(e)
+        // fetchLessonHref(e.target.href)
+        sectionTitle.innerText = e.target.innerText
+        lessonTitle.innerText = ''
+        currentSection = e.target
+        const childs = e.target.querySelectorAll('*')
+        if(childs){
+            childs.forEach(el => {
+                el.addEventListener('click', e =>{
+                    toggleSubSections(e)
+                    fetchLessonHref(el.parentElement.href)
+                    sectionTitle.innerText = el.parentElement.innerText
+                    lessonTitle.innerText = ''
+                    currentSection = e.parentElement
+                })
+            })
+        }
+    })
+    el.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()       
+        if (letter == 's'){
+            navSections(letter)
+        }
+        if (letter == 'a') {
+            const sectionContainer = getSectionContainer(e.target)
+            const subSection = sectionContainer.querySelector('.sub-section')
+            const firstLesson = sectionContainer.querySelector('.sub-section > li a')
+            if(firstLesson){
+                if(subSection.classList.contains('hide')){
+                    subSection.classList.remove('hide')
+                }
+                firstLesson.focus()
+            }
+        }
+        if (letter == 'enter') {
+            const sectionContainer = getSectionContainer(e.target.parentElement)
+            const subSection = sectionContainer.querySelector('.sub-section')
+            if(!subSection){
+                if (!subSection && sectionClicked) {
+                    targetDiv.focus()            
+                    scrollTo(0,0)
+                }
+                sectionClicked = !sectionClicked
+            }
+            fetchLessonHref(e.target.href)
+            scrollTo(0, 0)
+        }
+        if(letter == 'c'){
+            // const mainCode = document.querySelector('#mainCode')
+            targetDivFocused = true
+        }        
+        if(letter == 'j'){
+            const sectionContainer = getSectionContainer(e.target)
+            const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')
+            lessons.forEach(el => {
+                el.classList.contains('js-canvas-lesson')
+                el.focus()
+            })
+        }
+    })
+})
+function navLessons(e, letter) {
+    const sectionContainer = getSectionContainer(e.target.parentElement)
+    if (sectionContainer) {
+        const section = sectionContainer.querySelector('.section')
+        const subSection = getSubSection(e.target.parentElement)
+        const lessons = subSection.querySelectorAll('li > a')
+        if (subSection) {
+            if (letter == 's') {
+                section.focus()
+            }
+            if (!isNaN(letter)) {
+                let intLetter = parseInt(letter)
+                if (intLetter <= lessons.length && intLetter >= 0) {
+                    lastFocusedElement = lessons[intLetter - 1]
+                    lastFocusedElement.focus()
+                }
+            }
+            if(letter == 'a'){
+                iLesson = (iLesson + 1) % lessons.length
+                lessons[iLesson].focus()
+            }
+        }
+    }
+}
+lessons.forEach(el => {
+    if (el.hasAttribute('autofocus')) {
+        lessonsFocused = true
+        currentLesson = el
+    }
+    el.addEventListener('focus', e => {
+        currentLesson = ''
+        lastFocusedElement = e.target
+        sectionsFocused = false
+        lessonsFocused = true
+        targetDivFocused = false
+    })
+    el.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        const childs = e.target.querySelectorAll('*')
+        if(childs){
+            childs.forEach(el => {
+                // console.log(el)
+                el.addEventListener('click', e =>{
+                    console.log(e.target.parentElement.href)
+                    fetchLessonHref(el.parentElement.href)
+                    // sectionTitle.innerText = el.parentElement.innerText
+                    // lessonTitle.innerText = ''
+                    // currentSection = e.parentElement
+                })
+            })
+        } else{
+            clickLesson(e)
+            fetchLessonHref(e.target.href)
+        }
+
+    })
+    el.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        const subSection = getSectionContainer(e.target)
+        const section = subSection.querySelector('.section')
+        if (letter == 's') {
+            section.focus()
+        }
+        
+        if(letter == 'enter'){
+            sectionTitle.innerText = section.innerText
+            lessonTitle.innerText = e.target.innerText
+            
+        }
+        
+        if (lessonsFocused) {
+            navLessons(e, letter)
+        }
+        if(letter == 'c'){
+            targetDivFocused = true
+            
+        }
+        
+    })
+})
+// This is not working yet, Get "J" to go to js canvas
+function navJsCanvasLessons(letter){
+    jsCanvasLessons.forEach(el => {
+        const subSection = getSubSection(el.parentElement)
+        if(subSection.classList.contains('show')){
+            el.focus()
+        }
+    })
+}
+addEventListener('keyup', e => {
+    let letter = e.key.toLowerCase()
+    switch (letter) {
+        case 'shift':
+            keys.shift.pressed = false
+            break
+    }
+})
+addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()    
+    if(letter == 'a' ){
+        if(currentLesson){
+            currentLesson.focus()
+        } 
+        
+    }
+    if(letter == 'j'){
+        navJsCanvasLessons()
+        
+    }
+    
+    if(letter == 's' && !sectionsFocused ){
+        lastFocusedElement.focus()
+    }
+    if(letter == 'shift'){keys.shift.pressed = true}
+    // Controls Section Selection with numbers on keyboard
+    if(!targetDivFocused){
+        if(!isNaN(letter) && !lessonsFocused && !targetDivFocused){
+            let intLetter = parseInt(letter)
+            if(intLetter <= sections.length){
+                if(sections[intLetter - 1]){
+                    sections[intLetter - 1].focus()
+                }
+            }
+        }
+    }
+    switch(letter){     
+        case 'a':
+            scrollTo(0,0)
+            mainAside.focus()
+            break        
+        case 'c':
+            
+            break        
+        case 'm':
+            scrollTo(0,0)
+            targetDiv.focus()
+            targetDivFocused = true
+            break        
+        case 'n':
+            navBar.focus()
+            break
+        case 'b':
+            backlink.focus()
+            break
+        case 'h':
+            homelink.focus()
+            break
+        case 'r':
+            regexCmdsLink.focus()
+            // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            break   
+        case 'p':
+            const mainCode = document.querySelector("#mainCode")
+            if(mainCode){
+                mainCode.focus()
+                targetDivFocused = true
+            }
+            if(!keys.shift.pressed){
+                // programShorcutsLink.focus()
+            }
+            break
+        case 't':
+            tutorialLink.focus()
+            break
+            
+    }
+});
+
+function fetchLessonHref(href){
     fetch(href)
-        .then(response => response.text())
-        .then(html => {
-            // Inject the retrieved HTML into the target div
-            mainTargetDiv.innerHTML = html;
-            ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
+    .then(response => response.text())
+    .then(html => {
+        // Inject the retrieved HTML into the target div
+        document.getElementById('targetDiv').innerHTML = html;
+////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
             stepTxtListeners()
             addCopyCodes()
-        })
-        .catch(error => console.log('Error fetching content.html:', error));
+            popScriptWindow()
+            // injectJsScripts()
+            // handleCodeFocus()
+    })
+    .catch(error => console.log('Error fetching content.html:', error));   
 }
-
