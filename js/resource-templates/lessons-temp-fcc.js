@@ -12,10 +12,10 @@ import { currentClickedSelection } from './sections-fcc.js'
 import { lastFocusedSelection } from './sections-fcc.js'
 addEventListener('DOMContentLoaded', e => {
     if (innerWidth < 501) {
-        aside.classList.add('hide')
+        // aside.classList.add('hide')
         targetDivFocusIN = true
     } else {
-        aside.classList.remove('hide')
+        // aside.classList.remove('hide')
     }
 })
 function getStepContainer(parent) {
