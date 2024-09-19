@@ -85,13 +85,15 @@ export function stepTxtListeners(){
                 } else if (currentClickedSelection) {
                     let index = [...lessons].indexOf(currentClickedSelection)
                     if(lessons[index + 1]){
-                        lessons[index + 1].focus()
+                        lessons[index + 1].scrollIntoView()
                     } else {
                         // make this so it goes to next section
                         currentClickedSelection.focus()
+                        currentClickedSelection.scrollIntoView()
                         
                     }
                 }
+                scrollTo(0,0)
             }
         })   
     }
@@ -140,6 +142,9 @@ export function stepTxtListeners(){
             // el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
+            }
+            if (el.classList.contains('enlarged-sm')) {
+                el.classList.remove('enlarged-sm')
             }
             if (el.classList.contains('enlarged-md')) {
                 el.classList.remove('enlarged-md')
@@ -215,7 +220,7 @@ export function stepTxtListeners(){
                 img.classList.add('enlarge')
             } else {
                 img.classList.remove('enlarge')
-            }
+            } 
             if(img.classList.contains('lg-enlarge') && !img.classList.contains('enlarged-lg')){
                 img.classList.add('enlarged-lg')
             } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){

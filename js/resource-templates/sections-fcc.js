@@ -176,13 +176,13 @@ sections.forEach(el => {
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        if (letter == 'a') {
+            console.log(currentClickedSelection)
+        }
         if(sectionsFocused){
             handleSectionsFocus(letter)
         } else {
             return
-        }
-
-        if(letter == 'a'){
         }
         if(letter == 'enter'){
             hideSubSections()
@@ -196,14 +196,7 @@ sections.forEach(el => {
                 codeMain.focus()
             }
         }
-        if(letter == 'a'){
-            console.log(sectionsFocused)
-            if(currentClickedSelection){
-                currentClickedSelection.focus()
-            } else {
-                // lastFocusedSelection.focus()
-            }   
-        }
+       
         
         
     })
@@ -214,17 +207,18 @@ function handleLessonsFocus(e,letter){
          this makes the tab key work, Not Sure where this is breaking out to.
         */
     }
-    const sectionContainaer = getSectionContainer(e.target.parentElement)
-    const section = sectionContainaer.querySelector('.section') 
-    const lessons = sectionContainaer.querySelectorAll('.sub-section > li > a')
+    const sectionContainer = getSectionContainer(e.target.parentElement)
+    const section = sectionContainer.querySelector('.section') 
+    const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')
     if(letter == 's'){   
+        // deer
         section.focus()
     }
     if(letter == 'a'){
         iLesson = (iLesson + 1) % lessons.length
+        lessons[iLesson - 1].focus()
     }
     if(!isNaN(letter)){
-        console.log(letter)
         const intLetter = parseInt(letter)
         if(intLetter <= lessons.length){
 
@@ -341,6 +335,13 @@ addEventListener('keydown', e => {
         else if (lastFocusedSelection) {
             lastFocusedSelection.focus()
         }
+    }
+    if(letter == 'a' && !sectionsFocused){
+        if(currentClickedSelection){
+            // currentClickedSelection.focus()
+        } else {
+            // lastFocusedSelection.focus()
+        }   
     }
     
     pageElementsFocus(letter)

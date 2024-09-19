@@ -3,7 +3,7 @@
 #mainTargetDiv {width: 100%;
 /* background-color: limegreen; */
 /* background-color: yellow; */
-background-color: indianred;
+/* background-color: indianred; */
 }
 .section-page {
     display: flex;
@@ -156,6 +156,13 @@ background-color: indianred;
 .step-col-in > .step-txt-in > .code-container > .copy-code{
     border: 1px solid black;
     padding: 1% 2.5%;
+}
+#nxtLesson {
+    padding: 1% 0;
+    width: 50%;
+}
+#nxtLesson:active,#nxtLesson:focus{
+    background-color: mediumturquoise;
 }
 @media screen and (max-width: 700px){
     .section {
