@@ -18,6 +18,7 @@ let lessonsFocused = false
 // let targetDivFocus = false
 let pageStarted = false
 let iSection = 0
+let iLesson = 0
 export let lastFocusedSelection
 export let currentClickedSelection
 const keys = {
@@ -150,31 +151,13 @@ addEventListener('keyup', e => {
     }
 })
 
-function handleLessonsFocus(e,letter){
-    if (letter === 'tab') {
-        return; /* default Tab behavior work naturally Very important, lessons were not working,
-         this makes the tab key work, Not Sure where this is breaking out to.
-        */
-    }
-    const sectionContainaer = getSectionContainer(e.target.parentElement)
-    const section = sectionContainaer.querySelector('.section') 
-    const lessons = sectionContainaer.querySelectorAll('.sub-section > li > a')
-    if(letter == 's'){   
-        section.focus()
-    }
-    if(!isNaN(letter)){
-        const intLetter = parseInt(letter)
-        if(intLetter <= lessons.length){
 
-            lessons[intLetter - 1].focus()
-        }
-    }
-}
 // handle shift key up
 sections.forEach(el => {
     if (el.hasAttribute('autofocus')) {
         fetchLessonHref(el.href)
-        sectionsFocused = true
+        sectionsFocused = true   
+        sTitle.innerText = el.innerText.slice(0, 9) + ' - '
     }
     el.addEventListener('focus', e => {
         sectionsFocused = true
@@ -188,6 +171,8 @@ sections.forEach(el => {
         hideSubSections()
         toggleSubSection(e)
         fetchLessonHref(e.target.href)
+        sTitle.innerText = e.target.innerText.slice(0, 9) + ' - '
+        lTitle.innerText = ' '
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -195,6 +180,9 @@ sections.forEach(el => {
             handleSectionsFocus(letter)
         } else {
             return
+        }
+
+        if(letter == 'a'){
         }
         if(letter == 'enter'){
             hideSubSections()
@@ -208,15 +196,51 @@ sections.forEach(el => {
                 codeMain.focus()
             }
         }
+        if(letter == 'a'){
+            console.log(sectionsFocused)
+            if(currentClickedSelection){
+                currentClickedSelection.focus()
+            } else {
+                // lastFocusedSelection.focus()
+            }   
+        }
         
         
     })
 })
+function handleLessonsFocus(e,letter){
+    if (letter === 'tab') {
+        return; /* default Tab behavior work naturally Very important, lessons were not working,
+         this makes the tab key work, Not Sure where this is breaking out to.
+        */
+    }
+    const sectionContainaer = getSectionContainer(e.target.parentElement)
+    const section = sectionContainaer.querySelector('.section') 
+    const lessons = sectionContainaer.querySelectorAll('.sub-section > li > a')
+    if(letter == 's'){   
+        section.focus()
+    }
+    if(letter == 'a'){
+        iLesson = (iLesson + 1) % lessons.length
+    }
+    if(!isNaN(letter)){
+        console.log(letter)
+        const intLetter = parseInt(letter)
+        if(intLetter <= lessons.length){
+
+            lessons[intLetter - 1].focus()
+        }
+    }
+}
 lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
         fetchLessonHref(el.href)
         lessonsFocused = true
         currentClickedSelection = el
+        const sectionContainer = getSectionContainer(el.parentElement)
+        const section = sectionContainer.querySelector('.section')
+        sTitle.innerText = section.innerText.slice(0, 9) + ' - '
+        lTitle.innerText = '0'+ el.innerText
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false
@@ -241,7 +265,6 @@ lessons.forEach(el => {
             }
             const sectionContainer = getSectionContainer(e.target.parentElement)
             const section = sectionContainer.querySelector('.section')
-            console.log(sectionContainer)
             sTitle.innerText = section.innerText.slice(0, 9) + ' - '
             lTitle.innerText = '0'+e.target.innerText
             currentClickedSelection = e.target
@@ -262,7 +285,6 @@ function handleSectionsFocus(letter) {
         } else if (keys.shift.pressed) {
             iSection = (iSection - 1 + sections.length) % sections.length;            
         }
-        console.log(iSection)
         sections[iSection].focus()
     }
 }
@@ -320,13 +342,7 @@ addEventListener('keydown', e => {
             lastFocusedSelection.focus()
         }
     }
-    if(letter == 'a'){
-        if(currentClickedSelection){
-            currentClickedSelection.focus()
-        } else {
-            lastFocusedSelection.focus()
-        }   
-    }
+    
     pageElementsFocus(letter)
 });
 function getSectionContainer(parent){

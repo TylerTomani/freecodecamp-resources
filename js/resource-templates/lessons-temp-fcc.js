@@ -54,10 +54,10 @@ export function stepTxtListeners(){
     addEventListener('resize', e => {
         console.log(innerWidth)
         if (innerWidth < 501) {
-            aside.classList.add('hide')
+            // aside.classList.add('hide')
             targetDivFocusIN = true
         } else{
-            aside.classList.remove('hide')
+            // aside.classList.remove('hide')
         }
     })
     allImages.forEach(el => {
