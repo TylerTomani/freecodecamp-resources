@@ -41,6 +41,10 @@ nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
+#mainTargetDiv{
+    overflow-x:hidden;
+    scroll-behavior: none;
+}   
 #mainTargetDiv:active,#mainTargetDiv:focus{box-shadow: 0 0 4px 2px lightseagreen}
 .sections-container{
     /* width: 100%; */
