@@ -1,7 +1,10 @@
 .step-txt:active,.step-txt:focus {box-shadow: 2px 1px 3px 3px orange;}
 .copy-code:active,.copy-code:focus {box-shadow: 0 1px 3px 2px yellow;}
 #mainTargetDiv {width: 100%;
-background-color: yellow;}
+/* background-color: limegreen; */
+/* background-color: yellow; */
+background-color: indianred;
+}
 .section-page {
     display: flex;
     flex-direction: column;
