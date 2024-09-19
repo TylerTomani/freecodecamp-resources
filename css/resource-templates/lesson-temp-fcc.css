@@ -3,7 +3,7 @@
 #targetDiv {width: 100%;
 /* background-color: limegreen; */
 /* background-color: yellow; */
-background-color: indianred;
+/* background-color: indianred; */
 }
 .section-page {
     display: flex;
@@ -108,6 +108,12 @@ background-color: indianred;
     right: 20%;
     transform: scale(2.5);
 } */
+.enlarge {
+    position: relative;
+    z-index: 5;
+    /* margin-right: 50%; */
+    transform: scale(3);
+}
 .enlarged-sm {
     position: fixed;
     object-fit: cover;
@@ -124,12 +130,7 @@ background-color: indianred;
     transform: scale(2.5);
     max-height: 400px;
 }
-.enlarge {
-    position: relative;
-    z-index: 5;
-    /* margin-right: 50%; */
-    transform: scale(3);
-}
+
 .enlarged-lg {
     position: relative;
     z-index: 2;

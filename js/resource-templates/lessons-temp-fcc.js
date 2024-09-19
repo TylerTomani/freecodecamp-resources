@@ -1,5 +1,5 @@
 export const nav = document.querySelector('nav.section-lesson-title')
-export const mainTargetDiv  = document.querySelector('#mainTargetDiv')
+export const targetDiv  = document.querySelector('#targetDiv')
 export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
 import { sections } from './sections-fcc.js'
@@ -52,7 +52,6 @@ export function stepTxtListeners(){
     let currentStepIndex = 0
     let imgIndex = 0
     addEventListener('resize', e => {
-        console.log(innerWidth)
         if (innerWidth < 501) {
             // aside.classList.add('hide')
             targetDivFocusIN = true
@@ -96,10 +95,10 @@ export function stepTxtListeners(){
     // This is overkill, target is set to _blank in html
     function openNewTab(e) {open(e.target.href, '_blank')}
     // this redundancy make it work, i think only focus out and keydown is needed but did overkill on this
-    mainTargetDiv.addEventListener('focus', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('keydown', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('focusout', e => {
+    targetDiv.addEventListener('focus', e => {targetDivFocusIN = true})
+    targetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
+    targetDiv.addEventListener('keydown', e => {targetDivFocusIN = true})
+    targetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
         denlargeAllImages()
 
@@ -258,7 +257,6 @@ export function stepTxtListeners(){
             // removeOuterTabs()
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
-            console.log(currentStepIndex)
             stopAllVideos()
             // el.scrollIntoView()
         })
@@ -288,7 +286,6 @@ export function stepTxtListeners(){
                     const step = getStepContainer(e.target.parentElement)
                     const copyCodeFirst = step.querySelector('.step-txt .copy-code')
                     const copyCodes = step.querySelectorAll('.step-txt > .copy-code')
-                    console.log(step)
                     copyCodeFirst.focus()
                     copyCodes.forEach(el => {addTabs(el)})
 
@@ -338,21 +335,30 @@ export function stepTxtListeners(){
     })
     function toggleImgSize(img) {
         img.style.zIndex = "1"
-
-       console.log(img)
+        if(!img.classList.contains('enlarge')){
+            img.classList.add('enlarge')
+        } else {
+            img.classList.remove('enlarge')
+        }
+       
     }   
     function videoHandle(e){
         const step = getStepContainer(e.target.parentElement)
         const vid = step.querySelector('.step-vid > video')
-        toggleVid(vid)
+        if(vid){
+            toggleVid(vid)
+        }
     }
     function toggleVid(vid){
-        if (vid.paused) {
-            vid.play()
-            vid.classList.add('enlarge')
-        } else {
-            vid.play()
-            vid.classList.add('enlarge')
+        if(vid){
+
+            if (vid.paused) {
+                vid.play()
+                vid.classList.add('enlarge')
+            } else {
+                vid.play()
+                vid.classList.add('enlarge')
+            }
         }
     }
     function stopAllVideos(){
