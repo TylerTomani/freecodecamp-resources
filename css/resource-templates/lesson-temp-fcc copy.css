@@ -1,16 +1,17 @@
 .step-txt:active,.step-txt:focus {box-shadow: 2px 1px 3px 3px orange;}
 .copy-code:active,.copy-code:focus {box-shadow: 0 1px 3px 2px yellow;}
 
-
-
-.steps-container{
-    width: 100%;
-    border: 1px solid red;
-    
-    padding: 0 2.5%;
+.section-page {
     display: flex;
     flex-direction: column;
-    /* background-color: yellow; */
+    max-width: 100%;
+}
+.w-100{
+    width: 100vw !important
+}
+.steps-container{
+    width: 100vw !important;
+    margin: 0 1%;
 }
 .steps-container > h2{
     font: 90%;
@@ -25,7 +26,7 @@
     flex-wrap: wrap;
 }
 .step>* {
-    width: 50%;
+    width: 45%;
     border: 1px solid blue;
 }
 .step-txt {
@@ -171,9 +172,15 @@
 #nxtLesson:active,#nxtLesson:focus{
     background-color: lightblue;
 }
-
+@media screen and (max-width: 700px){
+    .section {
+        font-size: 110% !important ;
+    }
+}
 @media screen and (max-width: 583px){
-    
+    .section {
+        font-size: 2rem ;
+    }
     .enlarge {
             /* position: fixed; */
             object-fit: contain;

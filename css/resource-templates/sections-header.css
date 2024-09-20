@@ -5,16 +5,17 @@
 }
 body > header{
     display: flex;
-    border: 1px solid black;
+    width: 100%;
 }
 body > header > #masthead-header{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 body > header >  #masthead-header > #mainLinks{
     display: flex;
     border: 2px solid green;
-    align-items: center;
+    /* align-items: center; */
     /* justify-content: space-evenly; */
 }
 body > header >  nav#masthead-header > #mainLinks > a{

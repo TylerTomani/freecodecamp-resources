@@ -8,16 +8,9 @@ import { toggleAside } from './sections-fcc.js'
 import { lessons } from './sections-fcc.js'
 export let targetDivFocusIN = false
 import { getSubSection } from './sections-fcc.js'
-// import { currentClickedSelection } from './sections-fcc.js'
+import { currentClickedSelection } from './sections-fcc.js'
 // import { lastFocusedSelection } from './sections-fcc.js'
-addEventListener('DOMContentLoaded', e => {
-    if (innerWidth < 501) {
-        // aside.classList.add('hide')
-        targetDivFocusIN = true
-    } else {
-        // aside.classList.remove('hide')
-    }
-})
+
 function getStepContainer(parent) {
     if (parent.classList.contains('step')) {
         return parent
@@ -51,14 +44,7 @@ export function stepTxtListeners(){
     let colCodesFocused = false
     let currentStepIndex = 0
     let imgIndex = 0
-    addEventListener('resize', e => {
-        if (innerWidth < 501) {
-            // aside.classList.add('hide')
-            targetDivFocusIN = true
-        } else{
-            // aside.classList.remove('hide')
-        }
-    })
+ 
     
     sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
     lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
@@ -235,7 +221,7 @@ export function stepTxtListeners(){
             }
             if (letter == 'a' || letter == 's') {
                 // toggleStepColImages(stepCol)
-                showAside()
+                // showAside()
             }
             // const rect = stepTxts[currentStepIndex].getBoundingClientRect()
             // scrollTo(0, rect.y * .5)
@@ -268,6 +254,12 @@ export function stepTxtListeners(){
                 handleImgSize(e)
                 handleStepTabIndex(e)
                 videoHandle(e)
+            }
+            if(letter == 'a' ){
+                if(currentClickedSelection){
+                    currentClickedSelection.focus()
+                }
+                
             }
             if(letter == 'c'){
                 const stepColContainer = getStepColContainer(e.target.parentElement)
