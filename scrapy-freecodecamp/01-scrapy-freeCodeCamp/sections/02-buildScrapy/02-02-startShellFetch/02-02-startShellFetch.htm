@@ -1,8 +1,10 @@
 <div class="steps-container show">
-    <h1>02-02- scrapy shell <code>fetch</code></h1>
+    <header>
+        <h3>02-02- scrapy shell <code>fetch</code></h3>
+    </header>
     <!-- 01-01 -->
     <div class="step">
-        <div tabindex="0" class="step-txt rbshadow">
+        <div tabindex="0" class="step-txt">
             <h4>01</h4>
             <p>
                 Aftering installing and creating, Create a <strong><q>Spider</q></strong>,
@@ -19,27 +21,30 @@ ipython</pre>
             </div>
         </div>
         <div class="step-img">
-            <img class=""
-                src="sections/02-buildScrapy/02-02-startShellFetch/images/01-01.png">
+            <img class=""src="sections/02-buildScrapy/02-02-startShellFetch/images/01-01.png">
         </div>
     </div>
-    <!-- 01-02 -->
+    <!-- 01-02 Make a spider, in the spiders directory with the command,-->
     <div class="step">
-        <div tabindex="0" class="step-txt rbshadow">
+        <div tabindex="0" class="step-txt">
             <h4>02</h4>
             <p>
-                In order to use the <code>ipython</code> shell with, go into the <code class="m">scrapy.cfg</code>
-                file and add the following code
+                Make a spider, in the spiders directory with the command,
             </p>
-            <p class="r lgtxt">I don't think you need this, it works without ipython</p>
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
-shell = ipython</pre>
+scrapy <span class="m">genspider</span> <span class="o">bookspider</span> <span class="g">https://books.toscrape.com/</span></pre>
             </div>
-            
+            <p>
+                provide <span class="o">name</span> for spider alone with <code class="g">baseUrl</code>
+            </p>
+            <p> 
+                This is the page the spider will base it self in
+                <a target="_blank" class="g" href="https://books.toscrape.com/">https://books.toscrape.com/</a>
+            </p>
         </div>
         <div class="step-img">
-            <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-02.png">
+            <img src="sections/02-buildScrapy/02-01-startScrapyBookspiderPy/images/02.png">
         </div>
     </div>
     <!-- 01-03 -->
@@ -47,17 +52,15 @@ shell = ipython</pre>
         <div tabindex="0" class="step-txt">
             <h4>03</h4>
             <p>
-                exit ipyton shell,
-                Re-run the scrapy shell
+                &emsp;The <code class="y-fix">allowed_domains</code> [] list will allow us to crawl, while limiting the amount of urls to connect to.
+                This restricts the crawling to the allowed_domains websites only.
             </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-scrapy shell</pre>
-            </div>
-            
+            <p>
+                &emsp;The <code>start_urls</code> is obviously the starting  urls.
+            </p>
         </div>
         <div class="step-img">
-            <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-03.png">
+            <img src="sections/02-buildScrapy/02-01-startScrapyBookspiderPy/images/03.png">
         </div>
     </div>
     <!-- 01-04 -->
@@ -65,44 +68,14 @@ scrapy shell</pre>
         <div tabindex="0" class="step-txt">
             <h4>04</h4>
             <p>
-                Use the url of the page,
-                <br>
-                <a target="_blank" href="https://books.toscrape.com/">https://books.toscrape.com/</a>
-                <br>
-                and inspect the elements we want to get
+                The <code class="m">response</code> in the <code class="gr">parse</code> method will be returned from the 
+                <code>fetch</code> command seen in next lesson
             </p>
         </div>
         <div class="step-img">
-            <img class=""
-             src="sections/02-buildScrapy/02-02-startShellFetch/images/01-04.png">
+            <img src="sections/02-buildScrapy/02-01-startScrapyBookspiderPy/images/01-04.png">
         </div>
     </div>
-    <!-- 01-05 -->
-    <div class="step">
-        <div tabindex="0" class="step-txt">
-            <h4>05</h4>
-            <p>
-                &emsp;Inside the <code>ipython</code> shell use the <code class="gr">fetch()</code> command with the url of the page
-            </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-fetch('https://books.toscrape.com/')</pre>
-            </div>
-            <p>
-                &emsp;The html of the page will be returned into a variable called <code class="m">response</code>
-            </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-response</pre>
-            </div>
-            
-        </div>
-        <div class="step-img">
-            <img src="sections/02-buildScrapy/02-02-startShellFetch/images/01-05.png">
-
-        </div>
-    </div>
-    
 </div>
 <footer>
     <button tabindex="0" id="nxtLesson">next lesson</button>

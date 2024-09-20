@@ -12,32 +12,50 @@ main {
     overflow-x: hidden;
 }
 main > aside {
-    flex-basis: 20%;
+    width: 20%;
 }
 main > #targetDiv{
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: 80%;
+    width:  80%;
 }
-
-.section {
+.sections-container {
+    padding-top: 5%;
+}
+.section-container {
+    margin-top: 5%;
+    margin-left: 2.5%;
     font-size: .75rem;
 }
 .sub-section  {
+    margin-top: 2.5%;
+    margin-left: 2.5%;
     font-size: .65rem;
 }
 .sub-section a {
+    display: inline-block;
+    margin: 1.75% 0;
+    width: 90%;
     text-decoration: none;
 }
 .hide {
     display: none;
 }
 @media screen and (max-width: 700px){
-    .section {
-        /* font-size: 110% !important ; */
+    main > aside {
+        flex-basis: 25%;
+    }
+    #targetDiv {
+        width: 75%;
     }
 }
 @media screen and (max-width: 501px){
+    body > header > nav#masthead-header h1{
+        font-size: 75%;
+    }
+    body > header > .img-container > a > img{
+        max-height: 50px;
+    }
 }
 
