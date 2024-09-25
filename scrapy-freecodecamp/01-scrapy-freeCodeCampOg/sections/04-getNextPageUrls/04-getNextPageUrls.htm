@@ -1,0 +1,199 @@
+
+<h1>Section 4 - get next page</h1>
+<div class="steps-container show">
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+                <p>
+                    make sure you are in the 'bookscraper directory'
+                </p>  
+        </div>
+        <div class="step-img">
+            <img src="/scrapy/01-scrapy-freeCodeCamp/sections/04-getNextPageUrls/images/00.png">
+        </div>
+    </div>
+    <div class="step-col-wide">
+        <div tabindex="1" class="step-txt">
+            <h4>00</h4>
+            <p>
+                scrapy is <strong><i>'asynchronous'</i></strong>, so data will not appear in order
+                <sup class="r">(look below to enumerate with index) in step 01</sup>
+            </p>
+            
+            
+            <div class="code-container">
+    <pre  tabindex="1" class="copy-code long-code tabindex1">
+import scrapy
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allow_domains = ['books.toscrape.com']
+    start_urls = ['http://books.toscrape.com/']
+
+    def parse(self,response):
+        books = response.css('article.product_pod')
+        for book in books:
+            relative_url = book.css('h3 a::attr(href)').get()
+            if 'catalogue' in relative_url:
+                next_book_url = 'http://books.toscrape.com/' + relative_url
+            else:
+                next_book_url = 'http://books.toscrape.com/catalogue/' + relative_url
+            yield response.follow(next_book_url,callback=self.parse_book_page)
+
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            if 'catalogue' in next_page:
+                next_page_url = 'http://books.toscrape.com/' + next_page
+            else:
+                next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
+            yield response.follow(next_page_url, callback=self.parse)
+
+    def parse_book_page(self,response):
+        table_rows = response.css('table tr')
+        yield {
+            'url': response.url,
+            'title': response.css('.product_main h1::text').get(),
+            'product_type': table_rows[1].css('td::text').get(),
+            'price_excl_tax': table_rows[2].css('td::text').get(),
+            'price_incl_tax': table_rows[3].css('td::text').get(),
+            'tax': table_rows[4].css('td::text').get(),
+            'availabiity': table_rows[5].css('td::text').get(),
+            'stars': response.css('p.star-rating').attrib['class'],
+            'catagory': response.xpath("//ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()").get(),
+            'price': response.css('p.price_color ::text').get()
+        }</pre>
+            </div>
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p class="r">
+                Use <code class="m">enumerate</code> with <code class="lsb">books</code> 
+                to get set a numbered index in data 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import scrapy
+
+class BookspiderSpider(scrapy.Spider):
+    name = 'bookspider'
+    allowed_domains = ['books.toscrape.com']
+    start_urls = ['http://books.toscrape.com/']
+
+    def parse(self, response):
+        books = response.css('article.product_pod')
+        for index, book in <span class="m">enumerate</span>(<span class="lsb">books</span> ):
+            relative_url = book.css('h3 a::attr(href)').get()
+            if 'catalogue/' in relative_url:
+                next_book_url = 'http://books.toscrape.com/' + relative_url
+            else:
+                next_book_url = 'http://books.toscrape.com/catalogue/' + relative_url
+            yield response.follow(next_book_url, callback=self.parse_book_page, meta={'index': index})
+
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            if 'catalogue/' in next_page:
+                next_page_url = 'http://books.toscrape.com/' + next_page
+            else:
+                next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
+            yield response.follow(next_page_url, callback=self.parse)
+
+    def parse_book_page(self, response):
+        index = response.meta['index']
+        table_rows = response.css('table tr')
+        yield {
+            'title': response.css('.product_main h1::text').get(),
+            <span class="m">'index': index,</span>
+            'url': response.url,
+            'product_type': table_rows[1].css('td::text').get(),
+            'price_excl_tax': table_rows[2].css('td::text').get(),
+            'price_incl_tax': table_rows[3].css('td::text').get(),
+            'tax': table_rows[4].css('td::text').get(),
+            'availability': table_rows[5].css('td::text').get(),
+            'stars': response.css('p.star-rating').attrib['class'],
+            'category': response.xpath("//ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()").get(),
+            'price': response.css('p.price_color ::text').get()
+        }
+
+                </pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img class="xlg-enlarge"
+            src="/scrapy/01-scrapy-freeCodeCamp/sections/04-getNextPageUrls/images/01-01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Open the scrapy shell, fetch the url and find the next page btn element
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+fetch('https://books.toscrape.com/')</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+response.css('li.next a').arttrib['href']</pre>
+            </div>
+            <p>or</p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+response.css('li.next a::attr(href)').get()</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img class="lg-enlarge"
+                src="/scrapy/01-scrapy-freeCodeCamp/sections/04-getNextPageUrls/04-01-getNextPage/images/01-02.png">
+        </div>
+    </div>
+    <!-- 04-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Use the following command to save data into csv
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+spider crawl bookspider -O bookdata.csv
+                </pre>
+            </div>
+            <p class="lgtxt r">
+                <code>-O</code> will overwirte and <code>-o</code> lowercase will append
+            </p>
+            <p class="r">You must be in parent directory containing <code><i>scrapy.cfg</i></code>
+            file to run the crawl command</p>
+        </div>
+        <div class="step-img">
+            <img
+                src="/scrapy/01-scrapy-freeCodeCamp/sections/04-getNextPageUrls/images/04-03.png">
+        </div>
+    </div>
+    <!-- 04-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Use the following command to save data into json
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+spider crawl bookspider -O bookdata.json
+                </pre>
+            </div>
+            <p class="lgtxt r">
+                <code>-O</code> will overwirte and <code>-o</code> lowercase will append
+            </p>
+        </div>
+        <div class="step-img">
+            <img
+                src="/scrapy/01-scrapy-freeCodeCamp/sections/04-getNextPageUrls/images/04-04.png">
+
+        </div>
+    </div>
+    
+</div>
+
+

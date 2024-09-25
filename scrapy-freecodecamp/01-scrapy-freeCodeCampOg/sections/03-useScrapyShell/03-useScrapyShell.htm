@@ -1,0 +1,28 @@
+
+<div class="steps-container section-page ">
+    <header>
+        <h1>Section 3 - installSetupScrapy</h1>
+    </header>
+    <div class="step">
+        <div  class="step-txt w-100">
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code code-main" >
+import scrapy
+class BookspiderSpider(scrapy.Spider):
+    name = "bookspider"
+    allowed_domains = ["books.toscrape.com"]
+    start_urls = ["https://books.toscrape.com/"]
+
+    def parse(self, response):
+        books = response.css('article.product_pod')
+        for book in books:
+            yield{
+                'name':  book.css('h3 a::text').get(),
+                'price': book.css('.product_price .product_color::text').get(),
+                'url':   book.css('h3 a').attrib['href']
+            }
+                </pre>
+            </div>        
+        </div>
+    </div>
+</div>
