@@ -28,6 +28,9 @@ main > #targetDiv{
     margin-left: 2.5%;
     font-size: .75rem;
 }
+.section{
+    text-decoration: none;
+}
 .sub-section  {
     margin-top: 2.5%;
     margin-left: 2.5%;
