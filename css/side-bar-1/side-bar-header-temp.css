@@ -19,6 +19,7 @@ body {
 body>header {
     /* max-height:10vh; */
     display: flex;
+    width: 100%;
 }
 body>header a:focus,
 body>header a:active {
@@ -48,4 +49,10 @@ h1#title {
     /* max-width: 140px; */
     min-height: 60px;
     max-height: 40px;
+}
+nav.section-lesson-titles {
+    border: 1px solid black;
+}
+@media screen and (max-width: 501px){
+    h1 {font-size: 70%;}
 }
