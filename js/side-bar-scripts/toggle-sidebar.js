@@ -1,12 +1,13 @@
 export const sideBarBtn = document.querySelector("#sideBarBtn")
 const sideBar = document.querySelector('.side-bar')
+const navTitles = document.querySelector('#navTitles')
 
 function toggleSideBar(){
     sideBar.classList.toggle('active')
 }
 
 
-[sideBar,sideBarBtn].forEach(el => {
+[navTitles,sideBar,sideBarBtn].forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         if(e.target == sideBar){
@@ -15,9 +16,26 @@ function toggleSideBar(){
         
     })
 })
+// For some reasonse, navTitles and sideBarBtn not working in [...]
+navTitles.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase() 
+    if(letter == 'enter' ){
+        toggleSideBar()
+    }
+})
 sideBarBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase() 
     if(letter == 'enter' ){
         toggleSideBar()
     }
 })
+
+// sideBarBtn.forEach(el =>{
+
+    // el.addEventListener('keydown', e => {
+    //     let letter = e.key.toLowerCase() 
+    //     if(letter == 'enter' ){
+    //         toggleSideBar()
+    //     }
+    // })
+// })
