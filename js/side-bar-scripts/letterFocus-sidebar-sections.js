@@ -54,7 +54,9 @@ addEventListener('keydown', e => {
                 letterIds[iLetterIds].focus()
             }
         }     
-    } else {
+    } 
+    if(letter == 's'){
+        console.log(letter)
         navSections(letter)
     }
 
@@ -74,6 +76,7 @@ sideBar.addEventListener('focusout' , e => {
 })
 
 function navSections(letter) {
+    sections[iSection].focus()
     if (!keys.shift.pressed && letter == 's' ) {
         iSection = (iSection + 1) % sections.length
 
@@ -84,5 +87,4 @@ function navSections(letter) {
             iSection = sections.length - 1
         }
     }
-    sections[iSection].focus()
 }

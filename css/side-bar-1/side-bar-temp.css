@@ -2,9 +2,17 @@
     --width-side-active: 150px;
     --width-side-bar: 60px;
 }
+body {
+    /* background-color: gold; */
+    background-color: floralwhite;
+    overflow: hidden;
+    overflow-x: scroll;
+
+}
 main {
     display: flex;
-    overflow-x: hidden
+    /* overflow-x: hidden; */
+    /* width: fit-content; */
 }
 .side-bar{
     width: var(--width-side-bar);
@@ -15,23 +23,24 @@ main {
     font-size: 60%;
     transition: all .15s;
     
+    background-color: yellow;
 }
-.side-bar ~ .main-content{
+#mainContent {
+    background-color: forestgreen;
+}
+.side-bar ~ #mainContent{
+    background-color: forestgreen;
+
     width: calc(100% - var(--width-side-bar));
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    background-color: forestgreen;
 }
-.side-bar ~ .main-content{
-    /* width: calc(100% - var(--width-side-bar)); */
-    /* margin-right: 4%; */
-}
+
 .side-bar.active {
     width: var(--width-side-active);
     transition: all .2s ease;
 }
-.main-content {
-    border: 1px solid black;
-    /* background-color: blue; */
-}
+
 
 .section-container .section-item,
 .sub-sections  li ul  {
@@ -46,12 +55,13 @@ main {
     position: relative;
  }
 .section{
-    margin-left:10%;
+    margin-left: 10%;
 }
-.section,
+.section ,
 .sub-sections  li  {
     position: relative;
     margin: 20% 0;
+
 }
 .side-bar.active .section{
     margin-left:10%;
@@ -85,3 +95,4 @@ section:hover .section .tip-item{
 .sections-container li a {
     text-decoration: none;
 }
+
