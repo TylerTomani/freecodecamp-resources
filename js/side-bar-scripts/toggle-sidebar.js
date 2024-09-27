@@ -1,6 +1,6 @@
 export const sideBarBtn = document.querySelector("#sideBarBtn")
 export const sideBar = document.querySelector('.side-bar')
-const navTitles = document.querySelector('#navTitles')
+export const navTitles = document.querySelector('#navTitles')
 
 function toggleSideBar(){
     sideBar.classList.toggle('active')

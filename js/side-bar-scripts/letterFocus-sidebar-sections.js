@@ -1,3 +1,4 @@
+import { navTitles } from "./toggle-sidebar.js"
 import { sideBarBtn } from "./toggle-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
 const idEls = document.querySelectorAll('[id]')
@@ -26,7 +27,8 @@ addEventListener('keydown', e => {
     if(letter == 'shift' ){
         keys.shift.pressed = true
     }
-    if(!focusedSideBar){    
+    if(letter != 's' || letter != 'a'){
+        // console.log(letter)
         if(letter != currentLetter){
             letterIds = []
             idEls.forEach(el => {
@@ -38,7 +40,7 @@ addEventListener('keydown', e => {
                 letterIds[0].focus()
             }
         } 
-    console.log(letterIds)
+    
     
         if(letter == currentLetter && keys.shift.pressed){
             if(letterIds.length > 0){
@@ -52,22 +54,24 @@ addEventListener('keydown', e => {
                 letterIds[iLetterIds].focus()
             }
         }     
+    } else {
+        navSections(letter)
     }
 
-    if(letter == 's' ){
-        // navSections(letter)
-    }
+    
     currentLetter = letter
+    // console.log(letterIds)
+    // console.log(focusedSideBar)
 })
 sideBar.addEventListener('focusin' , e => {
     focusedSideBar = true
-    console.log('in')
+    // console.log('in')
 })
 sideBar.addEventListener('focusout' , e => {
+    focusedSideBar = false
+    // console.log('out')
 
 })
-
-
 
 function navSections(letter) {
     if (!keys.shift.pressed && letter == 's' ) {
