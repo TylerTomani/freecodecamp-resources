@@ -9,76 +9,79 @@ body {
 }
 main {
     display: flex;
-    /* overflow-x: hidden; */
-    /* width: fit-content; */
+    overflow-x: hidden;
 }
 .side-bar{
     width: var(--width-side-bar);
     border-right: 2px solid black;
-    /* background-color: #254757; */
-    /* color: rgb(229, 218, 218); */
     height: 100vh;
-    font-size: 60%;
     transition: all .15s;
-    
     background-color: yellow;
 }
 #mainContent {
     background-color: forestgreen;
 }
 .side-bar ~ #mainContent{
-    background-color: forestgreen;
-
     width: calc(100% - var(--width-side-bar));
-    /* margin: 0 auto; */
-    background-color: forestgreen;
 }
-
 .side-bar.active {
     width: var(--width-side-active);
     transition: all .2s ease;
 }
-
-
-.section-container .section-item,
-.sub-sections  li ul  {
-    display: none;
+.section {
+    /* margin: 2% 0; */
+    /* margin-left: 2%; */
+    font-size: 50%;
+    display: inline-block;
+    max-height: 10px;
+    overflow-y: hidden
+    ;
 }
-.side-bar.active .section-container .section-item,
-.side-bar.active  .sub-sections  li ul  {
-    display: inline-flex;
+.sections-container li a {
+    text-decoration: none;
 }
 .sub-sections {
     margin-left: 10%;
-    position: relative;
- }
-.section{
-    display: inline-block;
-    border: 2px solid magenta;
-    margin-left: 10%;
 }
-.section ,
 .sub-sections  li  {
     position: relative;
-    margin: 8% 0;
+    margin: left;
+    font-size: 40%;
+}
+.sub-sections  li  a{
+    display: inline-block;
+}
+.sub-sections li a  .tip-item{
+    display: none
+}
+.side-bar .tip-item{
+    display: none
 
 }
+.sub-sections  li a:active,
+.sub-sections  li a:focus{
+    margin: 10% 0;
+}
+.side-bar.active  .sub-sections  li ul  {
+    /* display: inline-flex; */
+}
 .side-bar.active .section{
-    margin-left:10%;
+    /* margin-left:10%; */
 }
 .side-bar.active .section,
 .side-bar.active .sub-sections  li  {
-    position: relative;
-    margin: 1% 0;
+    /* position: relative; */
+    /* margin: 1% 0; */
 }
 .side-bar.active .tip-item{
-    display: none;
+    /* display: none; */
 }
-section:active .section .tip-item,
-section:focus .section .tip-item,
-section:hover .section .tip-item{
-    position: absolute;
-    width: 100px;
+.sub-sections li a:active .section-item,
+.sub-sections li a:focus .section-item,
+.sub-sections li a:hover .section-item{
+    display: none;
+       /* position: absolute; */
+    /* width: 100px; */
     /* left: 150%; */
     /* top: -10%; */
     /* top: 1%; */
@@ -88,15 +91,17 @@ section:hover .section .tip-item{
 .sub-sections li a:hover .tip-item{
     width: 100px;
     position: absolute;
-    left: 25%;
+    display: inline-block;
+    left: 10%;
+    width: 100px;
+    margin-left: 10%;
     /* bottom: 5px; */
-    top: 0;
+    /* padding-bottom: 20%; */
+    top: 5%;
     /* margin: 25% 0; */
 
     overflow-x: hidden;
 
 }
-.sections-container li a {
-    text-decoration: none;
-}
+
 

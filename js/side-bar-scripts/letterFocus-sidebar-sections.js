@@ -55,9 +55,9 @@ addEventListener('keydown', e => {
             }
         }     
     } 
-    if(letter == 's'){
+    navSections(letter)
+    if(letter == 's' ){
         console.log(letter)
-        navSections(letter)
     }
 
     
@@ -76,15 +76,12 @@ sideBar.addEventListener('focusout' , e => {
 })
 
 function navSections(letter) {
-    sections[iSection].focus()
     if (!keys.shift.pressed && letter == 's' ) {
+        sections[iSection].focus()
         iSection = (iSection + 1) % sections.length
-
+        
     } else if (keys.shift.pressed && letter == 's') {
-        if (iSection > 0) {
-            iSection -= 1
-        } else if (iSection <= 0) {
-            iSection = sections.length - 1
-        }
+        iSection = (iSection + sections.length - 1) % sections.length
+        sections[iSection].focus()
     }
 }
