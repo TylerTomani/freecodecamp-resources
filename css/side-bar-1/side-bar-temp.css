@@ -13,6 +13,7 @@ main {
     /* color: rgb(229, 218, 218); */
     height: 100vh;
     font-size: 60%;
+    transition: all .15s;
     
 }
 .side-bar ~ .main-content{
