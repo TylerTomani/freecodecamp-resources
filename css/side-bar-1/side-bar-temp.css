@@ -3,11 +3,9 @@
     --width-side-bar: 60px;
 }
 body {
-    /* background-color: gold; */
     background-color: floralwhite;
     overflow: hidden;
-    overflow-x: scroll;
-
+    overflow-x: hidden;
 }
 main {
     display: flex;
@@ -55,12 +53,14 @@ main {
     position: relative;
  }
 .section{
+    display: inline-block;
+    border: 2px solid magenta;
     margin-left: 10%;
 }
 .section ,
 .sub-sections  li  {
     position: relative;
-    margin: 20% 0;
+    margin: 8% 0;
 
 }
 .side-bar.active .section{
@@ -69,7 +69,7 @@ main {
 .side-bar.active .section,
 .side-bar.active .sub-sections  li  {
     position: relative;
-    margin: 4% 0;
+    margin: 1% 0;
 }
 .side-bar.active .tip-item{
     display: none;
@@ -79,16 +79,20 @@ section:focus .section .tip-item,
 section:hover .section .tip-item{
     position: absolute;
     width: 100px;
-    left: 150%;
-    top: 1%;
+    /* left: 150%; */
+    /* top: -10%; */
+    /* top: 1%; */
 }
 .sub-sections li a:active .tip-item,
 .sub-sections li a:focus .tip-item,
 .sub-sections li a:hover .tip-item{
     width: 100px;
     position: absolute;
-    left: 50%;
-    top: 1%;
+    left: 25%;
+    /* bottom: 5px; */
+    top: 0;
+    /* margin: 25% 0; */
+
     overflow-x: hidden;
 
 }
