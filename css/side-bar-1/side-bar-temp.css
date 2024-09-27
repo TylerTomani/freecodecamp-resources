@@ -19,7 +19,7 @@ main {
     background-color: yellow;
 }
 #mainContent {
-    background-color: forestgreen;
+    /* background-color: forestgreen; */
 }
 .side-bar ~ #mainContent{
     width: calc(100% - var(--width-side-bar));
