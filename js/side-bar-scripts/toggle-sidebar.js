@@ -1,5 +1,5 @@
 export const sideBarBtn = document.querySelector("#sideBarBtn")
-const sideBar = document.querySelector('.side-bar')
+export const sideBar = document.querySelector('.side-bar')
 const navTitles = document.querySelector('#navTitles')
 
 function toggleSideBar(){
