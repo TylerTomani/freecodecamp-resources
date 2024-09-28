@@ -1,6 +1,8 @@
 import { navTitles } from "./toggle-sidebar.js"
 import { sideBarBtn } from "./toggle-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
+const header = document.querySelector('body > header')
+const mainContent = document.querySelector('#mainContent')
 const idEls = document.querySelectorAll('[id]')
 export const parts = document.querySelectorAll('.side-bar ul > li > a')
 const sections = document.querySelectorAll('.section')
@@ -12,11 +14,39 @@ let currentLetter
 let letterIds = []
 let iLetterIds = 0
 let iSection = 0
+let lastFocusedItem 
+let sectionsFocused = false
 const keys = {
     shift : {
         pressed: false
     }
 }
+// [header,navTitles,mainContent].forEach(el => {
+//     el.addEventListener('keydown',e => {
+//         let letter = e.key.toLowerCase() 
+//         if(letter == 'enter' ){
+//             iSection -= 1
+//         }
+//     })
+// })
+header.addEventListener('keydown',e => {
+    let letter = e.key.toLowerCase() 
+    if(letter == 's' ){
+        iSection -= 1
+    }
+})
+navTitles.addEventListener('keydown',e => {
+    let letter = e.key.toLowerCase() 
+    if(letter == 's' ){
+        iSection -= 1
+    }
+})
+mainContent.addEventListener('keydown',e => {
+    let letter = e.key.toLowerCase() 
+    if(letter == 's' ){
+        iSection -= 1
+    }
+})
 addEventListener('keyup', e => {
     let letter = e.key.toLowerCase() 
     if(letter == 'shift' ){
@@ -28,12 +58,35 @@ addEventListener('keydown', e => {
     if(letter == 'shift' ){
         keys.shift.pressed = true
     }    
+    
     if(letter == 's' || letter == 'shift' ){
         navSections(letter)
+    } else {
+        if(letter != currentLetter){
+            letterIds = []
+            idEls.forEach(el => {
+                if(el.id[0] == letter){
+                    letterIds.push(el)
+                }
+            })
+            if(letterIds.length > 0){
+                letterIds[0].focus()
+            }
+        } 
+        if(letter == currentLetter && keys.shift.pressed){
+            if(letterIds.length > 0){
+                iLetterIds = (iLetterIds - 1 + letterIds.length) % letterIds.length
+                letterIds[iLetterIds].focus()
+            }
+        }    else
+        if(letter == currentLetter && !keys.shift.pressed){
+            if(letterIds.length > 0){
+                iLetterIds = (iLetterIds + 1) % letterIds.length
+                letterIds[iLetterIds].focus()
+            }
+        }     
+        currentLetter = letter
     }
-    currentLetter = letter
-    // console.log(letterIds)
-    // console.log(focusedSideBar)
 })
 sideBar.addEventListener('focusin' , e => {
     focusedSideBar = true
@@ -46,37 +99,29 @@ sideBar.addEventListener('focusout' , e => {
 })
 function navSections(letter) {
     
-    // if (keys.shift.pressed && letter == 's') {
-    //     iSection = (iSection + sections.length - 1) % sections.length
-    //     sections[iSection].focus()
-    // }else
     if (!keys.shift.pressed && letter == 's' ) {
         iSection = (iSection + 1) % sections.length
 
-    } else if (keys.shift.pressed && letter == 's') {
+    } else if (keys.shift.pressed && letter == 's') {        
         if (iSection > 0) {
             iSection -= 1
         } else if (iSection <= 0) {
             iSection = sections.length - 1
         }
+        /** I can't get this working  */
+        // iSection = (iSection + sections.length - 1) % sections.length
     }
     sections[iSection].focus()
-    console.log(iSection)
-    try {
-        // Attempting to parse invalid JSON
-    } catch (error) {
-        // Handle the error if it occurs
-        console.error("To slow:", error.message);
-    } finally {
-        // Code that runs regardless of the error
-        // console.log("Execution complete");
-    }
+    
      
 }
 sections.forEach(el => {
     el.addEventListener('focus',e  => {
+        sectionsFocused = true
         iSection = [...sections].indexOf(e.target)
+        lastFocusedItem = e.target
     })
+    
 })
 function navLessons(e, letter) {
     const sectionContainer = getSectionContainer(e.target.parentElement)
