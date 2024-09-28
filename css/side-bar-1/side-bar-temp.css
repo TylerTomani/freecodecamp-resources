@@ -51,7 +51,8 @@ main {
 .sub-sections  li  a{
     display: inline-block;
 }
-.sub-sections li a  .tip-item{
+.sub-sections li a  .tip-item,
+.sub-sections li  ul{
     display: none
 }
 .side-bar .tip-item{
@@ -63,7 +64,7 @@ main {
     margin: 10% 0;
 }
 .side-bar.active  .sub-sections  li ul  {
-    /* display: inline-flex; */
+    display: inline-flex;
 }
 .side-bar.active .section{
     /* margin-left:10%; */
