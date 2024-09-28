@@ -21,10 +21,11 @@ const keys = {
         pressed: false
     }
 }
+/** Why don't this work */
 // [header,navTitles,mainContent].forEach(el => {
 //     el.addEventListener('keydown',e => {
 //         let letter = e.key.toLowerCase() 
-//         if(letter == 'enter' ){
+//         if(letter == 's' ){
 //             iSection -= 1
 //         }
 //     })
@@ -33,6 +34,7 @@ header.addEventListener('keydown',e => {
     let letter = e.key.toLowerCase() 
     if(letter == 's' ){
         iSection -= 1
+        // lastFocusedItem.focus()
     }
 })
 navTitles.addEventListener('keydown',e => {
@@ -98,7 +100,6 @@ sideBar.addEventListener('focusout' , e => {
 
 })
 function navSections(letter) {
-    
     if (!keys.shift.pressed && letter == 's' ) {
         iSection = (iSection + 1) % sections.length
 
