@@ -177,15 +177,15 @@ function navLessons(e, letter) {
 }
 lessons.forEach(el => {
     if (el.hasAttribute('autofocus')) {
-        lessonsFocused = true
-        currentLesson = el
+        // lessonsFocused = true
+        // currentLesson = el
     }
     el.addEventListener('focus', e => {
-        currentLesson = ''
-        lastFocusedElement = e.target
-        sectionsFocused = false
-        lessonsFocused = true
-        targetDivFocused = false
+        // currentLesson = ''
+        // lastFocusedElement = e.target
+        // sectionsFocused = false
+        // lessonsFocused = true
+        // targetDivFocused = false
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -194,29 +194,29 @@ lessons.forEach(el => {
         
 
     })
-    el.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        const subSection = getSectionContainer(e.target)
-        const section = subSection.querySelector('.section')
-        if (letter == 's') {
-            section.focus()
-        }
+    // el.addEventListener('keydown', e => {
+    //     let letter = e.key.toLowerCase()
+    //     const subSection = getSectionContainer(e.target)
+    //     const section = subSection.querySelector('.section')
+    //     if (letter == 's') {
+    //         section.focus()
+    //     }
         
-        if(letter == 'enter'){
-            sectionTitle.innerText = section.innerText
-            lessonTitle.innerText = e.target.innerText
+    //     if(letter == 'enter'){
+    //         sectionTitle.innerText = section.innerText
+    //         lessonTitle.innerText = e.target.innerText
             
-        }
+    //     }
         
-        if (lessonsFocused) {
-            navLessons(e, letter)
-        }
-        if(letter == 'c'){
-            targetDivFocused = true
+    //     if (lessonsFocused) {
+    //         navLessons(e, letter)
+    //     }
+    //     if(letter == 'c'){
+    //         targetDivFocused = true
             
-        }
+    //     }
         
-    })
+    // })
 })
 
 export function getSectionContainer(parent){
