@@ -5,8 +5,8 @@ const header = document.querySelector('body > header')
 const mainContent = document.querySelector('#mainContent')
 const idEls = document.querySelectorAll('[id]')
 export const parts = document.querySelectorAll('.side-bar ul > li > a')
-const sections = document.querySelectorAll('.section')
-const lessons = document.querySelectorAll('.sub-section > li > a')
+export const sections = document.querySelectorAll('.section')
+export const lessons = document.querySelectorAll('.sub-section > li > a')
 const sectionTitle = document.querySelector('.section-title')
 const lessonTitle  = document.querySelector('.lesson-title')
 let focusedSideBar = false
@@ -21,32 +21,44 @@ const keys = {
         pressed: false
     }
 }
+function focusToSections(){
+    if(lastFocusedItem){
+        lastFocusedItem.focus()
+    } else {
+        sections[0].focus()
+    }
+}
 /** Why don't this work */
 // [header,navTitles,mainContent].forEach(el => {
 //     el.addEventListener('keydown',e => {
 //         let letter = e.key.toLowerCase() 
 //         if(letter == 's' ){
-//             iSection -= 1
+//              focusToSections()
 //         }
 //     })
 // })
 header.addEventListener('keydown',e => {
     let letter = e.key.toLowerCase() 
     if(letter == 's' ){
-        iSection -= 1
-        // lastFocusedItem.focus()
+        focusToSections()
     }
 })
 navTitles.addEventListener('keydown',e => {
     let letter = e.key.toLowerCase() 
     if(letter == 's' ){
-        iSection -= 1
+        focusToSections()
     }
 })
 mainContent.addEventListener('keydown',e => {
     let letter = e.key.toLowerCase() 
     if(letter == 's' ){
-        iSection -= 1
+        focusToSections()
+    }
+})
+sideBarBtn.addEventListener('keydown',e => {
+    let letter = e.key.toLowerCase() 
+    if(letter == 's' ){
+        focusToSections()
     }
 })
 addEventListener('keyup', e => {
@@ -60,9 +72,8 @@ addEventListener('keydown', e => {
     if(letter == 'shift' ){
         keys.shift.pressed = true
     }    
-    
     if(letter == 's' || letter == 'shift' ){
-        navSections(letter)
+        // navSections(letter)
     } else {
         if(letter != currentLetter){
             letterIds = []
@@ -92,11 +103,9 @@ addEventListener('keydown', e => {
 })
 sideBar.addEventListener('focusin' , e => {
     focusedSideBar = true
-    // console.log('in')
 })
 sideBar.addEventListener('focusout' , e => {
     focusedSideBar = false
-    // console.log('out')
 
 })
 function navSections(letter) {
@@ -121,6 +130,12 @@ sections.forEach(el => {
         sectionsFocused = true
         iSection = [...sections].indexOf(e.target)
         lastFocusedItem = e.target
+    })
+    el.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase() 
+        if(letter == 's' || letter == 'shift' ){
+            navSections(letter)
+        }
     })
     
 })

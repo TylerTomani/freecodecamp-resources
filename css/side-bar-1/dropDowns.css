@@ -1,0 +1,6 @@
+.sub-sections {
+    display: none;
+}
+.sub-sections.drop {
+    display: inline-block;
+}

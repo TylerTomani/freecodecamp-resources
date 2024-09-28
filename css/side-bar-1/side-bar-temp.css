@@ -3,7 +3,7 @@
     --width-side-bar: 60px;
 }
 body {
-    background-color: floralwhite;
+    background-color: lightseagreen;
     width: fit-content;
     overflow: hidden;
     overflow-x: hidden;
@@ -17,10 +17,10 @@ main {
     border-right: 2px solid black;
     height: 100vh;
     transition: all .15s;
-    /* background-color: yellow; */
+    background-color: yellow;
 }
 #mainContent {
-    /* background-color: forestgreen; */
+    background-color: indianred;
 }
 .side-bar ~ #mainContent{
     width: calc(100% - var(--width-side-bar));
