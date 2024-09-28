@@ -6,7 +6,7 @@ const mainContent = document.querySelector('#mainContent')
 const idEls = document.querySelectorAll('[id]')
 export const parts = document.querySelectorAll('.side-bar ul > li > a')
 export const sections = document.querySelectorAll('.section')
-export const lessons = document.querySelectorAll('.sub-section > li > a')
+export const lessons = document.querySelectorAll('.sub-sections > li > a')
 const sectionTitle = document.querySelector('.section-title')
 const lessonTitle  = document.querySelector('.lesson-title')
 let focusedSideBar = false
@@ -14,6 +14,7 @@ let currentLetter
 let letterIds = []
 let iLetterIds = 0
 let iSection = 0
+let iLesson = 0
 let lastFocusedItem 
 let sectionsFocused = false
 const keys = {
@@ -136,14 +137,46 @@ sections.forEach(el => {
         if(letter == 's' || letter == 'shift' ){
             navSections(letter)
         }
+        if (letter == 'a') {
+            const sectionContainer = getSectionContainer(e.target.parentElement)
+            const subSections = sectionContainer.querySelector('.sub-sections')
+            const firstLesson = subSections.querySelector('li a')
+            if(firstLesson){
+                if(subSections.classList.contains('hide')){
+                    subSections.classList.remove('hide')
+                }
+                firstLesson.focus()
+            }
+        }
     })
     
 })
+console.log(lessons[0])
+lessons.forEach(el => {
+    el.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        const subSection = getSectionContainer(e.target)
+        const section = subSection.querySelector('.section')
+        console.log(section)
+        if (letter == 's') {
+            section.focus()
+        }
+        
+        if(letter == 'enter'){
+            sectionTitle.innerText = section.innerText
+            lessonTitle.innerText = e.target.innerText
+            
+        }       
+        navLessons(e, letter)
+        console.log(e.target)
+    })
+})
 function navLessons(e, letter) {
     const sectionContainer = getSectionContainer(e.target.parentElement)
+    console.log(sectionContainer)
     if (sectionContainer) {
         const section = sectionContainer.querySelector('.section')
-        const subSection = getSubSection(e.target.parentElement)
+        const subSection = getSubSections(e.target.parentElement)
         const lessons = subSection.querySelectorAll('li > a')
         if (subSection) {
             if (letter == 's') {
@@ -152,11 +185,12 @@ function navLessons(e, letter) {
             if (!isNaN(letter)) {
                 let intLetter = parseInt(letter)
                 if (intLetter <= lessons.length && intLetter >= 0) {
-                    lastFocusedElement = lessons[intLetter - 1]
-                    lastFocusedElement.focus()
+                    lastFocusedItem = lessons[intLetter - 1]
+                    lastFocusedItem.focus()
                 }
             }
             if(letter == 'a'){
+                console.log(subSection)
                 iLesson = (iLesson + 1) % lessons.length
                 lessons[iLesson].focus()
             }
@@ -165,6 +199,15 @@ function navLessons(e, letter) {
 }
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
+        return parent
+    } else if (parent.parentElement){
+        return getSectionContainer(parent.parentElement)
+    } else {
+        return null
+    }
+}
+export function getSubSections(parent){
+    if(parent.classList.contains('sub-sections')){
         return parent
     } else if (parent.parentElement){
         return getSectionContainer(parent.parentElement)

@@ -20,7 +20,7 @@ main {
     background-color: yellow;
 }
 #mainContent {
-    background-color: indianred;
+    /* background-color: indianred; */
 }
 .side-bar ~ #mainContent{
     width: calc(100% - var(--width-side-bar));
@@ -32,11 +32,11 @@ main {
 .section {
     /* margin: 2% 0; */
     /* margin-left: 2%; */
-    font-size: 50%;
+    font-size: 70%;
     display: inline-block;
     max-height: 10px;
-    overflow-y: hidden
-    ;
+    overflow-y: hidden;
+    margin-left: 5%;
 }
 .sections-container li a {
     text-decoration: none;
@@ -47,7 +47,7 @@ main {
 .sub-sections  li  {
     position: relative;
     margin: left;
-    font-size: 40%;
+    font-size: 55%;
 }
 .sub-sections  li  a{
     display: inline-block;
