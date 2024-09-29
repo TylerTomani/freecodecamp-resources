@@ -1,8 +1,9 @@
 import { navTitles } from "./toggle-sidebar.js"
 import { sideBarBtn } from "./toggle-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
+import { stepTxtListeners } from "../resource-templates/lessons-temp-fcc.js"
 const header = document.querySelector('body > header')
-const mainContent = document.querySelector('#mainContent')
+export const mainContent = document.querySelector('#mainContent')
 const idEls = document.querySelectorAll('[id]')
 export const parts = document.querySelectorAll('.side-bar ul > li > a')
 export const sections = document.querySelectorAll('.section')
@@ -14,7 +15,8 @@ let letterIds = []
 let iLetterIds = 0
 let iSection = -1
 let iLesson = 0
-let lastFocusedItem,lastClickedItem
+let lastFocusedItem
+export let lastClickedItem
 let sectionsFocused = true
 let lessonsFocused = false
 const backLink = document.querySelector('#backlink')
@@ -211,5 +213,6 @@ function injectPage(href){
     .then(response => response.text())
     .then(html => {
         mainContent.innerHTML = html
+        stepTxtListeners()
     })
 }

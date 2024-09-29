@@ -1,14 +1,14 @@
-export const nav = document.querySelector('nav.section-lesson-title')
-export const targetDiv  = document.querySelector('#targetDiv')
+import { navTitles } from '../side-bar-scripts/toggle-sidebar.js'
+import { mainContent } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
-import { sections } from './sections-fcc.js'
-import { showAside } from './sections-fcc.js'
-import { toggleAside } from './sections-fcc.js'
-import { lessons } from './sections-fcc.js'
-export let targetDivFocusIN = false
-import { getSubSection } from './sections-fcc.js'
-import { currentClickedSelection } from './sections-fcc.js'
+import { sections } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+// import { showAside } from './sections-fcc.js'
+// import { toggleAside } from './sections-fcc.js'
+import { lessons } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+export let mainContentFocusIN = false
+import { getSubSections } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+import { lastClickedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 // import { lastFocusedSelection } from './sections-fcc.js'
 
 function getStepContainer(parent) {
@@ -46,8 +46,8 @@ export function stepTxtListeners(){
     let imgIndex = 0
  
     
-    sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
-    lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
+    sections.forEach(el => { el.addEventListener('focus', e => { mainContentFocusIN = false }) })
+    lessons.forEach(el => { el.addEventListener('focus', e => { mainContentFocusIN = false }) })
     pAs.forEach(el => {
         el.setAttribute('tabindex','-1')
         el.addEventListener('focus', e => {
@@ -81,15 +81,15 @@ export function stepTxtListeners(){
     // This is overkill, target is set to _blank in html
     function openNewTab(e) {open(e.target.href, '_blank')}
     // this redundancy make it work, i think only focus out and keydown is needed but did overkill on this
-    targetDiv.addEventListener('focus', e => {targetDivFocusIN = true})
-    targetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
-    targetDiv.addEventListener('keydown', e => {targetDivFocusIN = true})
-    targetDiv.addEventListener('focusout', e => {
-        targetDivFocusIN = false
+    mainContent.addEventListener('focus', e => {mainContentFocusIN = true})
+    mainContent.addEventListener('focusin', e => {mainContentFocusIN = true})
+    mainContent.addEventListener('keydown', e => {mainContentFocusIN = true})
+    mainContent.addEventListener('focusout', e => {
+        mainContentFocusIN = false
         denlargeAllImages()
 
     })
-    nav.addEventListener('keydown', e => {
+    navTitles.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if(letter != 'enter'){
             stepFocus(letter)
@@ -209,7 +209,7 @@ export function stepTxtListeners(){
     })
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        if (targetDivFocusIN) {
+        if (mainContentFocusIN) {
             let letter = e.key.toLowerCase()
             if (!isNaN(letter)) {
                 stepFocus(letter)
