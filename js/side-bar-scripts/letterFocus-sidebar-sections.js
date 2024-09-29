@@ -15,7 +15,7 @@ let letterIds = []
 let iLetterIds = 0
 let iSection = -1
 let iLesson = 0
-let lastFocusedItem
+export let lastFocusedItem
 export let lastClickedItem
 let sectionsFocused = true
 let lessonsFocused = false

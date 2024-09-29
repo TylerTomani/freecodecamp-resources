@@ -9,6 +9,7 @@ import { lessons } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 export let mainContentFocusIN = false
 import { getSubSections } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 import { lastClickedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+import { lastFocusedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 // import { lastFocusedSelection } from './sections-fcc.js'
 
 function getStepContainer(parent) {
@@ -56,21 +57,24 @@ export function stepTxtListeners(){
     
     if(nxtLesson){
         nxtLesson.addEventListener('click', e => {
-            const subSection = getSubSection(currentClickedSelection)
+            
+            const subSection = getSubSections(lastClickedItem)
             const lessons = subSection.querySelectorAll('li > a')
             let index
             if (subSection) {
-                showAside()
-                if (!currentClickedSelection) {
-                    lastFocusedSelection.focus()
-                } else if (currentClickedSelection) {
-                    let index = [...lessons].indexOf(currentClickedSelection)
+                // showAside()
+                if (!lastClickedItem) {
+                    lastFocusedItem.focus()
+                    scrollTo(0,0)
+                } else if (lastClickedItem) {
+                    let index = [...lessons].indexOf(lastClickedItem)
                     if(lessons[index + 1]){
                         lessons[index + 1].scrollIntoView()
+                        console.log(lessons[index + 1])
                     } else {
                         // make this so it goes to next section
-                        currentClickedSelection.focus()
-                        currentClickedSelection.scrollIntoView()
+                        lastClickedItem.focus()
+                        lastClickedItem.scrollIntoView()
                         
                     }
                 }
@@ -217,7 +221,10 @@ export function stepTxtListeners(){
             }
             
             if (letter == 'e') {
-                nxtLesson.focus()
+                if(nxtLesson){
+
+                    nxtLesson.focus()
+                }
             }
             if (letter == 'a' || letter == 's') {
                 // toggleStepColImages(stepCol)
@@ -256,8 +263,8 @@ export function stepTxtListeners(){
                 videoHandle(e)
             }
             if(letter == 'a' ){
-                if(currentClickedSelection){
-                    currentClickedSelection.focus()
+                if(lastClickedItem){
+                    lastClickedItem.focus()
                 }
                 
             }
