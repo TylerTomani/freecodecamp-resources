@@ -47,9 +47,10 @@ main {
 .sub-sections  li  {
     position: relative;
     margin: left;
-    font-size: 55%;
+    font-size: 65%;
 }
 .sub-sections  li  a{
+    color: black;
     display: inline-block;
 }
 .sub-sections li a  .tip-item,

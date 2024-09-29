@@ -12,9 +12,9 @@ const lessonTitle  = document.querySelector('.lesson-title')
 let currentLetter
 let letterIds = []
 let iLetterIds = 0
-let iSection = 0
+let iSection = -1
 let iLesson = 0
-let lastFocusedItem 
+let lastFocusedItem,lastSectionFocused 
 let sectionsFocused = true
 let lessonsFocused = false
 const backLink = document.querySelector('#backlink')
@@ -58,8 +58,11 @@ header.addEventListener('focus', e => {
 })
 header.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase() 
-    iSection -= 1
-    navSections(letter)  
+    if(letter == 's'){
+        if(lastFocusedItem){
+            lastFocusedItem.focus()
+        }
+    }
 })
 addEventListener('keyup',e =>{
     let letter = e.key.toLowerCase() 
@@ -75,30 +78,49 @@ addEventListener('keydown',e =>{
         keys.shift.pressed = true
         
     }
-    if(sectionsFocused){
-        navSections(letter)
+    if(letter == 's'){
+        if(lastFocusedItem){
+            lastFocusedItem.focus()
+        } else {
+            sections[0].focus()
+        }
+
     }
 })
-function navSections(letter){
-    if( letter == 's'){
-        if (!keys.shift.pressed) {
-            iSection = (iSection + 1) % sections.length
-            
-        } else if (keys.shift.pressed ) {
-            if (iSection > 0) {
-                iSection -= 1
-            } else if (iSection <= 0) {
-                iSection = sections.length - 1
-            }   
+// Initialize iSection to -1 so it starts before the first element
+ 
+
+function navSections(letter) {
+    if (letter === 's') {
+        if (keys.shift.pressed) {
+            // If shift is pressed, decrement iSection
+            iSection = (iSection - 1 + sections.length) % sections.length;
+        } else {
+            // Increment iSection, starting from -1 to 0 on first press
+            iSection = (iSection + 1) % sections.length;
         }
-        sections[iSection].focus()
+        // Focus on the new section, making sure to focus sections[0] on the first "S" press
+        sections[iSection].focus();
     }
 }
+
 sections.forEach(el =>{
     el.addEventListener('focus', e => {
         sectionsFocused = true
         lessonsFocused = false
-        // iSection = [...sections].indexOf(e.target)
+        iSection = [...sections].indexOf(e.target)
+        lastFocusedItem = e.target
+    })
+    el.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase() 
+        if(letter == 's'){
+            navSections(letter)
+        }
+        if(letter == 'a'){
+            const sectionContainer = getSectionContainer(e.target.parentElement)
+            const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
+            lessons[0].focus()
+        }
     })
 })
 export function getSectionContainer(parent){
