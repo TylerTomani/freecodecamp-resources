@@ -20,7 +20,7 @@ main {
     /* background-color: yellow; */
 }
 #mainContent {
-    background-color: indianred;
+    /* background-color: indianred; */
 }
 .side-bar ~ #mainContent{
     width: calc(100% - var(--width-side-bar));

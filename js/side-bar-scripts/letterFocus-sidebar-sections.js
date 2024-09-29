@@ -14,7 +14,7 @@ let letterIds = []
 let iLetterIds = 0
 let iSection = -1
 let iLesson = 0
-let lastFocusedItem,lastSectionFocused 
+let lastFocusedItem,lastClickedItem
 let sectionsFocused = true
 let lessonsFocused = false
 const backLink = document.querySelector('#backlink')
@@ -114,6 +114,11 @@ sections.forEach(el =>{
         iSection = [...sections].indexOf(e.target)
         lastFocusedItem = e.target
     })
+    el.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        injectPage(e.target.href)
+     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase() 
         if(letter == 's'){
@@ -138,6 +143,11 @@ lessons.forEach(el =>{
         iLesson = [...lessons].indexOf(e.target)
         lastFocusedItem = e.target
     })
+    el.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        injectPage(e.target.href)
+     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase() 
         const sectionContainer = getSectionContainer(e.target.parentElement)
@@ -154,6 +164,13 @@ lessons.forEach(el =>{
         if(!isNaN(letter)){
             let intLetter      = parseInt(letter)
             lessons[intLetter - 1].focus()
+        }
+        if(letter == 'enter' ){
+            if(e.target == lastClickedItem){
+                mainContent.focus()
+            }
+            lastClickedItem = e.target
+            
         }
     })
 })
@@ -187,4 +204,12 @@ export function getSubSections(parent){
     } else {
         return null
     }
+}
+
+function injectPage(href){
+    fetch(href)
+    .then(response => response.text())
+    .then(html => {
+        mainContent.innerHTML = html
+    })
 }
