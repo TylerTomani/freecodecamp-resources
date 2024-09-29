@@ -75,8 +75,7 @@ addEventListener('keydown',e =>{
     let letter = e.key.toLowerCase() 
     mainElementsFocus(letter)
     if(letter == 'shift' ){
-        keys.shift.pressed = true
-        
+        keys.shift.pressed = true        
     }
     if(letter == 's'){
         if(lastFocusedItem){
@@ -86,10 +85,14 @@ addEventListener('keydown',e =>{
         }
 
     }
+    if(sectionsFocused){
+        if(!isNaN(letter)){
+            let intLetter      = parseInt(letter)
+            sections[intLetter - 1].focus()
+        }
+    }
 })
 // Initialize iSection to -1 so it starts before the first element
- 
-
 function navSections(letter) {
     if (letter === 's') {
         if (keys.shift.pressed) {
@@ -120,9 +123,53 @@ sections.forEach(el =>{
             const sectionContainer = getSectionContainer(e.target.parentElement)
             const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
             lessons[0].focus()
+            sectionsFocused = false
+            lessonsFocused = true
+        }
+        
+    })
+})
+lessons.forEach(el =>{
+    el.addEventListener('focus', e => {
+        sectionsFocused = false
+        lessonsFocused = true
+        const sectionContainer = getSectionContainer(e.target.parentElement)
+        const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
+        iLesson = [...lessons].indexOf(e.target)
+        lastFocusedItem = e.target
+    })
+    el.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase() 
+        const sectionContainer = getSectionContainer(e.target.parentElement)
+        const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
+        if(letter == 's'){
+            const sectionContainer = getSectionContainer(e.target.parentElement)
+            const section = sectionContainer.querySelector('.section')
+            section.focus()
+        }
+        if(letter == 'a' ){
+            console.log(iLesson)
+            navLessons(letter,lessons)
+        }
+        if(!isNaN(letter)){
+            let intLetter      = parseInt(letter)
+            lessons[intLetter - 1].focus()
         }
     })
 })
+function navLessons(letter,lessons) {
+    if (letter === 'a') {
+        if (keys.shift.pressed) {
+            // If shift is pressed, decrement iSection
+            iLesson = (iLesson - 1 + lessons.length) % lessons.length;
+        } else {
+            // Increment iLesson, starting from -1 to 0 on first press
+            iLesson = (iLesson + 1) % lessons.length;
+        }
+        // Focus on the new section, making sure to focus sections[0] on the first "S" press
+        lessons[iLesson].focus();
+    }
+}
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
         return parent
