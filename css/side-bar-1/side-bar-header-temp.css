@@ -12,7 +12,7 @@
 body>header {
     /* max-height:10vh; */
     display: flex;
-    /* width: 100vw; */
+    max-width: 100%;
 }
 header .title-links{
     flex-basis: 90%;
