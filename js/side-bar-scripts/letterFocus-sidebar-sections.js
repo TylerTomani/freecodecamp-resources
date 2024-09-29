@@ -129,6 +129,7 @@ function navSections(letter) {
 sections.forEach(el => {
     el.addEventListener('focus',e  => {
         sectionsFocused = true
+
         iSection = [...sections].indexOf(e.target)
         lastFocusedItem = e.target
     })
@@ -137,7 +138,8 @@ sections.forEach(el => {
         if(letter == 's' || letter == 'shift' ){
             navSections(letter)
         }
-        if (letter == 'a') {
+        if (letter == 'a' ) {
+            console.log('now')
             const sectionContainer = getSectionContainer(e.target.parentElement)
             const subSections = sectionContainer.querySelector('.sub-sections')
             const firstLesson = subSections.querySelector('li a')
@@ -151,13 +153,11 @@ sections.forEach(el => {
     })
     
 })
-console.log(lessons[0])
 lessons.forEach(el => {
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         const subSection = getSectionContainer(e.target)
         const section = subSection.querySelector('.section')
-        console.log(section)
         if (letter == 's') {
             section.focus()
         }
@@ -168,12 +168,10 @@ lessons.forEach(el => {
             
         }       
         navLessons(e, letter)
-        console.log(e.target)
     })
 })
 function navLessons(e, letter) {
     const sectionContainer = getSectionContainer(e.target.parentElement)
-    console.log(sectionContainer)
     if (sectionContainer) {
         const section = sectionContainer.querySelector('.section')
         const subSection = getSubSections(e.target.parentElement)
@@ -189,10 +187,10 @@ function navLessons(e, letter) {
                     lastFocusedItem.focus()
                 }
             }
-            if(letter == 'a'){
-                console.log(subSection)
-                iLesson = (iLesson + 1) % lessons.length
-                lessons[iLesson].focus()
+            if(letter == 'a' && !keys.shift.pressed){
+                // console.log(subSection)
+                // iLesson = (iLesson + 1) % lessons.length
+                // lessons[iLesson].focus()
             }
         }
     }

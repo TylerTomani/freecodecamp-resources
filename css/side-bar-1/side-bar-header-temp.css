@@ -12,7 +12,14 @@
 body>header {
     /* max-height:10vh; */
     display: flex;
-    width: fit-content;
+    /* width: 100vw; */
+}
+header .title-links{
+    flex-basis: 90%;
+}
+header .img-container{
+    flex-basis: 10%;
+    /* border: 1px solid red; */
 }
 body>header a:focus,
 body>header a:active {
