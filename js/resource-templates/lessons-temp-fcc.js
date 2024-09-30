@@ -238,9 +238,11 @@ export function stepTxtListeners(){
         }
 
         if (letter == 'e') {
+            if(nxtLesson){
 
-            nxtLesson.focus()
-            nxtLesson.scrollIntoView()
+                nxtLesson.focus()
+                nxtLesson.scrollIntoView()
+            }
         }
 
     });

@@ -110,6 +110,9 @@ function navSections(letter) {
 }
 
 sections.forEach(el =>{
+    if(el.hasAttribute('autofocus')){
+        injectPage(el.href)
+    }
     el.addEventListener('focus', e => {
         sectionsFocused = true
         lessonsFocused = false
@@ -137,6 +140,9 @@ sections.forEach(el =>{
     })
 })
 lessons.forEach(el =>{
+    if(el.hasAttribute('autofocus')){
+        injectPage(el.href)
+    }
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
@@ -146,14 +152,26 @@ lessons.forEach(el =>{
         lastFocusedItem = e.target
     })
     el.addEventListener('click', e => {
+
         e.preventDefault()
         e.stopPropagation()
-        injectPage(e.target.href)
+        if(e.target.hasAttribute('tabindex')){
+            injectPage(e.target.href)
+        } else {
+            clickChildren(e.target)
+        }
      })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase() 
         const sectionContainer = getSectionContainer(e.target.parentElement)
         const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
+        if(letter == 'enter' ){
+            if(e.target == lastClickedItem){
+                mainContent.focus()
+            }
+            lastClickedItem = e.target
+            
+        }
         if(letter == 's'){
             const sectionContainer = getSectionContainer(e.target.parentElement)
             const section = sectionContainer.querySelector('.section')
@@ -167,15 +185,13 @@ lessons.forEach(el =>{
             let intLetter      = parseInt(letter)
             lessons[intLetter - 1].focus()
         }
-        if(letter == 'enter' ){
-            if(e.target == lastClickedItem){
-                mainContent.focus()
-            }
-            lastClickedItem = e.target
-            
-        }
     })
 })
+function clickChildren(target){
+    // const childs = target.querySelector
+    console.log(target)
+    injectPage(target.parentElement.href)
+}
 function navLessons(letter,lessons) {
     if (letter === 'a') {
         if (keys.shift.pressed) {

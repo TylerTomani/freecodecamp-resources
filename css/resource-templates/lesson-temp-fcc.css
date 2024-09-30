@@ -108,7 +108,7 @@
     position: relative;
     z-index: 100;
     /* margin-right: 50%; */
-    transform: scale(3);
+    transform: scale(2);
 }
 .enlarged-sm {
     position: fixed;
@@ -137,13 +137,15 @@
     position: fixed;
     top: 40%;
     left: 20%;
-    transform: scale(1.8);
+    z-index: 10;
+    transform: scale(1.2);
 }
 .enlarge-col-r {
     position: fixed;
     top: 40%;
     right: 20%;
-    transform: scale(2);
+    z-index: 10;
+    transform: scale(1.1);
 }
 .step-col-in {
     display: flex;
