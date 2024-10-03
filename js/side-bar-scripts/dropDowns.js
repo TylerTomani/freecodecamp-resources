@@ -1,50 +1,48 @@
 import { sections } from "./letterFocus-sidebar-sections.js"
 const subSections = document.querySelectorAll('.sub-sections')
 
-function dropAutoFocusSubSection(){
-    subSections.forEach(el => {
-        if(el.classList.contains('show')){
-            el.classList.add('drop')
-        } else {            
-        }
-    })
-}
-dropAutoFocusSubSection()
+
 function hideAllSubSections(){
     subSections.forEach(el => {
         if(el.classList.contains('show')){
-            el.classList.remove('show')
-        }
-        if(el.classList.contains('drop')){
+            el.classList.add('drop')
+        } else {
             el.classList.remove('drop')
         }
+        
     })
 }
+hideAllSubSections()
 
 sections.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         e.stopPropagation()
         const sectionsContainer = getSectionContainer(e.target.parentElement)
-        const subSection = sectionsContainer.querySelector('.sub-sections')
-        hideAllSubSections()
-        if(subSection.classList.contains('show')){
-            subSection.classList.remove('show')
-        }
-        subSection.classList.toggle('drop')
+        const subSections = sectionsContainer.querySelector('.sub-sections')
+        toggleSubSections(subSections)
+        
     })
     el.addEventListener('keydown', e => {
-                let letter = e.key.toLowerCase() 
+        let letter = e.key.toLowerCase() 
         const sectionsContainer = getSectionContainer(e.target.parentElement)
-        const subSection = sectionsContainer.querySelector('.sub-sections')
+        const subSections = sectionsContainer.querySelector('.sub-sections')
         if(letter == 'enter' ){
+            e.preventDefault()
             e.stopPropagation()
-            hideAllSubSections()
-            subSection.classList.toggle('drop')
+            toggleSubSections(subSections)
         }
         
     })
 })
+function toggleSubSections(el){
+        if(el.classList.contains('show')){
+            el.classList.remove('show')
+        } 
+        hideAllSubSections()
+        el.classList.toggle('drop')
+
+}
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
         return parent
