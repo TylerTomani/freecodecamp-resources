@@ -2,6 +2,7 @@ import { navTitles } from "./toggle-sidebar.js"
 import { sideBarBtn } from "./toggle-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
 import { stepTxtListeners } from "../resource-templates/lessons-temp-fcc.js"
+let mainContentHasFocus = false
 const header = document.querySelector('body > header')
 export const mainContent = document.querySelector('#mainContent')
 const idEls = document.querySelectorAll('[id]')
@@ -55,6 +56,11 @@ function mainElementsFocus(letter){
             break
     }
 }
+mainContent.addEventListener('focus', e => {
+    sectionsFocused = false
+    lessonsFocused = false
+    mainContentHasFocus = true
+})
 header.addEventListener('focus', e => {
     sectionsFocused = true
     lessonsFocused = false
@@ -99,7 +105,7 @@ addEventListener('keydown',e =>{
             // lastClickedLesson.focus()
         }
     }
-    if(sectionsFocused){
+    if(sectionsFocused && !mainContentHasFocus){
         if(!isNaN(letter)){
             let intLetter      = parseInt(letter)
             sections[intLetter - 1].focus()
@@ -128,6 +134,7 @@ sections.forEach(el =>{
     el.addEventListener('focus', e => {
         sectionsFocused = true
         lessonsFocused = false
+        mainContentHasFocus = false
         iSection = [...sections].indexOf(e.target)
         lastFocusedItem = e.target
     })
@@ -158,6 +165,7 @@ lessons.forEach(el =>{
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
+        mainContentHasFocus = false
         const sectionContainer = getSectionContainer(e.target.parentElement)
         const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
         iLesson = [...lessons].indexOf(e.target)
@@ -195,8 +203,11 @@ lessons.forEach(el =>{
             navLessons(letter,lessons)
         }
         if(!isNaN(letter)){
-            let intLetter      = parseInt(letter)
-            lessons[intLetter - 1].focus()
+            if(!mainContentFocusIN){
+
+                let intLetter  = parseInt(letter)
+                lessons[intLetter - 1].focus()
+            }
         }
     })
 })
