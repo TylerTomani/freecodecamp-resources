@@ -28,7 +28,6 @@ sections.forEach(el => {
         const sectionsContainer = getSectionContainer(e.target.parentElement)
         const subSections = sectionsContainer.querySelector('.sub-sections')
         if(letter == 'enter' ){
-            e.preventDefault()
             e.stopPropagation()
             toggleSubSections(subSections)
         }
