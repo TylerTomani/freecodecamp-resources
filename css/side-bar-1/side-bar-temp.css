@@ -17,7 +17,7 @@ main {
     border-right: 2px solid black;
     height: 100vh;
     transition: all .15s;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 #mainContent {
     /* background-color: indianred; */
@@ -96,13 +96,14 @@ main {
 .sub-sections li a:hover .tip-item{
     width: 100px;
     position: absolute;
-    display: inline-block;
+    display: block;
     left: 2%;
     width: 100px;
     margin-left: 10%;
+    top: 0%;
+    padding-bottom: 10%;
     /* bottom: 5px; */
     /* padding-bottom: 20%; */
-    top: 5%;
     /* margin: 25% 0; */
 
     overflow-x: hidden;

@@ -17,6 +17,7 @@ let iSection = -1
 let iLesson = 0
 export let lastFocusedItem
 export let lastClickedItem
+export let lastClickedLesson
 let sectionsFocused = true
 let lessonsFocused = false
 const backLink = document.querySelector('#backlink')
@@ -65,7 +66,13 @@ header.addEventListener('keydown', e => {
             lastFocusedItem.focus()
         }
     }
+    if(letter == 'a'){
+        if(lastClickedLesson){
+            lastClickedLesson.focus()
+        }
+    }
 })
+
 addEventListener('keyup',e =>{
     let letter = e.key.toLowerCase() 
     if(letter == 'shift' ){
@@ -86,6 +93,11 @@ addEventListener('keydown',e =>{
             sections[0].focus()
         }
 
+    }
+    if(letter == 'a'){
+        if(lastClickedLesson){
+            lastClickedLesson.focus()
+        }
     }
     if(sectionsFocused){
         if(!isNaN(letter)){
@@ -160,6 +172,7 @@ lessons.forEach(el =>{
         } else {
             clickChildren(e.target)
         }
+        lastClickedLesson = e.target
      })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase() 
@@ -193,7 +206,7 @@ function clickChildren(target){
     injectPage(target.parentElement.href)
 }
 function navLessons(letter,lessons) {
-    if (letter === 'a') {
+    if (letter == 'a') {
         if (keys.shift.pressed) {
             // If shift is pressed, decrement iSection
             iLesson = (iLesson - 1 + lessons.length) % lessons.length;
