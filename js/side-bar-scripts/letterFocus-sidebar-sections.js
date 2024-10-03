@@ -68,7 +68,7 @@ header.addEventListener('keydown', e => {
     }
     if(letter == 'a'){
         if(lastClickedLesson){
-            lastClickedLesson.focus()
+            // lastClickedLesson.focus()
         }
     }
 })
@@ -86,7 +86,7 @@ addEventListener('keydown',e =>{
     if(letter == 'shift' ){
         keys.shift.pressed = true        
     }
-    if(letter == 's'){
+    if(letter == 's' || letter == 'a'){
         if(lastFocusedItem){
             lastFocusedItem.focus()
         } else {
@@ -96,7 +96,7 @@ addEventListener('keydown',e =>{
     }
     if(letter == 'a'){
         if(lastClickedLesson){
-            lastClickedLesson.focus()
+            // lastClickedLesson.focus()
         }
     }
     if(sectionsFocused){

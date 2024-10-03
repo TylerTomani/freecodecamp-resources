@@ -1,0 +1,185 @@
+.step-txt:active,.step-txt:focus {box-shadow: 2px 1px 3px 3px orange;}
+.copy-code:active,.copy-code:focus {box-shadow: 0 1px 3px 2px yellow;}
+
+
+
+.steps-container{
+    width: 100%;
+    border: 1px solid red;   
+    padding: 0 2.5%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+}
+.steps-container > h2{
+    font: 90%;
+}
+.steps-container > .header {
+    margin: 0;
+    padding: 0
+
+}
+.step {
+    display: flex;
+    flex-wrap: wrap;
+}
+.step>* {
+    width: 50%;
+    border: 1px solid blue;
+}
+.step-txt {
+    display: flex;
+    flex-direction: column;
+}
+.step>.step-txt>h4 {
+    align-self: flex-start;
+}
+.step-txt>p {
+    font-size: 90%;
+}
+.step-txt>ul {
+    margin: 0 auto;
+}
+.step>.step-txt>p {
+    margin: 0 5%;
+    line-height: 1.3;
+    margin-top: 5%;
+}
+.step-txt>.code-container{
+    font-size: 90%;
+    margin: 2.5% 3%;
+    /* margin-top: 2%; */
+}
+.step-col>.step-txt>.code-container>.copy-code{
+    margin: 1% 0;   
+}
+.code-container> .copy-code{
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.step-col>.step-txt>.code-container>.copy-code,
+.step>.step-txt>.code-container>.copy-code {
+    padding: .5% 2%;
+}
+.code-container>.copy-code {
+    background-color: white;
+    border: 1px solid black;
+}
+.step > .step-vid,
+.step > .step-img {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    /* width: 50%; */
+}
+.step-vid>video,
+.step-img>img {
+    /* object-fit: cover; */
+    /* min-height: 200px; */
+    /* max-height: 200px; */
+    /* min-width: 200px; */
+    /* max-width: 300px; */
+    width: 100%;
+    height: 100%;
+}
+.step-col>.step-txt > p{
+    margin: .5% 2.5%;
+}
+.step-col>.img-container {
+    margin: 2% 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.step-col>.img-container>.step-img,
+.step-col>.img-container>.step-vid {
+    position: relative;
+}
+/* OG */
+/* .enlarge {
+    position: fixed;
+    object-fit: contain;
+    z-index: 2;
+    right: 20%;
+    transform: scale(2.5);
+} */
+.enlarge {
+    position: relative;
+    z-index: 100;
+    /* margin-right: 50%; */
+    transform: scale(2);
+}
+.enlarged-sm {
+    position: fixed;
+    object-fit: cover;
+    z-index: 2;
+    right: 20%;
+    transform: scale(1.5);
+    max-height: 400px;
+}
+.enlarged-md {
+    position: fixed;
+    object-fit: cover;
+    z-index: 2;
+    right: 20%;
+    transform: scale(2.5);
+    max-height: 400px;
+}
+
+.enlarged-lg {
+    position: relative;
+    z-index: 2;
+    /* margin-right: 50%; */
+    transform: scale(3);
+}
+.enlarge-col-l {
+    position: fixed;
+    top: 40%;
+    left: 20%;
+    z-index: 10;
+    transform: scale(1.2);
+}
+.enlarge-col-r {
+    position: fixed;
+    top: 40%;
+    right: 20%;
+    z-index: 10;
+    transform: scale(1.1);
+}
+.step-col-in {
+    display: flex;
+    flex-direction: column;
+}
+.step-col-in > .step-txt-in {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.step-col-in > .step-txt-in > .code-container{
+    border: 1px solid black;
+    margin: 1% 2.5%;
+}
+.step-col-in > .step-txt-in > .code-container > .copy-code{
+    border: 1px solid black;
+    padding: 1% 2.5%;
+}
+#nxtLesson {
+    padding: 1% 0;
+    margin-bottom: 5%;
+    width: 90%;
+}
+#nxtLesson:active,#nxtLesson:focus{
+    background-color: lightblue;
+}
+
+@media screen and (max-width: 583px){
+    
+    .enlarge {
+            /* position: fixed; */
+            object-fit: contain;
+            z-index: 2;
+            right: 10%;
+            transform: scale(3);
+        }
+}
