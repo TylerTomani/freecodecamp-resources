@@ -28,6 +28,9 @@ sections.forEach(el => {
         const sectionsContainer = getSectionContainer(e.target.parentElement)
         const subSection = sectionsContainer.querySelector('.sub-sections')
         hideAllSubSections()
+        if(subSection.classList.contains('show')){
+            subSection.classList.remove('show')
+        }
         subSection.classList.toggle('drop')
     })
     el.addEventListener('keydown', e => {

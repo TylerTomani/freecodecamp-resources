@@ -51,7 +51,8 @@ main {
 }
 .sub-sections  li  a{
     color: black;
-    display: inline-block;
+    display: block;
+    /* width: fit-content; */
 }
 .sub-sections li a  .tip-item,
 .sub-sections li  ul{
@@ -63,10 +64,11 @@ main {
 }
 .sub-sections  li a:active,
 .sub-sections  li a:focus{
-    margin: 10% 0;
+    /* margin: 10% 0; */
+    /* padding-right: 5%; */
 }
 .side-bar.active  .sub-sections  li ul  {
-    display: inline-flex;
+    /* display: inline-flex; */
 }
 .side-bar.active .section{
     /* margin-left:10%; */
@@ -95,7 +97,7 @@ main {
     width: 100px;
     position: absolute;
     display: inline-block;
-    left: 10%;
+    left: 2%;
     width: 100px;
     margin-left: 10%;
     /* bottom: 5px; */
