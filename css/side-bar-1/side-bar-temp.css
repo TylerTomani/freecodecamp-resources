@@ -17,7 +17,7 @@ main {
     border-right: 2px solid black;
     height: 100vh;
     transition: all .15s;
-    /* background-color: yellow; */
+    background-color: yellow;
 }
 #mainContent {
     /* background-color: indianred; */
