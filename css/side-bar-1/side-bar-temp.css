@@ -84,7 +84,7 @@ main {
 .sub-sections li a:active .section-item,
 .sub-sections li a:focus .section-item,
 .sub-sections li a:hover .section-item{
-    display: none;
+    /* display: none; */
        /* position: absolute; */
     /* width: 100px; */
     /* left: 150%; */
@@ -94,19 +94,19 @@ main {
 .sub-sections li a:active .tip-item,
 .sub-sections li a:focus .tip-item,
 .sub-sections li a:hover .tip-item{
-    width: 100px;
+    /* width: 100px;
     position: absolute;
     display: block;
     left: 2%;
     width: 100px;
     margin-left: 10%;
     top: 0%;
-    padding-bottom: 10%;
+    padding-bottom: 10%; */
     /* bottom: 5px; */
     /* padding-bottom: 20%; */
     /* margin: 25% 0; */
 
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 
 }
 

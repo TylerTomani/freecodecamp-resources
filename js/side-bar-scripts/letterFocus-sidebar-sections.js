@@ -105,7 +105,7 @@ addEventListener('keydown',e =>{
             // lastClickedLesson.focus()
         }
     }
-    if(sectionsFocused && !mainContentHasFocus){
+    if(sectionsFocused ){
         if(!isNaN(letter)){
             let intLetter      = parseInt(letter)
             sections[intLetter - 1].focus()
@@ -149,6 +149,9 @@ sections.forEach(el =>{
             navSections(letter)
         }
         if(letter == 'a'){
+            if(lastClickedLesson){
+                lastClickedLesson.focus()
+            } 
             const sectionContainer = getSectionContainer(e.target.parentElement)
             const lessons = sectionContainer.querySelectorAll('.sub-sections > li a')
             lessons[0].focus()
@@ -203,11 +206,8 @@ lessons.forEach(el =>{
             navLessons(letter,lessons)
         }
         if(!isNaN(letter)){
-            if(!mainContentFocusIN){
-
                 let intLetter  = parseInt(letter)
                 lessons[intLetter - 1].focus()
-            }
         }
     })
 })
