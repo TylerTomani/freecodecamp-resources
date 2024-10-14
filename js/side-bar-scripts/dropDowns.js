@@ -1,7 +1,6 @@
-import { sections } from "./letterFocus-sidebar-sections.js"
+// import { sections } from "./letterFocus-sidebar-sections.js"
+const sections = document.querySelectorAll('.section')
 const subSections = document.querySelectorAll('.sub-sections')
-
-
 function hideAllSubSections(){
     subSections.forEach(el => {
         if(el.classList.contains('show')){
@@ -13,7 +12,6 @@ function hideAllSubSections(){
     })
 }
 hideAllSubSections()
-
 sections.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()

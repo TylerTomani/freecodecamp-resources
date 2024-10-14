@@ -5,8 +5,6 @@ export const navTitles = document.querySelector('#navTitles')
 function toggleSideBar(){
     sideBar.classList.toggle('active')
 }
-
-
 [navTitles,sideBar,sideBarBtn].forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()

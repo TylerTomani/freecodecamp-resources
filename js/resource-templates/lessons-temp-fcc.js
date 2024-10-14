@@ -30,6 +30,18 @@ function getStepColContainer(parent) {
         return null
     }
 }
+function addTabs(el) { el.setAttribute('tabindex', '0') }
+function removeTabs(el) { el.setAttribute('tabindex', '-1') }
+function removeInnerTabs() {
+    codesStepTxtINs.forEach(el => {
+        removeTabs(el)
+    })
+}
+function removeOuterTabs() {
+    copyCodeSteps.forEach(el => { el.setAttribute('tabindex', '-1') })
+    // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
+    pAs.forEach(el => { el.setAttribute('tabindex', '-1') })
+}
 export function stepTxtListeners(){
     const allImages = document.querySelectorAll('.step-img > img') 
     const allVideos = document.querySelectorAll('.step-vid > video') 
@@ -53,8 +65,7 @@ export function stepTxtListeners(){
         el.setAttribute('tabindex','-1')
         el.addEventListener('focus', e => {
         })
-    })
-    
+    })    
     if(nxtLesson){
         nxtLesson.addEventListener('click', e => {
             
@@ -148,21 +159,6 @@ export function stepTxtListeners(){
             }
         })
     }    
-    function addTabs(el) {el.setAttribute('tabindex', '0')}
-    function removeTabs(el) {el.setAttribute('tabindex','-1')}
-    function removeInnerTabs() {
-        codesStepTxtINs.forEach(el => {
-            removeTabs(el)
-        })
-    }
-    function removeOuterTabs() {
-        copyCodeSteps.forEach(el => { el.setAttribute('tabindex','-1') })
-        // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
-        pAs.forEach(el => { el.setAttribute('tabindex','-1') })
-    }
-    
-
-    
     // This will handle img and video size enlarge and denlarge
     function handleImgSize(e) {
         const step = getStepContainer(e.target.parentElement)
@@ -177,9 +173,7 @@ export function stepTxtListeners(){
     function toggleStepColImages(stepCol) {
         const imgContainer = stepCol.querySelector('.img-container')
         if(imgContainer){
-
-            const images = imgContainer.querySelectorAll('.step-img > img')
-            
+            const images = imgContainer.querySelectorAll('.step-img > img')           
             const img = images[imgIndex]
             // imgIndex = (imgIndex +  )
             denlargeAllImages()
