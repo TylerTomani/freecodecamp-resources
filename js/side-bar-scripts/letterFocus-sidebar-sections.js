@@ -61,6 +61,12 @@ mainContent.addEventListener('focus', e => {
     lessonsFocused = false
     mainContentHasFocus = true
 })
+mainContent.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'a'){
+        console.log(lastClickedLesson)
+    }
+})
 header.addEventListener('focus', e => {
     sectionsFocused = true
     lessonsFocused = false
@@ -78,7 +84,6 @@ header.addEventListener('keydown', e => {
         }
     }
 })
-
 addEventListener('keyup',e =>{
     let letter = e.key.toLowerCase() 
     if(letter == 'shift' ){
