@@ -64,7 +64,7 @@ mainContent.addEventListener('focus', e => {
 mainContent.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if(letter == 'a'){
-        console.log(lastClickedLesson)
+        // console.log(lastClickedLesson)
     }
 })
 header.addEventListener('focus', e => {
@@ -112,7 +112,7 @@ addEventListener('keydown',e =>{
     }
     if(sectionsFocused ){
         if(!isNaN(letter)){
-            let intLetter      = parseInt(letter)
+            let intLetter = parseInt(letter)
             sections[intLetter - 1].focus()
         }
     }
@@ -131,7 +131,6 @@ function navSections(letter) {
         sections[iSection].focus();
     }
 }
-
 sections.forEach(el =>{
     if(el.hasAttribute('autofocus')){
         injectPage(el.href)
@@ -247,7 +246,7 @@ export function getSubSections(parent){
     if(parent.classList.contains('sub-sections')){
         return parent
     } else if (parent.parentElement){
-        return getSectionContainer(parent.parentElement)
+        return getSubSections(parent.parentElement)
     } else {
         return null
     }
