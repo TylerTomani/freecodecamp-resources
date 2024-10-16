@@ -1,25 +1,50 @@
-export const nav = document.querySelector('nav.section-lesson-title')
-export const mainTargetDiv  = document.querySelector('#mainTargetDiv')
+import { navTitles } from '../side-bar-scripts/toggle-sidebar.js'
+import { mainContent } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
-import { sections } from './sections-fcc.js'
-import { showAside } from './sections-fcc.js'
-import { toggleAside } from './sections-fcc.js'
-import { lessons } from './sections-fcc.js'
-export let targetDivFocusIN = false
-import { getSubSection } from './sections-fcc.js'
-import { currentClickedSelection } from './sections-fcc.js'
-import { lastFocusedSelection } from './sections-fcc.js'
-addEventListener('DOMContentLoaded', e => {
-    if (innerWidth < 501) {
-        aside.classList.add('hide')
-        targetDivFocusIN = true
+import { sections } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+// import { showAside } from './sections-fcc.js'
+// import { toggleAside } from './sections-fcc.js'
+import { lessons } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+export let mainContentFocusIN = false
+import { getSubSections } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+import { lastClickedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+import { lastFocusedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+// import { lastFocusedSelection } from './sections-fcc.js'
+
+function getStepContainer(parent) {
+    if (parent.classList.contains('step')) {
+        return parent
+    } else if (parent.parentElement) {
+        return getStepContainer(parent.parentElement)
     } else {
-        aside.classList.remove('hide')
+        return null
     }
-})
+}
+function getStepColContainer(parent) {
+    if (parent.classList.contains('step-col')) {
+        return parent
+    } else if (parent.parentElement) {
+        return getStepColContainer(parent.parentElement)
+    } else {
+        return null
+    }
+}
+function addTabs(el) { el.setAttribute('tabindex', '0') }
+function removeTabs(el) { el.setAttribute('tabindex', '-1') }
+function removeInnerTabs() {
+    codesStepTxtINs.forEach(el => {
+        removeTabs(el)
+    })
+}
+function removeOuterTabs() {
+    copyCodeSteps.forEach(el => { el.setAttribute('tabindex', '-1') })
+    // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
+    pAs.forEach(el => { el.setAttribute('tabindex', '-1') })
+}
 export function stepTxtListeners(){
-    const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
+    const allImages = document.querySelectorAll('.step-img > img') 
+    const allVideos = document.querySelectorAll('.step-vid > video') 
     const steps = document.querySelectorAll('.step')
     const stepTxts = document.querySelectorAll('.step-txt')
     const stepTxtsIns = document.querySelectorAll('.step-txt-in')
@@ -32,61 +57,54 @@ export function stepTxtListeners(){
     let colCodesFocused = false
     let currentStepIndex = 0
     let imgIndex = 0
-    addEventListener('resize', e => {
-        console.log(innerWidth)
-        if (innerWidth < 501) {
-            aside.classList.add('hide')
-            targetDivFocusIN = true
-        } else{
-            aside.classList.remove('hide')
-        }
-    })
-    allImages.forEach(el => {
-        el.addEventListener('click', e => {
-            e.target.classList.toggle('enlarge')
-        })
-    })
-    sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
-    lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
+ 
+    
+    sections.forEach(el => { el.addEventListener('focus', e => { mainContentFocusIN = false }) })
+    lessons.forEach(el => { el.addEventListener('focus', e => { mainContentFocusIN = false }) })
     pAs.forEach(el => {
         el.setAttribute('tabindex','-1')
         el.addEventListener('focus', e => {
         })
-    })
+    })    
     if(nxtLesson){
         nxtLesson.addEventListener('click', e => {
-            const subSection = getSubSection(currentClickedSelection)
+            
+            const subSection = getSubSections(lastClickedItem)
             const lessons = subSection.querySelectorAll('li > a')
             let index
             if (subSection) {
-                showAside()
-                if (!currentClickedSelection) {
-                    lastFocusedSelection.focus()
-                } else if (currentClickedSelection) {
-                    let index = [...lessons].indexOf(currentClickedSelection)
+                // showAside()
+                if (!lastClickedItem) {
+                    lastFocusedItem.focus()
+                    scrollTo(0,0)
+                } else if (lastClickedItem) {
+                    let index = [...lessons].indexOf(lastClickedItem)
                     if(lessons[index + 1]){
-                        lessons[index + 1].focus()
+                        lessons[index + 1].scrollIntoView()
+                        console.log(lessons[index + 1])
                     } else {
                         // make this so it goes to next section
-                        currentClickedSelection.focus()
+                        lastClickedItem.focus()
+                        lastClickedItem.scrollIntoView()
                         
                     }
                 }
+                scrollTo(0,0)
             }
         })   
     }
     // This is overkill, target is set to _blank in html
     function openNewTab(e) {open(e.target.href, '_blank')}
     // this redundancy make it work, i think only focus out and keydown is needed but did overkill on this
-    mainTargetDiv.addEventListener('focus', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('keydown', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('focusout', e => {
-        targetDivFocusIN = false
+    mainContent.addEventListener('focus', e => {mainContentFocusIN = true})
+    mainContent.addEventListener('focusin', e => {mainContentFocusIN = true})
+    mainContent.addEventListener('keydown', e => {mainContentFocusIN = true})
+    mainContent.addEventListener('focusout', e => {
+        mainContentFocusIN = false
         denlargeAllImages()
 
     })
-    nav.addEventListener('keydown', e => {
+    navTitles.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if(letter != 'enter'){
             stepFocus(letter)
@@ -94,24 +112,27 @@ export function stepTxtListeners(){
         
     })
     function stepFocus(letter) {
-        const intLetter = parseInt(letter)
-        if (intLetter <= stepTxts.length) {
-            denlargeAllImages()
-            stepNumberFocus(intLetter)
-        } else {
-            if(nxtLesson){
-                nxtLesson.focus()
+        if(!isNaN(letter)){
+
+            const intLetter = parseInt(letter)
+            if (intLetter <= stepTxts.length) {
+                denlargeAllImages()
+                stepNumberFocus(intLetter)
+            } else {
+                if(nxtLesson){
+                    nxtLesson.focus()
+                }
             }
         }
     }
     function stepNumberFocus(intLetter) {
         stepTxts[intLetter - 1].focus()
     }
-    // The code below handle img enlarge and code within step txt
-    
+    // The code below handles img enlarge and code within step txt
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
             denlargeAllImages()
+            stopAllVideos()
         })
     })
 
@@ -120,6 +141,9 @@ export function stepTxtListeners(){
             // el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
+            }
+            if (el.classList.contains('enlarged-sm')) {
+                el.classList.remove('enlarged-sm')
             }
             if (el.classList.contains('enlarged-md')) {
                 el.classList.remove('enlarged-md')
@@ -135,40 +159,6 @@ export function stepTxtListeners(){
             }
         })
     }    
-    
-    
-    function addTabs(el) {el.setAttribute('tabindex', '0')}
-    function removeTabs(el) {el.setAttribute('tabindex','-1')}
-    function removeInnerTabs() {
-        codesStepTxtINs.forEach(el => {
-            removeTabs(el)
-        })
-    }
-    function removeOuterTabs() {
-        copyCodeSteps.forEach(el => { el.setAttribute('tabindex','-1') })
-        // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
-        pAs.forEach(el => { el.setAttribute('tabindex','-1') })
-    }
-    function getStepContainer(parent) {
-        if (parent.classList.contains('step')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStepContainer(parent.parentElement)
-        } else {
-            return null
-        }
-    }
-    function getStepColContainer(parent) {
-        if (parent.classList.contains('step-col')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStepColContainer(parent.parentElement)
-        } else {
-            return null
-        }
-    }
-
-    
     // This will handle img and video size enlarge and denlarge
     function handleImgSize(e) {
         const step = getStepContainer(e.target.parentElement)
@@ -183,9 +173,7 @@ export function stepTxtListeners(){
     function toggleStepColImages(stepCol) {
         const imgContainer = stepCol.querySelector('.img-container')
         if(imgContainer){
-
-            const images = imgContainer.querySelectorAll('.step-img > img')
-            
+            const images = imgContainer.querySelectorAll('.step-img > img')           
             const img = images[imgIndex]
             // imgIndex = (imgIndex +  )
             denlargeAllImages()
@@ -205,32 +193,21 @@ export function stepTxtListeners(){
             imgIndex = (imgIndex + 1) % (images.length + 1)
         }
     }
-
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
-        const img = stepImg.querySelector('img')
-        img.style.zIndex = "1"
-        if(!img.classList.contains('enlarge')){
-            img.classList.add('enlarge')
-        } else {
-            img.classList.remove('enlarge')
-
-        }
-        
-        if(img.classList.contains('lg-enlarge') && !img.classList.contains('enlarged-lg')){
-            img.classList.add('enlarged-lg')
-        } else if (img.classList.contains('lg-enlarge') && img.classList.contains('enlarged-lg')){
-            img.classList.remove('enlarged-lg')
-        }
-        if(img.classList.contains('md-enlarge') && !img.classList.contains('enlarged-md')){
-            img.classList.add('enlarged-md')
-        } else if (img.classList.contains('md-enlarge') && img.classList.contains('enlarged-md')){
-            img.classList.remove('enlarged-md')
+        if(stepImg){
+            const img = stepImg.querySelector('img')
+            toggleImgSize(img)
         }
     }
+    allImages.forEach(el => {
+        el.addEventListener('click', e => {
+            toggleImgSize(e.target)
+        })
+    })
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        if (targetDivFocusIN) {
+        if (mainContentFocusIN) {
             let letter = e.key.toLowerCase()
             if (!isNaN(letter)) {
                 stepFocus(letter)
@@ -238,11 +215,14 @@ export function stepTxtListeners(){
             }
             
             if (letter == 'e') {
-                nxtLesson.focus()
+                if(nxtLesson){
+
+                    nxtLesson.focus()
+                }
             }
             if (letter == 'a' || letter == 's') {
                 // toggleStepColImages(stepCol)
-                showAside()
+                // showAside()
             }
             // const rect = stepTxts[currentStepIndex].getBoundingClientRect()
             // scrollTo(0, rect.y * .5)
@@ -252,9 +232,11 @@ export function stepTxtListeners(){
         }
 
         if (letter == 'e') {
+            if(nxtLesson){
 
-            nxtLesson.focus()
-            nxtLesson.scrollIntoView()
+                nxtLesson.focus()
+                nxtLesson.scrollIntoView()
+            }
         }
 
     });
@@ -264,7 +246,7 @@ export function stepTxtListeners(){
             // removeOuterTabs()
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
-            console.log(currentStepIndex)
+            stopAllVideos()
             // el.scrollIntoView()
         })
         el.addEventListener('keydown', e => {
@@ -274,6 +256,13 @@ export function stepTxtListeners(){
                 removeInnerTabs()
                 handleImgSize(e)
                 handleStepTabIndex(e)
+                videoHandle(e)
+            }
+            if(letter == 'a' ){
+                if(lastClickedItem){
+                    lastClickedItem.focus()
+                }
+                
             }
             if(letter == 'c'){
                 const stepColContainer = getStepColContainer(e.target.parentElement)
@@ -292,7 +281,6 @@ export function stepTxtListeners(){
                     const step = getStepContainer(e.target.parentElement)
                     const copyCodeFirst = step.querySelector('.step-txt .copy-code')
                     const copyCodes = step.querySelectorAll('.step-txt > .copy-code')
-                    console.log(step)
                     copyCodeFirst.focus()
                     copyCodes.forEach(el => {addTabs(el)})
 
@@ -339,9 +327,41 @@ export function stepTxtListeners(){
             }
             
         })
-        function toggleImgSize(img) {
-            console.log(img)
-            img.classList.toggle('enlarge')
-        }   
     })
+    function toggleImgSize(img) {
+        img.style.zIndex = "1"
+        if(!img.classList.contains('enlarge')){
+            img.classList.add('enlarge')
+        } else {
+            img.classList.remove('enlarge')
+        }
+       
+    }   
+    function videoHandle(e){
+        const step = getStepContainer(e.target.parentElement)
+        const vid = step.querySelector('.step-vid > video')
+        if(vid){
+            toggleVid(vid)
+        }
+    }
+    function toggleVid(vid){
+        if(vid){
+
+            if (vid.paused) {
+                vid.play()
+                vid.classList.add('enlarge')
+            } else {
+                vid.play()
+                vid.classList.add('enlarge')
+            }
+        }
+    }
+    function stopAllVideos(){
+        allVideos.forEach(el => {
+            el.pause()
+            if(el.classList.contains('enlarge')){
+                el.classList.remove('enlarge')
+            }
+        })
+    }
 }

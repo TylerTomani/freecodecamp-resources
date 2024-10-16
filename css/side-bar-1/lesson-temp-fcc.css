@@ -1,8 +1,5 @@
 .step-txt:active,.step-txt:focus {box-shadow: 2px 1px 3px 3px orange;}
 .copy-code:active,.copy-code:focus {box-shadow: 0 1px 3px 2px yellow;}
-
-
-
 .steps-container{
     width: 100%;
     border: 1px solid red;   
@@ -133,19 +130,12 @@
     /* margin-right: 50%; */
     transform: scale(3);
 }
-.enlarge-col-l {
-    position: fixed;
-    top: 40%;
-    left: 20%;
-    z-index: 10;
-    transform: scale(1.2);
+.enlarge-col-img{
+    transform: scale(1.05);
 }
-.enlarge-col-r {
-    position: fixed;
-    top: 40%;
-    right: 20%;
-    z-index: 10;
-    transform: scale(1.1);
+
+.step-col > .img-container.enlarge-images {
+    position: relative;
 }
 .step-col-in {
     display: flex;

@@ -26,7 +26,7 @@ const homeLink = document.querySelector('#homelink')
 const regexCmds = document.querySelector('#regexCmds')
 const programShortcuts = document.querySelector('#programShortcuts')
 const tutorialLink = document.querySelector('#tutorialLink')
-const keys = {
+export const keys = {
     shift : {
         pressed: false
     }

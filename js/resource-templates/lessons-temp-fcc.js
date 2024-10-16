@@ -3,6 +3,7 @@ import { mainContent } from '../side-bar-scripts/letterFocus-sidebar-sections.js
 export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
 import { sections } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
+import { keys } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 // import { showAside } from './sections-fcc.js'
 // import { toggleAside } from './sections-fcc.js'
 import { lessons } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
@@ -32,16 +33,7 @@ function getStepColContainer(parent) {
 }
 function addTabs(el) { el.setAttribute('tabindex', '0') }
 function removeTabs(el) { el.setAttribute('tabindex', '-1') }
-function removeInnerTabs() {
-    codesStepTxtINs.forEach(el => {
-        removeTabs(el)
-    })
-}
-function removeOuterTabs() {
-    copyCodeSteps.forEach(el => { el.setAttribute('tabindex', '-1') })
-    // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
-    pAs.forEach(el => { el.setAttribute('tabindex', '-1') })
-}
+
 export function stepTxtListeners(){
     const allImages = document.querySelectorAll('.step-img > img') 
     const allVideos = document.querySelectorAll('.step-vid > video') 
@@ -56,9 +48,7 @@ export function stepTxtListeners(){
     const pAs = document.querySelectorAll('p a') 
     let colCodesFocused = false
     let currentStepIndex = 0
-    let imgIndex = 0
- 
-    
+    let imgIndex = 0    
     sections.forEach(el => { el.addEventListener('focus', e => { mainContentFocusIN = false }) })
     lessons.forEach(el => { el.addEventListener('focus', e => { mainContentFocusIN = false }) })
     pAs.forEach(el => {
@@ -66,6 +56,16 @@ export function stepTxtListeners(){
         el.addEventListener('focus', e => {
         })
     })    
+    function removeInnerTabs() {
+        codesStepTxtINs.forEach(el => {
+            removeTabs(el)
+        })
+    }
+    function removeOuterTabs() {
+        copyCodeSteps.forEach(el => { el.setAttribute('tabindex', '-1') })
+        // copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
+        pAs.forEach(el => { el.setAttribute('tabindex', '-1') })
+    }
     if(nxtLesson){
         nxtLesson.addEventListener('click', e => {
             
@@ -136,29 +136,7 @@ export function stepTxtListeners(){
         })
     })
 
-    function denlargeAllImages() {
-        allImages.forEach(el => {
-            // el.style.zIndex = "0"
-            if (el.classList.contains('enlarge')) {
-                el.classList.remove('enlarge')
-            }
-            if (el.classList.contains('enlarged-sm')) {
-                el.classList.remove('enlarged-sm')
-            }
-            if (el.classList.contains('enlarged-md')) {
-                el.classList.remove('enlarged-md')
-            }
-            if (el.classList.contains('enlarge-col-l')) {
-                el.classList.remove('enlarge-col-l')
-            }
-            if (el.classList.contains('enlarge-col-r')) {
-                el.classList.remove('enlarge-col-r')
-            }
-            if (el.classList.contains('enlarged-lg')) {
-                el.classList.remove('enlarged-lg')
-            }
-        })
-    }    
+    
     // This will handle img and video size enlarge and denlarge
     function handleImgSize(e) {
         const step = getStepContainer(e.target.parentElement)
@@ -174,23 +152,18 @@ export function stepTxtListeners(){
         const imgContainer = stepCol.querySelector('.img-container')
         if(imgContainer){
             const images = imgContainer.querySelectorAll('.step-img > img')           
-            const img = images[imgIndex]
+            // let images = ['ss','ddd','ddd','eee']
             // imgIndex = (imgIndex +  )
             denlargeAllImages()
-            if(imgIndex == 0){
-                img.classList.add('enlarge-col-l')
-                img.style.zIndex = '5'
+            if(!keys.shift.pressed){
+
+                
+                imgIndex = (imgIndex + 1) % (images.length)
+            } else if(keys.shift.pressed){
+
+                imgIndex = (imgIndex + images.length - 1) % images.length 
             }
-            if(imgIndex == 1){
-                img.classList.add('enlarge-col-r')
-                img.style.zIndex = '5'
-            }
-            
-            else {
-                stepCol.focus()
-                // stepCol.scrollIntoView()
-            }
-            imgIndex = (imgIndex + 1) % (images.length + 1)
+            console.log(imgIndex)
         }
     }
     function toggleStepImgSize(step) {
@@ -205,8 +178,18 @@ export function stepTxtListeners(){
             toggleImgSize(e.target)
         })
     })
+    addEventListener('keyup', e => {
+        let letter = e.key.toLowerCase()
+        if(letter == 'shift'){
+            keys.shift.pressed = false
+        }
+    })
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        if(letter == 'shift'){
+            keys.shift.pressed = true
+        }
+        
         if (mainContentFocusIN) {
             let letter = e.key.toLowerCase()
             if (!isNaN(letter)) {
@@ -339,9 +322,12 @@ export function stepTxtListeners(){
     }   
     function videoHandle(e){
         const step = getStepContainer(e.target.parentElement)
-        const vid = step.querySelector('.step-vid > video')
-        if(vid){
-            toggleVid(vid)
+        if(step){
+
+            const vid = step.querySelector('.step-vid > video')
+            if(vid){
+                toggleVid(vid)
+            }
         }
     }
     function toggleVid(vid){
@@ -364,4 +350,31 @@ export function stepTxtListeners(){
             }
         })
     }
+    function denlargeAllImages() {
+        allImages.forEach(el => {
+            // el.style.zIndex = "0"
+            if (el.classList.contains('enlarge')) {
+                el.classList.remove('enlarge')
+            }
+            if (el.classList.contains('enlarged-sm')) {
+                el.classList.remove('enlarged-sm')
+            }
+            if (el.classList.contains('enlarged-md')) {
+                el.classList.remove('enlarged-md')
+            }
+            if (el.classList.contains('enlarge-col-l')) {
+                el.classList.remove('enlarge-col-l')
+            }
+            if (el.classList.contains('enlarge-col-r')) {
+                el.classList.remove('enlarge-col-r')
+            }
+            if (el.classList.contains('enlarged-lg')) {
+                el.classList.remove('enlarged-lg')
+            }
+            if (el.classList.contains('enlarge-col-img')) {
+                el.classList.remove('enlarge-col-img')
+            }
+        })
+    }    
+    
 }
