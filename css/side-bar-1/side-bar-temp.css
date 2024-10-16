@@ -10,7 +10,7 @@ body {
 }
 main {
     display: flex;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 .side-bar{
     width: var(--width-side-bar);
@@ -35,7 +35,7 @@ main {
     font-size: 70%;
     display: inline-block;
     max-height: 10px;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     margin-left: 5%;
 }
 .sections-container li a {
