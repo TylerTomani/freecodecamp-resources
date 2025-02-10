@@ -12,7 +12,6 @@ import { getSubSections } from '../side-bar-scripts/letterFocus-sidebar-sections
 import { lastClickedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 import { lastFocusedItem } from '../side-bar-scripts/letterFocus-sidebar-sections.js'
 // import { lastFocusedSelection } from './sections-fcc.js'
-
 function getStepContainer(parent) {
     if (parent.classList.contains('step')) {
         return parent
@@ -33,19 +32,22 @@ function getStepColContainer(parent) {
 }
 function addTabs(el) { el.setAttribute('tabindex', '0') }
 function removeTabs(el) { el.setAttribute('tabindex', '-1') }
-
 export function stepTxtListeners(){
-    const allImages = document.querySelectorAll('.step-img > img') 
-    const allVideos = document.querySelectorAll('.step-vid > video') 
-    const steps = document.querySelectorAll('.step')
-    const stepTxts = document.querySelectorAll('.step-txt')
-    const stepTxtsIns = document.querySelectorAll('.step-txt-in')
-    const nxtLesson = document.getElementById('nxtLesson')
-    const copyCodes = document.querySelectorAll('.copy-code') 
-    const copyCodeSteps = document.querySelectorAll('.step > .step-txt > .code-container >  .copy-code') 
-    const codesStepTxtINs = document.querySelectorAll('.step-txt-in .copy-code ')
+    let allImages,allVideos,steps,stepTxts,stepTxtsIns,nxtLesson,copyCodes,copyCodeSteps,codesStepTxtINs,pAs
+    function declareConstantVariables(){
+        allImages = document.querySelectorAll('.step-img > img') 
+        allVideos = document.querySelectorAll('.step-vid > video') 
+        steps = document.querySelectorAll('.step')
+        stepTxts = document.querySelectorAll('.step-txt')
+        stepTxtsIns = document.querySelectorAll('.step-txt-in')
+        nxtLesson = document.getElementById('nxtLesson')
+        copyCodes = document.querySelectorAll('.copy-code') 
+        copyCodeSteps = document.querySelectorAll('.step > .step-txt > .code-container >  .copy-code') 
+        codesStepTxtINs = document.querySelectorAll('.step-txt-in .copy-code ')
+        pAs = document.querySelectorAll('p a') 
+    }
+    declareConstantVariables()
     let currentStep
-    const pAs = document.querySelectorAll('p a') 
     let colCodesFocused = false
     let currentStepIndex = 0
     let imgIndex = 0    
@@ -150,18 +152,18 @@ export function stepTxtListeners(){
     }
     function toggleStepColImages(stepCol) {
         const imgContainer = stepCol.querySelector('.img-container')
+        const images = imgContainer.querySelectorAll('.step-img > img')           
         if(imgContainer){
-            const images = imgContainer.querySelectorAll('.step-img > img')           
             // let images = ['ss','ddd','ddd','eee']
-            // imgIndex = (imgIndex +  )
-            denlargeAllImages()
+                 denlargeAllImages()
             if(!keys.shift.pressed){
 
                 
-                imgIndex = (imgIndex + 1) % (images.length)
+                imgIndex = (imgIndex + 1) % (images.length )
             } else if(keys.shift.pressed){
 
-                imgIndex = (imgIndex + images.length - 1) % images.length 
+                // imgIndex = (imgIndex + images.length - 1) % images.length 
+                imgIndex = (imgIndex - 1 + images.length) % images.length  
             }
             console.log(imgIndex)
         }
@@ -254,7 +256,10 @@ export function stepTxtListeners(){
                     removeOuterTabs()
                     const copyCodeINFirst = stepColContainer.querySelector('.step-col-in .copy-code')
                     const copyCodeINs = stepColContainer.querySelectorAll('.step-col-in .copy-code')
-                    copyCodeINFirst.focus()
+                    if(copyCodeINFirst){
+
+                        copyCodeINFirst.focus()
+                    }
                     copyCodeINs.forEach(el => {
                         addTabs(el)
                     })

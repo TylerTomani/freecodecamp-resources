@@ -4,6 +4,7 @@ const codeContainers = document.querySelectorAll('.code-container')
 let cmdCarray = []
 codeCopy.forEach(copycode => {
     copycode.addEventListener('keydown' , e => {        
+        console.log('lkjdf')
         cmdCarray.unshift(e.keyCode)
         if(cmdCarray.length > 3){
             cmdCarray.pop()
